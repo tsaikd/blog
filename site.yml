@@ -1,0 +1,14 @@
+title : KD Markdown Blog
+tagline: Blog Tagline
+author :
+  name : tsaikd
+  email : tsaikd@gmail.com
+  github : tsaikd
+
+navigation :
+  - archive.html
+  - tags.html
+  - categories.html
+  - pages.html
+  - about.md
+  
