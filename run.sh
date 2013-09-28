@@ -5,7 +5,7 @@ PD="${BASH_SOURCE[0]%/*}"
 
 pushd "${PD}"
 
-git clean -fxd
+rm -rf .tmp_partials/ compiled/
 gor compile
 ln -s ../assets/ compiled/blog/
 gor http
