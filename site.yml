@@ -4,11 +4,11 @@ author :
   name : tsaikd
   email : tsaikd@gmail.com
   github : tsaikd
+urlbase : /blog
 
 navigation :
   - archive.html
   - tags.html
   - categories.html
   - pages.html
-  - about.md
   
