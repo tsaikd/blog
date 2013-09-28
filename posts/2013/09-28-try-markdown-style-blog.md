@@ -9,6 +9,13 @@ tags:
 - gor
 ---
 
+[tsaikd]: http://www.tsaikd.org/
+[octopress]: http://octopress.org/
+[gor]: https://github.com/wendal/gor/
+[ruby]: https://www.ruby-lang.org/
+[golang]: http://golang.org/
+[github]: https://github.com/
+
 還記得最早的時候是想用 BBS 來紀錄一些生活上的瑣事
 
 接著是自己用 php 寫了一個 KDBlog 來放資料
@@ -38,11 +45,3 @@ tags:
 有點難用
 
 只好還是 deploy 到自己的 [web server][tsaikd] 上比較實際
-
-[tsaikd]: http://www.tsaikd.org/
-[octopress]: http://octopress.org/
-[gor]: https://github.com/wendal/gor/
-[ruby]: https://www.ruby-lang.org/
-[golang]: http://golang.org/
-[github]: https://github.com/
-
