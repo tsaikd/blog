@@ -4,7 +4,7 @@ author :
   name : tsaikd
   email : tsaikd@gmail.com
   github : tsaikd
-urlbase : /blog/
+urlbase : /blog
 
 navigation :
   - archive.html
