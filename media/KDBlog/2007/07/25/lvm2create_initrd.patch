@@ -1,0 +1,83 @@
+--- lvm2create_initrd.sh	2007-07-24 19:17:41.000000000 +0800
++++ lvm2create_initrd_kd.sh	2007-07-25 22:21:24.000000000 +0800
+@@ -54,7 +54,7 @@ TMPMNT=/tmp/mnt.$$
+ DEVRAM=/tmp/initrd.$$
+ 
+ # set defaults
+-BINFILES=${BINFILES:-"`which lvm` `which bash` `which busybox` `which pivot_root`"}
++BINFILES=${BINFILES:-"`which lvm` `which bash` `which busybox` `which pivot_root` `which fsck` `ls /sbin/fsck.* /usr/sbin/fsck.* 2>/dev/null`"}
+ BASICDEVICES=${BASICDEVICES:-"std consoleonly fd"}
+ BLOCKDEVICES=${BLOCKDEVICES:-"md hda hdb hdc hdd sda sdb sdc sdd"}
+ MAKEDEV=${MAKEDEV:-"debian"}
+@@ -101,7 +101,7 @@ create_init () {
+ 
+ # include in the path some dirs from the real root filesystem
+ # for chroot, blockdev
+-PATH="/sbin:/bin:/usr/sbin:/usr/bin:/lib/lvm-200:/initrd/bin:/initrd/sbin"
++export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/lib/lvm-200:/initrd/bin:/initrd/sbin"
+ PRE="initrd:"
+ 
+ do_shell(){
+@@ -140,6 +140,10 @@ if [ -f /etc/raid_autostart ]; then
+     	echo "Starting RAID device $dev"
+         /sbin/mdadm --assemble $dev $mdoptions 
+     done
++elif [ -x /sbin/mdadm ]; then
++    /sbin/mdadm -Es > /mdadm_autotmp
++    /sbin/mdadm -Asc /mdadm_autotmp
++    rm -f /mdadm_autotmp
+ fi
+ 
+ # Create the /dev/mapper/control device for the ioctl
+@@ -185,6 +189,11 @@ else
+     lvm vgchange --ignorelockingfailure -a y
+ fi
+ 
++if [[ " $(</proc/cmdline) " != *' lvm2nofsck '* ]] ; then
++	echo "$PRE Checking root filesystem"
++	fsck -C -a -T $rootvol
++fi
++
+ echo "$PRE Mounting root filesystem $rootvol ro"
+ mkdir /rootvol
+ if ! mount -t auto -o ro $rootvol /rootvol; then
+@@ -246,7 +255,7 @@ INITRD=${INITRD:-"/boot/initrd-lvm2-$VER
+ echo "$cmd -- make LVM initial ram disk $INITRD"
+ echo ""
+ 
+-if [ -n "$RAID" ]; then
++if [ -n "$RAID" ] || [ -r "$RAIDCONF" ]; then
+     BINFILES="$BINFILES /sbin/mdadm"
+     RAIDCONF=${RAIDCONF:-"/etc/mdadm/mdadm.conf"}
+     if [ -r $RAIDCONF ]; then
+@@ -406,11 +415,20 @@ if [ $? -ne 0 ]; then
+ fi
+ 
+ 
++if [ "`uname -m`" == x86_64 ] && [ "`uname -i`" == AuthenticAMD ]; then
++    echo "$cmd -- fix bugs in amd64"
++    pushd $TMPMNT >/dev/null
++    mv lib64/* lib/
++    rmdir lib64/
++    ln -s lib lib64
++    popd >/dev/null
++fi
++
+ echo "$cmd -- creating symlinks to busybox"
+ shopt -s extglob
+ [ "$VERBOSE" ] && OPT_Q="-v" || OPT_Q=""
+ BUSYBOXSYMLINKS=`busybox 2>&1| awk '/^Currently defined functions:$/ {i++;next} i'|tr ',\t\n' ' '`
+-for link in ${BUSYBOXSYMLINKS//@(linuxrc|init|busybox)}; do 
++for link in ${BUSYBOXSYMLINKS//@(linuxrc|init|busybox|fsck)}; do 
+ 	ln -s $OPT_Q busybox $TMPMNT/bin/$link;
+ done
+ shopt -u extglob
+@@ -456,6 +474,8 @@ if [ -n "$MODULES" ]; then
+     done
+ fi
+ 
++sed -r '\#^\s*\S+\s+/\s#!d' /etc/fstab >$TMPMNT/etc/fstab
++
+ verbose "removing $TMPMNT/lost+found"
+ rmdir $TMPMNT/lost+found
+ 
