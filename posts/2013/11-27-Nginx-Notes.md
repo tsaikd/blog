@@ -32,6 +32,10 @@ server {
 # Reverse proxy
 ```
 server {
+	location /WebApp- {
+		rewrite ^/WebApp-[^/]*/(.*)$ /WebApp/$1 redirect;
+	}
+
 	location = /WebApp {
 		rewrite ^ /WebApp/ redirect;
 	}
@@ -40,7 +44,7 @@ server {
 		set $ver 1.0-SNAPSHOT-20131127-1412;
 		rewrite ^/WebApp/(.*)$ /WebApp-$ver/$1 break;
 		proxy_cookie_path      /WebApp-$ver /WebApp;
-		proxy_pass http://tomcat:8080/WebApp-$ver/$1;
+		proxy_pass http://tomcat:8080/WebApp-$ver/$1$is_args$args;
 		include proxy_params;
 		add_header WebApp-Version $ver;
 	}
