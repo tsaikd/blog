@@ -1,21 +1,31 @@
 #!/bin/bash
 
+set -e
+
 PN="${BASH_SOURCE[0]##*/}"
 PD="${BASH_SOURCE[0]%/*}"
 
-pushd "${PD}" || exit $?
+pushd "${PD}"
 
-	rm -rf .tmp_partials/ compiled/blog/*
-	gor compile || exit $?
-	chown 1000:1000 -R .tmp_partials/ compiled/blog/ || exit $?
+	pushd compiled/blog
 
-	pushd compiled/blog || exit $?
+		git checkout -f gh-pages
+		git fetch --all
+		git reset --hard origin/gh-pages
 
-		git add -A || exit $?
-		git commit -m "$(date): Auto update" --author "tsaikd <tsaikd@gmail.com>" || exit $?
-		git push origin gh-pages:gh-pages || exit $?
+	popd
 
-	popd || exit $?
+	rm -rf .tmp_partials/ compiled/blog/* || true
+	gor compile
+	chown 1000:1000 -R .tmp_partials/ compiled/blog/
 
-popd || exit $?
+	pushd compiled/blog
+
+		git add -A
+		git commit -m "$(date): Auto update" --author "tsaikd <tsaikd@gmail.com>"
+		git push origin gh-pages:gh-pages
+
+	popd
+
+popd
 
