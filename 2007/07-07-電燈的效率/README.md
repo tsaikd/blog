@@ -10,7 +10,7 @@ Continuum 2.4，持續照亮你的明燈
 
 
 
-![]({{urls.media}}/KDBlog/2007/07/07/continuum2.4.jpg)
+![](continuum2.4.jpg)
 
 <quote><block>鹵素燈泡，92%的電力轉換成熱能；一般燈泡，90%電力轉換成熱能；LED也有85%轉成熱能。</block></quote>
 

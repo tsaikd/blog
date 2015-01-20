@@ -23,5 +23,5 @@ KDBlog 的內容也設計成容易用普通文字編輯器就可以寫的方式�
 
 來個 ScreenShot 吧！
 
-![]({{urls.media}}/KDBlog/2008/12/28/KD_BlogWriter.jpg)
+![](KD_BlogWriter.jpg)
 

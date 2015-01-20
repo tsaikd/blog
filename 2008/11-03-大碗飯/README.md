@@ -10,9 +10,9 @@ tags:
 
 我點了大碗飯跟土豆豬腳湯
 
-![]({{urls.media}}/KDBlog/2008/11/03/IMAG0174.jpg)
+![](IMAG0174.jpg)
 
-![]({{urls.media}}/KDBlog/2008/11/03/IMAG0175.jpg)
+![](IMAG0175.jpg)
 
 味道還不錯
 

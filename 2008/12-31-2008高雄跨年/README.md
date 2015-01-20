@@ -14,7 +14,7 @@ tags:
 
 上面有一群辣妹在跳舞
 
-![]({{urls.media}}/KDBlog/2008/12/31/IMAG0247.jpg)
+![](IMAG0247.jpg)
 
 ---
 
@@ -36,7 +36,7 @@ tags:
 
 所以大部份的節目都沒有拍
 
-![]({{urls.media}}/KDBlog/2008/12/31/IMAG0248.jpg)
+![](IMAG0248.jpg)
 
 ---
 
@@ -56,7 +56,7 @@ tags:
 
 不過不知道是哪一台的就是了
 
-![]({{urls.media}}/KDBlog/2008/12/31/IMAG0250.jpg)
+![](IMAG0250.jpg)
 
 ---
 

@@ -10,7 +10,7 @@ tags:
 
 
 
-![]({{urls.media}}/KDBlog/2008/03/03/image001sg2.gif)
+![](image001sg2.gif)
 
 ---
 

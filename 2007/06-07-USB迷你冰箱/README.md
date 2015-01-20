@@ -10,7 +10,7 @@ USB迷你冰箱！
 
 
 
-![]({{urls.media}}/KDBlog/2007/06/07/ulife008900_01_l.jpg)
+![](ulife008900_01_l.jpg)
 
 我心動了...
 

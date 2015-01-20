@@ -28,9 +28,9 @@ tags:
 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西，
 先看一下成功的畫面吧！
 
-![]({{urls.media}}/2014/08-04/screen01.png)
+![](screen01.png)
 
-![]({{urls.media}}/2014/08-04/screen02.png)
+![](screen02.png)
 
 基本上就是先建一個 eclipse 的 container ，
 跑起來之後再用 ssh 連進去執行 eclipse ，

@@ -112,9 +112,9 @@ Size 夠大的話
 
 1. 可充鹼性電池的充電器 (NT$ 899)
 
-![]({{urls.media}}/KDBlog/2009/12/28/IMAG0298.jpg)
+![](IMAG0298.jpg)
 
-![]({{urls.media}}/KDBlog/2009/12/28/IMAG0299.jpg)
+![](IMAG0299.jpg)
 
 其實這個之前就看到過了
 
@@ -134,11 +134,11 @@ Size 夠大的話
 
 2. 床上書/電腦架 (NT$ 1600)
 
-![]({{urls.media}}/KDBlog/2009/12/28/IMAG0295.jpg)
+![](IMAG0295.jpg)
 
-![]({{urls.media}}/KDBlog/2009/12/28/IMAG0296.jpg)
+![](IMAG0296.jpg)
 
-![]({{urls.media}}/KDBlog/2009/12/28/IMAG0297.jpg)
+![](IMAG0297.jpg)
 
 每次冬天到了就想躺在床上打電腦
 

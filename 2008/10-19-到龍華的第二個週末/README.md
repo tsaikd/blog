@@ -6,7 +6,7 @@ categories:
 tags:
 - 生活
 ---
-![]({{urls.media}}/KDBlog/2008/10/18/IMAG0092.jpg)
+![](IMAG0092.jpg)
 
 10/18
 
@@ -36,7 +36,7 @@ tags:
 
 於是問了要怎麼到深圳市區
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0093.jpg)
+![](IMAG0093.jpg)
 
 這是在等車的旁邊拍到的
 
@@ -46,7 +46,7 @@ tags:
 
 到了羅湖火車站
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0094.jpg)
+![](IMAG0094.jpg)
 
 旁邊有個汽車客運站
 
@@ -66,7 +66,7 @@ tags:
 
 吃飽後不小心看到這家店
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0095.jpg)
+![](IMAG0095.jpg)
 
 因為三聚氫氨的關係
 
@@ -102,13 +102,13 @@ tags:
 
 留張照片紀念一下
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0096.jpg)
+![](IMAG0096.jpg)
 
 走過地下道後再來一張
 
 (其實是走錯路....)
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0097.jpg)
+![](IMAG0097.jpg)
 
 ---
 
@@ -124,7 +124,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0098.jpg)
+![](IMAG0098.jpg)
 
 在地下一樓看到這個感覺還蠻不錯的
 
@@ -154,9 +154,9 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0099.jpg)
+![](IMAG0099.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/19/IMAG0100.jpg)
+![](IMAG0100.jpg)
 
 這兩張照片是車內的設備
 

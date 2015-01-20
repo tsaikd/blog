@@ -16,7 +16,7 @@ tags:
 
 所以就點個 10 塊錢快餐來試試
 
-![]({{urls.media}}/KDBlog/2008/10/31/IMAG0160.jpg)
+![](IMAG0160.jpg)
 
 ---
 

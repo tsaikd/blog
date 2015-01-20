@@ -20,7 +20,7 @@ tags:
 
 不過還是把她拍下來了...ccc
 
-![]({{urls.media}}/KDBlog/2008/11/04/IMAG0176.jpg)
+![](IMAG0176.jpg)
 
 ---
 
@@ -30,7 +30,7 @@ tags:
 
 上面的是老虎菜
 
-![]({{urls.media}}/KDBlog/2008/11/04/IMAG0177.jpg)
+![](IMAG0177.jpg)
 
 ---
 
@@ -88,7 +88,7 @@ tags:
 
 真是恐怖...@_@
 
-![]({{urls.media}}/KDBlog/2008/11/04/IMAG0179.jpg)
+![](IMAG0179.jpg)
 
 ---
 

@@ -32,5 +32,5 @@ AntiVir PersonalEdition
 
 ---
 
-![]({{urls.media}}/KDBlog/2007/06/12/AntiVir.png)
+![](AntiVir.png)
 

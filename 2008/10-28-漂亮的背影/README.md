@@ -26,7 +26,7 @@ tags:
 
 (我的位置真是剛好可以偷拍的好地點啊...XD)
 
-![]({{urls.media}}/KDBlog/2008/10/28/IMAG0151.jpg)
+![](IMAG0151.jpg)
 
 ---
 
@@ -40,13 +40,13 @@ tags:
 
 不過裡面還是有點料
 
-![]({{urls.media}}/KDBlog/2008/10/28/IMAG0152.jpg)
+![](IMAG0152.jpg)
 
 ---
 
 這碗牛腩麵也是 5 塊錢
 
-![]({{urls.media}}/KDBlog/2008/10/28/IMAG0153.jpg)
+![](IMAG0153.jpg)
 
 味道一般
 
@@ -66,7 +66,7 @@ tags:
 
 所以又偷拍了一張
 
-![]({{urls.media}}/KDBlog/2008/10/28/IMAG0154.jpg)
+![](IMAG0154.jpg)
 
 ---
 
@@ -84,5 +84,5 @@ tags:
 
 不知道好不好吃...
 
-![]({{urls.media}}/KDBlog/2008/10/28/IMAG0155.jpg)
+![](IMAG0155.jpg)
 

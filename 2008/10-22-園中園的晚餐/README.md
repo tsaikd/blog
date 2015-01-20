@@ -28,7 +28,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/22/IMAG0101.jpg)
+![](IMAG0101.jpg)
 
 蓮藕排骨湯 3 元
 
@@ -38,7 +38,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/22/IMAG0102.jpg)
+![](IMAG0102.jpg)
 
 酸辣麵(微辣) 5 元
 
@@ -62,7 +62,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/22/IMAG0103.jpg)
+![](IMAG0103.jpg)
 
 魷魚絲 3 元
 

@@ -8,7 +8,7 @@ tags:
 - gor
 ---
 
-[Image01]: {{urls.media}}/2013/09-28-makdown-small-tip/1.png
+[Image01]: 1.png
 
 之前忘了在哪有看到說 `[ID]: http://example.com/` 這種引用的東西最好放在文章的最上面
 

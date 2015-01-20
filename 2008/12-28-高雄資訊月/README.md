@@ -32,55 +32,55 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0225.jpg)
+![](IMAG0225.jpg)
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0226.jpg)
+![](IMAG0226.jpg)
 
 這張糊掉了，有點可惜。
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0227.jpg)
+![](IMAG0227.jpg)
 
 這張也很慘，這個 ShowGirl 好像叫黃湘婷。
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0228.jpg)
+![](IMAG0228.jpg)
 
 這個 ShowGirl 有點害羞，不夠大方。
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0229.jpg)
+![](IMAG0229.jpg)
 
 看起來還蠻有趣的玩具。
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0230.jpg)
+![](IMAG0230.jpg)
 
 這個 Cosplay 很敬業，看到我要拍她還特地擺個好看的 POS 。
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0231.jpg)
+![](IMAG0231.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0232.jpg)
+![](IMAG0232.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0233.jpg)
+![](IMAG0233.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0235.jpg)
+![](IMAG0235.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0236.jpg)
+![](IMAG0236.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0238.jpg)
+![](IMAG0238.jpg)
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0239.jpg)
+![](IMAG0239.jpg)
 
 這兩個好像是要下班了，我是看到有幾個人拿著大砲對著她們，
 
@@ -92,7 +92,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0240.jpg)
+![](IMAG0240.jpg)
 
 威寶請了一拖拉庫的工讀生在發傳單，陣容浩大，
 
@@ -100,11 +100,11 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0243.jpg)
+![](IMAG0243.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0244.jpg)
+![](IMAG0244.jpg)
 
-![]({{urls.media}}/KDBlog/2008/12/28/IMAG0245.jpg)
+![](IMAG0245.jpg)
 
 最後我走了不久，就聽到大門口好像有活動，就急忙趕回去湊個熱鬧，
 

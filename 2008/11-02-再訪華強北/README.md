@@ -14,9 +14,9 @@ tags:
 
 路上看到 showgirl 站在門口賣東西
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0161.jpg)
+![](IMAG0161.jpg)
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0163.jpg)
+![](IMAG0163.jpg)
 
 ---
 
@@ -32,7 +32,7 @@ tags:
 
 感覺還蠻特別的
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0164.jpg)
+![](IMAG0164.jpg)
 
 ---
 
@@ -64,23 +64,23 @@ tags:
 
 盒子外觀
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0168.jpg)
+![](IMAG0168.jpg)
 
 開盒照
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0170.jpg)
+![](IMAG0170.jpg)
 
 配件
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0171.jpg)
+![](IMAG0171.jpg)
 
 上面是筆，下面是 USB 加上 Camera
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0172.jpg)
+![](IMAG0172.jpg)
 
 Camera 特寫
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0173.jpg)
+![](IMAG0173.jpg)
 
 ---
 
@@ -98,7 +98,7 @@ Camera 特寫
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/11/02/IMAG0166.jpg)
+![](IMAG0166.jpg)
 
 這份套餐 21 人民幣
 

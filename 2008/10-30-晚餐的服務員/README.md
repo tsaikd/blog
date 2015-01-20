@@ -16,7 +16,7 @@ tags:
 
 蜂蜜奶茶一下子就上來了
 
-![]({{urls.media}}/KDBlog/2008/10/30/IMAG0156.jpg)
+![](IMAG0156.jpg)
 
 嗯....味道還蠻糟糕的
 
@@ -34,7 +34,7 @@ tags:
 
 趁機偷拍一下...^_^
 
-![]({{urls.media}}/KDBlog/2008/10/30/IMAG0158.jpg)
+![](IMAG0158.jpg)
 
 我覺得她的眼睛蠻漂亮的耶!!
 
@@ -42,7 +42,7 @@ tags:
 
 主菜上桌
 
-![]({{urls.media}}/KDBlog/2008/10/30/IMAG0159.jpg)
+![](IMAG0159.jpg)
 
 豬肉有點硬
 

@@ -38,19 +38,19 @@ tags:
 
 人也超多
 
-![]({{urls.media}}/KDBlog/2008/10/12/IMAG0081.jpg)
+![](IMAG0081.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/12/IMAG0082.jpg)
+![](IMAG0082.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/12/IMAG0083.jpg)
+![](IMAG0083.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/12/IMAG0084.jpg)
+![](IMAG0084.jpg)
 
 ---
 
 還有人在地上寫字...Orz
 
-![]({{urls.media}}/KDBlog/2008/10/12/IMAG0086.jpg)
+![](IMAG0086.jpg)
 
 ---
 

@@ -18,5 +18,5 @@ Google 好樣的...XD
 
 Screen Shot URL
 
-![]({{urls.media}}/KDBlog/2007/06/12/googleplex.png)
+![](googleplex.png)
 

@@ -30,7 +30,7 @@ tags:
 
 應該要歸功於那個醬汁吧
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0144.jpg)
+![](IMAG0144.jpg)
 
 ---
 
@@ -58,7 +58,7 @@ tags:
 
 可是回家給媽剪就不用花錢了...XD
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0145.jpg)
+![](IMAG0145.jpg)
 
 ---
 
@@ -76,7 +76,7 @@ tags:
 
 還真簡陋啊...@_@
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0146.jpg)
+![](IMAG0146.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0148.jpg)
+![](IMAG0148.jpg)
 

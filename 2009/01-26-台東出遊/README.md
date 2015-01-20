@@ -12,7 +12,7 @@ tags:
 
 就到卑南大圳看看
 
-![]({{urls.media}}/KDBlog/2009/01/26/IMAG0260.jpg)
+![](IMAG0260.jpg)
 
 ---
 
@@ -20,13 +20,13 @@ tags:
 
 經過一個路段可以看到台東市的市容
 
-![]({{urls.media}}/KDBlog/2009/01/26/IMAG0261.jpg)
+![](IMAG0261.jpg)
 
 ---
 
 還有機場
 
-![]({{urls.media}}/KDBlog/2009/01/26/IMAG0262.jpg)
+![](IMAG0262.jpg)
 
 ---
 
@@ -48,5 +48,5 @@ tags:
 
 從某個觀景台拍下來的照片
 
-![]({{urls.media}}/KDBlog/2009/01/26/IMAG0263.jpg)
+![](IMAG0263.jpg)
 

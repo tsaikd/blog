@@ -10,7 +10,7 @@ tags:
 
 
 
-![]({{urls.media}}/KDBlog/2007/07/01/rps2.jpg)
+![](rps2.jpg)
 
 這個世界真是無奇不有
 

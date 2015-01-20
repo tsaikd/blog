@@ -42,13 +42,13 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0120.jpg)
+![](IMAG0120.jpg)
 
 這張有拍到她的衣服有拉起來的樣子
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0127.jpg)
+![](IMAG0127.jpg)
 
 這張有看到一點點的臉....
 
@@ -60,7 +60,7 @@ tags:
 
 這次白天來就拍個照
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0131.jpg)
+![](IMAG0131.jpg)
 
 ---
 
@@ -72,7 +72,7 @@ tags:
 
 所以就在外面拍拍就好了
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0133.jpg)
+![](IMAG0133.jpg)
 
 ---
 
@@ -84,15 +84,15 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0136.jpg)
+![](IMAG0136.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0137.jpg)
+![](IMAG0137.jpg)
 
 我的手指真礙眼...@_@
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0138.jpg)
+![](IMAG0138.jpg)
 
 長的還不錯
 
@@ -114,11 +114,11 @@ tags:
 
 結果....不好吃....
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0139.jpg)
+![](IMAG0139.jpg)
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0141.jpg)
+![](IMAG0141.jpg)
 
 自拍鏡頭的解析度還真糟糕...@_@
 
@@ -134,7 +134,7 @@ tags:
 
 應該還可以更好吃的
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0143.jpg)
+![](IMAG0143.jpg)
 
 這麼大一個只要 2 塊 5 角
 

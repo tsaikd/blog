@@ -22,11 +22,11 @@ tags:
 
 只好留下幾張附近的照片當紀念。
 
-![]({{urls.media}}/KDBlog/2008/10/17/IMAG0087.jpg)
+![](IMAG0087.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/17/IMAG0088.jpg)
+![](IMAG0088.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/17/IMAG0089.jpg)
+![](IMAG0089.jpg)
 
 ---
 

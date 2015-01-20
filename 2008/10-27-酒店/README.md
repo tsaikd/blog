@@ -16,5 +16,5 @@ tags:
 
 SEXY CLUB
 
-![]({{urls.media}}/KDBlog/2008/10/27/IMAG0150.jpg)
+![](IMAG0150.jpg)
 

@@ -37,7 +37,7 @@ tags:
 ----
 
 ## 系統基本架構圖
-![]({{urls.media}}/2014/12-25/overview.png)
+![](overview.png)
 
 * [Etcd][]
 	* 存放設定的 Cluster DB
@@ -46,25 +46,25 @@ tags:
 
 * [SkyDNS][]
 	* 從 [Etcd][] 讀取設定, 讓使用者查詢的 DNS Server
-	* ![]({{urls.media}}/2014/12-25/skydns.png)
+	* ![](skydns.png)
 <br/>
 <br/>
 
 * [Confd][]
 	* 從 [Etcd][] 讀取設定, Reload [Nginx][]
-	* ![]({{urls.media}}/2014/12-25/confd.png)
+	* ![](confd.png)
 <br/>
 <br/>
 
 * [Registrator][]
 	* 監聽 [Docker][] Events, 將 Container 資訊寫入 [Etcd][]
-	* ![]({{urls.media}}/2014/12-25/registrator.png)
+	* ![](registrator.png)
 <br/>
 <br/>
 
 * [Nginx][]
 	* 網頁 r-Proxy
-	* ![]({{urls.media}}/2014/12-25/queryflow.png)
+	* ![](queryflow.png)
 
 ----
 
@@ -94,7 +94,7 @@ DOCKER_OPTS="$DOCKER_OPTS --api-enable-cors=true -H tcp://0.0.0.0:2375 -H unix:/
 	```
 
 * 連線到 [KDocker-Web][] 進行設定, 這是一個純網頁的 Web App , 在上面進行設定並不會造成資料外洩, 請安心服用...XD
-	* ![]({{urls.media}}/2014/12-25/kdocker-web-config.png)
+	* ![](kdocker-web-config.png)
 
 ----
 
@@ -255,7 +255,7 @@ check_cmd = "/usr/sbin/nginx -t -c /etc/nginx/nginx.conf"
 reload_cmd = "/usr/sbin/service nginx reload"
 ```
 
->>* [/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl]({{urls.media}}/2014/12-25/nginx.tmpl.txt)
+>>* [/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl](nginx.tmpl.txt)
 
 >>>* 這個檔案格式比較特別, 所以另外放...@_@
 

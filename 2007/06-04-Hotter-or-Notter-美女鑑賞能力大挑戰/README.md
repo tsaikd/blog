@@ -38,5 +38,5 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2007/06/04/Hotter or Notter_1180933324328.png)
+![](Hotter or Notter_1180933324328.png)
 

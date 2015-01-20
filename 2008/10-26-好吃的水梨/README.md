@@ -20,5 +20,5 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/26/IMAG0117.jpg)
+![](IMAG0117.jpg)
 

@@ -28,7 +28,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/12/07/IMAG0202.jpg)
+![](IMAG0202.jpg)
 
 旁邊那個看起來是她的男友(凸)
 

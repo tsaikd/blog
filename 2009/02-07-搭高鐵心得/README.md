@@ -78,7 +78,7 @@ tags:
 
 竟然看到外面有工作人員在排隊!!
 
-![]({{urls.media}}/KDBlog/2009/02/07/IMAG0289.jpg)
+![](IMAG0289.jpg)
 
 ---
 

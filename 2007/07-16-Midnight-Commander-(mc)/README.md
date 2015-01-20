@@ -56,13 +56,13 @@ GNU Midnight Commander cli-based file manager
 
 <quote header="# mc">
 
-![]({{urls.media}}/KDBlog/2007/07/16/mc_01.png)
+![](mc_01.png)
 
 </quote>
 
 <quote header="# mc -a">
 
-![]({{urls.media}}/KDBlog/2007/07/16/mc_01_fix.png)
+![](mc_01_fix.png)
 
 </quote>
 
@@ -84,7 +84,7 @@ GNU Midnight Commander cli-based file manager
 
 <![CDATA[只能去 Options -> Layout... -> Panel split ->]]>
 
-![]({{urls.media}}/KDBlog/2007/07/16/mc_02.png)
+![](mc_02.png)
 
 把右邊盡量縮小
 
@@ -102,13 +102,13 @@ GNU Midnight Commander cli-based file manager
 
 <quote header="half">
 
-![]({{urls.media}}/KDBlog/2007/07/16/mc_03.png)
+![](mc_03.png)
 
 </quote>
 
 <quote header="full">
 
-![]({{urls.media}}/KDBlog/2007/07/16/mc_03_fix.png)
+![](mc_03_fix.png)
 
 </quote>
 

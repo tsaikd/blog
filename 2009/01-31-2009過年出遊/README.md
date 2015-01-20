@@ -26,29 +26,29 @@ tags:
 
 一開始先到接待會館領鑰匙
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0269.jpg)
+![](IMAG0269.jpg)
 
 ---
 
 然後下午兩點左右去看晚上要住的小木屋
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0271.jpg)
+![](IMAG0271.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0274.jpg)
+![](IMAG0274.jpg)
 
 ---
 
 從小木屋往外看的風景
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0270.jpg)
+![](IMAG0270.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0281.jpg)
+![](IMAG0281.jpg)
 
 ---
 
 原先小木屋的擺設
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0272.jpg)
+![](IMAG0272.jpg)
 
 不過後來我們都把它移動過了
 
@@ -56,21 +56,21 @@ tags:
 
 渡假村裡就是尖山埤水庫
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0275.jpg)
+![](IMAG0275.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0282.jpg)
+![](IMAG0282.jpg)
 
 ---
 
 水庫的風景
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0273.jpg)
+![](IMAG0273.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0277.jpg)
+![](IMAG0277.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0278.jpg)
+![](IMAG0278.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0280.jpg)
+![](IMAG0280.jpg)
 
 ---
 
@@ -78,13 +78,13 @@ tags:
 
 不過我沒去玩就是了
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0276.jpg)
+![](IMAG0276.jpg)
 
 ---
 
 下面那邊是洩洪的地方
 
-![]({{urls.media}}/KDBlog/2009/01/29/IMAG0283.jpg)
+![](IMAG0283.jpg)
 
 ---
 
@@ -124,9 +124,9 @@ tags:
 
 視野遼闊
 
-![]({{urls.media}}/KDBlog/2009/01/31/IMAG0284.jpg)
+![](IMAG0284.jpg)
 
-![]({{urls.media}}/KDBlog/2009/01/31/IMAG0285.jpg)
+![](IMAG0285.jpg)
 
 ---
 

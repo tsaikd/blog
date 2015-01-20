@@ -18,13 +18,13 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/25/IMAG0105.jpg)
+![](IMAG0105.jpg)
 
 這家 90min 45 塊
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/25/IMAG0107.jpg)
+![](IMAG0107.jpg)
 
 這家 120min 40 塊
 
@@ -42,7 +42,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/25/IMAG0109.jpg)
+![](IMAG0109.jpg)
 
 住宿的部份價錢也差很多
 
@@ -56,9 +56,9 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/25/IMAG0113.jpg)
+![](IMAG0113.jpg)
 
-![]({{urls.media}}/KDBlog/2008/10/25/IMAG0114.jpg)
+![](IMAG0114.jpg)
 
 後來不小心逛到華X商場(一時想不起名字)
 
@@ -104,7 +104,7 @@ tags:
 
 ---
 
-![]({{urls.media}}/KDBlog/2008/10/25/IMAG0116.jpg)
+![](IMAG0116.jpg)
 
 皇家咖啡
 
