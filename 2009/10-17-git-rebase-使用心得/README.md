@@ -56,11 +56,9 @@ tags:
 
 這個時候就是 rebase 派上用場的好機會了
 
-<quote header="bash">
-
+```
 $ git rebase --onto branchB master branchA
-
-</quote>
+```
 
 一行指令搞定!!
 
@@ -74,25 +72,19 @@ branchA 就會接在 branchB 的後面了
 
 因為我一開始看 document 的時候也搞不太懂
 
-<quote header="man git-rebase">
+* man git-rebase
 
+```
 SYNOPSIS
-
            git rebase [-i | --interactive] [-v | --verbose] [-m | --merge]
-
-                   [-s &lt;strategy&gt; | --strategy=&lt;strategy&gt;]
-
-                   [-C&lt;n&gt;] [ --whitespace=&lt;option&gt;] [-p | --preserve-merges]
-
-                   [--onto &lt;newbase&gt;] &lt;upstream&gt; [&lt;branch&gt;]
-
+                   [-s <strategy> | --strategy=<strategy>]
+                   [-C<n>] [ --whitespace=<option>] [-p | --preserve-merges]
+                   [--onto <newbase>] <upstream> [<branch>]
            git rebase --continue | --skip | --abort
-
-</quote>
+```
 
 簡單來說就是 git rebase --onto "新的基準點" "從這個點" "到這個點"
 
 要是沒有衝突的話就會把 "從這個點" "到這個點" 的 patches 放到 "新的基準點" 上面
 
 有衝突的話還是不要亂搞....乖乖的 git rebase --abort 吧....XD
-

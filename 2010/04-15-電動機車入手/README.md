@@ -25,9 +25,7 @@ tags:
 大概是一般油車的 50cc ~ 100cc 性能就差不多了
 
 1. 可拆卸電池
-
 2. 時速 50+ km/h
-
 3. 續航力 40+ km
 
 ---
@@ -70,159 +68,97 @@ tags:
 
 讓我看中的有幾款
 
-1. 見發先進科技, 易速達, &lt;a href="http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_06"&gt;超夯未來車-POLICE波麗士&lt;/a&gt;
-
-馬達：無刷 DC 3000W
-
-電池：60V 40AH 磷酸鐵鋰
-
-速度：90km/h
-
-爬坡能力：30度
-
-續航力：100km
-
-車重：130kg (不含電池98kg) 
-
-售價：未上市(估計十萬以上)
+* 見發先進科技, 易速達, [超夯未來車-POLICE波麗士](http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_06)
+	* 馬達：無刷 DC 3000W
+	* 電池：60V 40AH 磷酸鐵鋰
+	* 速度：90km/h
+	* 爬坡能力：30度
+	* 續航力：100km
+	* 車重：130kg (不含電池98kg)
+	* 售價：未上市(估計十萬以上)
 
 ---
 
-2. 見發先進科技, 易速達, &lt;a href="http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_07"&gt;超夯未來車-NEW STYLE 120新潮流&lt;/a&gt;
-
-馬達：DC 1200W
-
-電池：60V 20AH x2組 鉛酸
-
-爬坡力：18度
-
-最高時速：75km/hr
-
-續航力：55-110km
-
-車重：78kg (含電池)
-
-售價：未上市(估計7~10萬)
+* 見發先進科技, 易速達, [超夯未來車-NEW STYLE 120新潮流](http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_07)
+	* 馬達：DC 1200W
+	* 電池：60V 20AH x2組 鉛酸
+	* 爬坡力：18度
+	* 最高時速：75km/hr
+	* 續航力：55-110km
+	* 車重：78kg (含電池)
+	* 售價：未上市(估計7~10萬)
 
 ---
 
-3. 見發先進科技, 易速達, &lt;a href="http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_09"&gt;城市巡航city cruiser電動自行車&lt;/a&gt;
-
-馬達：DC 650 W
-
-電池：48V 24AH 鉛酸
-
-時速：25-50km/hr
-
-續航力：60-70km
-
-爬坡度：18度
-
-載重：100kg
-
-車重：25.8kg
-
-售價：NT$ 38,800
+* 見發先進科技, 易速達, [城市巡航city cruiser電動自行車](http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_09)
+	* 馬達：DC 650 W
+	* 電池：48V 24AH 鉛酸
+	* 時速：25-50km/hr
+	* 續航力：60-70km
+	* 爬坡度：18度
+	* 載重：100kg
+	* 車重：25.8kg
+	* 售價：NT$ 38,800
 
 ---
 
-4. 比雅久 PGO, &lt;a href="http://www.pgo.com.tw/EBUBU-spec.shtml"&gt;E-BUBU電動車&lt;/a&gt;
-
-馬達：無刷 DC 500 W x2組 (前後輪各一)
-
-電池：26V 12AH 鋰電 x2 + 12V 22AH 鉛酸 x4
-
-時速：60km/hr
-
-續航力：60km (定速30km/hr)
-
-爬坡度：12度
-
-載重：
-
-車重：(不含電池114kg)
-
-售價：NT$ 79,800
+* 比雅久 PGO, [E-BUBU電動車](http://www.pgo.com.tw/EBUBU-spec.shtml)
+	* 馬達：無刷 DC 500 W x2組 (前後輪各一)
+	* 電池：26V 12AH 鋰電 x2 + 12V 22AH 鉛酸 x4
+	* 時速：60km/hr
+	* 續航力：60km (定速30km/hr)
+	* 爬坡度：12度
+	* 載重：
+	* 車重：(不含電池114kg)
+	* 售價：NT$ 79,800
 
 ---
 
-5. 綠鑽, &lt;a href="http://gdp-tech.com/admin/product/front/product_product_index.php?p_id=89"&gt;GD-031&lt;/a&gt;
-
-馬達：無刷 DC 900 W
-
-電池：48V 20AH 鋰鐵
-
-時速：60+km/hr
-
-續航力：60+km
-
-爬坡度：15度
-
-載重：150kg
-
-車重：82kg
-
-售價：未上市
+* 綠鑽, [GD-031](http://gdp-tech.com/admin/product/front/product_product_index.php?p_id=89)
+	* 馬達：無刷 DC 900 W
+	* 電池：48V 20AH 鋰鐵
+	* 時速：60+km/hr
+	* 續航力：60+km
+	* 爬坡度：15度
+	* 載重：150kg
+	* 車重：82kg
+	* 售價：未上市
 
 ---
 
-6. 佳興, 可愛馬-平安行??(無官方網頁, 高雄市中安路622~1號)
-
-馬達：DC 1200W
-
-電池：48V ??AH 鉛酸(容量忘了)
-
-時速：50+km/hr
-
-續航力：40+km
-
-爬坡度：沒問
-
-載重：沒問
-
-車重：沒問
-
-售價：沒問
+* 佳興, 可愛馬-平安行??(無官方網頁, 高雄市中安路622~1號)
+	* 馬達：DC 1200W
+	* 電池：48V ??AH 鉛酸(容量忘了)
+	* 時速：50+km/hr
+	* 續航力：40+km
+	* 爬坡度：沒問
+	* 載重：沒問
+	* 車重：沒問
+	* 售價：沒問
 
 ---
 
-7. 佳興, 可愛馬-平安行??(無官方網頁, 高雄市中安路622~1號)
-
-馬達：DC 800W or DC 700W
-
-電池：48V 10AH 鋰電
-
-時速：50+km/hr
-
-續航力：40+km
-
-爬坡度：沒問
-
-載重：沒問
-
-車重：沒問
-
-售價：NT$35,400
+* 佳興, 可愛馬-平安行??(無官方網頁, 高雄市中安路622~1號)
+	* 馬達：DC 800W or DC 700W
+	* 電池：48V 10AH 鋰電
+	* 時速：50+km/hr
+	* 續航力：40+km
+	* 爬坡度：沒問
+	* 載重：沒問
+	* 車重：沒問
+	* 售價：NT$35,400
 
 ---
 
-8. 佳興, 可愛馬-平安行??(無官方網頁, 高雄市中安路622~1號)
-
-馬達：DC 800W or DC 700W
-
-電池：48V 16AH 鋰電
-
-時速：50+km/hr
-
-續航力：40+km
-
-爬坡度：沒問
-
-載重：沒問
-
-車重：沒問
-
-售價：NT$37,400
+* 佳興, 可愛馬-平安行??(無官方網頁, 高雄市中安路622~1號)
+	* 馬達：DC 800W or DC 700W
+	* 電池：48V 16AH 鋰電
+	* 時速：50+km/hr
+	* 續航力：40+km
+	* 爬坡度：沒問
+	* 載重：沒問
+	* 車重：沒問
+	* 售價：NT$37,400
 
 ---
 
@@ -236,7 +172,7 @@ tags:
 
 ---
 
-3. 見發先進科技, 易速達, &lt;a href="http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_09"&gt;城市巡航city cruiser電動自行車&lt;/a&gt;
+* 見發先進科技, 易速達, [城市巡航city cruiser電動自行車](http://isuda.funlink.com.tw/cubeshop04/front/bin/ptdetail.phtml?Part=product_09)
 
 缺1:馬力偏低
 
@@ -256,7 +192,7 @@ tags:
 
 ---
 
-4. 比雅久 PGO, &lt;a href="http://www.pgo.com.tw/EBUBU-spec.shtml"&gt;E-BUBU電動車&lt;/a&gt;
+4. 比雅久 PGO, [E-BUBU電動車](http://www.pgo.com.tw/EBUBU-spec.shtml)
 
 缺1:價錢太高
 

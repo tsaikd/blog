@@ -9,16 +9,11 @@ tags:
 Gaim 因為 AOL 商標問題而改名為 Pidgin
 
 
+* eix -e pidgin
 
-<quote header="$ eix -e pidgin">
-
+```
 * net-im/pidgin
-
      Available versions:  ~2.0.0
-
      Homepage:            http://pidgin.im/
-
      Description:         GTK Instant Messenger client
-
-</quote>
-
+```

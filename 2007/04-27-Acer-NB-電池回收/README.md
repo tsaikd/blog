@@ -10,7 +10,7 @@ tags:
 
 
 
-<quote>2004 年五月到 2006 年 11 間出產的 TravelMate 和 Aspire 被召回</quote>
+`2004 年五月到 2006 年 11 間出產的 TravelMate 和 Aspire 被召回`
 
 ---
 

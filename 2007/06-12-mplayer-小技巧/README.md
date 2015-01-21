@@ -16,27 +16,23 @@ tags:
 
 ---
 
-<quote header="使用 *.ssa">
+* `使用 *.ssa`
 
+```
 -ass
+```
 
-</quote>
+* 指定字幕編碼
 
-<quote header="指定字幕編碼">
-
+```
 -subcp big5
-
 -subcp utf16
-
 -utf8
+```
 
-</quote>
+* 指定字幕語言
 
-<quote header="指定字幕語言">
-
+```
 -slang en
-
 -sid 0
-
-</quote>
-
+```

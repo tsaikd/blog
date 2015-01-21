@@ -32,69 +32,42 @@ tags:
 
 server 上的 samba 分享設定
 
-<quote>
-
+```
 [portage]
-
 	path = /usr/portage
 
 	...
-
-	...
-
-</quote>
+```
 
 NB 上用 cifs 去 mount //server/portage -> /usr/portage
 
-<quote>
-
+```
 $ ls /usr/portage
-
 app-accessibility/  dev-python/        media-libs/       sci-misc/
-
 app-admin/          dev-ruby/          media-plugins/    sci-physics/
-
 app-antivirus/      dev-scheme/        media-radio/      sci-visualization/
-
 app-arch/           dev-tcltk/         media-sound/      scripts/
 
 ...
+```
 
-...
-
-</quote>
-
-<quote>
-
+```
 $ ls /usr/portage/sys-apps/portage/
-
 app-accessibility/  dev-python/        media-libs/       sci-misc/
-
 app-admin/          dev-ruby/          media-plugins/    sci-physics/
-
 app-antivirus/      dev-scheme/        media-radio/      sci-visualization/
-
 app-arch/           dev-tcltk/         media-sound/      scripts/
 
 ...
+```
 
-...
-
-</quote>
-
-<quote>
-
+```
 $ ls /usr/portage/sys-apps/portage/sys-apps/portage
-
 ChangeLog     portage-2.0.51.22-r3.ebuild  portage-2.1.2.9.ebuild
-
 files/        portage-2.1.1-r2.ebuild      portage-2.1.3_rc4.ebuild
-
 Manifest      portage-2.1.2.2.ebuild       portage-2.1.3_rc5.ebuild
-
 metadata.xml  portage-2.1.2.7.ebuild
-
-</quote>
+```
 
 ---
 
@@ -102,17 +75,12 @@ metadata.xml  portage-2.1.2.7.ebuild
 
 然後我把 server 上的分享名稱改掉
 
-<quote>
-
+```
 [port]
-
 	path = /usr/portage
 
 	...
-
-	...
-
-</quote>
+```
 
 NB 上用 cifs 去 mount //server/port -> /usr/portage
 
@@ -122,21 +90,11 @@ NB 上用 cifs 去 mount //server/port -> /usr/portage
 
 ---
 
---
-
-<quote>
-
+```
  $ eix -e samba
-
 [I] net-fs/samba
-
      Available versions:  3.0.24 3.0.24-r3
-
      Installed versions:  3.0.24-r3(06:23:40 PM 06/02/2007)(acl -async -automount -caps -cups -doc -examples -fam -kerberos kernel_linux -ldap -linguas_ja -linguas_pl -oav pam python -quotas readline -selinux -swat -syslog -winbind)
-
      Homepage:            http://www.samba.org/ http://www.openantivirus.org/projects.php
-
      Description:         SAMBA is a suite of SMB and CIFS client/server programs for UNIX
-
-</quote>
-
+```

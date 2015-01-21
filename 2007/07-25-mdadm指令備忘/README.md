@@ -6,27 +6,24 @@ categories:
 tags:
 - Linux
 ---
-<quote header="自動偵測所有磁碟陣列">
 
+* 自動偵測所有磁碟陣列
+
+```
 # mdadm -Es > /tmp/mdtmp
-
 # mdadm -Asc /tmp/mdtmp
-
 # rm -f /tmp/mdtmp
+```
 
-</quote>
+* 更改磁碟陣列編號 (ex: /dev/md6 -> /dev/md7)
 
-<quote header="更改磁碟陣列編號 (ex: /dev/md6 -> /dev/md7)">
-
+```
 # mdadm -S /dev/md6
-
 # mdadm -A -U super-minor -m 6 /dev/md7
+```
 
-</quote>
+* 清除磁碟陣列資料 (ex: /dev/hda7)
 
-<quote header="清除磁碟陣列資料 (ex: /dev/hda7)">
-
+```
 # mdadm --zero-superblock /dev/hda7
-
-</quote>
-
+```

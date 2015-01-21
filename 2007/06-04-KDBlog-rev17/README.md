@@ -7,7 +7,7 @@ tags:
 - KDBlog
 - KDProject
 ---
-comment 可以使用 <![CDATA[&lt;a href="" title=""&gt;]]>
+comment 可以使用 `<a href="" title="">`
 
 
 

@@ -14,17 +14,14 @@ Enable scrollback with PuTTY+screen
 
 ---
 
-<quote header="停用 PuTTY 的 alternate screen">
+* 停用 PuTTY 的 alternate screen
 
+```
 Terminal / Features / Disable switching to alternate terminal screen
-
-</quote>
+```
 
 ---
 
-<quote header="停用 screen 的 alternate screen">
+* 停用 screen 的 alternate screen
 
-加一行 termcapinfo xterm ti@:te@ 到 screenrc
-
-</quote>
-
+加一行 `termcapinfo xterm ti@:te@` 到 screenrc

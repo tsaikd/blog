@@ -6,7 +6,7 @@ categories:
 tags:
 - 主機
 ---
-<alink src="data/2007/07/22_1.xml" />
+[主機的硬碟掛掉了](../07-22-主機的硬碟掛掉了)
 
 花了三天時間
 
@@ -46,11 +46,11 @@ RAID5 上就是放其他的東西了
 
 ---
 
-<quote header="指令範例">
+* 指令範例
 
+```
 # ./lvm2create_initrd.sh -M gentoo -c /etc/lvm/lvm.conf -R /etc/mdadm.conf
-
-</quote>
+```
 
 ---
 
@@ -59,8 +59,6 @@ MIRROR: lvm2create_initrd.sh (原始檔案)
 MIRROR: lvm2create_initrd_kd.sh (patch 過後的檔案)
 
 ---
-
---
 
 經過好友 JackieKu 的說明
 

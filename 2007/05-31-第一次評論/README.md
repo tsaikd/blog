@@ -6,7 +6,7 @@ categories:
 tags:
 - 生活
 ---
-我的 Blog 的第一次評論 (<alink src="data/2007/05/23_1.xml" />)
+我的 Blog 的第一次評論 ([小班朋友的問卷](../05-23-小班朋友的問卷))
 
 終於在今天被拿走了
 
@@ -20,7 +20,7 @@ tags:
 
 再加上 cookie 的建議
 
-剛剛就推出 <alink src="data/2007/05/31_1.xml" /> 了
+剛剛就推出 [KDBlog-rev16](../05-31-KDBlog-rev16) 了
 
 ---
 

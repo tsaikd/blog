@@ -13,7 +13,7 @@ tags:
 
 這點有機車到
 
-而且我都把我的 <a href="http://www.tsaikd.org/git/?p=greasemonkey.git;a=summary">user script</a> 用 git 去管理
+而且我都把我的 user script 用 git 去管理
 
 這樣一來我要更新就麻煩了....
 
@@ -27,46 +27,32 @@ tags:
 
 patch gitweb.cgi 如下
 
-<quote header="diff gitweb.cgi.old gitweb.cgi">
+* diff gitweb.cgi.old gitweb.cgi
 
+```
 --- gitweb.cgi.old  2009-12-05 22:39:01.000000000 +0800
-
 +++ gitweb.cgi  2009-12-05 22:07:16.000000000 +0800
-
 @@ -1006,6 +1006,12 @@ sub href {
-
             }
-
         }
-
     }
-
 +   if (defined $params{"file_name"}
-
 +       &amp;&amp; $params{"file_name"} =~ /\.user\.js$/
-
 +       &amp;&amp; defined $params{"action"}
-
 +       &amp;&amp; $params{"action"} eq "blob_plain") {
-
 +       $href .= $params{"file_name"};
-
 +   }
-
     $href .= "?" . join(';', @result) if scalar @result;
-
----
-
     return $href;
-
-</quote>
+```
 
 ---
 
 apache .htaccess 的設定也要先設好 rewrite rule 才能用
 
-<quote header="/git/.htaccess">
+* /git/.htaccess
 
+```
 RewriteEngine On
 
 RewriteBase /git/
@@ -76,6 +62,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^.* gitweb.cgi/$0 [L,PT]
-
-</quote>
-
+```

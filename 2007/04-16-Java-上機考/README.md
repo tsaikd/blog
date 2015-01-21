@@ -18,29 +18,21 @@ tags:
 
 ---
 
-<quote header="q1.java">
+* q1.java
 
+```
 public class q1 {
-
 	public static void main(String args[]) {
-
 		System.out.printf("Hello World!\n");
-
 	}
-
 }
+```
 
-</quote>
-
-<quote>
-
+```
 C:\...\tsaikd\q1> javac q1.java
-
 C:\...\tsaikd\q1> java q1
-
 Exception in thread "main" java.lang.NoSuchMethodError: main
-
-</quote>
+```
 
 然後又沒有網路可以查資料
 

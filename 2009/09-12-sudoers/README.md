@@ -12,11 +12,11 @@ tags:
 
 sudo 要弄成不需密碼的時候就是要
 
-<quote header="/etc/sudoers">
+* /etc/sudoers
 
+```
 tsaikd  ALL=NOPASSWD: ALL
-
-</quote>
+```
 
 這個看一下文件裡的範例照抄就可以
 

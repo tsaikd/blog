@@ -6,8 +6,8 @@ categories:
 tags:
 - 資訊
 ---
-&lt;a href="http://www.wkiyo.cn/article.asp?id=603"&gt;VirtualBox直接使用物理硬盤&lt;/a&gt;
 
+[VirtualBox直接使用物理硬盤](http://www.wkiyo.cn/article.asp?id=603)
 
 
 每次用過之後都忘了....
@@ -16,17 +16,14 @@ tags:
 
 ---
 
-<quote header="linux">
+* linux
 
+```
 # VBoxManage internalcommands createrawvmdk -filename ~/winxp.vmdk -rawdisk /dev/sda -partitions 1
+```
 
-</quote>
+* windows
 
----
-
-<quote header="windows">
-
+```
 VBoxManage internalcommands createrawvmdk -filename  D:\VMHD\disk_C.vmdk -rawdisk \\.\PhysicalDrive0 -partitions 5
-
-</quote>
-
+```

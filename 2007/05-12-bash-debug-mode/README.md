@@ -10,13 +10,11 @@ tags:
 
 
 
-<quote header="Running a bash command in debug mode">
+* Running a bash command in debug mode
 
+```
 $ bash -x sample_cron_job
-
 + /bin/echo 'Hello World!'
-
 Hello World!
-
-</quote>
+```
 

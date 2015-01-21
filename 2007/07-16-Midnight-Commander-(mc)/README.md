@@ -54,17 +54,13 @@ GNU Midnight Commander cli-based file manager
 
 加上參數 -a 可以解決
 
-<quote header="# mc">
+* `mc`
 
 ![](mc_01.png)
 
-</quote>
-
-<quote header="# mc -a">
+* `mc -a`
 
 ![](mc_01_fix.png)
-
-</quote>
 
 ---
 
@@ -82,7 +78,7 @@ GNU Midnight Commander cli-based file manager
 
 一開始還不知道要怎麼解決
 
-<![CDATA[只能去 Options -> Layout... -> Panel split ->]]>
+只能去 `Options -> Layout... -> Panel split ->`
 
 ![](mc_02.png)
 
@@ -96,21 +92,13 @@ GNU Midnight Commander cli-based file manager
 
 原來還有另一個更好的解決方法
 
-<![CDATA[在 Left -> Listing mode... -> User defined: ->]]>
+在 `Left -> Listing mode... -> User defined: ->`
 
 把 half 改成 full 就好了
 
-<quote header="half">
-
 ![](mc_03.png)
 
-</quote>
-
-<quote header="full">
-
 ![](mc_03_fix.png)
-
-</quote>
 
 ---
 
@@ -162,8 +150,9 @@ GNU Midnight Commander cli-based file manager
 
 這樣應該比較好
 
-<quote header="~/.mc/bindings"><![CDATA[
+* ~/.mc/bindings
 
+```
 ...
 
 ---
@@ -200,5 +189,4 @@ regex/\.([mM][hH][tT])$
 
 ...
 
-]]></quote>
-
+```

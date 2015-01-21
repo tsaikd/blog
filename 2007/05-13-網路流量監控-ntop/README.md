@@ -24,15 +24,13 @@ tags:
 
 emerge 完了之後
 
-要先設定管理密碼<quote>ntop --set-admin-password</quote>
+要先設定管理密碼 `ntop --set-admin-password`
 
 然後再改一下 /etc/conf.d/ntop 就可以用了
 
-<quote header="/etc/conf.d/ntop">
-
+```
 NTOP_OPTS="-u ntop -P /var/lib/ntop --interface eth0,eth1"
-
-</quote>
+```
 
 ---
 

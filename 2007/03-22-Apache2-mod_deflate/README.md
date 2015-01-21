@@ -34,8 +34,7 @@ tags:
 
 馬上在 vhost 裡加上一些設定
 
-<quote><![CDATA[
-
+```
 <ifmodule mod_deflate.c>
 
 DeflateCompressionLevel 9
@@ -45,8 +44,7 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml application/x-httpd-
 AddOutputFilter DEFLATE js css
 
 </ifmodule>
-
-]]></quote>
+```
 
 ---
 

@@ -38,7 +38,7 @@ tags:
 
 Apache Log 上有這樣的訊息
 
-<quote>"\x80O\x01\x03" 200 1953</quote>
+`"\x80O\x01\x03" 200 1953`
 
 ---
 
@@ -54,7 +54,7 @@ Apache 又呆呆的不告訴我一下...T_T
 
 之後又遇到
 
-<quote>... public_html/.htaccess: Options not allowed here</quote>
+`... public_html/.htaccess: Options not allowed here`
 
 又 Google 半天孤不出東西
 
@@ -68,53 +68,56 @@ Apache 又呆呆的不告訴我一下...T_T
 
 ---
 
-<quote header="/etc/make.conf">
+* /etc/make.conf
 
+```
 USE="sni" # 這是要啟用 SSL with vhost 的 flag
-
-</quote>
+```
 
 ---
 
-<quote header="/etc/conf.d/apache">
+* /etc/conf.d/apache
 
-# 把該死的 DEFAULT_VHOST 跟 SSL_DEFAULT_VHOST 刪掉
+把該死的 DEFAULT_VHOST 跟 SSL_DEFAULT_VHOST 刪掉
 
+```
 APACHE2_OPTS="-D SSL -D DAV"
-
-</quote>
+```
 
 ---
 
 建立 SSL 的驗證檔
 
-<quote header="bash">
+* 變成 root 好做事
 
-# 變成 root 好做事
-
+```
 $ sudo su
+```
 
-# 到 apache 的目錄去
+* 到 apache 的目錄去
 
+```
 $ cd /etc/apache2/ssl/
+```
 
-# 產生 rsa key: 想更安全一點就把 1024 調大吧
+* 產生 rsa key: 想更安全一點就把 1024 調大吧
 
+```
 $ openssl genrsa -out server.key 1024
-
 $ openssl rsa -in server.key -out server.pem
+```
 
-# 這裡下一步要填一些資料
+* 這裡下一步要填一些資料
 
+```
 $ openssl req -new -key server.pem -out server.csr
+```
 
-# 產生驗證檔
+* 產生驗證檔, 要是不加有效日期參數(-days 3650)的話, 預設是 30 天
 
-# 要是不加有效日期參數(-days 3650)的話, 預設是 30 天
-
+```
 $ openssl x509 -req -days 3650 -in server.csr -signkey server.pem -out server.crt
-
-</quote>
+```
 
 ---
 
@@ -122,195 +125,118 @@ Apache 的 vhost 設定檔檔名自己取吧
 
 編號越小越早被 Apache 讀進去
 
-<quote header="/etc/apache/vhost.d/10_tsaikd.conf">
+* /etc/apache/vhost.d/10_tsaikd.conf
 
+```
 Listen 80
-
 Listen 443
-
 NameVirtualHost *:80
-
 NameVirtualHost *:443
-
 ServerName 127.0.0.1 # 這個是讓 Apache 啟動變快的東西...
 
 ---
 
-&lt;VirtualHost *:80&gt;
-
+<VirtualHost *:80>
 	ServerAdmin "tsaikd@gmail.com"
-
 	ServerName "www.tsaikd.org"
-
 	DocumentRoot "/var/www/www.tsaikd.org/htdocs"
-
-	&lt;Directory "/var/www/www.tsaikd.org/htdocs"&gt;
-
+	<Directory "/var/www/www.tsaikd.org/htdocs">
 		AllowOverride All
-
 		Order allow,deny
-
 		Allow from all
-
-	&lt;/Directory&gt;
-
-&lt;/VirtualHost *:80&gt;
+	</Directory>
+</VirtualHost *:80>
 
 ---
 
-&lt;VirtualHost *:443&gt;
-
+<VirtualHost *:443>
 	SSLEngine on
-
 	SSLCertificateFile /etc/apache2/ssl/server.crt
-
 	SSLCertificateKeyFile /etc/apache2/ssl/server.key
 
 ---
 
 	ServerAdmin "tsaikd@gmail.com"
-
 	ServerName "www.tsaikd.org"
-
 	DocumentRoot "/var/www/www.tsaikd.org/htdocs"
-
-	&lt;Directory "/var/www/www.tsaikd.org/htdocs"&gt;
-
+	<Directory "/var/www/www.tsaikd.org/htdocs">
 		AllowOverride All
-
 		Order allow,deny
-
 		Allow from all
-
-	&lt;/Directory&gt;
-
-&lt;/VirtualHost *:80&gt;
-
-</quote>
+	</Directory>
+</VirtualHost *:80>
+```
 
 ---
 
-<quote header="/etc/apache/vhost.d/20_svn.conf">
+* /etc/apache/vhost.d/20_svn.conf
 
+```
 LoadModule authz_svn_module modules/mod_authz_svn.so
-
-&lt;VirtualHost *:80&gt;
-
+<VirtualHost *:80>
 	ServerAdmin "tsaikd@gmail.com"
-
 	ServerName "svn.tsaikd.org"
-
 	DocumentRoot "/var/www/svn.tsaikd.org/htdocs"
-
-	&lt;Directory "/var/www/svn.tsaikd.org/htdocs"&gt;
-
+	<Directory "/var/www/svn.tsaikd.org/htdocs">
 		AllowOverride All
-
 		Order allow,deny
-
 		Allow from all
-
-	&lt;/Directory&gt;
+	</Directory>
 
 	# 我的 svn 是放在 "/home/svn"
-
-	&lt;Directory "/home/svn"&gt;
-
+	<Directory "/home/svn">
 		Options Indexes FollowSymLinks MultiViews
+	</Directory>
 
-	&lt;/Directory&gt;
-
-	&lt;Location /gentoo&gt;
-
+	<Location /gentoo>
 		DAV svn
-
 		Options Indexes FollowSymLinks MultiViews
-
 		SVNParentPath /home/svn/gentoo
-
 		SVNListParentPath on
-
 		SetOutputFilter DEFLATE # 這個是設定用 gzip 方式輸出
-
 		AuthType Basic
-
 		AuthName "Subversion repository"
-
 		AuthUserFile /etc/apache2/htpasswd
-
-		&lt;LimitExcept GET PROPFIND OPTIONS REPORT&gt; # 要有帳密才能改 svn 的資料
-
+		<LimitExcept GET PROPFIND OPTIONS REPORT> # 要有帳密才能改 svn 的資料
 			Require user tsaikd
+		</LimitExcept>
+	</Location>
+</VirtualHost *:80>
 
-		&lt;/LimitExcept&gt;
-
-	&lt;/Location&gt;
-
-&lt;/VirtualHost *:80&gt;
-
-&lt;VirtualHost *:443&gt;
-
+<VirtualHost *:443>
 	SSLEngine on
-
 	# 如果要用不同的驗證檔也可以
-
 	SSLCertificateFile /etc/apache2/ssl/server.crt
-
 	SSLCertificateKeyFile /etc/apache2/ssl/server.key
 
 ---
 
 	ServerAdmin "tsaikd@gmail.com"
-
 	ServerName "svn.tsaikd.org"
-
 	DocumentRoot "/var/www/svn.tsaikd.org/htdocs"
-
-	&lt;Directory "/var/www/svn.tsaikd.org/htdocs"&gt;
-
+	<Directory "/var/www/svn.tsaikd.org/htdocs">
 		AllowOverride All
-
 		Order allow,deny
-
 		Allow from all
-
-	&lt;/Directory&gt;
+	</Directory>
 
 	# 我的 svn 是放在 "/home/svn"
-
-	&lt;Directory "/home/svn"&gt;
-
+	<Directory "/home/svn">
 		Options Indexes FollowSymLinks MultiViews
+	</Directory>
 
-	&lt;/Directory&gt;
-
-	&lt;Location /gentoo&gt;
-
+	<Location /gentoo>
 		DAV svn
-
 		Options Indexes FollowSymLinks MultiViews
-
 		SVNParentPath /home/svn/gentoo
-
 		SVNListParentPath on
-
 		SetOutputFilter DEFLATE # 這個是設定用 gzip 方式輸出
-
 		AuthType Basic
-
 		AuthName "Subversion repository"
-
 		AuthUserFile /etc/apache2/htpasswd
-
-		&lt;LimitExcept GET PROPFIND OPTIONS REPORT&gt; # 要有帳密才能改 svn 的資料
-
+		<LimitExcept GET PROPFIND OPTIONS REPORT> # 要有帳密才能改 svn 的資料
 			Require user tsaikd
-
-		&lt;/LimitExcept&gt;
-
-	&lt;/Location&gt;
-
-&lt;/VirtualHost *:443&gt;
-
-</quote>
-
+		</LimitExcept>
+	</Location>
+</VirtualHost *:443>
+```

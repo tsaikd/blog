@@ -6,8 +6,7 @@ categories:
 tags:
 - Course
 ---
-<alink src="data/2007/04/16_1.xml" />
-
+[上機考](../04-16-Java-上機考)
 
 
 感謝助教給我補交的機會

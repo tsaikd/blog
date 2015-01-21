@@ -10,9 +10,9 @@ tags:
 
 在 gitweb.conf 裡面重寫 git_get_project_url_list 去改變 gitweb 裡面 URL 的欄位
 
-剛剛看到 &lt;a href="http://ask.metafilter.com/120273/Getting-redirects-to-work-in-Apache-for-Gitweb"&gt;Getting redirects to work in Apache for Gitweb&lt;/a&gt;
+剛剛看到 [Getting redirects to work in Apache for Gitweb](http://ask.metafilter.com/120273/Getting-redirects-to-work-in-Apache-for-Gitweb)
 
-裡面是用 @git_base_url_list = ('git://my.domain.com');
+裡面是用 `@git_base_url_list = ('git://my.domain.com');`
 
 這個應該才是比較正統的做法
 
@@ -32,65 +32,39 @@ tags:
 
 所以就把之前那種 hack 的寫法改掉了
 
-<quote header="gitweb.cgi">
+* gitweb.cgi
 
+```
 $projectroot = "/var/www/www.tsaikd.org/htdocs/git";
-
 $git_temp = "/tmp";
-
 $home_text = "indextext.html";
-
 $projects_list = $projectroot;
-
 $stylesheet = $home_link."/gitweb.css";
-
 $logo = $home_link."/git-logo.png";
-
 $favicon = $home_link."/git-favicon.png";
-
 $feature{'snapshot'}{'default'} = ["tbz2", "zip"];
-
 #sub git_get_project_url_list {
-
 #	my $project = shift;
-
 ##	$project =~ s:/::g;
-
 #	return ("http://www.tsaikd.org/git/$project/");
-
 #}
-
 @git_base_url_list = ("http://www.tsaikd.org/git", "tsaikd:");
-
 #$feature{'pathinfo'}{'default'} = [1];
-
 #$my_uri = $home_link."/gitweb.cgi";
+```
 
-</quote>
+* .htaccess
 
-<quote header=".htaccess">
-
+```
 DirectoryIndex gitweb.cgi
-
 AddHandler cgi-script .cgi
-
-&lt;Files gitweb.cgi&gt;
-
+<Files gitweb.cgi>
     Options +ExecCGI
-
-&lt;/Files&gt;
-
----
+</Files>
 
 RewriteEngine On
-
 RewriteBase /git/
-
 RewriteCond %{REQUEST_FILENAME} !-f
-
 RewriteCond %{REQUEST_FILENAME} !-d
-
 RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
-
-</quote>
-
+```
