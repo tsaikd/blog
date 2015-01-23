@@ -1,0 +1,23 @@
+{
+	"kdtmpl": {
+		"template": "*",
+			"mappings": {
+				"_default_": {
+					"dynamic_templates": [
+						{
+							"facet": {
+								"match": "*_facet",
+								"match_mapping_type": "string",
+								"mapping": {
+									"type": "string",
+									"analyzer": "textfacet",
+									"store": true
+								}
+							}
+						}
+					]
+
+				}
+			}
+	}
+}

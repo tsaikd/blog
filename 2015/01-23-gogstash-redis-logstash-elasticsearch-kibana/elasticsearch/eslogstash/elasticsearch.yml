@@ -1,0 +1,35 @@
+cluster.name: eslogstash
+index.number_of_shards: 1
+bootstrap.mlockall: true
+http.cors.enabled: true
+
+index:
+  analysis:
+    filter:
+      synonym:
+        type: synonym
+        synonyms_path: analysis/synonym.txt
+      stopword:
+        type: stop
+        stopwords_path: analysis/stopword.txt
+    analyzer:
+      textindex:
+        tokenizer: standard
+        filter:
+          - standard
+          - lowercase
+          - stop
+          - stopword
+      textquery:
+        tokenizer: standard
+        filter:
+          - standard
+          - lowercase
+          - synonym
+          - stop
+          - stopword
+      textfacet:
+        tokenizer: keyword
+        filter:
+          - lowercase
+

@@ -1,0 +1,13 @@
+kibana:
+  image: tsaikd/www-apps.kibana:3.1.2
+  interactive: true
+  environment:
+    - SERVICE_NAME=kibana
+    - SERVICE_80_PROXYDNS=kibana
+    - SERVICE_80_PROXY=http
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 80
+  volumes:
+    - kibana/config.js:/usr/local/kibana/config.js
+

@@ -1,0 +1,10 @@
+logstash:
+  image: tsaikd/app-misc.logstash:1.4.2
+  interactive: true
+  environment:
+    - DOCKER_WAITEXIT=1
+  working_dir: /logstash
+  volumes:
+    - logstash:/logstash
+    - logstash/start.sh:/start.sh
+
