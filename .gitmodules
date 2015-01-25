@@ -1,0 +1,8 @@
+[submodule "content"]
+	path = content
+	url = https://github.com/tsaikd/blog
+	branch = blog
+[submodule "themes/redlounge"]
+	path = themes/redlounge
+	url = https://github.com/tsaikd/hugo-redlounge
+	branch = master
