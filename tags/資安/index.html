@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    資安 // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="資安" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/tags/e8b387e5ae89/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <a name="top"></a>
+      
+
+      <div class="posts">
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/">兩個新玩具 - cwRsync and Certificate</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>28</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2008</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E8%B3%87%E5%AE%89" href="http://tsaikd.org/blog/categories/%E8%B3%87%E5%AE%89">資安</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	這兩天搞了兩個新玩具&hellip;. 第一個是 windows 上的 rsync &ndash; cwRsync 第二個是 Certification (數位憑證) cwRsync 很像是用 cygwin 去弄出來的 會弄到這個東西是因為我在審美女圖的時候 都要先從我的 server 上把圖抓到本機 挑好之後再傳回到 server 本來我在家裡的時候 server 就用 100M ethernet 連到電腦 所以就直接用網芳(samba)的方式去抓圖 不過現在到外面工作了 網路真的是&hellip;.(好你個 hinet 3.5G) 之前的做法是用 filezilla sftp 連回主機抓檔案 不過 filezilla 不能把抓到的檔案從遠端自動砍掉 (像是移動檔案的方式) 後來突然想到好像可以用 rsync 這個東西很像可以支援 就去找到了 cwRsync 花了一個多小時左右把環境弄好了 包括設定讓 ssh 不用密碼之類的 不過在測試的時候發現了一個奇怪的現象 就是在上傳的時候(下面的數字只是代表傳送檔案的先後次序) client 那邊已經顯示到 sending 010.jpg server 那邊用 ls 去看卻只有傳了 002.jpg 也就是說上傳時檔案顯示不同步?? 按 Ctrl+C 取消之後 server 那邊還是沒動靜 再重傳一次 client 還是說要從 003.jpg 開始傳 不過還好在全部傳完之後 檔案沒有被吃掉 不過這個現象令我不解 又花了幾個小時去找資料卻沒什麼發現 試了一堆 option 也沒用 最後只好不理他了 再來是數位憑證的部份 最近老闆要我去 study 一下相關的東西 準備有個小專案要做 因為之前在弄 apache + SSL 的時候都沒有仔細去了解 所以就趁這個機會好好的研究一下 之前大學時修密碼學就大概知道對稱加密跟不對稱加密的一些東西 數位憑證就是用不對稱加密去搞一堆有的沒的 我在想應該可以把個人憑證當然進去網站的鑰匙 這樣就可以省下打密碼的動作了(我是個懶人&hellip;haha) 在看了一堆文章之後 慢慢理出一點頭緒 要達成我的目標(不是老闆要我弄的方向&hellip;XD) 要弄出一個 CA 來幫自己做 Certification Server 上也要用那個 CA 來幫 Server 做 Certification (之前的 gentoo apache server 應該是自己 sign 自己產生 Certification) 建立一個新的 CA cd /etc/ssl/ openssl genrsa -out ca.key 2048 chmod 400 ca.key vi openssl.cnf [ usr_cert ] nsCaRevocationUrl = http://www.tsaikd.org/ca.crl ./misc/CA.sh -newca Enter: ca.key openssl req -new -x509 -nodes -key ca.key -out ca.crt cd demoCA/ ln -sf ../ca.crt cacert.pem cd private/ ln -sf ../../ca.key cakey.pem cd ../..
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/">以超連結樣式的新型態詐欺手法</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>21</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E8%B3%87%E5%AE%89" href="http://tsaikd.org/blog/categories/%E8%B3%87%E5%AE%89">資安</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	以超連結樣式的新型態詐欺手法 剛剛看到這篇 blog 我想說我的 KDBlog 不知道會不會有這個問題 跑去檢查一下我的 code 哈哈&hellip;.我真是太天才了 我的 KDBlog 沒這個問題 當初我的限制太嚴格了 所以這時候就看出好處了&hellip;XD
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/07-03-SSH-Tunnel/">SSH Tunnel</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>3</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E8%B3%87%E5%AE%89" href="http://tsaikd.org/blog/categories/%E8%B3%87%E5%AE%89">資安</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	資訊安全 - SSH Tunnel 帶你遨遊 用 putty 來穿透防火牆 紀錄一下 putty 把 &ldquo;Local ports accept connections from other hosts&rdquo; 勾起來 就可以從其他電腦用這個 tunnel 了 好像還蠻危險的 不過有時還不錯用 FireFox MSN
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/07-03-SSH-Tunnel/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/">破解 WinXP 密碼</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>3</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jun</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E8%B3%87%E5%AE%89" href="http://tsaikd.org/blog/categories/%E8%B3%87%E5%AE%89">資安</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	資訊安全 - administrator密碼現身吧!! 這是一篇破解的教學 好 high 喔&hellip;. 雖然最重要的 crack 部份(計算密碼)沒有公開 不過會用的話已經很不錯了 學起來&hellip;^_^
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+      </div>
+
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>

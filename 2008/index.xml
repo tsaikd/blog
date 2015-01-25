@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2008s on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/2008/</link>
+    <description>Recent content in 2008s on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Wed, 31 Dec 2008 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/2008/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2008高雄跨年</title>
+      <link>http://tsaikd.org/blog/2008/12-31-2008%E9%AB%98%E9%9B%84%E8%B7%A8%E5%B9%B4/</link>
+      <pubDate>Wed, 31 Dec 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/12-31-2008%E9%AB%98%E9%9B%84%E8%B7%A8%E5%B9%B4/</guid>
+      <description>&lt;p&gt;今年跨年跟同事跑去高雄的夢時代跨年&lt;/p&gt;
+
+&lt;p&gt;還沒進到跨年晚會的會場之前&lt;/p&gt;
+
+&lt;p&gt;先經過青島啤酒的舞台&lt;/p&gt;
+
+&lt;p&gt;上面有一群辣妹在跳舞&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-31-2008%E9%AB%98%E9%9B%84%E8%B7%A8%E5%B9%B4/IMAG0247.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;據說現場湧進了三十萬人&lt;/p&gt;
+
+&lt;p&gt;不知道這個數字有沒有灌水&lt;/p&gt;
+
+&lt;p&gt;不過現場真的是好多人啊&lt;/p&gt;
+
+&lt;p&gt;夢時代的超大廣場擠的滿滿滿&lt;/p&gt;
+
+&lt;p&gt;不過我們剛下班就跑過去搶位置&lt;/p&gt;
+
+&lt;p&gt;所以後來有擠到前面約二三十排的地方&lt;/p&gt;
+
+&lt;p&gt;可是距離還是有點遠&lt;/p&gt;
+
+&lt;p&gt;我的手機牌相機又不太好用&lt;/p&gt;
+
+&lt;p&gt;所以大部份的節目都沒有拍&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-31-2008%E9%AB%98%E9%9B%84%E8%B7%A8%E5%B9%B4/IMAG0248.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我站的位置旁邊剛好有一個記者&lt;/p&gt;
+
+&lt;p&gt;一開始我還沒發現&lt;/p&gt;
+
+&lt;p&gt;只有看到前面的攝影機&lt;/p&gt;
+
+&lt;p&gt;後來聽到旁邊有個奇怪的人在唸唸有詞不知道唸三小&lt;/p&gt;
+
+&lt;p&gt;還看到她拿著很像稿子的東西在唸&lt;/p&gt;
+
+&lt;p&gt;才想到說可能是記者&lt;/p&gt;
+
+&lt;p&gt;就偷拍了一下&amp;hellip;haha&lt;/p&gt;
+
+&lt;p&gt;不過不知道是哪一台的就是了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-31-2008%E9%AB%98%E9%9B%84%E8%B7%A8%E5%B9%B4/IMAG0250.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;跨完年之後&lt;/p&gt;
+
+&lt;p&gt;青島的 dancing girl 還在跳&lt;/p&gt;
+
+&lt;p&gt;這時候我才覺得剛剛應該不要去擠的&lt;/p&gt;
+
+&lt;p&gt;看這攤就很 high 了&amp;hellip;.XD&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>KDBlogWriter</title>
+      <link>http://tsaikd.org/blog/2008/12-28-KDBlogWriter/</link>
+      <pubDate>Sun, 28 Dec 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/12-28-KDBlogWriter/</guid>
+      <description>&lt;p&gt;之前都是用 putty 連回主機，然後用 vi 直接寫 blog 的，&lt;/p&gt;
+
+&lt;p&gt;KDBlog 的內容也設計成容易用普通文字編輯器就可以寫的方式，&lt;/p&gt;
+
+&lt;p&gt;不過寫久了還是覺得有點難寫，導致寫 blog 的動力就慢慢下降了，&lt;/p&gt;
+
+&lt;p&gt;所以就弄一個寫 blog 的介面來用，&lt;/p&gt;
+
+&lt;p&gt;這個介面是用 AutoIt 來搞定的，然後在本機上用 ini 存一份備份，&lt;/p&gt;
+
+&lt;p&gt;還蠻陽春的(因為只花了三四個小時就弄出來了&amp;hellip;XD)，&lt;/p&gt;
+
+&lt;p&gt;不過還堪用啦&amp;hellip;ccc&lt;/p&gt;
+
+&lt;p&gt;來個 ScreenShot 吧！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-KDBlogWriter/KD_BlogWriter.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>高雄資訊月</title>
+      <link>http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/</link>
+      <pubDate>Sun, 28 Dec 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/</guid>
+      <description>&lt;p&gt;高雄資訊月(其實就是資訊展)在高雄的 85 大樓展出，&lt;/p&gt;
+
+&lt;p&gt;剛好我住的宿舍就在 85 大樓的對面，&lt;/p&gt;
+
+&lt;p&gt;第一次住的離資訊展會場這麼近，一定要去看一下的啦！&lt;/p&gt;
+
+&lt;p&gt;不過平常日都要上班，展覽的活動時間只有到晚上六點，&lt;/p&gt;
+
+&lt;p&gt;所以只有假日才有空去看(ShowGirl)了。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;前幾個星期才在台中資訊展買了一台新筆電，&lt;/p&gt;
+
+&lt;p&gt;所以這次純粹只是去逛逛而已，&lt;/p&gt;
+
+&lt;p&gt;基本上是不太可能買東西了。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這次看到不少漂亮的 ShowGirl ，不過因為相機沒帶來高雄，&lt;/p&gt;
+
+&lt;p&gt;所以只能用手機上鳥鳥的照相功能來勉強拍一下。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0225.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0226.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這張糊掉了，有點可惜。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0227.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這張也很慘，這個 ShowGirl 好像叫黃湘婷。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0228.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這個 ShowGirl 有點害羞，不夠大方。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0229.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;看起來還蠻有趣的玩具。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0230.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這個 Cosplay 很敬業，看到我要拍她還特地擺個好看的 POS 。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0231.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0232.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0233.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0235.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0236.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0238.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0239.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這兩個好像是要下班了，我是看到有幾個人拿著大砲對著她們，&lt;/p&gt;
+
+&lt;p&gt;我才匆匆趕過去，等我到了的時候她們就要走了，&lt;/p&gt;
+
+&lt;p&gt;而且我的只是一個小小的手機，&lt;/p&gt;
+
+&lt;p&gt;所以她們不理我也是情有可原。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0240.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;威寶請了一拖拉庫的工讀生在發傳單，陣容浩大，&lt;/p&gt;
+
+&lt;p&gt;還有請 ShowGirl 上台跳舞，真 HIGH 。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0243.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0244.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-28-%E9%AB%98%E9%9B%84%E8%B3%87%E8%A8%8A%E6%9C%88/IMAG0245.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;最後我走了不久，就聽到大門口好像有活動，就急忙趕回去湊個熱鬧，&lt;/p&gt;
+
+&lt;p&gt;這隻手機的拍照功能真的很鳥，在光線這麼好的地方拍起來還是很慘。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>松島楓 櫻井莉亞</title>
+      <link>http://tsaikd.org/blog/2008/12-26-%E6%9D%BE%E5%B3%B6%E6%A5%93-%E6%AB%BB%E4%BA%95%E8%8E%89%E4%BA%9E/</link>
+      <pubDate>Fri, 26 Dec 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/12-26-%E6%9D%BE%E5%B3%B6%E6%A5%93-%E6%AB%BB%E4%BA%95%E8%8E%89%E4%BA%9E/</guid>
+      <description>&lt;p&gt;今天晚上松島楓跟櫻井莉亞到高雄的 PUB ，剛好就在我們住的附近，&lt;/p&gt;
+
+&lt;p&gt;我跟同事就跑去瞻仰一下，我們是前幾天去吃飯時經過 PUB 看到海報才知道的。&lt;/p&gt;
+
+&lt;p&gt;PUB 是晚上十點才開，我們大概是十點十分到，&lt;/p&gt;
+
+&lt;p&gt;買票之前還要先看身分證，還有搜身，有點扯。&lt;/p&gt;
+
+&lt;p&gt;警衛說大概 11~12 點女優才會到現場，我們就做好在裡面發呆的準備了。&lt;/p&gt;
+
+&lt;p&gt;一開始人好像還不算多，勉強讓我們找到一個可以坐下來的地方，&lt;/p&gt;
+
+&lt;p&gt;不過一段時間之後，人潮開始湧進，還好我們有早一點到，&lt;/p&gt;
+
+&lt;p&gt;不然就連坐的地方都沒有了。&lt;/p&gt;
+
+&lt;p&gt;等待的時間就只能看看其他的正妹路人跟正妹服務生。&lt;/p&gt;
+
+&lt;p&gt;快到 12 點的時候，心情開始興奮了，&lt;/p&gt;
+
+&lt;p&gt;不過等到一點才看到傳說中的 AV 女優真面目，被警衛耍了&amp;hellip;T_T&lt;/p&gt;
+
+&lt;p&gt;會場人山人海，而且還開放照相，幾乎是人手一台相機，&lt;/p&gt;
+
+&lt;p&gt;不過我覺得燈光太暗，如果沒有大砲機的話，根本拍不到甚麼鳥，&lt;/p&gt;
+
+&lt;p&gt;所以我就沒有加入拍照的行列了。&lt;/p&gt;
+
+&lt;p&gt;好不容易擠到前幾排，近距離看明星的感覺還不錯，&lt;/p&gt;
+
+&lt;p&gt;可是人擠人的感覺就不太好了，如果周圍都是正妹的話可能還不錯。&lt;/p&gt;
+
+&lt;p&gt;PUB 海報的標題很聳動，叫做 &amp;ldquo;松島楓跟櫻井莉亞跟你玩脫衣野球拳&amp;rdquo; ，&lt;/p&gt;
+
+&lt;p&gt;本來以為是兩個人都會脫，沒想到只有櫻井莉亞有脫，&lt;/p&gt;
+
+&lt;p&gt;松島楓只是送幾張簽名的裸體海報而已，而且櫻井莉亞在脫胸罩的時候用衣服擋住了，&lt;/p&gt;
+
+&lt;p&gt;真是好一個宣傳的手法啊！&lt;/p&gt;
+
+&lt;p&gt;不過聽說在台北的時候，連拍照都不準，衣服好像也沒脫到幾件，&lt;/p&gt;
+
+&lt;p&gt;我們也該滿足了。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;感想：&lt;/p&gt;
+
+&lt;p&gt;我的耳朵快要壞掉了，音樂聲音吵到爆，我覺得有一百分貝了吧。&lt;/p&gt;
+
+&lt;p&gt;空氣超差，像去網咖一樣，吸了不知道幾公升的二手菸。&lt;/p&gt;
+
+&lt;p&gt;櫻井莉亞的皮膚看起來不錯，可惜胸部不夠大。&lt;/p&gt;
+
+&lt;p&gt;松島楓的胸部看起來不錯，可惜沒有脫&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;兩個都很漂亮，旁邊也有幾個台妹也不差。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我的標題這樣下，不知道會帶來多少奇怪的流量&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;看完的應該有九成都會失望吧&amp;hellip;(我猜進來的都是要找圖或是片子&amp;hellip;lol)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>春水堂的晚餐</title>
+      <link>http://tsaikd.org/blog/2008/12-07-%E6%98%A5%E6%B0%B4%E5%A0%82%E7%9A%84%E6%99%9A%E9%A4%90/</link>
+      <pubDate>Sun, 07 Dec 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/12-07-%E6%98%A5%E6%B0%B4%E5%A0%82%E7%9A%84%E6%99%9A%E9%A4%90/</guid>
+      <description>&lt;p&gt;今天晚餐跟室友跑去附近的春水堂吃晚餐&lt;/p&gt;
+
+&lt;p&gt;我點了梅子鹹酥雞飯&lt;/p&gt;
+
+&lt;p&gt;還不錯吃&lt;/p&gt;
+
+&lt;p&gt;有單買梅子鹹酥雞來當宵夜的想法&lt;/p&gt;
+
+&lt;p&gt;不知道他們有沒有這樣賣就是了&lt;/p&gt;
+
+&lt;p&gt;不過飯雖好吃&lt;/p&gt;
+
+&lt;p&gt;也比不上美女好看啊!!&lt;/p&gt;
+
+&lt;p&gt;這次晚餐的重點不是好吃的梅子鹹酥雞&lt;/p&gt;
+
+&lt;p&gt;而是坐在我對面的美女&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;偷拍了一下&amp;hellip;ccc&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/12-07-%E6%98%A5%E6%B0%B4%E5%A0%82%E7%9A%84%E6%99%9A%E9%A4%90/IMAG0202.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;旁邊那個看起來是她的男友(凸)&lt;/p&gt;
+
+&lt;p&gt;因為不敢太張揚&lt;/p&gt;
+
+&lt;p&gt;所以拍的有點模糊&amp;hellip;T_T&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>可惡的燈泡</title>
+      <link>http://tsaikd.org/blog/2008/11-04-%E5%8F%AF%E6%83%A1%E7%9A%84%E7%87%88%E6%B3%A1/</link>
+      <pubDate>Tue, 04 Nov 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/11-04-%E5%8F%AF%E6%83%A1%E7%9A%84%E7%87%88%E6%B3%A1/</guid>
+      <description>&lt;p&gt;今天晚餐室友帶我去吃麵&lt;/p&gt;
+
+&lt;p&gt;聽說榨菜肉絲麵好吃&lt;/p&gt;
+
+&lt;p&gt;所以我們都是點榨菜肉絲麵&lt;/p&gt;
+
+&lt;p&gt;在等菜的時候&lt;/p&gt;
+
+&lt;p&gt;室友說裡面有個女生的腳蠻漂亮的&lt;/p&gt;
+
+&lt;p&gt;雖然我覺得到處都看的到&lt;/p&gt;
+
+&lt;p&gt;不過還是把她拍下來了&amp;hellip;ccc&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-04-%E5%8F%AF%E6%83%A1%E7%9A%84%E7%87%88%E6%B3%A1/IMAG0176.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;菜上桌了&lt;/p&gt;
+
+&lt;p&gt;下面的是榨菜肉絲麵&lt;/p&gt;
+
+&lt;p&gt;上面的是老虎菜&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-04-%E5%8F%AF%E6%83%A1%E7%9A%84%E7%87%88%E6%B3%A1/IMAG0177.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;榨菜肉絲麵果然好吃&lt;/p&gt;
+
+&lt;p&gt;老虎菜有點辣&lt;/p&gt;
+
+&lt;p&gt;不過不會很辣&lt;/p&gt;
+
+&lt;p&gt;拿來開胃還不錯&lt;/p&gt;
+
+&lt;p&gt;而且還有湯可以配&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;吃飽後順便去買個燈泡&lt;/p&gt;
+
+&lt;p&gt;因為我的房間燈壞很久了&lt;/p&gt;
+
+&lt;p&gt;房東又不來修&lt;/p&gt;
+
+&lt;p&gt;就只好自力救濟了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;買回去之後&lt;/p&gt;
+
+&lt;p&gt;一開始會亮&lt;/p&gt;
+
+&lt;p&gt;但是過沒一分鐘就燒掉了&lt;/p&gt;
+
+&lt;p&gt;我買的那個是 220V 的燈泡耶&lt;/p&gt;
+
+&lt;p&gt;理論上應該是燒不掉的啊&lt;/p&gt;
+
+&lt;p&gt;所以可能問題就出在燈座上了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;關燈後要把燒掉的燈泡拿下來的時候&lt;/p&gt;
+
+&lt;p&gt;我覺得燈泡還蠻燙的&lt;/p&gt;
+
+&lt;p&gt;就用外套包著手去拆&lt;/p&gt;
+
+&lt;p&gt;沒想到剛碰到燈泡&lt;/p&gt;
+
+&lt;p&gt;外套就被融掉了&lt;/p&gt;
+
+&lt;p&gt;不知道那個溫度有多高&lt;/p&gt;
+
+&lt;p&gt;後來我看燈泡上的規格&lt;/p&gt;
+
+&lt;p&gt;姆指般大小的燈泡竟然高達 35W&lt;/p&gt;
+
+&lt;p&gt;真是恐怖&amp;hellip;@_@&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-04-%E5%8F%AF%E6%83%A1%E7%9A%84%E7%87%88%E6%B3%A1/IMAG0179.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我還不死心&lt;/p&gt;
+
+&lt;p&gt;再去買燈泡來試其他的燈座看看&lt;/p&gt;
+
+&lt;p&gt;(四個燈壞了三個，所以還有兩個位置可以試)&lt;/p&gt;
+
+&lt;p&gt;買回來之後花了好大一番功夫才換上去&lt;/p&gt;
+
+&lt;p&gt;那個燈罩超礙事的&lt;/p&gt;
+
+&lt;p&gt;而且在換的時候又不敢開燈&lt;/p&gt;
+
+&lt;p&gt;搞了好一陣子才換上去&lt;/p&gt;
+
+&lt;p&gt;弄得我腰酸背痛&lt;/p&gt;
+
+&lt;p&gt;想去按摩一下了&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;可惜時間不早了&lt;/p&gt;
+
+&lt;p&gt;就算了&amp;hellip;T_T&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>大碗飯</title>
+      <link>http://tsaikd.org/blog/2008/11-03-%E5%A4%A7%E7%A2%97%E9%A3%AF/</link>
+      <pubDate>Mon, 03 Nov 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/11-03-%E5%A4%A7%E7%A2%97%E9%A3%AF/</guid>
+      <description>&lt;p&gt;晚餐帶室友去吃很有台灣味的店 &amp;ndash; 府城&lt;/p&gt;
+
+&lt;p&gt;我點了大碗飯跟土豆豬腳湯&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-03-%E5%A4%A7%E7%A2%97%E9%A3%AF/IMAG0174.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-03-%E5%A4%A7%E7%A2%97%E9%A3%AF/IMAG0175.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;味道還不錯&lt;/p&gt;
+
+&lt;p&gt;感覺大陸這邊的湯料都蠻多的&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>再訪華強北</title>
+      <link>http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/</link>
+      <pubDate>Sun, 02 Nov 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/</guid>
+      <description>&lt;p&gt;這次是跟著室友一起搭 3 塊錢的公車過來的&lt;/p&gt;
+
+&lt;p&gt;雖然有點擠&lt;/p&gt;
+
+&lt;p&gt;不過看在 3 塊錢的份上就算了&lt;/p&gt;
+
+&lt;p&gt;路上看到 showgirl 站在門口賣東西&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0161.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0163.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;還有看到有人在路旁拉胡琴&lt;/p&gt;
+
+&lt;p&gt;其實常會看到有人拿著胡琴在路邊乞討&lt;/p&gt;
+
+&lt;p&gt;旁邊用喇叭放胡琴的音樂來假裝&lt;/p&gt;
+
+&lt;p&gt;這次這個是真功夫在拉的&lt;/p&gt;
+
+&lt;p&gt;聽起來還有模有樣的&lt;/p&gt;
+
+&lt;p&gt;感覺還蠻特別的&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0164.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;逛到一個在賣偷拍用的 USB 筆型針孔攝影機&lt;/p&gt;
+
+&lt;p&gt;感覺很有趣就買下來了&lt;/p&gt;
+
+&lt;p&gt;4G 容量 352x288 像素 280 人民幣&lt;/p&gt;
+
+&lt;p&gt;不過回去試用了一下&lt;/p&gt;
+
+&lt;p&gt;聲音還蠻清楚的&lt;/p&gt;
+
+&lt;p&gt;影像的話如果燈光不夠亮效果就差了&lt;/p&gt;
+
+&lt;p&gt;不過錄下來的影片上會有時間&lt;/p&gt;
+
+&lt;p&gt;而且是 1980 年的&lt;/p&gt;
+
+&lt;p&gt;找了半天找不到怎麼設定正確的時間&lt;/p&gt;
+
+&lt;p&gt;雖然有附一張光碟&lt;/p&gt;
+
+&lt;p&gt;不過我的 NB 光碟機掛掉了&lt;/p&gt;
+
+&lt;p&gt;所以只好等明天去公司才能看到光碟的內容了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;盒子外觀&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0168.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;開盒照&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0170.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;配件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0171.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;上面是筆，下面是 USB 加上 Camera&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0172.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Camera 特寫&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0173.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;買完了之後本來想直接搭公車回去的&lt;/p&gt;
+
+&lt;p&gt;不過看到公車上像是在擠沙丁魚&lt;/p&gt;
+
+&lt;p&gt;所以就決定先去吃飯了&lt;/p&gt;
+
+&lt;p&gt;因為也不知道要吃什麼&lt;/p&gt;
+
+&lt;p&gt;又不小心走到麥當勞附近&lt;/p&gt;
+
+&lt;p&gt;所以就去吃麥當勞了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/11-02-%E5%86%8D%E8%A8%AA%E8%8F%AF%E5%BC%B7%E5%8C%97/IMAG0166.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這份套餐 21 人民幣&lt;/p&gt;
+
+&lt;p&gt;不愧是跨國連鎖店&lt;/p&gt;
+
+&lt;p&gt;味道跟台灣的差不多&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;解決晚餐之後&lt;/p&gt;
+
+&lt;p&gt;就準備搭公車回去&lt;/p&gt;
+
+&lt;p&gt;一走到馬路上就看到一台空空的公車開過來&lt;/p&gt;
+
+&lt;p&gt;想說這頓飯吃的時間點不錯&lt;/p&gt;
+
+&lt;p&gt;沒想到等到公車停下來開門的時候&lt;/p&gt;
+
+&lt;p&gt;旁邊就突然湧出一堆人要擠上公車搶位置&lt;/p&gt;
+
+&lt;p&gt;還好我跟室友是在離車門很近的貴賓席&lt;/p&gt;
+
+&lt;p&gt;就被人群推上車&lt;/p&gt;
+
+&lt;p&gt;然後擠進座位上&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;真不愧是深圳啊!!&lt;/p&gt;
+
+&lt;p&gt;上個公車都要擠成這樣&lt;/p&gt;
+
+&lt;p&gt;一堆人都跌跌撞撞的&lt;/p&gt;
+
+&lt;p&gt;也不知道是誰在擠&lt;/p&gt;
+
+&lt;p&gt;在台北搭公車雖然有時候人也很多&lt;/p&gt;
+
+&lt;p&gt;但也不會像這樣亂擠一通的&lt;/p&gt;
+
+&lt;p&gt;真是特別的經驗&amp;hellip;@_@&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>台灣口味快餐</title>
+      <link>http://tsaikd.org/blog/2008/10-31-%E5%8F%B0%E7%81%A3%E5%8F%A3%E5%91%B3%E5%BF%AB%E9%A4%90/</link>
+      <pubDate>Fri, 31 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-31-%E5%8F%B0%E7%81%A3%E5%8F%A3%E5%91%B3%E5%BF%AB%E9%A4%90/</guid>
+      <description>&lt;p&gt;我是被這家店門上的菜名吸引進來的&lt;/p&gt;
+
+&lt;p&gt;上面列了一些台灣的小吃&lt;/p&gt;
+
+&lt;p&gt;像是蚵仔煎、米糕、肉粽之類的&lt;/p&gt;
+
+&lt;p&gt;不過我看那些小吃的價位不算便宜&lt;/p&gt;
+
+&lt;p&gt;所以就點個 10 塊錢快餐來試試&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-31-%E5%8F%B0%E7%81%A3%E5%8F%A3%E5%91%B3%E5%BF%AB%E9%A4%90/IMAG0160.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;吃起來還不錯&lt;/p&gt;
+
+&lt;p&gt;而且難得的是飲料是紅茶&lt;/p&gt;
+
+&lt;p&gt;而且周圍的客人大多都是台灣人&lt;/p&gt;
+
+&lt;p&gt;感覺像是在台灣的快餐店吃一樣&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>晚餐的服務員</title>
+      <link>http://tsaikd.org/blog/2008/10-30-%E6%99%9A%E9%A4%90%E7%9A%84%E6%9C%8D%E5%8B%99%E5%93%A1/</link>
+      <pubDate>Thu, 30 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-30-%E6%99%9A%E9%A4%90%E7%9A%84%E6%9C%8D%E5%8B%99%E5%93%A1/</guid>
+      <description>&lt;p&gt;有一段時間沒去中式快餐店了&lt;/p&gt;
+
+&lt;p&gt;那是來龍華第一次自己解決晚餐的地方&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;今天點了豬蹄XX飯加上一杯蜂蜜奶茶(15 + 5元)&lt;/p&gt;
+
+&lt;p&gt;蜂蜜奶茶一下子就上來了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-30-%E6%99%9A%E9%A4%90%E7%9A%84%E6%9C%8D%E5%8B%99%E5%93%A1/IMAG0156.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;嗯&amp;hellip;.味道還蠻糟糕的&lt;/p&gt;
+
+&lt;p&gt;這樣的東西送給我都不想喝&lt;/p&gt;
+
+&lt;p&gt;不過既然點了&lt;/p&gt;
+
+&lt;p&gt;還是要喝完&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;等待主餐的過程中&lt;/p&gt;
+
+&lt;p&gt;正好有個看起來還算可愛的服務員就站在我的前面不遠處&lt;/p&gt;
+
+&lt;p&gt;趁機偷拍一下&amp;hellip;^_^&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-30-%E6%99%9A%E9%A4%90%E7%9A%84%E6%9C%8D%E5%8B%99%E5%93%A1/IMAG0158.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;我覺得她的眼睛蠻漂亮的耶!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;主菜上桌&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-30-%E6%99%9A%E9%A4%90%E7%9A%84%E6%9C%8D%E5%8B%99%E5%93%A1/IMAG0159.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;豬肉有點硬&lt;/p&gt;
+
+&lt;p&gt;味道普通&amp;hellip;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>漂亮的背影</title>
+      <link>http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/</link>
+      <pubDate>Tue, 28 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/</guid>
+      <description>&lt;p&gt;今天晚餐又是我一個人解決&lt;/p&gt;
+
+&lt;p&gt;所以又跑去探險&lt;/p&gt;
+
+&lt;p&gt;路過一家沙縣小吃&lt;/p&gt;
+
+&lt;p&gt;剛好看到有個身材不錯的女生在裡面吃&lt;/p&gt;
+
+&lt;p&gt;所以我就進去看看了&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;正面的話我沒有看的很仔細&lt;/p&gt;
+
+&lt;p&gt;不過印象中沒有很正&lt;/p&gt;
+
+&lt;p&gt;普通而已&lt;/p&gt;
+
+&lt;p&gt;不過這個背影看起來就不錯了&lt;/p&gt;
+
+&lt;p&gt;(我的位置真是剛好可以偷拍的好地點啊&amp;hellip;XD)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/IMAG0151.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;看沒多久&lt;/p&gt;
+
+&lt;p&gt;我點的豬肚蓮子湯就來了&lt;/p&gt;
+
+&lt;p&gt;小小一碗要 5 塊錢&lt;/p&gt;
+
+&lt;p&gt;有點小貴&lt;/p&gt;
+
+&lt;p&gt;不過裡面還是有點料&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/IMAG0152.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這碗牛腩麵也是 5 塊錢&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/IMAG0153.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;味道一般&lt;/p&gt;
+
+&lt;p&gt;偏鹹&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;剛剛那個女生還沒吃完就走了&lt;/p&gt;
+
+&lt;p&gt;大概是不合胃口吧&lt;/p&gt;
+
+&lt;p&gt;不過接著又來了一個長得也很普通的女生&lt;/p&gt;
+
+&lt;p&gt;也是找背對著我的位置坐下來&lt;/p&gt;
+
+&lt;p&gt;(今天真是&amp;hellip;XD)&lt;/p&gt;
+
+&lt;p&gt;所以又偷拍了一張&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/IMAG0154.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;吃飽買個水果回家&lt;/p&gt;
+
+&lt;p&gt;這個好像叫 XX 哈蜜瓜的&lt;/p&gt;
+
+&lt;p&gt;大小跟小玉西瓜差不多了&lt;/p&gt;
+
+&lt;p&gt;不過我結帳的時候才知道這個不便宜&lt;/p&gt;
+
+&lt;p&gt;這樣一顆要 41 塊&amp;hellip;T_T&lt;/p&gt;
+
+&lt;p&gt;荷包大失血&lt;/p&gt;
+
+&lt;p&gt;不知道好不好吃&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-28-%E6%BC%82%E4%BA%AE%E7%9A%84%E8%83%8C%E5%BD%B1/IMAG0155.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>酒店??</title>
+      <link>http://tsaikd.org/blog/2008/10-27-%E9%85%92%E5%BA%97/</link>
+      <pubDate>Mon, 27 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-27-%E9%85%92%E5%BA%97/</guid>
+      <description>&lt;p&gt;下班坐專車回宿舍的時候&lt;/p&gt;
+
+&lt;p&gt;不小心看到一個奇怪的店&lt;/p&gt;
+
+&lt;p&gt;所以吃飽飯後就去看看那個奇怪的店&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;SEXY CLUB&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-27-%E9%85%92%E5%BA%97/IMAG0150.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>中午覓食記</title>
+      <link>http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/</link>
+      <pubDate>Sun, 26 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/</guid>
+      <description>&lt;p&gt;到了該吃午餐的時間了&lt;/p&gt;
+
+&lt;p&gt;就到附近逛逛&lt;/p&gt;
+
+&lt;p&gt;順便找吃的&lt;/p&gt;
+
+&lt;p&gt;路上看到一個長的還可以的年輕少婦&lt;/p&gt;
+
+&lt;p&gt;坐在地上哺乳&lt;/p&gt;
+
+&lt;p&gt;(這裡是中國嗎??民風真&amp;hellip;Orz)&lt;/p&gt;
+
+&lt;p&gt;前面還放了一長白底黑字的紙&lt;/p&gt;
+
+&lt;p&gt;大意是她的錢包手機之類的東西掉了&lt;/p&gt;
+
+&lt;p&gt;沒辦法回家&lt;/p&gt;
+
+&lt;p&gt;當然我看不出這件事情的真實性&lt;/p&gt;
+
+&lt;p&gt;不過看起來好像煞有其事&lt;/p&gt;
+
+&lt;p&gt;(因為長相的關係??)&lt;/p&gt;
+
+&lt;p&gt;可惜我臉皮太薄&lt;/p&gt;
+
+&lt;p&gt;只敢偷拍幾張&lt;/p&gt;
+
+&lt;p&gt;所以角度都不太好&lt;/p&gt;
+
+&lt;p&gt;而且沒有拍到臉&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;(不過這樣也好，保護當事人&amp;hellip;)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0120.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這張有拍到她的衣服有拉起來的樣子&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0127.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這張有看到一點點的臉&amp;hellip;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;又到了龍華公園&lt;/p&gt;
+
+&lt;p&gt;之前都是晚上來的&lt;/p&gt;
+
+&lt;p&gt;這次白天來就拍個照&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0131.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這個叫龍X塔的(名字看過就忘了&amp;hellip;Orz)&lt;/p&gt;
+
+&lt;p&gt;本來想上去看一下的&lt;/p&gt;
+
+&lt;p&gt;不過還要門票 5 塊錢&lt;/p&gt;
+
+&lt;p&gt;所以就在外面拍拍就好了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0133.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;公園某入口處有人在幫人拍照並用印表機印出照片&lt;/p&gt;
+
+&lt;p&gt;看那個小妞用 photoshop 還蠻熟練的樣子&lt;/p&gt;
+
+&lt;p&gt;(靠這個吃飯想不熟練都不行吧&amp;hellip;XD)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0136.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0137.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;我的手指真礙眼&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0138.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;長的還不錯&lt;/p&gt;
+
+&lt;p&gt;其實龍華這邊正妹還蠻多的&lt;/p&gt;
+
+&lt;p&gt;害我走路都不專心&amp;hellip;XD&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;逛了一圈看到好多人在賣糖葫蘆&lt;/p&gt;
+
+&lt;p&gt;想說很久都沒吃了&lt;/p&gt;
+
+&lt;p&gt;(上一次吃的印象是國小&amp;hellip;)&lt;/p&gt;
+
+&lt;p&gt;就買了一隻來吃看看&lt;/p&gt;
+
+&lt;p&gt;雖然只要一塊錢&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;結果&amp;hellip;.不好吃&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0139.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0141.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;自拍鏡頭的解析度還真糟糕&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;回去之前看到控蕃薯&lt;/p&gt;
+
+&lt;p&gt;聽同事說這邊的控蕃薯好像還蠻好吃的&lt;/p&gt;
+
+&lt;p&gt;就買了一個回去吃看看&lt;/p&gt;
+
+&lt;p&gt;結果感覺還好&lt;/p&gt;
+
+&lt;p&gt;應該還可以更好吃的&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/IMAG0143.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這麼大一個只要 2 塊 5 角&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>今天第三篇</title>
+      <link>http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/</link>
+      <pubDate>Sun, 26 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/</guid>
+      <description>&lt;p&gt;晚上本來要找同事一起吃飯的&lt;/p&gt;
+
+&lt;p&gt;結果他跑去關內了&amp;hellip;Orz&lt;/p&gt;
+
+&lt;p&gt;所以只好又一個人出去覓食&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;晚餐吃的是園中園裡的一家路邊攤&lt;/p&gt;
+
+&lt;p&gt;我點的是泰式豬扒飯(這邊的扒應該是排的意思吧!?)&lt;/p&gt;
+
+&lt;p&gt;打開來第一眼看覺得很寒酸&lt;/p&gt;
+
+&lt;p&gt;連道青菜都沒有&lt;/p&gt;
+
+&lt;p&gt;這樣要 7 塊錢&lt;/p&gt;
+
+&lt;p&gt;不過把豬排翻開來看才發現菜被壓在下面了&amp;hellip;=.=&lt;/p&gt;
+
+&lt;p&gt;豬排的味道不錯&lt;/p&gt;
+
+&lt;p&gt;應該要歸功於那個醬汁吧&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/IMAG0144.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;吃完之後&lt;/p&gt;
+
+&lt;p&gt;因為房間的燈泡四個壞了三個&lt;/p&gt;
+
+&lt;p&gt;有點昏暗&lt;/p&gt;
+
+&lt;p&gt;(其實一開始住進來就這樣了&amp;hellip;@_@)&lt;/p&gt;
+
+&lt;p&gt;有通知房東了&lt;/p&gt;
+
+&lt;p&gt;可是過了一個星期還是沒有動靜&lt;/p&gt;
+
+&lt;p&gt;想說去買一下燈泡自己換好了&lt;/p&gt;
+
+&lt;p&gt;結果逛了好久都沒有找到&amp;hellip;T_T&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;路過理髮店&lt;/p&gt;
+
+&lt;p&gt;好像還蠻便宜的耶&lt;/p&gt;
+
+&lt;p&gt;可是回家給媽剪就不用花錢了&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/IMAG0145.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;接到新室友的電話&lt;/p&gt;
+
+&lt;p&gt;說他到了&lt;/p&gt;
+
+&lt;p&gt;所以就打道回府&lt;/p&gt;
+
+&lt;p&gt;去接新室友了&amp;hellip;^_^&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;路旁的汽車教練場&lt;/p&gt;
+
+&lt;p&gt;還真簡陋啊&amp;hellip;@_@&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/IMAG0146.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/IMAG0148.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>好吃的水梨</title>
+      <link>http://tsaikd.org/blog/2008/10-26-%E5%A5%BD%E5%90%83%E7%9A%84%E6%B0%B4%E6%A2%A8/</link>
+      <pubDate>Sun, 26 Oct 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/10-26-%E5%A5%BD%E5%90%83%E7%9A%84%E6%B0%B4%E6%A2%A8/</guid>
+      <description>&lt;p&gt;昨天晚上回家前順手買了兩個水梨&lt;/p&gt;
+
+&lt;p&gt;只要 5 塊錢&lt;/p&gt;
+
+&lt;p&gt;今天早上當早餐吃掉一顆&lt;/p&gt;
+
+&lt;p&gt;味道還不錯&lt;/p&gt;
+
+&lt;p&gt;甜度水份都算中上&lt;/p&gt;
+
+&lt;p&gt;看樣子可以再多買一些來吃了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2008/10-26-%E5%A5%BD%E5%90%83%E7%9A%84%E6%B0%B4%E6%A2%A8/IMAG0117.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+{{$proxyhttp := "/proxy/http"}}
+{{$proxyhttpdir := lsdir $proxyhttp}}
+
+{{range $dir := $proxyhttpdir}}
+
+upstream host-{{$dir}} {
+
+    {{$srvdir := printf "%s/%s/*" $proxyhttp $dir}}
+    {{range getvs $srvdir }}
+
+        server {{.}};
+
+    {{end}}
+
+}
+
+{{end}}
+
+{{range $dir := $proxyhttpdir}}
+
+server {
+    listen 80;
+    server_name {{$dir}}.localnet.local;
+
+    location / {
+        proxy_pass http://host-{{$dir}}/;
+        proxy_buffering off;
+        proxy_read_timeout 24h;
+        proxy_send_timeout 24h;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        include proxy_params;
+        client_max_body_size 10g;
+    }
+}
+
+{{end}}

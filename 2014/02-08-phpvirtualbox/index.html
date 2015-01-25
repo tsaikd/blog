@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    phpVirtualbox // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="phpVirtualbox" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2014/02-08-phpvirtualbox/">phpVirtualbox</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>8</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2014</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            <p>過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體)</p>
+
+<p>最近終於決定 OS 的架構了</p>
+
+<ul>
+<li>Ubuntu 12.04 x64</li>
+<li>ZFS</li>
+<li>Virtualbox</li>
+<li>Docker</li>
+</ul>
+
+<blockquote>
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/01.png" alt="" />
+</p>
+</blockquote>
+
+<p>32G RAM 的 PC &hellip;.hehehe</p>
+
+<blockquote>
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/02.png" alt="" />
+</p>
+</blockquote>
+
+<p>Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題</p>
+
+<blockquote>
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/03.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/04.png" alt="" />
+</p>
+</blockquote>
+
+<p>ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&hellip;&gt;_&lt;</p>
+
+<blockquote>
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/05.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/06.png" alt="" />
+</p>
+</blockquote>
+
+<p>Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&hellip;</p>
+
+<blockquote>
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/07.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/08.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/09.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/10.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/11.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/12.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/13.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/14.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/15.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/16.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/02-08-phpvirtualbox/17.png" alt="" />
+</p>
+</blockquote>
+
+<p>Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!</p>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-virtualbox" href="http://tsaikd.org/blog/tags/virtualbox">Virtualbox</a>,
+	                
+	                <a class="post-tag post-tag-php" href="http://tsaikd.org/blog/tags/php">PHP</a>,
+	                
+	                <a class="post-tag post-tag-apache2" href="http://tsaikd.org/blog/tags/apache2">Apache2</a>,
+	                
+	                <a class="post-tag post-tag-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>,
+	                
+	                <a class="post-tag post-tag-zfs" href="http://tsaikd.org/blog/tags/zfs">ZFS</a>,
+	                
+	                <a class="post-tag post-tag-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2014/02-08-phpvirtualbox-config/">phpVirtualbox config notes</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2014/01-23-maven-settings/">Maven settings notes</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

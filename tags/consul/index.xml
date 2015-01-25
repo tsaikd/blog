@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Consul on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/consul/</link>
+    <description>Recent content in Consul on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/consul/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Consul 採到雷</title>
+      <link>http://tsaikd.org/blog/2014/09-14-Consul-trap/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
+      <description>
+
+&lt;p&gt;今天試用 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; ，
+看網路上的文件好像還蠻好裝的，
+沒想到還是遇到神奇的雷，
+目前懷疑是跟 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 有關。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;環境&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -rsvmo
+Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux
+$ docker -v
+Docker version 1.2.0, build fa7b24f
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 版本是 v0.4.0&lt;/p&gt;
+
+&lt;h2 id=&#34;現象:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;現象&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run progrium/consul -server -bootstrap
+==&amp;gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary
+==&amp;gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1
+==&amp;gt; Starting Consul agent...
+==&amp;gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;啟動 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 就爆炸了&amp;hellip;.&amp;gt;_&amp;lt;&lt;/p&gt;
+
+&lt;p&gt;google 不到什麼有用的資料，
+只好自己 trace code 了&amp;hellip;Orz&lt;/p&gt;
+
+&lt;p&gt;追了大半天，
+發現問題出在 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; call &lt;a href=&#34;http://symas.com/mdb/&#34;&gt;LMDB&lt;/a&gt; (Lightning Memory-Mapped Database) 的時候會死掉。
+目前懷疑跟 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 不支援 AIO 有關，
+因為 MySQL 跑在 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 上也有&lt;a href=&#34;https://answers.launchpad.net/ubuntu/+question/249586&#34;&gt;災情&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;解法:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;解法&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run -v /tmp progrium/consul -server -bootstrap
+==&amp;gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary
+==&amp;gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1
+==&amp;gt; Starting Consul agent...
+==&amp;gt; Starting Consul agent RPC...
+==&amp;gt; Consul agent running!
+         Node name: &#39;300bcce55b48&#39;
+        Datacenter: &#39;dc1&#39;
+            Server: true (bootstrap: true)
+       Client Addr: 0.0.0.0 (HTTP: 8500, DNS: 53, RPC: 8400)
+      Cluster Addr: 172.17.0.82 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;為什麼要掛 /tmp ？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這應該是 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 的問題了，
+他在啟動的時候會跑去 /tmp 建 &lt;a href=&#34;http://symas.com/mdb/&#34;&gt;LMDB&lt;/a&gt; ，
+即使你有設定 -data-dir 也一樣。
+(雷~~~~)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

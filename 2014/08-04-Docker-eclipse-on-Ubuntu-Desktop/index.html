@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Docker eclipse on Ubuntu Desktop // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Docker eclipse on Ubuntu Desktop" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2014</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            <p>看到越來越多人在往雲端開發的方向在玩，
+比較終極的做法當然就是把 Browser 變成 IDE ，
+不過就目前看來，
+技術上還沒有一個比較領先的做法，
+只好先找比較無痛的方向來玩玩&hellip;hehehe</p>
+
+<p>今天嘗試了一個新的做法，
+在 Ubuntu Desktop 上面裝 docker ，
+在 docker 裡面跑 eclipse 來開發，
+這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西，
+先看一下成功的畫面吧！</p>
+
+<p><img src="http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen01.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen02.png" alt="" />
+</p>
+
+<p>基本上就是先建一個 eclipse 的 container ，
+跑起來之後再用 ssh 連進去執行 eclipse ，
+需要 ssh 的原因是為了要把本機的 X11 forwarding 過去，
+本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ，
+不過試了一陣子都搞不定，
+只好先暫時放棄了。</p>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>,
+	                
+	                <a class="post-tag post-tag-java" href="http://tsaikd.org/blog/tags/java">Java</a>,
+	                
+	                <a class="post-tag post-tag-eclipse" href="http://tsaikd.org/blog/tags/eclipse">Eclipse</a>,
+	                
+	                <a class="post-tag post-tag-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2014/09-14-Consul-trap/">Consul 採到雷</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2014/07-10-Try-CoreOS/">Try CoreOS</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

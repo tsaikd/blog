@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pure Ftpd on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/pure-ftpd/</link>
+    <description>Recent content in Pure Ftpd on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/pure-ftpd/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Pure-FTPd Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-18-Pure-FTPd/</link>
+      <pubDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-18-Pure-FTPd/</guid>
+      <description>
+
+&lt;h1 id=&#34;安裝:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;安裝&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install pure-ftpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;開帳號:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;開帳號&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;pure-pw useradd FTP_USER -u UBUNTU_USER -d /home/UBUNTU_USER -m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;設定-etc-pure-ftpd-conf:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 /etc/pure-ftpd/conf&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/pure-ftpd/conf
+echo yes &amp;gt; ChrootEveryone
+echo yes &amp;gt; DontResolve
+echo 1 &amp;gt; TLS
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;產生-tls-key:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 TLS key&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -x509 -nodes -newkey rsa:1024 -days 3650 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem
+chmod 600 /etc/ssl/private/pure-ftpd.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;重開-service:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 service&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;service pure-ftpd restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://vistb.net/2012/05/build-ftp-server-using-pureftp-in-ubuntu/&#34;&gt;https://vistb.net/2012/05/build-ftp-server-using-pureftp-in-ubuntu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=54&amp;amp;t=387751&#34;&gt;http://forum.ubuntu.org.cn/viewtopic.php?f=54&amp;amp;t=387751&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,14 @@
+redis:
+  image: tsaikd/dev-db.redis-server:3.0.0-rc1
+  interactive: true
+  environment:
+    - SERVICE_NAME=redis
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 6379:6379
+    - 16379:16379
+    - 26379:26379
+  volumes:
+    - redis:/redis
+    - redis/start.sh:/start.sh
+

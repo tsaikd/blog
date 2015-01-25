@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coreos on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/coreos/</link>
+    <description>Recent content in Coreos on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Thu, 10 Jul 2014 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/coreos/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Try CoreOS</title>
+      <link>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</link>
+      <pubDate>Thu, 10 Jul 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</guid>
+      <description>
+
+&lt;p&gt;新玩具 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; ，設計理念跟 &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 差蠻多的，
+光是安裝就花了不少時間在試，記錄一下奇怪的雷。
+幾個重點先說一下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 最前面的 &lt;code&gt;#cloud-config&lt;/code&gt; 不能省&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 請按照官方文件上面的範例寫，不要畫蛇添足&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 會放在 /var/lib/coreos-install/user_data ，文件上說每次開機都會跑，但是 user 已經存在的話就不會再加一次&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下面是安裝過程，已經有簡化一些了還是落落長，最後設定請直接 END&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;先開個-vm-試試-一號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;先開個 VM 試試 (一號機)&lt;/h1&gt;
+
+&lt;p&gt;在 &lt;a href=&#34;https://coreos.com/docs/running-coreos/bare-metal/installing-to-disk/&#34;&gt;Installing CoreOS to Disk&lt;/a&gt;
+看到有趣的安裝 script ，
+用 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 開機之後，
+抓 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 下來，
+執行 &lt;code&gt;coreos-install -d /dev/sda&lt;/code&gt; ，
+然後他會下載一百多 MB 的檔案來裝到硬碟，
+一切順利，重開機，登入，預設帳密是啥？&lt;/p&gt;
+
+&lt;p&gt;嗯～～看來是要用 &lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 來初始化個人設定，該重裝了～～
+感覺好像會重裝很多次，每次都要下載一百多 MB 好像有點浪費頻寬，
+&lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 該你出場了！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-二號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (二號機)&lt;/h1&gt;
+
+&lt;p&gt;設定 http_proxy ，
+抓 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 下來，
+寫 cloud-config.yaml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;coreos-install -d /dev/sda -c cloud-config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重開之後，用 SSH 登不進去？ &amp;hellip; WTF &amp;hellip;
+是不是要直接加帳號才對？&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-三號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (三號機)&lt;/h1&gt;
+
+&lt;p&gt;設定 http_proxy ，
+抓 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 下來，
+寫 cloud-config.yaml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;coreos-install -d /dev/sda -c cloud-config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;怎麼又從 internet 下載一百多 MB 的檔案&amp;hellip;
+&lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 是壞掉了嗎？
+開始檢查 &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 設定，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;refresh_pattern -i \.(rpm|cab|deb|exe|msi|msu|zip|tar|xz|bz|bz2|lzma|gz|tgz|rar|bin|7z|doc?|xls?|ppt?|pdf|nth|psd|sis)$ 10080 90% 43200 override-expire override-lastmod reload-into-ims ignore-no-cache ignore-private
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;應該 OK 啊！
+試一下 &lt;code&gt;wget http://free.nchc.org.tw/ubuntu/ls-lR.gz&lt;/code&gt; ，
+沒問題啊，搗鼓半小時後放棄 &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 方案，
+直接改 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 比較快，
+把&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2&#34;&gt;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2.sig&#34;&gt;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2.sig&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;放到區網的 Web Site ，
+修改 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; ，
+噢，剛剛好像有試裝一次 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; ，都還沒看成果就跑題了，該重開機了。&lt;/p&gt;
+
+&lt;p&gt;SSH 登不進去，密碼也登不進去，這 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; 也太渣了吧！
+那個設定檔怎麼好像不太整齊， user 下面的子項目怎麼只有 name 前面有 &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-四號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (四號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SSH 登不進去，密碼也登不進去，
+應該是哪裡出了問題，會不會是我的設定檔他根本不吃！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-五號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (五號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;hostname: coreos-test
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;果然連 hostname 都沒吃到，重新多看幾次文件，每個範例好像前面都有加 &lt;code&gt;#cloud-config&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-六號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (六號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;這次 hostname 有吃到了，
+不過還是登不進去啊！
+等等文件上有說&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The ssh_authorized_keys parameter adds public SSH keys which will be authorized for the core user.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-七號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (七號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SSH core 這個 user 終於進去了！
+不過新建的 user 還是不行。
+等等，我剛剛好像有把設定檔的格式加了幾個 &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-八號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (八號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;終於進去了！接下來就是要把 &lt;a href=&#34;https://github.com/tsaikd/kdocker-web&#34;&gt;kdocker-web&lt;/a&gt; 接上去了。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-九號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (九號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+coreos:
+  units:
+    - name: docker.service
+      command: restart
+      content: |
+        [Unit]
+        Description=Docker Application Container Engine
+        Documentation=http://docs.docker.io
+
+        [Service]
+        Environment=&amp;quot;TMPDIR=/var/tmp/&amp;quot;
+        ExecStartPre=/bin/mount --make-rprivate /
+        # Run docker but don&#39;t have docker automatically restart
+        # containers. This is a job for systemd and unit files.
+        ExecStart=/usr/bin/docker -d -s=btrfs -r=false -H fd:// --api-enable-cors=true
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-tcp.socket
+      command: start
+      content: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=4243
+        Service=docker.service
+        BindIPv6Only=both
+
+        [Install]
+        WantedBy=sockets.target
+    - name: enable-docker-tcp.service
+      command: start
+      content: |
+        [Unit]
+        Description=Enable the Docker Socket for the API
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/systemctl enable docker-tcp.socket
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;大功告成！&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Midnight Commander (mc) // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Midnight Commander (mc)" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2007/07-16-Midnight-Commander-%28mc%29/">Midnight Commander (mc)</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>16</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2007</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            <p>GNU Midnight Commander cli-based file manager</p>
+
+<p>這是一個文字模式的檔案總管</p>
+
+<p>其實在幾個月前就在用這個東西了</p>
+
+<p>現在幾乎每個人都是在圖形介面下操作電腦</p>
+
+<p>不論是用 KDE, Gnome, or Fluxbox &hellip; etc</p>
+
+<p>當然像 KDE 或是 Gnome 都有一套圖形介面的檔案總管可以用</p>
+
+<p>所以一般人是用不到 mc 的</p>
+
+<p>不過我的小 nb 硬碟小</p>
+
+<p>又有雙作業系統</p>
+
+<p>所以只好盡量選擇輕量型的軟體來用</p>
+
+<p>像 KDE 跟 Gnome 都是屬於大怪獸</p>
+
+<p>所以我是用 Fluxbox 來當桌面環境</p>
+
+<p>如果要用 KDE 或是 Gnome 的檔案總管又要裝一堆相關的套件</p>
+
+<p>本來還有 PCManFM 可以選</p>
+
+<p>不過隨著 PCMan 本人開始實習之後</p>
+
+<p>發展的進度好像有點遲緩</p>
+
+<p>然後又不小心看到了 mc 這個東西</p>
+
+<p>可能是習慣的關係</p>
+
+<p>我覺得還有一些小問題</p>
+
+<p>不過總體上算不錯的了</p>
+
+<hr />
+
+<p>一開始遇到的第一個問題就是在 screen 的顯示中排版的問題</p>
+
+<p>加上參數 -a 可以解決</p>
+
+<ul>
+<li><code>mc</code></li>
+</ul>
+
+<p><img src="http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_01.png" alt="" />
+</p>
+
+<ul>
+<li><code>mc -a</code></li>
+</ul>
+
+<p><img src="http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_01_fix.png" alt="" />
+</p>
+
+<hr />
+
+<p>再來是視窗被切成兩塊了</p>
+
+<p>我想應該很少人會希望檔案總管一次顯示兩個目錄吧</p>
+
+<p>不過 mc 預設就是這樣</p>
+
+<p>雖然這樣有些好處</p>
+
+<p>像是移動檔案的時候就可以迅速的從左邊目錄移到右邊目錄</p>
+
+<p>不過要是沒有用到的話就會覺得另一邊真是佔空間</p>
+
+<p>一開始還不知道要怎麼解決</p>
+
+<p>只能去 <code>Options -&gt; Layout... -&gt; Panel split -&gt;</code></p>
+
+<p><img src="http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_02.png" alt="" />
+</p>
+
+<p>把右邊盡量縮小</p>
+
+<p>雖然看起來有點怪</p>
+
+<p>不過左邊的空間多了許多</p>
+
+<p>剛剛才發現</p>
+
+<p>原來還有另一個更好的解決方法</p>
+
+<p>在 <code>Left -&gt; Listing mode... -&gt; User defined: -&gt;</code></p>
+
+<p>把 half 改成 full 就好了</p>
+
+<p><img src="http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_03.png" alt="" />
+</p>
+
+<p><img src="http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_03_fix.png" alt="" />
+</p>
+
+<hr />
+
+<p>不過又遇到了一個小問題</p>
+
+<p>就是要切換 Listing mode 的話都要從選單上重選一次</p>
+
+<p>而且左右兩個 panel 都要選</p>
+
+<p>不然用 tab 切換 panel 的時候就會覺得怪怪的&hellip;@_@</p>
+
+<p>不知道有沒有辦法設定快速鍵來切換 Listing mode ??</p>
+
+<hr />
+
+<p>然後是最麻煩的 binding 問題</p>
+
+<p>就是某類的檔案按下去要用某個程式開啟</p>
+
+<p>雖然程式有預設一個 bindings method</p>
+
+<p>不過顯然程式不夠完善</p>
+
+<p>(要完善太難了&hellip;誰知道你裝了多少奇奇怪怪的東西&hellip;</p>
+
+<p>還有許多未知的軟體啊&hellip;XD)</p>
+
+<p>所以還要根據自己電腦上的環境來做一些設定</p>
+
+<p>這個就需要一點技術了</p>
+
+<p>不過在玩 Linux 的人多少對這些東西有點習慣了</p>
+
+<p>所以看看預設的範例就大概知道怎麼改成自己需要的形式了</p>
+
+<p>不過要是改了的話</p>
+
+<p>程式更新也不會把你自定的 bindings 一起更新</p>
+
+<p>因為改了之後會存在 ~/.mc/bindings</p>
+
+<p>之後程式就只會讀這個檔案</p>
+
+<p>我覺得應該要設計一個 bindings-custom 之類的</p>
+
+<p>除了 default 的 bindings 之外</p>
+
+<p>再 load 這個 bindings-custom</p>
+
+<p>這樣應該比較好</p>
+
+<ul>
+<li>~/.mc/bindings</li>
+</ul>
+
+<pre><code>...
+
+---
+
+### tsaikd ###
+
+# configure text file
+
+shell/.conf
+
+	Open=%var{EDITOR:vi} %f
+
+---
+
+# video .rmvb .flv .mkv
+
+regex/\.([rR][mM][vV][bB]|[fF][lL][vV]|[mM][kK][vV])$
+
+	Open=(mplayer %f &amp;&gt;/dev/null &amp;)
+
+---
+
+# html .mht
+
+regex/\.([mM][hH][tT])$
+
+	Open=(opera %f &amp;&gt;/dev/null &amp;)
+
+---
+
+### end tsaikd ###
+
+---
+
+...
+
+</code></pre>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-kdblog" href="http://tsaikd.org/blog/tags/kdblog">KDBlog</a>,
+	                
+	                <a class="post-tag post-tag-linux" href="http://tsaikd.org/blog/tags/linux">Linux</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2007/07-16-KDBlog-rev19/">KDBlog rev19</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2007/07-10-KDBlog-rev18/">KDBlog rev18</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

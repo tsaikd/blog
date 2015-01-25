@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zfs on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/zfs/</link>
+    <description>Recent content in Zfs on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/zfs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Consul 採到雷</title>
+      <link>http://tsaikd.org/blog/2014/09-14-Consul-trap/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
+      <description>
+
+&lt;p&gt;今天試用 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; ，
+看網路上的文件好像還蠻好裝的，
+沒想到還是遇到神奇的雷，
+目前懷疑是跟 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 有關。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;環境&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -rsvmo
+Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux
+$ docker -v
+Docker version 1.2.0, build fa7b24f
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 版本是 v0.4.0&lt;/p&gt;
+
+&lt;h2 id=&#34;現象:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;現象&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run progrium/consul -server -bootstrap
+==&amp;gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary
+==&amp;gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1
+==&amp;gt; Starting Consul agent...
+==&amp;gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;啟動 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 就爆炸了&amp;hellip;.&amp;gt;_&amp;lt;&lt;/p&gt;
+
+&lt;p&gt;google 不到什麼有用的資料，
+只好自己 trace code 了&amp;hellip;Orz&lt;/p&gt;
+
+&lt;p&gt;追了大半天，
+發現問題出在 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; call &lt;a href=&#34;http://symas.com/mdb/&#34;&gt;LMDB&lt;/a&gt; (Lightning Memory-Mapped Database) 的時候會死掉。
+目前懷疑跟 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 不支援 AIO 有關，
+因為 MySQL 跑在 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 上也有&lt;a href=&#34;https://answers.launchpad.net/ubuntu/+question/249586&#34;&gt;災情&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;解法:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;解法&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run -v /tmp progrium/consul -server -bootstrap
+==&amp;gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary
+==&amp;gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1
+==&amp;gt; Starting Consul agent...
+==&amp;gt; Starting Consul agent RPC...
+==&amp;gt; Consul agent running!
+         Node name: &#39;300bcce55b48&#39;
+        Datacenter: &#39;dc1&#39;
+            Server: true (bootstrap: true)
+       Client Addr: 0.0.0.0 (HTTP: 8500, DNS: 53, RPC: 8400)
+      Cluster Addr: 172.17.0.82 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;為什麼要掛 /tmp ？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這應該是 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 的問題了，
+他在啟動的時候會跑去 /tmp 建 &lt;a href=&#34;http://symas.com/mdb/&#34;&gt;LMDB&lt;/a&gt; ，
+即使你有設定 -data-dir 也一樣。
+(雷~~~~)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>phpVirtualbox</title>
+      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
+      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</guid>
+      <description>&lt;p&gt;過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體)&lt;/p&gt;
+
+&lt;p&gt;最近終於決定 OS 的架構了&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 12.04 x64&lt;/li&gt;
+&lt;li&gt;ZFS&lt;/li&gt;
+&lt;li&gt;Virtualbox&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/01.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;32G RAM 的 PC &amp;hellip;.hehehe&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/02.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/03.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/04.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&amp;hellip;&amp;gt;_&amp;lt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/05.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/06.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&amp;hellip;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/07.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/08.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/09.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/10.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/11.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/12.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/13.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/14.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/15.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/16.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/17.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

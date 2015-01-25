@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/linux/</link>
+    <description>Recent content in Linux on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Thu, 30 Dec 2010 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu 10.04 x64 server 改網卡代號</title>
+      <link>http://tsaikd.org/blog/2010/12-30-Ubuntu-10.04-x64-server-%E6%94%B9%E7%B6%B2%E5%8D%A1%E4%BB%A3%E8%99%9F/</link>
+      <pubDate>Thu, 30 Dec 2010 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2010/12-30-Ubuntu-10.04-x64-server-%E6%94%B9%E7%B6%B2%E5%8D%A1%E4%BB%A3%E8%99%9F/</guid>
+      <description>&lt;p&gt;有換過網卡的話&lt;/p&gt;
+
+&lt;p&gt;網卡的代號會一直往上加&lt;/p&gt;
+
+&lt;p&gt;ex: eth0 eth1 eth2 &amp;hellip; etc&lt;/p&gt;
+
+&lt;p&gt;把 /etc/udev/rules.d/70-persistent-net.rules 裡面的內容改掉就可以避免這種現象&lt;/p&gt;
+
+&lt;p&gt;也可以清空讓系統自己重建&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apache SSL Subversion</title>
+      <link>http://tsaikd.org/blog/2008/08-23-Apache-SSL-Subversion/</link>
+      <pubDate>Sat, 23 Aug 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/08-23-Apache-SSL-Subversion/</guid>
+      <description>&lt;p&gt;剛剛把 KD server 上的 apache 弄出 ssl 了&lt;/p&gt;
+
+&lt;p&gt;之前其實也有試著弄出 ssl&lt;/p&gt;
+
+&lt;p&gt;只不過之前在網路上找到的文章都只是針對非 vhost 的 apache&lt;/p&gt;
+
+&lt;p&gt;想說應該是一步一步慢慢解決&lt;/p&gt;
+
+&lt;p&gt;結果總是弄不好&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;今天想到說應該要找看看能不能一次解決的&lt;/p&gt;
+
+&lt;p&gt;結果在 Gentoo Wiki Apache_Modules_mod_ssl&lt;/p&gt;
+
+&lt;p&gt;這篇找到了基本的設定&lt;/p&gt;
+
+&lt;p&gt;另外有一個 HOWTO SSL Enabled, Name Based Virtual Hosts with Apache&lt;/p&gt;
+
+&lt;p&gt;這篇就是在解決我的問題&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;不過我照他的方式弄了之後&lt;/p&gt;
+
+&lt;p&gt;感覺 SSL 有起來&lt;/p&gt;
+
+&lt;p&gt;不過就是連不上&lt;/p&gt;
+
+&lt;p&gt;Apache Log 上有這樣的訊息&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;quot;\x80O\x01\x03&amp;quot; 200 1953&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;又搞了半天才發現是之前設定的東西忘了清掉&lt;/p&gt;
+
+&lt;p&gt;Apache 又呆呆的不告訴我一下&amp;hellip;T_T&lt;/p&gt;
+
+&lt;p&gt;上面那個東西的原因就是 Apache 在 443 這個 ssl 的 protocol 輸出一般純文字&lt;/p&gt;
+
+&lt;p&gt;所有就連不起來了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;之後又遇到&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;... public_html/.htaccess: Options not allowed here&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;又 Google 半天孤不出東西&lt;/p&gt;
+
+&lt;p&gt;最後才發現是 Gentoo 的 SSL_DEFAULT_VHOST 設定在搞鬼&lt;/p&gt;
+
+&lt;p&gt;把他弄掉之後就 OK 啦!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;總結一下 Apache SSL Subversion VirtualHost 的設定備忘&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/make.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;USE=&amp;quot;sni&amp;quot; # 這是要啟用 SSL with vhost 的 flag
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/conf.d/apache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;把該死的 DEFAULT_VHOST 跟 SSL_DEFAULT_VHOST 刪掉&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;APACHE2_OPTS=&amp;quot;-D SSL -D DAV&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;建立 SSL 的驗證檔&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;變成 root 好做事&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo su
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;到 apache 的目錄去&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /etc/apache2/ssl/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;產生 rsa key: 想更安全一點就把 1024 調大吧&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ openssl genrsa -out server.key 1024
+$ openssl rsa -in server.key -out server.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;這裡下一步要填一些資料&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ openssl req -new -key server.pem -out server.csr
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;產生驗證檔, 要是不加有效日期參數(-days 3650)的話, 預設是 30 天&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ openssl x509 -req -days 3650 -in server.csr -signkey server.pem -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Apache 的 vhost 設定檔檔名自己取吧&lt;/p&gt;
+
+&lt;p&gt;編號越小越早被 Apache 讀進去&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/apache/vhost.d/10_tsaikd.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;Listen 80
+Listen 443
+NameVirtualHost *:80
+NameVirtualHost *:443
+ServerName 127.0.0.1 # 這個是讓 Apache 啟動變快的東西...
+
+---
+
+&amp;lt;VirtualHost *:80&amp;gt;
+	ServerAdmin &amp;quot;tsaikd@gmail.com&amp;quot;
+	ServerName &amp;quot;www.tsaikd.org&amp;quot;
+	DocumentRoot &amp;quot;/var/www/www.tsaikd.org/htdocs&amp;quot;
+	&amp;lt;Directory &amp;quot;/var/www/www.tsaikd.org/htdocs&amp;quot;&amp;gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost *:80&amp;gt;
+
+---
+
+&amp;lt;VirtualHost *:443&amp;gt;
+	SSLEngine on
+	SSLCertificateFile /etc/apache2/ssl/server.crt
+	SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+---
+
+	ServerAdmin &amp;quot;tsaikd@gmail.com&amp;quot;
+	ServerName &amp;quot;www.tsaikd.org&amp;quot;
+	DocumentRoot &amp;quot;/var/www/www.tsaikd.org/htdocs&amp;quot;
+	&amp;lt;Directory &amp;quot;/var/www/www.tsaikd.org/htdocs&amp;quot;&amp;gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/apache/vhost.d/20_svn.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;LoadModule authz_svn_module modules/mod_authz_svn.so
+&amp;lt;VirtualHost *:80&amp;gt;
+	ServerAdmin &amp;quot;tsaikd@gmail.com&amp;quot;
+	ServerName &amp;quot;svn.tsaikd.org&amp;quot;
+	DocumentRoot &amp;quot;/var/www/svn.tsaikd.org/htdocs&amp;quot;
+	&amp;lt;Directory &amp;quot;/var/www/svn.tsaikd.org/htdocs&amp;quot;&amp;gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&amp;lt;/Directory&amp;gt;
+
+	# 我的 svn 是放在 &amp;quot;/home/svn&amp;quot;
+	&amp;lt;Directory &amp;quot;/home/svn&amp;quot;&amp;gt;
+		Options Indexes FollowSymLinks MultiViews
+	&amp;lt;/Directory&amp;gt;
+
+	&amp;lt;Location /gentoo&amp;gt;
+		DAV svn
+		Options Indexes FollowSymLinks MultiViews
+		SVNParentPath /home/svn/gentoo
+		SVNListParentPath on
+		SetOutputFilter DEFLATE # 這個是設定用 gzip 方式輸出
+		AuthType Basic
+		AuthName &amp;quot;Subversion repository&amp;quot;
+		AuthUserFile /etc/apache2/htpasswd
+		&amp;lt;LimitExcept GET PROPFIND OPTIONS REPORT&amp;gt; # 要有帳密才能改 svn 的資料
+			Require user tsaikd
+		&amp;lt;/LimitExcept&amp;gt;
+	&amp;lt;/Location&amp;gt;
+&amp;lt;/VirtualHost *:80&amp;gt;
+
+&amp;lt;VirtualHost *:443&amp;gt;
+	SSLEngine on
+	# 如果要用不同的驗證檔也可以
+	SSLCertificateFile /etc/apache2/ssl/server.crt
+	SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+---
+
+	ServerAdmin &amp;quot;tsaikd@gmail.com&amp;quot;
+	ServerName &amp;quot;svn.tsaikd.org&amp;quot;
+	DocumentRoot &amp;quot;/var/www/svn.tsaikd.org/htdocs&amp;quot;
+	&amp;lt;Directory &amp;quot;/var/www/svn.tsaikd.org/htdocs&amp;quot;&amp;gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&amp;lt;/Directory&amp;gt;
+
+	# 我的 svn 是放在 &amp;quot;/home/svn&amp;quot;
+	&amp;lt;Directory &amp;quot;/home/svn&amp;quot;&amp;gt;
+		Options Indexes FollowSymLinks MultiViews
+	&amp;lt;/Directory&amp;gt;
+
+	&amp;lt;Location /gentoo&amp;gt;
+		DAV svn
+		Options Indexes FollowSymLinks MultiViews
+		SVNParentPath /home/svn/gentoo
+		SVNListParentPath on
+		SetOutputFilter DEFLATE # 這個是設定用 gzip 方式輸出
+		AuthType Basic
+		AuthName &amp;quot;Subversion repository&amp;quot;
+		AuthUserFile /etc/apache2/htpasswd
+		&amp;lt;LimitExcept GET PROPFIND OPTIONS REPORT&amp;gt; # 要有帳密才能改 svn 的資料
+			Require user tsaikd
+		&amp;lt;/LimitExcept&amp;gt;
+	&amp;lt;/Location&amp;gt;
+&amp;lt;/VirtualHost *:443&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mdadm -- 指令備忘</title>
+      <link>http://tsaikd.org/blog/2007/07-25-mdadm%E6%8C%87%E4%BB%A4%E5%82%99%E5%BF%98/</link>
+      <pubDate>Wed, 25 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-25-mdadm%E6%8C%87%E4%BB%A4%E5%82%99%E5%BF%98/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;自動偵測所有磁碟陣列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# mdadm -Es &amp;gt; /tmp/mdtmp
+# mdadm -Asc /tmp/mdtmp
+# rm -f /tmp/mdtmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;更改磁碟陣列編號 (ex: /dev/md6 -&amp;gt; /dev/md7)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# mdadm -S /dev/md6
+# mdadm -A -U super-minor -m 6 /dev/md7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;清除磁碟陣列資料 (ex: /dev/hda7)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# mdadm --zero-superblock /dev/hda7
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Midnight Commander (mc)</title>
+      <link>http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/</link>
+      <pubDate>Mon, 16 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/</guid>
+      <description>&lt;p&gt;GNU Midnight Commander cli-based file manager&lt;/p&gt;
+
+&lt;p&gt;這是一個文字模式的檔案總管&lt;/p&gt;
+
+&lt;p&gt;其實在幾個月前就在用這個東西了&lt;/p&gt;
+
+&lt;p&gt;現在幾乎每個人都是在圖形介面下操作電腦&lt;/p&gt;
+
+&lt;p&gt;不論是用 KDE, Gnome, or Fluxbox &amp;hellip; etc&lt;/p&gt;
+
+&lt;p&gt;當然像 KDE 或是 Gnome 都有一套圖形介面的檔案總管可以用&lt;/p&gt;
+
+&lt;p&gt;所以一般人是用不到 mc 的&lt;/p&gt;
+
+&lt;p&gt;不過我的小 nb 硬碟小&lt;/p&gt;
+
+&lt;p&gt;又有雙作業系統&lt;/p&gt;
+
+&lt;p&gt;所以只好盡量選擇輕量型的軟體來用&lt;/p&gt;
+
+&lt;p&gt;像 KDE 跟 Gnome 都是屬於大怪獸&lt;/p&gt;
+
+&lt;p&gt;所以我是用 Fluxbox 來當桌面環境&lt;/p&gt;
+
+&lt;p&gt;如果要用 KDE 或是 Gnome 的檔案總管又要裝一堆相關的套件&lt;/p&gt;
+
+&lt;p&gt;本來還有 PCManFM 可以選&lt;/p&gt;
+
+&lt;p&gt;不過隨著 PCMan 本人開始實習之後&lt;/p&gt;
+
+&lt;p&gt;發展的進度好像有點遲緩&lt;/p&gt;
+
+&lt;p&gt;然後又不小心看到了 mc 這個東西&lt;/p&gt;
+
+&lt;p&gt;可能是習慣的關係&lt;/p&gt;
+
+&lt;p&gt;我覺得還有一些小問題&lt;/p&gt;
+
+&lt;p&gt;不過總體上算不錯的了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一開始遇到的第一個問題就是在 screen 的顯示中排版的問題&lt;/p&gt;
+
+&lt;p&gt;加上參數 -a 可以解決&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mc&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_01.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mc -a&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_01_fix.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;再來是視窗被切成兩塊了&lt;/p&gt;
+
+&lt;p&gt;我想應該很少人會希望檔案總管一次顯示兩個目錄吧&lt;/p&gt;
+
+&lt;p&gt;不過 mc 預設就是這樣&lt;/p&gt;
+
+&lt;p&gt;雖然這樣有些好處&lt;/p&gt;
+
+&lt;p&gt;像是移動檔案的時候就可以迅速的從左邊目錄移到右邊目錄&lt;/p&gt;
+
+&lt;p&gt;不過要是沒有用到的話就會覺得另一邊真是佔空間&lt;/p&gt;
+
+&lt;p&gt;一開始還不知道要怎麼解決&lt;/p&gt;
+
+&lt;p&gt;只能去 &lt;code&gt;Options -&amp;gt; Layout... -&amp;gt; Panel split -&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_02.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;把右邊盡量縮小&lt;/p&gt;
+
+&lt;p&gt;雖然看起來有點怪&lt;/p&gt;
+
+&lt;p&gt;不過左邊的空間多了許多&lt;/p&gt;
+
+&lt;p&gt;剛剛才發現&lt;/p&gt;
+
+&lt;p&gt;原來還有另一個更好的解決方法&lt;/p&gt;
+
+&lt;p&gt;在 &lt;code&gt;Left -&amp;gt; Listing mode... -&amp;gt; User defined: -&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;把 half 改成 full 就好了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_03.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_03_fix.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;不過又遇到了一個小問題&lt;/p&gt;
+
+&lt;p&gt;就是要切換 Listing mode 的話都要從選單上重選一次&lt;/p&gt;
+
+&lt;p&gt;而且左右兩個 panel 都要選&lt;/p&gt;
+
+&lt;p&gt;不然用 tab 切換 panel 的時候就會覺得怪怪的&amp;hellip;@_@&lt;/p&gt;
+
+&lt;p&gt;不知道有沒有辦法設定快速鍵來切換 Listing mode ??&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;然後是最麻煩的 binding 問題&lt;/p&gt;
+
+&lt;p&gt;就是某類的檔案按下去要用某個程式開啟&lt;/p&gt;
+
+&lt;p&gt;雖然程式有預設一個 bindings method&lt;/p&gt;
+
+&lt;p&gt;不過顯然程式不夠完善&lt;/p&gt;
+
+&lt;p&gt;(要完善太難了&amp;hellip;誰知道你裝了多少奇奇怪怪的東西&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;還有許多未知的軟體啊&amp;hellip;XD)&lt;/p&gt;
+
+&lt;p&gt;所以還要根據自己電腦上的環境來做一些設定&lt;/p&gt;
+
+&lt;p&gt;這個就需要一點技術了&lt;/p&gt;
+
+&lt;p&gt;不過在玩 Linux 的人多少對這些東西有點習慣了&lt;/p&gt;
+
+&lt;p&gt;所以看看預設的範例就大概知道怎麼改成自己需要的形式了&lt;/p&gt;
+
+&lt;p&gt;不過要是改了的話&lt;/p&gt;
+
+&lt;p&gt;程式更新也不會把你自定的 bindings 一起更新&lt;/p&gt;
+
+&lt;p&gt;因為改了之後會存在 ~/.mc/bindings&lt;/p&gt;
+
+&lt;p&gt;之後程式就只會讀這個檔案&lt;/p&gt;
+
+&lt;p&gt;我覺得應該要設計一個 bindings-custom 之類的&lt;/p&gt;
+
+&lt;p&gt;除了 default 的 bindings 之外&lt;/p&gt;
+
+&lt;p&gt;再 load 這個 bindings-custom&lt;/p&gt;
+
+&lt;p&gt;這樣應該比較好&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;~/.mc/bindings&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+
+---
+
+### tsaikd ###
+
+# configure text file
+
+shell/.conf
+
+	Open=%var{EDITOR:vi} %f
+
+---
+
+# video .rmvb .flv .mkv
+
+regex/\.([rR][mM][vV][bB]|[fF][lL][vV]|[mM][kK][vV])$
+
+	Open=(mplayer %f &amp;amp;&amp;gt;/dev/null &amp;amp;)
+
+---
+
+# html .mht
+
+regex/\.([mM][hH][tT])$
+
+	Open=(opera %f &amp;amp;&amp;gt;/dev/null &amp;amp;)
+
+---
+
+### end tsaikd ###
+
+---
+
+...
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Qos 測試結果</title>
+      <link>http://tsaikd.org/blog/2007/07-10-Qos-%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/</link>
+      <pubDate>Tue, 10 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-10-Qos-%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/</guid>
+      <description>&lt;p&gt;剛剛在機器上測試了一下 Qos 的效果&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;環境&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -rmsp
+Linux 2.6.20-gentoo-r8 x86_64 AMD Athlon(tm) 64 X2 Dual Core Processor 3800+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;測試軟體&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;rtorrent&lt;/li&gt;
+&lt;li&gt;amuled&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;測試方式一&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# tc class show dev ppp0
+class htb 10:10 parent 10:1 prio 0 rate 8000bit ceil 256000bit burst 1610b cburst 1920b
+class htb 10:1 root rate 256000bit ceil 256000bit burst 1920b cburst 1920b
+
+...(略)
+
+class htb 10:60 parent 10:1 prio 0 rate 8bit ceil 256000bit burst 1600b cburst 1920b
+class htb 10:70 parent 10:1 prio 7 rate 8bit ceil 256000bit burst 1600b cburst 1920b
+
+...(略)
+
+---
+
+# iptables -t mangle -vnL POSTROUTING
+
+...(略)
+
+    0     0 MARK       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp spt:4662 MARK set 0x3c
+    0     0 MARK       udp  --  *      *       0.0.0.0/0            0.0.0.0/0           udp spt:4665 MARK set 0x3c
+    0     0 MARK       udp  --  *      *       0.0.0.0/0            0.0.0.0/0           udp spt:4672 MARK set 0x3c
+    0     0 MARK       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp spt:6890 MARK set 0x46
+
+...(略)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;把 amule 的 priority 設為 0&lt;/p&gt;
+
+&lt;p&gt;把 rtorrent 的 priority 設為 7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;結果一&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;amule 的速度經過一段時間後在 15 KBytes/s 左右穩定下來&lt;/p&gt;
+
+&lt;p&gt;rtorrent 的速度經過一段時間後在 10 KBytes/s 左右穩定下來&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;測試方式二&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# tc class show dev ppp0
+class htb 10:10 parent 10:1 prio 0 rate 8000bit ceil 256000bit burst 1610b cburst 1920b
+class htb 10:1 root rate 256000bit ceil 256000bit burst 1920b cburst 1920b
+
+...(略)
+
+class htb 10:60 parent 10:1 prio 7 rate 8bit ceil 256000bit burst 1600b cburst 1920b
+class htb 10:70 parent 10:1 prio 0 rate 8bit ceil 256000bit burst 1600b cburst 1920b
+
+...(略)
+
+---
+
+# iptables -t mangle -vnL POSTROUTING
+
+...(略)
+
+    0     0 MARK       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp spt:4662 MARK set 0x3c
+    0     0 MARK       udp  --  *      *       0.0.0.0/0            0.0.0.0/0           udp spt:4665 MARK set 0x3c
+    0     0 MARK       udp  --  *      *       0.0.0.0/0            0.0.0.0/0           udp spt:4672 MARK set 0x3c
+    0     0 MARK       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp spt:6890 MARK set 0x46
+
+...(略)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;把 amule 的 priority 設為 7&lt;/p&gt;
+
+&lt;p&gt;把 rtorrent 的 priority 設為 0&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;結果二&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;amule 的速度經過一段時間後在 10 KBytes/s 左右穩定下來&lt;/p&gt;
+
+&lt;p&gt;rtorrent 的速度經過一段時間後在 15 KBytes/s 左右穩定下來&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;結論:&lt;/p&gt;
+
+&lt;p&gt;Qos 的 priority 效果不彰&lt;/p&gt;
+
+&lt;p&gt;最高的 0 跟最低的 7 在實際上其實只有差一點&lt;/p&gt;
+
+&lt;p&gt;更不要說其他的 1~6 的中間值了&amp;hellip;@_@&lt;/p&gt;
+
+&lt;p&gt;還是說 htb 的特色就是這樣??&lt;/p&gt;
+
+&lt;p&gt;還是我的設定有問題&amp;hellip;@_@&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>用 curl 抓檔案</title>
+      <link>http://tsaikd.org/blog/2007/07-03-%E7%94%A8curl%E6%8A%93%E6%AA%94%E6%A1%88/</link>
+      <pubDate>Tue, 03 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-03-%E7%94%A8curl%E6%8A%93%E6%AA%94%E6%A1%88/</guid>
+      <description>&lt;p&gt;一般抓檔案是用 wget&lt;/p&gt;
+
+&lt;p&gt;不過 wget 好像只能用 PROTOCOL_proxy 的方式使用 proxy&lt;/p&gt;
+
+&lt;p&gt;有時候要透過 socks V5 之類的 tunnel 來抓的話就不行了&lt;/p&gt;
+
+&lt;p&gt;只好改用 curl&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;紀錄一下好用的參數&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--socks host[:port]
+
+    設定 socks proxy 的 ip 跟 port
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;-C offset
+
+    設定續傳的位置
+
+    用 -C - 的話 curl 會自動偵測
+
+    一般都會讓他自動偵測吧...Orz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;-o file
+
+    指定輸出的檔案名稱
+
+    因為 curl 預設是輸出到 stdout 上
+
+    所以要指定一下
+
+-O
+
+    自動抓檔名
+
+    如果可以用 -O 的話....應該不會用 -o 吧...^_^
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>我的 samba 見鬼了</title>
+      <link>http://tsaikd.org/blog/2007/06-26-%E6%88%91%E7%9A%84samba%E8%A6%8B%E9%AC%BC%E4%BA%86/</link>
+      <pubDate>Tue, 26 Jun 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/06-26-%E6%88%91%E7%9A%84samba%E8%A6%8B%E9%AC%BC%E4%BA%86/</guid>
+      <description>&lt;p&gt;因為用 gentoo 的關係&lt;/p&gt;
+
+&lt;p&gt;所有的更新都從 portage 上弄的&lt;/p&gt;
+
+&lt;p&gt;我的小 NB 不想再存一次 portage 的資料&lt;/p&gt;
+
+&lt;p&gt;所以用 samba 做遠端存取&lt;/p&gt;
+
+&lt;p&gt;之前就有點怪怪的&lt;/p&gt;
+
+&lt;p&gt;在 NB 上會多出一些本來沒有的檔案&lt;/p&gt;
+
+&lt;p&gt;可是在 server 上又看不到&lt;/p&gt;
+
+&lt;p&gt;不過一開始還沒啥影響&lt;/p&gt;
+
+&lt;p&gt;今天我在更新 kdbashlib 的時候&lt;/p&gt;
+
+&lt;p&gt;剛好也要更新 NB 上的 portage 版本&lt;/p&gt;
+
+&lt;p&gt;然後就發現一個神奇的現象&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;server 上的 samba 分享設定&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[portage]
+	path = /usr/portage
+
+	...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;NB 上用 cifs 去 mount //server/portage -&amp;gt; /usr/portage&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls /usr/portage
+app-accessibility/  dev-python/        media-libs/       sci-misc/
+app-admin/          dev-ruby/          media-plugins/    sci-physics/
+app-antivirus/      dev-scheme/        media-radio/      sci-visualization/
+app-arch/           dev-tcltk/         media-sound/      scripts/
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls /usr/portage/sys-apps/portage/
+app-accessibility/  dev-python/        media-libs/       sci-misc/
+app-admin/          dev-ruby/          media-plugins/    sci-physics/
+app-antivirus/      dev-scheme/        media-radio/      sci-visualization/
+app-arch/           dev-tcltk/         media-sound/      scripts/
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls /usr/portage/sys-apps/portage/sys-apps/portage
+ChangeLog     portage-2.0.51.22-r3.ebuild  portage-2.1.2.9.ebuild
+files/        portage-2.1.1-r2.ebuild      portage-2.1.3_rc4.ebuild
+Manifest      portage-2.1.2.2.ebuild       portage-2.1.3_rc5.ebuild
+metadata.xml  portage-2.1.2.7.ebuild
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;怎麼會有 &amp;ldquo;/usr/portage/sys-apps/portage/sys-apps/portage&amp;rdquo; 這種東西啊&amp;hellip;@_@&lt;/p&gt;
+
+&lt;p&gt;然後我把 server 上的分享名稱改掉&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[port]
+	path = /usr/portage
+
+	...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;NB 上用 cifs 去 mount //server/port -&amp;gt; /usr/portage&lt;/p&gt;
+
+&lt;p&gt;一切都正常了&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;這是 bug 乎??&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt; $ eix -e samba
+[I] net-fs/samba
+     Available versions:  3.0.24 3.0.24-r3
+     Installed versions:  3.0.24-r3(06:23:40 PM 06/02/2007)(acl -async -automount -caps -cups -doc -examples -fam -kerberos kernel_linux -ldap -linguas_ja -linguas_pl -oav pam python -quotas readline -selinux -swat -syslog -winbind)
+     Homepage:            http://www.samba.org/ http://www.openantivirus.org/projects.php
+     Description:         SAMBA is a suite of SMB and CIFS client/server programs for UNIX
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kernel 2.6.20</title>
+      <link>http://tsaikd.org/blog/2007/06-18-Kernel-2.6.20/</link>
+      <pubDate>Mon, 18 Jun 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/06-18-Kernel-2.6.20/</guid>
+      <description>&lt;p&gt;前幾天宿舍停電&lt;/p&gt;
+
+&lt;p&gt;我順便回去高雄&lt;/p&gt;
+
+&lt;p&gt;也順便更新一下 kernel (2.6.19 -&amp;gt; 2.6.20)&lt;/p&gt;
+
+&lt;p&gt;不幸的是&lt;/p&gt;
+
+&lt;p&gt;我從高雄連回宿舍時&lt;/p&gt;
+
+&lt;p&gt;發現 iptable 爛掉了&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;然後從遠端改網路的設定就像在高空走鋼索一樣&lt;/p&gt;
+
+&lt;p&gt;一不小心就會掛點&lt;/p&gt;
+
+&lt;p&gt;而且還真的弄爛了&lt;/p&gt;
+
+&lt;p&gt;直到今天回到宿舍才修好&lt;/p&gt;
+
+&lt;p&gt;iptable 爛掉的原因是在 kernel 中的選項改名字了&lt;/p&gt;
+
+&lt;p&gt;要重新選一次&amp;hellip;@_@&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mplayer 小技巧</title>
+      <link>http://tsaikd.org/blog/2007/06-12-mplayer-%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 12 Jun 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/06-12-mplayer-%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description>&lt;p&gt;使用 MPlayer 小技巧&lt;/p&gt;
+
+&lt;p&gt;其實我本身遇到的問題主要是字幕方面&lt;/p&gt;
+
+&lt;p&gt;簡記一下&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;使用 *.ssa&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;-ass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指定字幕編碼&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;-subcp big5
+-subcp utf16
+-utf8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指定字幕語言&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;-slang en
+-sid 0
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PowerTop</title>
+      <link>http://tsaikd.org/blog/2007/06-03-PowerTop/</link>
+      <pubDate>Sun, 03 Jun 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/06-03-PowerTop/</guid>
+      <description>&lt;p&gt;Intel 新玩具 - PowerTop!&lt;/p&gt;
+
+&lt;p&gt;看起來好像還蠻有趣的&lt;/p&gt;
+
+&lt;p&gt;可惜 Gentoo 還沒收進 portage&lt;/p&gt;
+
+&lt;p&gt;不過為了滿足我的好奇心&lt;/p&gt;
+
+&lt;p&gt;還是去官網下載回來試看看&lt;/p&gt;
+
+&lt;p&gt;結果在我的 kernel 2.6.20-r8 上找不到他要的選項&lt;/p&gt;
+
+&lt;p&gt;似乎一定要 kernel 2.6.21 以上才有&lt;/p&gt;
+
+&lt;p&gt;所以&amp;hellip;.最後我還是放棄了&lt;/p&gt;
+
+&lt;p&gt;再等一陣子看看有什麼後續的消息吧&amp;hellip;Orz&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pidgin (Gaim)</title>
+      <link>http://tsaikd.org/blog/2007/05-15-Pidgin-%28Gaim%29/</link>
+      <pubDate>Tue, 15 May 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/05-15-Pidgin-%28Gaim%29/</guid>
+      <description>&lt;p&gt;Gaim 因為 AOL 商標問題而改名為 Pidgin&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;eix -e pidgin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;* net-im/pidgin
+     Available versions:  ~2.0.0
+     Homepage:            http://pidgin.im/
+     Description:         GTK Instant Messenger client
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>網路流量監控 -- ntop</title>
+      <link>http://tsaikd.org/blog/2007/05-13-%E7%B6%B2%E8%B7%AF%E6%B5%81%E9%87%8F%E7%9B%A3%E6%8E%A7-ntop/</link>
+      <pubDate>Sun, 13 May 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/05-13-%E7%B6%B2%E8%B7%AF%E6%B5%81%E9%87%8F%E7%9B%A3%E6%8E%A7-ntop/</guid>
+      <description>&lt;p&gt;在 Bandwidth Monitoring Tools For Linux 看到很多不同的監控軟體&lt;/p&gt;
+
+&lt;p&gt;之前雖然有在用 MRTG , 不過在重灌之後就沒有裝了&lt;/p&gt;
+
+&lt;p&gt;而已 MRTG 的設定還有點麻煩&lt;/p&gt;
+
+&lt;p&gt;所以就找個比較容易使用的東西來取代 MRTG&lt;/p&gt;
+
+&lt;p&gt;我選中的就是 &amp;ldquo;ntop&amp;rdquo;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;由於目前最新版的 ntop-3.2-r3 還在 ~amd64&lt;/p&gt;
+
+&lt;p&gt;所以先把 keyword 設好&lt;/p&gt;
+
+&lt;p&gt;emerge 完了之後&lt;/p&gt;
+
+&lt;p&gt;要先設定管理密碼 &lt;code&gt;ntop --set-admin-password&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然後再改一下 /etc/conf.d/ntop 就可以用了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NTOP_OPTS=&amp;quot;-u ntop -P /var/lib/ntop --interface eth0,eth1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;ps:&lt;/p&gt;
+
+&lt;p&gt;預設的 http port 是 3000&lt;/p&gt;
+
+&lt;p&gt;/var/lib/ntop 的 owner 要是 ntop:ntop&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>bash debug mode</title>
+      <link>http://tsaikd.org/blog/2007/05-12-bash-debug-mode/</link>
+      <pubDate>Sat, 12 May 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/05-12-bash-debug-mode/</guid>
+      <description>&lt;p&gt;在 Gentoo Weekly Newsletter: 7 May 2007 看到的小技巧&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Running a bash command in debug mode&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ bash -x sample_cron_job
++ /bin/echo &#39;Hello World!&#39;
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scrollback with PuTTY &#43; screen</title>
+      <link>http://tsaikd.org/blog/2007/05-10-Scrollback-with-PuTTY-screen/</link>
+      <pubDate>Thu, 10 May 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/05-10-Scrollback-with-PuTTY-screen/</guid>
+      <description>&lt;p&gt;Enable scrollback with PuTTY+screen&lt;/p&gt;
+
+&lt;p&gt;紀錄一下設定方式&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;停用 PuTTY 的 alternate screen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;Terminal / Features / Disable switching to alternate terminal screen
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;停用 screen 的 alternate screen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;加一行 &lt;code&gt;termcapinfo xterm ti@:te@&lt;/code&gt; 到 screenrc&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

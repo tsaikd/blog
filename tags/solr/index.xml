@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solr on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/solr/</link>
+    <description>Recent content in Solr on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Wed, 13 Nov 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/solr/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Solr Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</link>
+      <pubDate>Wed, 13 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;jsonp with jquery&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;jQuery.ajax({
+  url: mySolrUrl,
+  data: myQueryParameters,
+  success: mySuccessCallback,
+  dataType: &amp;quot;jsonp&amp;quot;,
+  jsonp: &amp;quot;json.wrf&amp;quot;&amp;quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;custom field name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;fl=price:price_pl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://solr.pl/en/2011/11/22/solr-4-0-new-fl-parameter-functionalities-first-look/&#34;&gt;http://solr.pl/en/2011/11/22/solr-4-0-new-fl-parameter-functionalities-first-look/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xplus3.net/2010/09/21/solr-and-jsonp/&#34;&gt;http://xplus3.net/2010/09/21/solr-and-jsonp/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

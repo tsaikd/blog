@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    autofs // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="autofs" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2009/09-13-autofs/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安裝套件:04c6e90faac2675aa89e2176d2eec7d8">安裝套件</a>
+<ul>
+<li><a href="#要掛載-samba-的話就要裝-smbfs:04c6e90faac2675aa89e2176d2eec7d8">要掛載 samba 的話就要裝 smbfs</a></li>
+</ul></li>
+<li><a href="#設定:04c6e90faac2675aa89e2176d2eec7d8">設定</a></li>
+<li><a href="#掛載-lvm:04c6e90faac2675aa89e2176d2eec7d8">掛載 LVM</a></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2009/09-13-autofs/">autofs</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>13</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2009</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            
+
+<p>用到的時候才會自動掛載磁碟</p>
+
+<p>這個其實還真的很方便</p>
+
+<p>不會拖到開機的速度</p>
+
+<p>用起來也很無痛(不過設定的時候就很痛了&hellip;=.=)</p>
+
+<p>趕快做筆記</p>
+
+<hr />
+
+<p>PS: 其實之前在公司就研究了很久了</p>
+
+<p>所以現在在家裡搞就快多了&hellip;XD</p>
+
+<hr />
+
+<h2 id="安裝套件:04c6e90faac2675aa89e2176d2eec7d8">安裝套件</h2>
+
+<pre><code>apt-get install autofs
+</code></pre>
+
+<h3 id="要掛載-samba-的話就要裝-smbfs:04c6e90faac2675aa89e2176d2eec7d8">要掛載 samba 的話就要裝 smbfs</h3>
+
+<pre><code>apt-get install smbfs
+</code></pre>
+
+<h2 id="設定:04c6e90faac2675aa89e2176d2eec7d8">設定</h2>
+
+<ul>
+<li>/etc/auto.master</li>
+</ul>
+
+<pre><code>/autofs /etc/auto.mnt --timeout=60
+</code></pre>
+
+<ul>
+<li>/etc/auto.mnt
+
+<ul>
+<li>掛載 samba</li>
+<li>/root/pw/smb 是掛載時要用到的 username &amp; password</li>
+</ul></li>
+</ul>
+
+<pre><code>my_smb_share	-fstype=cifs,credentials=/root/pw/smb,uid=tsaikd,gid=tsaikd,file_mode=0600,dir_mode=0700	://192.168.1.1/my_smb_share
+</code></pre>
+
+<blockquote>
+<ul>
+<li>如果要掛的是隱藏的分享記得要加跳脫字元 &lsquo;\&rsquo;</li>
+</ul>
+</blockquote>
+
+<pre><code>my_smb_hidden	-fstype=cifs,credentials=/root/pw/smb,uid=tsaikd,gid=tsaikd,file_mode=0600,dir_mode=0700	://192.168.1.1/my_smb_hidden\$
+</code></pre>
+
+<h2 id="掛載-lvm:04c6e90faac2675aa89e2176d2eec7d8">掛載 LVM</h2>
+
+<p>因為我很懶&hellip;甘脆一次把 LVM 裡的目錄全部放進去&hellip;haha</p>
+
+<pre><code>* -fstype=reiserfs,notail,noatime :/dev/vg/&amp;
+</code></pre>
+
+<p>之後要用的話就設一堆 symlink 吧</p>
+
+<ul>
+<li>顯示目錄的內容</li>
+</ul>
+
+<pre><code>cd ~/
+ln -s /autofs/my_smb_share
+ls -l my_smb_share
+</code></pre>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-kdblog" href="http://tsaikd.org/blog/tags/kdblog">KDBlog</a>,
+	                
+	                <a class="post-tag post-tag-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F">主機</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2009/09-20-%E4%BF%AE%E6%AD%A3-KDBlog-%E8%A9%95%E8%AB%96%E8%B7%AF%E5%BE%91/">修正 KDBlog 評論路徑</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/">命令提示字元 - 快速編輯</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

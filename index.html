@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="TsaiKD Blog" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+    <div id="layout" class="pure-g">
+        <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+        <div class="content pure-u-1 pure-u-md-3-4">
+            <a name="top"></a>
+            
+
+          <div class="posts">
+            
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/">中等規模環境下的集中式 Log 管理及分析</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>23</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jan</span> <span class="post-date-year">2015</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-gogstash" href="http://tsaikd.org/blog/tags/gogstash">gogstash</a>
+                    
+                    <a class="post-category post-category-redis" href="http://tsaikd.org/blog/tags/redis">Redis</a>
+                    
+                    <a class="post-category post-category-logstash" href="http://tsaikd.org/blog/tags/logstash">Logstash</a>
+                    
+                    <a class="post-category post-category-elasticsearch" href="http://tsaikd.org/blog/tags/elasticsearch">ElasticSearch</a>
+                    
+                    <a class="post-category post-category-kibana" href="http://tsaikd.org/blog/tags/kibana">Kibana</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤 ，也可以看出某些趨勢，提早做出一些可能有影響的決策。目前其實有不少的工具都可以用 在處理 Log 集中管理的問題，我這邊也提供一個中等規模的解決方案。 在小型的環境(單機，少量程式) Log 其實隨便亂放都沒差，通常都只有在出問題的時候才 會去撈 Log 協助排除問題。在大型的環境(數以百計的主機跟 App 以上)，ㄜ~~~~我沒經驗 不敢隨意猜測。所以這邊是用一個數十台 MongoDB 的環境來討論 Log 集中管理的處理 方式。 在 Logstash 的使用情境下，有幾種典型角色： &gt; 這邊偷用了 Logstash Document 的圖 Shipper 蒐集 Broker 暫存 Indexer 解析 Storage &amp; Search 永久儲存 Web Interface 分析界面 Shipper + Broker + Indexer 在小型的環境其實可以整合在同一個 Logstash 裡面一次 處理，不過一開始也有提到，在小型的環境，哪有人在搞複雜的 Log 分析&hellip;XD，既然要做 就一次做到位吧。 不過這邊還有另一個問題，就是 Logstash 是用 Ruby 寫的，然 後透過 Java 來執行，所以需要安裝 Java，但是像在 MongoDB 的環境，我不 想在機器上安裝太多額外的東西，而且 Java 其實還蠻肥的，如果只是單純的 Shipper 角色，沒有必要搞那麼多有的沒的套件把系統弄髒，所以我另外開發了一個小工具 gogstash
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/12-25-Docker-infra/">Docker Infra 架構簡介與實例</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>25</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>
+                    
+                    <a class="post-category post-category-etcd" href="http://tsaikd.org/blog/tags/etcd">Etcd</a>
+                    
+                    <a class="post-category post-category-skydns" href="http://tsaikd.org/blog/tags/skydns">SkyDNS</a>
+                    
+                    <a class="post-category post-category-registrator" href="http://tsaikd.org/blog/tags/registrator">Registrator</a>
+                    
+                    <a class="post-category post-category-nginx" href="http://tsaikd.org/blog/tags/nginx">Nginx</a>
+                    
+                    <a class="post-category post-category-confd" href="http://tsaikd.org/blog/tags/confd">Confd</a>
+                    
+                    <a class="post-category post-category-fig" href="http://tsaikd.org/blog/tags/fig">Fig</a>
+                    
+                    <a class="post-category post-category-docker-builder" href="http://tsaikd.org/blog/tags/docker-builder">Docker-Builder</a>
+                    
+                    <a class="post-category post-category-kdocker-web" href="http://tsaikd.org/blog/tags/kdocker-web">KDocker-Web</a>
+                    
+                    <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  這邊介紹的架構可以做到什麼效果? 開新的 Web App 就可以立刻透過新的 domain name 去連線 開一大堆同名的 Web App 就可以立刻分流 系統基本架構圖 Etcd 存放設定的 Cluster DB SkyDNS 從 Etcd 讀取設定, 讓使用者查詢的 DNS Server Confd 從 Etcd 讀取設定, Reload Nginx Registrator 監聽 Docker Events, 將 Container 資訊寫入 Etcd Nginx 網頁 r-Proxy 實作部份 準備 VM/Host 如果只是要先測試的話, 可以只用一台 VM/Host, 不過考慮到系統容錯的話, 建議準備至少三台不同的機器來建構底層架構 設定 Docker 這邊在 Ubuntu 上安裝 Docker 做為範例, 其他平台請參考官網說明文件 利用 apt 安裝 lxc-docker echo &quot;deb http://get.docker.io/ubuntu docker main&quot; &gt; /etc/apt/sources.list.d/docker.list apt-get update
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/12-25-Docker-infra/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/09-14-Consul-trap/">Consul 採到雷</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>14</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>
+                    
+                    <a class="post-category post-category-consul" href="http://tsaikd.org/blog/tags/consul">Consul</a>
+                    
+                    <a class="post-category post-category-lmdb" href="http://tsaikd.org/blog/tags/lmdb">LMDB</a>
+                    
+                    <a class="post-category post-category-zfs" href="http://tsaikd.org/blog/tags/zfs">ZFS</a>
+                    
+                    <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  今天試用 consul ， 看網路上的文件好像還蠻好裝的， 沒想到還是遇到神奇的雷， 目前懷疑是跟 ZFS 有關。 環境 $ uname -rsvmo Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux $ docker -v Docker version 1.2.0, build fa7b24f consul 版本是 v0.4.0 現象 $ docker run progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary ==&gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1 ==&gt; Starting Consul agent... ==&gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented 啟動 consul 就爆炸了&hellip;.&gt;_&lt; google 不到什麼有用的資料， 只好自己 trace code 了&hellip;Orz 追了大半天， 發現問題出在 consul call LMDB (Lightning Memory-Mapped Database) 的時候會死掉。 目前懷疑跟 ZFS 不支援 AIO 有關， 因為 MySQL 跑在 ZFS 上也有災情。 解法 $ docker run -v /tmp progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled!
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/09-14-Consul-trap/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>
+                    
+                    <a class="post-category post-category-java" href="http://tsaikd.org/blog/tags/java">Java</a>
+                    
+                    <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/tags/eclipse">Eclipse</a>
+                    
+                    <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  看到越來越多人在往雲端開發的方向在玩， 比較終極的做法當然就是把 Browser 變成 IDE ， 不過就目前看來， 技術上還沒有一個比較領先的做法， 只好先找比較無痛的方向來玩玩&hellip;hehehe 今天嘗試了一個新的做法， 在 Ubuntu Desktop 上面裝 docker ， 在 docker 裡面跑 eclipse 來開發， 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西， 先看一下成功的畫面吧！ 基本上就是先建一個 eclipse 的 container ， 跑起來之後再用 ssh 連進去執行 eclipse ， 需要 ssh 的原因是為了要把本機的 X11 forwarding 過去， 本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ， 不過試了一陣子都搞不定， 只好先暫時放棄了。
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/07-10-Try-CoreOS/">Try CoreOS</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>10</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-coreos" href="http://tsaikd.org/blog/tags/coreos">CoreOS</a>
+                    
+                    <a class="post-category post-category-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  新玩具 CoreOS ，設計理念跟 Ubuntu 差蠻多的， 光是安裝就花了不少時間在試，記錄一下奇怪的雷。 幾個重點先說一下： Cloud-Config 最前面的 #cloud-config 不能省 Cloud-Config 請按照官方文件上面的範例寫，不要畫蛇添足 Cloud-Config 會放在 /var/lib/coreos-install/user_data ，文件上說每次開機都會跑，但是 user 已經存在的話就不會再加一次 下面是安裝過程，已經有簡化一些了還是落落長，最後設定請直接 END 先開個 VM 試試 (一號機) 在 Installing CoreOS to Disk 看到有趣的安裝 script ， 用 SystemRescueCD 開機之後， 抓 coreos-install 下來， 執行 coreos-install -d /dev/sda ， 然後他會下載一百多 MB 的檔案來裝到硬碟， 一切順利，重開機，登入，預設帳密是啥？ 嗯～～看來是要用 Cloud-Config 來初始化個人設定，該重裝了～～ 感覺好像會重裝很多次，每次都要下載一百多 MB 好像有點浪費頻寬， squid 該你出場了！ 重開 VM 進 SystemRescueCD 環境 (二號機) 設定 http_proxy ， 抓 coreos-install 下來， 寫 cloud-config.yaml ssh_authorized_keys: - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/07-10-Try-CoreOS/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+        </div>
+
+        <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+        </div>
+    </div>
+    
+</body>
+</html>

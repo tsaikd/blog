@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ldap on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/ldap/</link>
+    <description>Recent content in Ldap on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Java LDAP Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
+      <pubDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+	/**
+	 * AD LDAP 登入認證
+	 *
+	 * @param ldap_url like ldap://x.x.x.x:389/DC=mydomain,DC=com
+	 * @param account like mydomain\\username
+	 * @param password
+	 * @return String[] array 0 :0 success,1 fail,2 LDAP connect fail,3 unknow
+	 */
+	public String[] LDAP_AUTH_AD(String ldap_url, String account, String password) {
+		String[] returnStr = new String[2];
+		Hashtable&amp;lt;String, String&amp;gt; env = new Hashtable&amp;lt;String, String&amp;gt;();
+		env.put(Context.INITIAL_CONTEXT_FACTORY, &amp;quot;com.sun.jndi.ldap.LdapCtxFactory&amp;quot;);
+		env.put(Context.PROVIDER_URL, ldap_url);
+		env.put(Context.SECURITY_PRINCIPAL, account);
+		env.put(Context.SECURITY_CREDENTIALS, password);
+
+		LdapContext ctx = null;
+		try {
+			ctx = new InitialLdapContext(env, null);
+			/* // search
+			 * String searchUser = &amp;quot;USERNAME&amp;quot;;
+			 * SearchControls constraints = new SearchControls();
+			 * constraints.setSearchScope(SearchControls.SUBTREE_SCOPE);
+			 * String[] attrIDs = {&amp;quot;distinguishedName&amp;quot;, &amp;quot;sn&amp;quot;, &amp;quot;givenname&amp;quot;, &amp;quot;mail&amp;quot;, &amp;quot;telephonenumber&amp;quot;};
+			 * constraints.setReturningAttributes(attrIDs);
+			 * String searchFilter = String.format(&amp;quot;(&amp;amp;(objectClass=user)(sAMAccountName=%1$s))&amp;quot;, searchUser);
+			 * NamingEnumeration answer = ctx.search(&amp;quot;&amp;quot;, searchFilter, constraints);
+			 * if (answer.hasMore()) {
+			 *		Attributes attrs = ((SearchResult) answer.next()).getAttributes();
+			 *		System.out.println(attrs);
+			 * }
+			 */
+			returnStr[0] = &amp;quot;0&amp;quot;;
+			returnStr[1] = &amp;quot;&amp;quot;;
+		} catch (javax.naming.AuthenticationException e) {
+			// invalid user account
+			returnStr[0] = &amp;quot;1&amp;quot;;
+			returnStr[1] = e.toString(true);
+		} catch (javax.naming.CommunicationException e) {
+			// Can&#39;t connect to ldap server!
+			returnStr[0] = &amp;quot;2&amp;quot;;
+			returnStr[1] = e.toString(true);
+		} catch (Exception e) {
+			// unexcepted error
+			e.printStackTrace();
+			returnStr[0] = &amp;quot;3&amp;quot;;
+			returnStr[1] = e.toString();
+		}
+		if (ctx != null) {
+			try {
+				ctx.close();
+			} catch (NamingException e) {
+				e.printStackTrace();
+			}
+		}
+		return returnStr;
+	}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://polinwei.blogspot.tw/2009/03/java-ldap-ad.html&#34;&gt;http://polinwei.blogspot.tw/2009/03/java-ldap-ad.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/sand_ant/article/details/11739791&#34;&gt;http://blog.csdn.net/sand_ant/article/details/11739791&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

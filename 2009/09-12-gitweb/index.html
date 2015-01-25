@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    gitweb // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="gitweb" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2009/09-12-gitweb/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2009/09-12-gitweb/">gitweb</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2009</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            <p>之前參考 Ku 的做法</p>
+
+<p>在 gitweb.conf 裡面重寫 git_get_project_url_list 去改變 gitweb 裡面 URL 的欄位</p>
+
+<p>剛剛看到 <a href="http://ask.metafilter.com/120273/Getting-redirects-to-work-in-Apache-for-Gitweb">Getting redirects to work in Apache for Gitweb</a></p>
+
+<p>裡面是用 <code>@git_base_url_list = ('git://my.domain.com');</code></p>
+
+<p>這個應該才是比較正統的做法</p>
+
+<hr />
+
+<p>另外剛剛那個網頁提到把 git 的網址改成比較好看的樣式</p>
+
+<p>我試了一下</p>
+
+<p>感覺只有改到 project 那層的目錄</p>
+
+<p>進去之後的網址還是一樣醜</p>
+
+<p>所以就算了</p>
+
+<hr />
+
+<p>所以就把之前那種 hack 的寫法改掉了</p>
+
+<ul>
+<li>gitweb.cgi</li>
+</ul>
+
+<pre><code>$projectroot = &quot;/var/www/www.tsaikd.org/htdocs/git&quot;;
+$git_temp = &quot;/tmp&quot;;
+$home_text = &quot;indextext.html&quot;;
+$projects_list = $projectroot;
+$stylesheet = $home_link.&quot;/gitweb.css&quot;;
+$logo = $home_link.&quot;/git-logo.png&quot;;
+$favicon = $home_link.&quot;/git-favicon.png&quot;;
+$feature{'snapshot'}{'default'} = [&quot;tbz2&quot;, &quot;zip&quot;];
+#sub git_get_project_url_list {
+#	my $project = shift;
+##	$project =~ s:/::g;
+#	return (&quot;http://www.tsaikd.org/git/$project/&quot;);
+#}
+@git_base_url_list = (&quot;http://www.tsaikd.org/git&quot;, &quot;tsaikd:&quot;);
+#$feature{'pathinfo'}{'default'} = [1];
+#$my_uri = $home_link.&quot;/gitweb.cgi&quot;;
+</code></pre>
+
+<ul>
+<li>.htaccess</li>
+</ul>
+
+<pre><code>DirectoryIndex gitweb.cgi
+AddHandler cgi-script .cgi
+&lt;Files gitweb.cgi&gt;
+    Options +ExecCGI
+&lt;/Files&gt;
+
+RewriteEngine On
+RewriteBase /git/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
+</code></pre>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-kdblog" href="http://tsaikd.org/blog/tags/kdblog">KDBlog</a>,
+	                
+	                <a class="post-tag post-tag-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F">主機</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/">命令提示字元 - 快速編輯</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2009/09-12-sudoers/">sudoers</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

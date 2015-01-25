@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Try CoreOS // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Try CoreOS" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2014/07-10-Try-CoreOS/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li><a href="#先開個-vm-試試-一號機:04c6e90faac2675aa89e2176d2eec7d8">先開個 VM 試試 (一號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-二號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (二號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-三號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (三號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-四號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (四號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-五號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (五號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-六號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (六號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-七號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (七號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-八號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (八號機)</a></li>
+<li><a href="#重開-vm-進-systemrescuecd-環境-九號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (九號機)</a></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2014/07-10-Try-CoreOS/">Try CoreOS</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>10</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2014</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            
+
+<p>新玩具 <a href="https://coreos.com/">CoreOS</a> ，設計理念跟 <a href="http://www.ubuntu.com/">Ubuntu</a> 差蠻多的，
+光是安裝就花了不少時間在試，記錄一下奇怪的雷。
+幾個重點先說一下：</p>
+
+<ol>
+<li><a href="https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/">Cloud-Config</a> 最前面的 <code>#cloud-config</code> 不能省</li>
+<li><a href="https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/">Cloud-Config</a> 請按照官方文件上面的範例寫，不要畫蛇添足</li>
+<li><a href="https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/">Cloud-Config</a> 會放在 /var/lib/coreos-install/user_data ，文件上說每次開機都會跑，但是 user 已經存在的話就不會再加一次</li>
+</ol>
+
+<p>下面是安裝過程，已經有簡化一些了還是落落長，最後設定請直接 END</p>
+
+<hr />
+
+<h1 id="先開個-vm-試試-一號機:04c6e90faac2675aa89e2176d2eec7d8">先開個 VM 試試 (一號機)</h1>
+
+<p>在 <a href="https://coreos.com/docs/running-coreos/bare-metal/installing-to-disk/">Installing CoreOS to Disk</a>
+看到有趣的安裝 script ，
+用 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 開機之後，
+抓 <a href="https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install">coreos-install</a> 下來，
+執行 <code>coreos-install -d /dev/sda</code> ，
+然後他會下載一百多 MB 的檔案來裝到硬碟，
+一切順利，重開機，登入，預設帳密是啥？</p>
+
+<p>嗯～～看來是要用 <a href="https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/">Cloud-Config</a> 來初始化個人設定，該重裝了～～
+感覺好像會重裝很多次，每次都要下載一百多 MB 好像有點浪費頻寬，
+<a href="http://www.squid-cache.org/">squid</a> 該你出場了！</p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-二號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (二號機)</h1>
+
+<p>設定 http_proxy ，
+抓 <a href="https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install">coreos-install</a> 下來，
+寫 cloud-config.yaml</p>
+
+<pre><code>ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<pre><code>coreos-install -d /dev/sda -c cloud-config.yaml
+</code></pre>
+
+<p>重開之後，用 SSH 登不進去？ &hellip; WTF &hellip;
+是不是要直接加帳號才對？</p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-三號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (三號機)</h1>
+
+<p>設定 http_proxy ，
+抓 <a href="https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install">coreos-install</a> 下來，
+寫 cloud-config.yaml</p>
+
+<pre><code>users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<pre><code>coreos-install -d /dev/sda -c cloud-config.yaml
+</code></pre>
+
+<p>怎麼又從 internet 下載一百多 MB 的檔案&hellip;
+<a href="http://www.squid-cache.org/">squid</a> 是壞掉了嗎？
+開始檢查 <a href="http://www.squid-cache.org/">squid</a> 設定，</p>
+
+<pre><code>refresh_pattern -i \.(rpm|cab|deb|exe|msi|msu|zip|tar|xz|bz|bz2|lzma|gz|tgz|rar|bin|7z|doc?|xls?|ppt?|pdf|nth|psd|sis)$ 10080 90% 43200 override-expire override-lastmod reload-into-ims ignore-no-cache ignore-private
+</code></pre>
+
+<p>應該 OK 啊！
+試一下 <code>wget http://free.nchc.org.tw/ubuntu/ls-lR.gz</code> ，
+沒問題啊，搗鼓半小時後放棄 <a href="http://www.squid-cache.org/">squid</a> 方案，
+直接改 <a href="https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install">coreos-install</a> 比較快，
+把</p>
+
+<ul>
+<li><a href="https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install">coreos-install</a></li>
+<li><a href="http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2">http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2</a></li>
+<li><a href="http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2.sig">http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2.sig</a></li>
+</ul>
+
+<p>放到區網的 Web Site ，
+修改 <a href="https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install">coreos-install</a> ，
+噢，剛剛好像有試裝一次 <a href="https://coreos.com/">CoreOS</a> ，都還沒看成果就跑題了，該重開機了。</p>
+
+<p>SSH 登不進去，密碼也登不進去，這 <a href="https://coreos.com/">CoreOS</a> 也太渣了吧！
+那個設定檔怎麼好像不太整齊， user 下面的子項目怎麼只有 name 前面有 <code>-</code></p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-四號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (四號機)</h1>
+
+<pre><code>users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<p>SSH 登不進去，密碼也登不進去，
+應該是哪裡出了問題，會不會是我的設定檔他根本不吃！</p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-五號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (五號機)</h1>
+
+<pre><code>hostname: coreos-test
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<p>果然連 hostname 都沒吃到，重新多看幾次文件，每個範例好像前面都有加 <code>#cloud-config</code></p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-六號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (六號機)</h1>
+
+<pre><code>#cloud-config
+
+hostname: coreos-test
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<p>這次 hostname 有吃到了，
+不過還是登不進去啊！
+等等文件上有說</p>
+
+<pre><code>The ssh_authorized_keys parameter adds public SSH keys which will be authorized for the core user.
+</code></pre>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-七號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (七號機)</h1>
+
+<pre><code>#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<p>SSH core 這個 user 終於進去了！
+不過新建的 user 還是不行。
+等等，我剛剛好像有把設定檔的格式加了幾個 <code>-</code></p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-八號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (八號機)</h1>
+
+<pre><code>#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+</code></pre>
+
+<p>終於進去了！接下來就是要把 <a href="https://github.com/tsaikd/kdocker-web">kdocker-web</a> 接上去了。</p>
+
+<hr />
+
+<h1 id="重開-vm-進-systemrescuecd-環境-九號機:04c6e90faac2675aa89e2176d2eec7d8">重開 VM 進 <a href="http://www.sysresccd.org/">SystemRescueCD</a> 環境 (九號機)</h1>
+
+<pre><code>#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+coreos:
+  units:
+    - name: docker.service
+      command: restart
+      content: |
+        [Unit]
+        Description=Docker Application Container Engine
+        Documentation=http://docs.docker.io
+
+        [Service]
+        Environment=&quot;TMPDIR=/var/tmp/&quot;
+        ExecStartPre=/bin/mount --make-rprivate /
+        # Run docker but don't have docker automatically restart
+        # containers. This is a job for systemd and unit files.
+        ExecStart=/usr/bin/docker -d -s=btrfs -r=false -H fd:// --api-enable-cors=true
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-tcp.socket
+      command: start
+      content: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=4243
+        Service=docker.service
+        BindIPv6Only=both
+
+        [Install]
+        WantedBy=sockets.target
+    - name: enable-docker-tcp.service
+      command: start
+      content: |
+        [Unit]
+        Description=Enable the Docker Socket for the API
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/systemctl enable docker-tcp.socket
+</code></pre>
+
+<p>大功告成！</p>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-coreos" href="http://tsaikd.org/blog/tags/coreos">CoreOS</a>,
+	                
+	                <a class="post-tag post-tag-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2014/05-24-Docker-container-bridge-host-physical-network/">Docker container bridge host physical network</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Qt // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Qt" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/tags/qt/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/tags/qt/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <a name="top"></a>
+      
+
+      <div class="posts">
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/12-05-gitweb-for-chromium-user-script/">gitweb for chromium user script</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-qt" href="http://tsaikd.org/blog/categories/qt">Qt</a>
+      					
+					        <a class="post-category post-category-%E7%A8%8B%E5%BC%8F" href="http://tsaikd.org/blog/categories/%E7%A8%8B%E5%BC%8F">程式</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	因為新版的 chromium 不能吃傳統的 greasemonkey 的 user script 它會把 user script 都轉成 extension 才能用 這點有機車到 而且我都把我的 user script 用 git 去管理 這樣一來我要更新就麻煩了&hellip;. 比較好的辦法是把所有的 user script 都轉成 chromium 的 extension 不過這樣子感覺好麻煩 只好退而求其次 讓 chromium 可以吃 gitweb 的網頁 patch gitweb.cgi 如下 diff gitweb.cgi.old gitweb.cgi --- gitweb.cgi.old 2009-12-05 22:39:01.000000000 +0800 +++ gitweb.cgi 2009-12-05 22:07:16.000000000 +0800 @@ -1006,6 +1006,12 @@ sub href { } } } + if (defined $params{&quot;file_name&quot;} + &amp;amp;&amp;amp; $params{&quot;file_name&quot;} =~ /\.user\.js$/ + &amp;amp;&amp;amp; defined $params{&quot;action&quot;} + &amp;amp;&amp;amp; $params{&quot;action&quot;} eq &quot;blob_plain&quot;) { + $href .= $params{&quot;file_name&quot;}; + } $href .= &quot;?&quot; .
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/12-05-gitweb-for-chromium-user-script/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/08-16-Qt-Application-Version/">Qt Application Version</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>16</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-qt" href="http://tsaikd.org/blog/categories/qt">Qt</a>
+      					
+					        <a class="post-category post-category-%E7%A8%8B%E5%BC%8F" href="http://tsaikd.org/blog/categories/%E7%A8%8B%E5%BC%8F">程式</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	要在 Qt on windows 的程式上加入版本訊息其實是可以的 我在 Google 上好像都找不到相關的文章 只好自己從 Qt 的原始碼去找答案了 Qt 小幫手裡面有說明如何把 ICON 加到 Application 上 不過就是沒有說到版本訊息的部份 最後在 QTDIR/src/gui/QtGuid_resource.rc 找到答案 QTDIR/src/gui/QtGuid_resource.rc # if defined(UNDER_CE) # include &amp;lt;winbase.h&amp;gt; # else # include &amp;lt;winver.h&amp;gt; # endif VS_VERSION_INFO VERSIONINFO FILEVERSION 4,5,2,0 PRODUCTVERSION 4,5,2,0 FILEFLAGSMASK 0x3fL #ifdef _DEBUG FILEFLAGS VS_FF_DEBUG #else FILEFLAGS 0x0L #endif FILEOS VOS__WINDOWS32 FILETYPE VFT_DLL FILESUBTYPE 0x0L BEGIN BLOCK &quot;StringFileInfo&quot; BEGIN BLOCK &quot;040904B0&quot; BEGIN VALUE &quot;CompanyName&quot;, &quot;Nokia Corporation and/or its subsidiary(-ies)\0&quot; VALUE &quot;FileDescription&quot;, &quot;C++ application development framework.\0&quot; VALUE &quot;FileVersion&quot;, &quot;4.5.2.0\0&quot; VALUE &quot;LegalCopyright&quot;, &quot;Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies)\0&quot; VALUE &quot;OriginalFilename&quot;, &quot;QtGuid4.dll\0&quot; VALUE &quot;ProductName&quot;, &quot;Qt4\0&quot; END END END /* End of Version info */ 再把這個資源檔加進 pro 就好了 RC_FILE = MyApp.rc 不過我比較喜歡把一些訊息統整起來 所以又另外寫一個 config.h 來放程式的名稱、版本、圖示 config.h #ifndef _MYAPP_CONFIG_H #define _MYAPP_CONFIG_H #define PROJNAME &quot;MyApp&quot; #define PROJVER &quot;1.0.0.0&quot; #define PROJVERC 1,0,0,0 #define ICONPATH &quot;../icon/MyApp.ico&quot; #endif//_MYAPP_CONFIG_H myapp.rc # if defined(UNDER_CE) # include &amp;lt;winbase.h&amp;gt; # else # include &amp;lt;winver.h&amp;gt; # endif # include &quot;config.h&quot; IDI_ICON1 ICON DISCARDABLE ICONPATH VS_VERSION_INFO VERSIONINFO FILEVERSION PROJVERC PRODUCTVERSION PROJVERC FILEFLAGSMASK 0x3fL #ifdef _DEBUG FILEFLAGS VS_FF_DEBUG #else FILEFLAGS 0x0L #endif FILEOS VOS__WINDOWS32 FILETYPE VFT_DLL FILESUBTYPE 0x0L BEGIN BLOCK &quot;StringFileInfo&quot; BEGIN BLOCK &quot;040904B0&quot; BEGIN VALUE &quot;CompanyName&quot;, &quot;KD\0&quot; VALUE &quot;FileDescription&quot;, &quot;MyApp Qt Application\0&quot; VALUE &quot;FileVersion&quot;, PROJVER VALUE &quot;LegalCopyright&quot;, &quot;Copyright (C) 2009 by tsaikd\0&quot; VALUE &quot;ProductVersion&quot;, PROJVER VALUE &quot;ProductName&quot;, PROJNAME END END END /* End of Version info */ 然後在 main() 裡面加上這些 code main.cpp int main(int argc, char* argv[]) { ...
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/08-16-Qt-Application-Version/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+      </div>
+
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Java // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Java" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/tags/java/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/tags/java/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <a name="top"></a>
+      
+
+      <div class="posts">
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+					        <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/categories/eclipse">Eclipse</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	看到越來越多人在往雲端開發的方向在玩， 比較終極的做法當然就是把 Browser 變成 IDE ， 不過就目前看來， 技術上還沒有一個比較領先的做法， 只好先找比較無痛的方向來玩玩&hellip;hehehe 今天嘗試了一個新的做法， 在 Ubuntu Desktop 上面裝 docker ， 在 docker 裡面跑 eclipse 來開發， 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西， 先看一下成功的畫面吧！ 基本上就是先建一個 eclipse 的 container ， 跑起來之後再用 ssh 連進去執行 eclipse ， 需要 ssh 的原因是為了要把本機的 X11 forwarding 過去， 本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ， 不過試了一陣子都搞不定， 只好先暫時放棄了。
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/01-23-maven-settings/">Maven settings notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>23</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jan</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-maven" href="http://tsaikd.org/blog/categories/maven">Maven</a>
+      					
+					        <a class="post-category post-category-nexus" href="http://tsaikd.org/blog/categories/nexus">Nexus</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	設定 Local Nexus 來快取 central 的套件 ~/.settings.xml &lt;settings&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;Local Nexus&lt;/name&gt; &lt;url&gt;http://localhost:8080/nexus-2.7.1-01/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt;
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/01-23-maven-settings/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/01-05-eclipse-gradle/">Eclipse Gradle Plugin</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jan</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-gradle" href="http://tsaikd.org/blog/categories/gradle">Gradle</a>
+      					
+					        <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/categories/eclipse">Eclipse</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	每次要裝都要 google 老半天 直接記下來好了&hellip; http://dist.springsource.com/release/TOOLS/gradle
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/01-05-eclipse-gradle/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2013/12-23-GateIn-Skin-Trick/">GateIn Skin Trick</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>23</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2013</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-gatein" href="http://tsaikd.org/blog/categories/gatein">GateIn</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	建立新的 Skin 直接 copy gatein-sample-skin 改 web.xml 這邊的名字一定要跟放到 tomcat 上的 project name 一樣，我花了好幾個小時 trace code 才知道有這個限制&hellip;&gt;&rdquo;&lt; &lt;display-name&gt;My-skin&lt;/display-name&gt; 改 gatein-resources.xml 這邊的名字是顯示在 GateIn 管理介面上的名字 &lt;skin-name&gt;MySkin&lt;/skin-name&gt; 客製化 /skin/Stylesheet.css
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2013/12-23-GateIn-Skin-Trick/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2013/12-05-OpenSSL-Notes/">OpenSSL Notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2013</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-openssl" href="http://tsaikd.org/blog/categories/openssl">openssl</a>
+      					
+					        <a class="post-category post-category-ca" href="http://tsaikd.org/blog/categories/ca">CA</a>
+      					
+					        <a class="post-category post-category-https" href="http://tsaikd.org/blog/categories/https">Https</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+					        <a class="post-category post-category-keytool" href="http://tsaikd.org/blog/categories/keytool">keytool</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	無 CA 產生 SSL 憑證 openssl genrsa -out server.key 512 openssl req -new -x509 -days 3650 -key server.key -out server.crt 建立 CA 修改 /etc/ssl/openssl.cnf 建立目錄結構 md demoCA demoCA/newcerts demoCA/private touch demoCA/index.txt echo 01 &gt; demoCA/serial 產生 CA 私鑰 openssl genrsa -out demoCA/private/cakey.pem 4096 自行簽發 CA 證書 openssl req -new -x509 -days 3650 -key demoCA/private/cakey.pem -out demoCA/cacert.pem 用 CA 簽發 Server 證書 在 Server 上 產生 Server 私鑰 openssl genrsa -out
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2013/12-05-OpenSSL-Notes/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2013/11-24-NetBeans-Config/">NetBeans Config Notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>24</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2013</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-netbeans" href="http://tsaikd.org/blog/categories/netbeans">NetBeans</a>
+      					
+					        <a class="post-category post-category-ide" href="http://tsaikd.org/blog/categories/ide">IDE</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	UTF-8 netbeans/etc/netbeans.conf netbeans_default_options -J-Dfile.encoding=UTF-8 慣用參數設定 Start Page Show On Startup = false Options Editor Formatting Expand Tabs to Spaces = false Tab Size = 4 Right Margin = 128 Continuation Indentation Size = 4 On Save Language = All Languages Reformat = All Lines Remove Trailing Whitespace From = All Lines Language = Java Remove Unused Imports = true Organize Imports = true Keymap Show Code Completion Popup = Alt+SLASH
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2013/11-24-NetBeans-Config/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2013/11-18-Java-LDAP/">Java LDAP Notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>18</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2013</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+					        <a class="post-category post-category-ldap" href="http://tsaikd.org/blog/categories/ldap">LDAP</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	/** * AD LDAP 登入認證 * * @param ldap_url like ldap://x.x.x.x:389/DC=mydomain,DC=com * @param account like mydomain\\username * @param password * @return String[] array 0 :0 success,1 fail,2 LDAP connect fail,3 unknow */ public String[] LDAP_AUTH_AD(String ldap_url, String account, String password) { String[] returnStr = new String[2]; Hashtable&lt;String, String&gt; env = new Hashtable&lt;String, String&gt;(); env.put(Context.INITIAL_CONTEXT_FACTORY, &quot;com.sun.jndi.ldap.LdapCtxFactory&quot;); env.put(Context.PROVIDER_URL, ldap_url); env.put(Context.SECURITY_PRINCIPAL, account); env.put(Context.SECURITY_CREDENTIALS, password); LdapContext ctx = null; try { ctx = new InitialLdapContext(env, null); /* // search * String searchUser = &quot;USERNAME&quot;; * SearchControls constraints = new SearchControls(); * constraints.setSearchScope(SearchControls.SUBTREE_SCOPE); * String[] attrIDs = {&quot;distinguishedName&quot;, &quot;sn&quot;, &quot;givenname&quot;, &quot;mail&quot;, &quot;telephonenumber&quot;}; * constraints.setReturningAttributes(attrIDs); * String searchFilter = String.format(&quot;(&amp;(objectClass=user)(sAMAccountName=%1$s))&quot;, searchUser); * NamingEnumeration answer = ctx.search(&quot;&quot;, searchFilter, constraints); * if (answer.hasMore()) { * Attributes attrs = ((SearchResult) answer.next()).getAttributes(); * System.out.println(attrs); * } */ returnStr[0] = &quot;0&quot;; returnStr[1] = &quot;&quot;; } catch (javax.naming.AuthenticationException e) { // invalid user account returnStr[0] = &quot;1&quot;; returnStr[1] = e.toString(true); } catch (javax.naming.CommunicationException e) { // Can't connect to ldap server!
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2013/11-18-Java-LDAP/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+      </div>
+
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openssl on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/openssl/</link>
+    <description>Recent content in Openssl on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Thu, 05 Dec 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OpenSSL Notes</title>
+      <link>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
+openssl req -new -x509 -days 3650 -key server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;建立-ca:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立 CA&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改 /etc/ssl/openssl.cnf&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;建立目錄結構&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;md demoCA demoCA/newcerts demoCA/private
+touch demoCA/index.txt
+echo 01 &amp;gt; demoCA/serial
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 CA 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out demoCA/private/cakey.pem 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自行簽發 CA 證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -x509 -days 3650 -key demoCA/private/cakey.pem -out demoCA/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;用-ca-簽發-server-證書:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;用 CA 簽發 Server 證書&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 Server 上&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;產生 Server 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out serverkey.pem 1024
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 Server 證書請求&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -key serverkey.pem -out serverreq.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 CA 上簽發證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl ca -days 365 -in serverreq.pem -out servercert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;轉換證書格式:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;轉換證書格式&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl pkcs12 -export -in servercert.pem -inkey serverkey.pem -out servercert.p12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;導入-java-keystore:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;導入 java keystore&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -importkeystore -srckeystore servercert.p12 -srcstoretype PKCS12 -destkeystore .keystore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rhythm-zju.blog.163.com/blog/static/310042008015115718637/&#34;&gt;基于 OpenSSL 的 CA 建立及证书签发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/906402/importing-an-existing-x509-certificate-and-private-key-in-java-keystore-to-use-i&#34;&gt;importing an existing x509 certificate and private key in Java keystore to use in ActiveMQ ssl context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cooking-java.blogspot.tw/2010/01/java-keytool.html&#34;&gt;Java keytool 基本指令介紹&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

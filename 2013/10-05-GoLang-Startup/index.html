@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    GoLang Startup // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="GoLang Startup" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2013/10-05-GoLang-Startup/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li><a href="#參考資料:04c6e90faac2675aa89e2176d2eec7d8">參考資料</a></li>
+<li><a href="#memory-buffer:04c6e90faac2675aa89e2176d2eec7d8">Memory Buffer</a></li>
+<li><a href="#byte-array-to-string:04c6e90faac2675aa89e2176d2eec7d8">Byte array to string</a></li>
+<li><a href="#time-to-solr-date-format:04c6e90faac2675aa89e2176d2eec7d8">Time to solr date format</a></li>
+<li><a href="#goroutine-example:04c6e90faac2675aa89e2176d2eec7d8">Goroutine Example</a></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2013/10-05-GoLang-Startup/">GoLang Startup</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Oct</span> <span class="post-date-year">2013</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            
+
+<p>最近看上了 <a href="http://golang.org/">golang</a> 的速度跟整合 <a href="https://github.com/">github</a> 的模式</p>
+
+<p>要來學一下 <a href="http://golang.org/">golang</a> 了</p>
+
+<ol>
+<li><p>Compiler and Runtime
+<a href="https://code.google.com/p/go/downloads/list">https://code.google.com/p/go/downloads/list</a></p></li>
+
+<li><p>Debugger
+參考 <a href="http://rongmayisheng.com/post/windows%E4%B8%8B%E7%94%A8eclipsegoclipse%E6%8F%92%E4%BB%B6gdb%E6%90%AD%E5%BB%BAgo%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83">windows下用eclipse+goclipse插件+gdb搭建go語言開發調試環境</a></p>
+
+<p>直接抓 <a href="http://code.google.com/p/golangide/downloads/list">liteide Download</a> 來用裡面內建的 gdb</p></li>
+
+<li><p>IDE (Eclipse) (其實LiteIDE比較好用)</p>
+
+<ol>
+<li>下載 <a href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a></li>
+<li>裝 plugin <a href="https://code.google.com/p/goclipse/">goclipse</a>
+<a href="http://goclipse.googlecode.com/svn/trunk/goclipse-update-site/">Update Site</a></li>
+<li>設定 Preferences</li>
+</ol></li>
+
+<li><p>另一個 IDE (LiteIDE)</p>
+
+<ol>
+<li>下載 <a href="https://code.google.com/p/golangide/">https://code.google.com/p/golangide/</a></li>
+<li>設定環境變數, 不然自動補全的功能會失效
+
+<ol>
+<li>GOARCH=amd64</li>
+<li>GOOS=windows</li>
+<li>GOROOT=C:\Go\</li>
+<li>GOPATH=C:\GoPath\</li>
+</ol></li>
+</ol></li>
+
+<li><p>開個 test go project</p>
+
+<pre><code>package main
+
+
+import (
+    &quot;fmt&quot;
+)
+
+
+func main() {
+    fmt.Println(&quot;golang&quot;)
+}
+</code></pre></li>
+
+<li><p>大功告成!!</p></li>
+</ol>
+
+<p>不過用 gdb 來 debug 頗難用</p>
+
+<p>還是只好盡量寫小 function + unit test 吧&hellip;@_@</p>
+
+<hr />
+
+<p>剛剛突然發現 <a href="https://code.google.com/p/golangide/">liteide</a> 還可以拿來寫 <a href="http://markdown.tw/">markdown</a> 耶!!</p>
+
+<hr />
+
+<h1 id="參考資料:04c6e90faac2675aa89e2176d2eec7d8">參考資料</h1>
+
+<ul>
+<li><a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md">https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md</a></li>
+<li><a href="https://github.com/why404/gobook">https://github.com/why404/gobook</a></li>
+<li><a href="https://code.google.com/p/go-wiki/wiki/Projects">https://code.google.com/p/go-wiki/wiki/Projects</a></li>
+<li><a href="http://golang.cat-v.org/pure-go-libs">http://golang.cat-v.org/pure-go-libs</a></li>
+<li><a href="https://github.com/shaoshing/train">https://github.com/shaoshing/train</a></li>
+</ul>
+
+<hr />
+
+<h1 id="memory-buffer:04c6e90faac2675aa89e2176d2eec7d8">Memory Buffer</h1>
+
+<p>支援 io.Reader, io.Writer</p>
+
+<pre><code class="language-go">b := new(bytes.Buffer)
+</code></pre>
+
+<hr />
+
+<h1 id="byte-array-to-string:04c6e90faac2675aa89e2176d2eec7d8">Byte array to string</h1>
+
+<pre><code class="language-go">// var b []byte
+string(b[0:])
+</code></pre>
+
+<hr />
+
+<h1 id="time-to-solr-date-format:04c6e90faac2675aa89e2176d2eec7d8">Time to solr date format</h1>
+
+<pre><code class="language-go">time.Now().In(time.UTC).Format(&quot;2006-01-02T15:04:05.000Z&quot;)
+</code></pre>
+
+<hr />
+
+<h1 id="goroutine-example:04c6e90faac2675aa89e2176d2eec7d8">Goroutine Example</h1>
+
+<pre><code class="language-go">import (
+	&quot;fmt&quot;
+	&quot;runtime&quot;
+	&quot;time&quot;
+)
+
+func Test_Goroutine() {
+	// 假設有這些資料需要處理
+	list := []int{5, 4, 3, 2, 1}
+
+	// worker 的數量設成 CPU 的數量好像比較有效率?
+	workernum := runtime.NumCPU()
+
+	// in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
+	in, out := make(chan string, workernum), make(chan string, workernum)
+	for i := 0; i &lt; workernum; i++ {
+		// 這個匿名函數就是真正要做事的地方
+		go func() {
+			// 一直從 in channel 抓資料來處理
+			for data := range in {
+				// 睡個一秒鐘來模擬做事 XD
+				time.Sleep(1000 * time.Millisecond)
+				// 資料處理完了送出去
+				out &lt;- data
+			}
+		}()
+	}
+
+	// 開一個 goroutine 來把要處理的資料放進 in channel
+	go func() {
+		for _, data := range list {
+			in &lt;- fmt.Sprint(data)
+		}
+		// 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
+		close(in)
+	}()
+
+	// 等所有的資料處理完再結束
+	for _ = range list {
+		&lt;-out
+	}
+}
+</code></pre>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-golang" href="http://tsaikd.org/blog/tags/golang">golang</a>,
+	                
+	                <a class="post-tag post-tag-eclipse" href="http://tsaikd.org/blog/tags/eclipse">eclipse</a>,
+	                
+	                <a class="post-tag post-tag-liteide" href="http://tsaikd.org/blog/tags/liteide">liteide</a>,
+	                
+	                <a class="post-tag post-tag-markdown" href="http://tsaikd.org/blog/tags/markdown">Markdown</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2013/11-06-PPTP-Ubuntu-Note/">PPTP Ubuntu Note</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/">把一堆 project 轉到 github</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

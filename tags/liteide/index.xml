@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Liteide on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/liteide/</link>
+    <description>Recent content in Liteide on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sat, 05 Oct 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/liteide/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GoLang Startup</title>
+      <link>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
+      <pubDate>Sat, 05 Oct 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
+      <description>
+
+&lt;p&gt;最近看上了 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 的速度跟整合 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的模式&lt;/p&gt;
+
+&lt;p&gt;要來學一下 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 了&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Compiler and Runtime
+&lt;a href=&#34;https://code.google.com/p/go/downloads/list&#34;&gt;https://code.google.com/p/go/downloads/list&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Debugger
+參考 &lt;a href=&#34;http://rongmayisheng.com/post/windows%E4%B8%8B%E7%94%A8eclipsegoclipse%E6%8F%92%E4%BB%B6gdb%E6%90%AD%E5%BB%BAgo%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83&#34;&gt;windows下用eclipse+goclipse插件+gdb搭建go語言開發調試環境&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;直接抓 &lt;a href=&#34;http://code.google.com/p/golangide/downloads/list&#34;&gt;liteide Download&lt;/a&gt; 來用裡面內建的 gdb&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IDE (Eclipse) (其實LiteIDE比較好用)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;下載 &lt;a href=&#34;http://www.eclipse.org/downloads/&#34;&gt;http://www.eclipse.org/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;裝 plugin &lt;a href=&#34;https://code.google.com/p/goclipse/&#34;&gt;goclipse&lt;/a&gt;
+&lt;a href=&#34;http://goclipse.googlecode.com/svn/trunk/goclipse-update-site/&#34;&gt;Update Site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;設定 Preferences&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;另一個 IDE (LiteIDE)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;下載 &lt;a href=&#34;https://code.google.com/p/golangide/&#34;&gt;https://code.google.com/p/golangide/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;設定環境變數, 不然自動補全的功能會失效
+
+&lt;ol&gt;
+&lt;li&gt;GOARCH=amd64&lt;/li&gt;
+&lt;li&gt;GOOS=windows&lt;/li&gt;
+&lt;li&gt;GOROOT=C:\Go\&lt;/li&gt;
+&lt;li&gt;GOPATH=C:\GoPath\&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;開個 test go project&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+
+import (
+    &amp;quot;fmt&amp;quot;
+)
+
+
+func main() {
+    fmt.Println(&amp;quot;golang&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;大功告成!!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;不過用 gdb 來 debug 頗難用&lt;/p&gt;
+
+&lt;p&gt;還是只好盡量寫小 function + unit test 吧&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;剛剛突然發現 &lt;a href=&#34;https://code.google.com/p/golangide/&#34;&gt;liteide&lt;/a&gt; 還可以拿來寫 &lt;a href=&#34;http://markdown.tw/&#34;&gt;markdown&lt;/a&gt; 耶!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;參考資料:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md&#34;&gt;https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/why404/gobook&#34;&gt;https://github.com/why404/gobook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/p/go-wiki/wiki/Projects&#34;&gt;https://code.google.com/p/go-wiki/wiki/Projects&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://golang.cat-v.org/pure-go-libs&#34;&gt;http://golang.cat-v.org/pure-go-libs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/shaoshing/train&#34;&gt;https://github.com/shaoshing/train&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;memory-buffer:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Memory Buffer&lt;/h1&gt;
+
+&lt;p&gt;支援 io.Reader, io.Writer&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;b := new(bytes.Buffer)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;byte-array-to-string:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Byte array to string&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// var b []byte
+string(b[0:])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;time-to-solr-date-format:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Time to solr date format&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;time.Now().In(time.UTC).Format(&amp;quot;2006-01-02T15:04:05.000Z&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;goroutine-example:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Goroutine Example&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;runtime&amp;quot;
+	&amp;quot;time&amp;quot;
+)
+
+func Test_Goroutine() {
+	// 假設有這些資料需要處理
+	list := []int{5, 4, 3, 2, 1}
+
+	// worker 的數量設成 CPU 的數量好像比較有效率?
+	workernum := runtime.NumCPU()
+
+	// in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
+	in, out := make(chan string, workernum), make(chan string, workernum)
+	for i := 0; i &amp;lt; workernum; i++ {
+		// 這個匿名函數就是真正要做事的地方
+		go func() {
+			// 一直從 in channel 抓資料來處理
+			for data := range in {
+				// 睡個一秒鐘來模擬做事 XD
+				time.Sleep(1000 * time.Millisecond)
+				// 資料處理完了送出去
+				out &amp;lt;- data
+			}
+		}()
+	}
+
+	// 開一個 goroutine 來把要處理的資料放進 in channel
+	go func() {
+		for _, data := range list {
+			in &amp;lt;- fmt.Sprint(data)
+		}
+		// 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
+		close(in)
+	}()
+
+	// 等所有的資料處理完再結束
+	for _ = range list {
+		&amp;lt;-out
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

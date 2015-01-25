@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    PPTP Ubuntu Note // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="PPTP Ubuntu Note" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#總結:04c6e90faac2675aa89e2176d2eec7d8">總結</a></li>
+<li><a href="#安裝套件:04c6e90faac2675aa89e2176d2eec7d8">安裝套件</a></li>
+<li><a href="#設定-ip-區段:04c6e90faac2675aa89e2176d2eec7d8">設定 IP 區段</a></li>
+<li><a href="#設定-dns:04c6e90faac2675aa89e2176d2eec7d8">設定 DNS</a></li>
+<li><a href="#設定帳號:04c6e90faac2675aa89e2176d2eec7d8">設定帳號</a></li>
+<li><a href="#重跑-service:04c6e90faac2675aa89e2176d2eec7d8">重跑 Service</a></li>
+<li><a href="#設定-ip-forwarding:04c6e90faac2675aa89e2176d2eec7d8">設定 IP forwarding</a></li>
+<li><a href="#設定防火牆:04c6e90faac2675aa89e2176d2eec7d8">設定防火牆</a></li>
+<li><a href="#參考:04c6e90faac2675aa89e2176d2eec7d8">參考</a></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2013/11-06-PPTP-Ubuntu-Note/">PPTP Ubuntu Note</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>6</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2013</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            
+
+<h2 id="總結:04c6e90faac2675aa89e2176d2eec7d8">總結</h2>
+
+<pre><code class="language-bash">apt-get install pptpd -y
+echo &quot;localip 192.168.99.1&quot; &gt;&gt; /etc/pptpd.conf
+echo &quot;remoteip 192.168.99.100-150&quot; &gt;&gt; /etc/pptpd.conf
+echo &quot;ms-dns 8.8.8.8&quot; &gt;&gt; /etc/ppp/pptpd-options
+echo &quot;ms-dns 8.8.4.4&quot; &gt;&gt; /etc/ppp/pptpd-options
+echo &quot;USERNAME * PASSWORD *&quot; &gt;&gt; /etc/ppp/chap-secrets
+service pptpd restart
+echo &quot;net.ipv4.ip_forward=1&quot; &gt;&gt; /etc/sysctl.conf
+sysctl -p
+iptables -t nat -I POSTROUTING -o eth0 -s 192.168.99.0/24 -j MASQUERADE
+iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1316
+</code></pre>
+
+<h2 id="安裝套件:04c6e90faac2675aa89e2176d2eec7d8">安裝套件</h2>
+
+<pre><code class="language-bash">apt-get install pptpd -y
+</code></pre>
+
+<h2 id="設定-ip-區段:04c6e90faac2675aa89e2176d2eec7d8">設定 IP 區段</h2>
+
+<ul>
+<li>/etc/pptpd.conf</li>
+</ul>
+
+<pre><code>localip 192.168.99.1
+remoteip 192.168.99.100-150
+</code></pre>
+
+<h2 id="設定-dns:04c6e90faac2675aa89e2176d2eec7d8">設定 DNS</h2>
+
+<ul>
+<li>/etc/ppp/pptpd-options</li>
+</ul>
+
+<pre><code>ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+</code></pre>
+
+<h2 id="設定帳號:04c6e90faac2675aa89e2176d2eec7d8">設定帳號</h2>
+
+<ul>
+<li>/etc/ppp/chap-secrets</li>
+</ul>
+
+<pre><code>USERNAME * PASSWORD *
+</code></pre>
+
+<h2 id="重跑-service:04c6e90faac2675aa89e2176d2eec7d8">重跑 Service</h2>
+
+<pre><code class="language-bash">service pptpd restart
+</code></pre>
+
+<h2 id="設定-ip-forwarding:04c6e90faac2675aa89e2176d2eec7d8">設定 IP forwarding</h2>
+
+<ul>
+<li>/etc/sysctl.conf</li>
+</ul>
+
+<pre><code>net.ipv4.ip_forward=1
+</code></pre>
+
+<ul>
+<li>bash</li>
+</ul>
+
+<pre><code>sysctl -p
+</code></pre>
+
+<h2 id="設定防火牆:04c6e90faac2675aa89e2176d2eec7d8">設定防火牆</h2>
+
+<ul>
+<li>MTU 設成 1316 如果還不通, 繼續往下調吧, 一開始連線有問題可以先把 MTU 設成 1200</li>
+</ul>
+
+<pre><code class="language-bash">iptables -t nat -I POSTROUTING -o eth0 -s 192.168.99.0/24 -j MASQUERADE
+iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1316
+</code></pre>
+
+<h2 id="參考:04c6e90faac2675aa89e2176d2eec7d8">參考</h2>
+
+<ul>
+<li><a href="http://jesin.tk/setup-pptp-vpn-server-debian-ubuntu/">http://jesin.tk/setup-pptp-vpn-server-debian-ubuntu/</a></li>
+<li><a href="http://disp.cc/b/11-GJv">http://disp.cc/b/11-GJv</a></li>
+</ul>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>,
+	                
+	                <a class="post-tag post-tag-pptp" href="http://tsaikd.org/blog/tags/pptp">pptp</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2013/11-14-Highcharts-Notes/">Highcharts Notes</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2013/10-05-GoLang-Startup/">GoLang Startup</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

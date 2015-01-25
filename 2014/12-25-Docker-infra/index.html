@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Docker Infra 架構簡介與實例 // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Docker Infra 架構簡介與實例" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2014/12-25-Docker-infra/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#這邊介紹的架構可以做到什麼效果:04c6e90faac2675aa89e2176d2eec7d8">這邊介紹的架構可以做到什麼效果?</a></li>
+<li><a href="#系統基本架構圖:04c6e90faac2675aa89e2176d2eec7d8">系統基本架構圖</a></li>
+<li><a href="#實作部份:04c6e90faac2675aa89e2176d2eec7d8">實作部份</a>
+<ul>
+<li><a href="#準備-vm-host:04c6e90faac2675aa89e2176d2eec7d8">準備 VM/Host</a></li>
+<li><a href="#設定-docker:04c6e90faac2675aa89e2176d2eec7d8">設定 <a href="https://www.docker.io/">Docker</a></a></li>
+<li><a href="#用-docker-builder-建立私有的-image:04c6e90faac2675aa89e2176d2eec7d8">用 <a href="https://github.com/tsaikd/docker-builder">Docker-Builder</a> 建立私有的 image</a></li>
+<li><a href="#用-fig-來啟動-docker-container:04c6e90faac2675aa89e2176d2eec7d8">用 <a href="http://www.fig.sh/">Fig</a> 來啟動 Docker Container</a></li>
+<li><a href="#大功告成:04c6e90faac2675aa89e2176d2eec7d8">大功告成</a></li>
+<li><a href="#版本參考:04c6e90faac2675aa89e2176d2eec7d8">版本參考</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2014/12-25-Docker-infra/">Docker Infra 架構簡介與實例</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>25</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2014</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            
+
+<h2 id="這邊介紹的架構可以做到什麼效果:04c6e90faac2675aa89e2176d2eec7d8">這邊介紹的架構可以做到什麼效果?</h2>
+
+<ul>
+<li>開新的 Web App 就可以立刻透過新的 domain name 去連線</li>
+<li>開一大堆同名的 Web App 就可以立刻分流</li>
+</ul>
+
+<hr />
+
+<h2 id="系統基本架構圖:04c6e90faac2675aa89e2176d2eec7d8">系統基本架構圖</h2>
+
+<p><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/overview.png" alt="" />
+</p>
+
+<ul>
+<li><p><a href="https://github.com/coreos/etcd">Etcd</a></p>
+
+<ul>
+<li>存放設定的 Cluster DB
+<br/>
+<br/></li>
+</ul></li>
+
+<li><p><a href="https://github.com/skynetservices/skydns">SkyDNS</a></p>
+
+<ul>
+<li>從 <a href="https://github.com/coreos/etcd">Etcd</a> 讀取設定, 讓使用者查詢的 DNS Server</li>
+<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/skydns.png" alt="" />
+
+<br/>
+<br/></li>
+</ul></li>
+
+<li><p><a href="https://github.com/kelseyhightower/confd">Confd</a></p>
+
+<ul>
+<li>從 <a href="https://github.com/coreos/etcd">Etcd</a> 讀取設定, Reload <a href="http://nginx.com">Nginx</a></li>
+<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/confd.png" alt="" />
+
+<br/>
+<br/></li>
+</ul></li>
+
+<li><p><a href="https://github.com/progrium/registrator">Registrator</a></p>
+
+<ul>
+<li>監聽 <a href="https://www.docker.io/">Docker</a> Events, 將 Container 資訊寫入 <a href="https://github.com/coreos/etcd">Etcd</a></li>
+<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/registrator.png" alt="" />
+
+<br/>
+<br/></li>
+</ul></li>
+
+<li><p><a href="http://nginx.com">Nginx</a></p>
+
+<ul>
+<li>網頁 r-Proxy</li>
+<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/queryflow.png" alt="" /></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h2 id="實作部份:04c6e90faac2675aa89e2176d2eec7d8">實作部份</h2>
+
+<h3 id="準備-vm-host:04c6e90faac2675aa89e2176d2eec7d8">準備 VM/Host</h3>
+
+<p>如果只是要先測試的話, 可以只用一台 VM/Host,
+不過考慮到系統容錯的話, 建議準備至少三台不同的機器來建構底層架構</p>
+
+<h3 id="設定-docker:04c6e90faac2675aa89e2176d2eec7d8">設定 <a href="https://www.docker.io/">Docker</a></h3>
+
+<p>這邊在 <a href="http://www.ubuntu.com/">Ubuntu</a> 上安裝 <a href="https://www.docker.io/">Docker</a> 做為範例, 其他平台請參考<a href="https://docs.docker.com/">官網說明文件</a></p>
+
+<ul>
+<li>利用 apt 安裝 lxc-docker</li>
+</ul>
+
+<pre><code>echo &quot;deb http://get.docker.io/ubuntu docker main&quot; &gt; /etc/apt/sources.list.d/docker.list
+apt-get update
+apt-get install lxc-docker
+</code></pre>
+
+<ul>
+<li><p>開放 tcp 2375 port 方便透過 <a href="http://tsaikd.org/kdocker-web/">KDocker-Web</a> 進行 <a href="https://www.docker.io/">Docker</a> 觀察, 不過正式環境最好不要隨意開放 docker socket port</p>
+
+<ul>
+<li>/etc/default/docker</li>
+</ul>
+
+<pre><code>DOCKER_OPTS=&quot;$DOCKER_OPTS --api-enable-cors=true -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock&quot;
+</code></pre></li>
+
+<li><p>連線到 <a href="http://tsaikd.org/kdocker-web/">KDocker-Web</a> 進行設定, 這是一個純網頁的 Web App , 在上面進行設定並不會造成資料外洩, 請安心服用&hellip;XD</p>
+
+<ul>
+<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/kdocker-web-config.png" alt="" /></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h3 id="用-docker-builder-建立私有的-image:04c6e90faac2675aa89e2176d2eec7d8">用 <a href="https://github.com/tsaikd/docker-builder">Docker-Builder</a> 建立私有的 image</h3>
+
+<ul>
+<li>把專案 clone 下來</li>
+</ul>
+
+<pre><code>git clone https://github.com/tsaikd/docker-builder
+cd docker-builder
+</code></pre>
+
+<ul>
+<li>在設定檔填上自己喜歡的名字, 如果你不想在 <a href="https://www.docker.io/">Docker</a> Image 列表看到一堆 tsaikd 的話&hellip;XD</li>
+</ul>
+
+<pre><code>echo 'export DOCKER_BASE=&quot;tsaikd&quot;' &gt;&gt; config.sh
+</code></pre>
+
+<ul>
+<li>時區調整一下</li>
+</ul>
+
+<pre><code>echo 'export TIMEZONE=&quot;Asia/Taipei&quot;' &gt;&gt; config.sh
+</code></pre>
+
+<ul>
+<li>我通常會用 apt proxy 來加快 build 的速度</li>
+</ul>
+
+<pre><code>echo 'export APT_PROXY=&quot;http://YOUR_APT_PROXY:PORT/&quot;' &gt;&gt; config.sh
+</code></pre>
+
+<ul>
+<li>先從 <a href="https://registry.hub.docker.com/">Docker Hub</a> 抓基本的 Image</li>
+</ul>
+
+<pre><code>docker pull ubuntu:14.04
+</code></pre>
+
+<ul>
+<li>把等一下會用到的 image 一次 build 完吧</li>
+</ul>
+
+<pre><code>./build.sh ubuntu/stable net-dns/skydns/2.0.1d www-servers/nginx/ppa www-servers/nginx/confd dev-db/etcd/2.0.0-rc.1 sys-docker/registrator/20141218
+</code></pre>
+
+<hr />
+
+<h3 id="用-fig-來啟動-docker-container:04c6e90faac2675aa89e2176d2eec7d8">用 <a href="http://www.fig.sh/">Fig</a> 來啟動 Docker Container</h3>
+
+<ul>
+<li>安裝 <a href="http://www.fig.sh/">Fig</a>, 因為 <a href="https://github.com/tsaikd/docker-builder">Docker-Builder</a> 是利用 bash 當作 entrypoint, 所以需要在啟動 container 時加上 interactive 的參數,
+不過目前官方的 <a href="http://www.fig.sh/">Fig</a> 還不支援 interactive 參數, 所以要加上 <a href="https://github.com/docker/fig/pull/566">我的 patch</a>,
+也可以從 <a href="https://github.com/tsaikd/fig/releases/download/1.0.1-KD-2/fig-linux-x64">這邊</a> 直接下載執行檔</li>
+<li>建立 <a href="http://www.fig.sh/">Fig</a> 專案目錄</li>
+</ul>
+
+<pre><code>mkdir -p /docker-run/Docker01/
+</code></pre>
+
+<ul>
+<li><p>測試環境</p>
+
+<ul>
+<li>VM/Host 01
+
+<ul>
+<li>192.168.0.1</li>
+</ul></li>
+<li>VM/Host 02
+
+<ul>
+<li>192.168.0.2</li>
+</ul></li>
+<li>VM/Host 03
+
+<ul>
+<li>192.168.0.3</li>
+</ul></li>
+<li>網域
+
+<ul>
+<li>localnet.local</li>
+</ul></li>
+</ul></li>
+
+<li><p><code>/docker-run/Docker01/fig.yml</code></p></li>
+</ul>
+
+<pre><code>etcd:
+  image: tsaikd/dev-db.etcd:2.0.0-rc.1
+  interactive: true
+  environment:
+    - SERVICE_NAME=etcd
+    - ETCD_NAME=infra1
+    - ETCD_INITIAL_CLUSTER=infra1=http://192.168.0.1:2380,infra2=http://192.168.0.2:2380,infra3=http://192.168.0.3:2380
+    - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://192.168.0.1:2380
+    - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+    - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379,http://0.0.0.0:4001
+    - ETCD_ADVERTISE_CLIENT_URLS=http://192.168.0.1:2379,http://192.168.0.1:4001
+    - ETCD_DATA_DIR=/default.etcd
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 2379:2379
+    - 2380:2380
+    - 4001:4001
+  volumes:
+    - /docker-data/etcd:/default.etcd
+</code></pre>
+
+<blockquote>
+<ul>
+<li>etcd 如果不想要跑 cluster 的架構也可以</li>
+</ul>
+</blockquote>
+
+<pre><code>registrator:
+  image: tsaikd/sys-docker.registrator:20141218
+  hostname: Docker01
+  interactive: true
+  environment:
+    - ETCD_TMPL_PROXY={{if .Attrs.proxy}}/reg/proxy/{{.Attrs.proxy}}/{{.Name}}/{{.ID}} {{.Published.HostIP}}:{{.Published.HostPort}}{{end}}
+    - ETCD_TMPL_SKYDNS={{if .Attrs.dns}}/skydns/local/localnet/{{.Attrs.dns}}/{{.ID}} {&quot;host&quot;:&quot;{{.Published.HostIP}}&quot;,&quot;port&quot;:{{.Published.HostPort}}}{{end}}
+    - ETCD_TMPL_PROXYDNS={{if .Attrs.proxydns}}/skydns/local/localnet/{{.Attrs.proxydns}}/{{.ID}} {&quot;host&quot;:&quot;ngconfd.localnet.local&quot;,&quot;port&quot;:{{.Published.HostPort}}}{{end}}
+    - ETCD_TMPL_ALL=/reg/all/{{.Name}}/{{.ID}} {{.Published.HostIP}}:{{.Published.HostPort}}
+    - REGISTRATOR_OPTS=-ip 192.168.0.1 etcd-tmpl://192.168.0.1:4001/
+    - DOCKER_WAITEXIT=1
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+</code></pre>
+
+<blockquote>
+<ul>
+<li><a href="https://github.com/progrium/registrator">Registrator</a> 目前原作者版本還沒支援 ETCD_TMPL 的用法, 要用 <a href="https://github.com/bheatwole/registrator">bheatwole</a> 版本,
+相關的 patch 請參考<a href="https://github.com/progrium/registrator/pull/76">這裡</a>,
+我也有在 GitHub 上放了<a href="https://github.com/tsaikd/registrator/releases/download/20141218/registrator-linux-amd64">執行檔</a>,
+如果是用 <a href="https://github.com/tsaikd/docker-builder">Docker-Builder</a> 建立 Image 的話, 應該就沒啥問題</li>
+<li>因為 <a href="https://github.com/progrium/registrator">Registrator</a> 需要監聽 <a href="https://www.docker.io/">Docker</a> 的事件, 所以要把 <a href="https://www.docker.io/">Docker</a> socket file 掛進 <a href="https://github.com/progrium/registrator">Registrator</a> 的 container</li>
+</ul>
+</blockquote>
+
+<pre><code>skydns:
+  image: tsaikd/net-dns.skydns:2.0.1d
+  interactive: true
+  environment:
+    - SERVICE_NAME=skydns
+    - ETCD_MACHINES=http://192.168.0.1:4001
+    - SKYDNS_DOMAIN=localnet.local
+    - SKYDNS_NAMESERVERS=8.8.8.8:53
+    - SKYDNS_ADDR=0.0.0.0:1053
+    - SKYDNS_OPTS=-verbose
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 53:1053/udp
+</code></pre>
+
+<pre><code>ngconfd:
+  image: tsaikd/www-servers.nginx:confd
+  interactive: true
+  environment:
+    - SERVICE_NAME=ngconfd
+    - SERVICE_80_DNS=ngconfd
+    - CONFD_OPTS=-node 192.168.0.1:4001 -verbose -interval=5
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 80:80
+    - 443:443
+  volumes:
+    - ngconfd/confd:/etc/confd
+</code></pre>
+
+<blockquote>
+<ul>
+<li><a href="http://nginx.com">Nginx</a> + <a href="https://github.com/kelseyhightower/confd">Confd</a> 還需要額外的設定檔</li>
+</ul>
+
+<blockquote>
+<ul>
+<li><code>/docker-run/Docker01/ngconfd/confd/conf.d/nginx.toml</code></li>
+</ul>
+</blockquote>
+</blockquote>
+
+<pre><code>[template]
+src = &quot;nginx.tmpl&quot;
+dest = &quot;/etc/nginx/sites-enabled/default&quot;
+prefix = &quot;/reg&quot;
+keys = [
+    &quot;/proxy&quot;,
+]
+check_cmd = &quot;/usr/sbin/nginx -t -c /etc/nginx/nginx.conf&quot;
+reload_cmd = &quot;/usr/sbin/service nginx reload&quot;
+</code></pre>
+
+<blockquote>
+<blockquote>
+<ul>
+<li><a href="http://tsaikd.org/blog/2014/12-25-Docker-infra/nginx.tmpl.txt">/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl</a></li>
+</ul>
+
+<blockquote>
+<ul>
+<li>這個檔案格式比較特別, 所以另外放&hellip;@_@</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<ul>
+<li>啟動 container</li>
+</ul>
+
+<pre><code>fig up -d etcd
+fig up -d registrator
+fig up -d skydns
+fig up -d ngconfd
+</code></pre>
+
+<ul>
+<li>把 DNS 指向 <a href="https://github.com/skynetservices/skydns">SkyDNS</a> 吧 (192.168.0.1:53)</li>
+</ul>
+
+<pre><code>vi /etc/resolv.conf
+</code></pre>
+
+<hr />
+
+<h3 id="大功告成:04c6e90faac2675aa89e2176d2eec7d8">大功告成</h3>
+
+<p>開個 Web App 的 container 出來試看看效果吧, 這邊拿 <a href="http://www.elasticsearch.org/">ElasticSearch</a> 來試,
+因為每個 <a href="http://www.elasticsearch.org/">ElasticSearch</a> 的畫面都會顯示一個特別的名字</p>
+
+<ul>
+<li><code>fig.yml</code></li>
+</ul>
+
+<pre><code>estest:
+  image: tsaikd/app-misc.elasticsearch:1.4.1
+  interactive: true
+  environment:
+    - SERVICE_NAME=estest
+    - SERVICE_9200_PROXYDNS=estest
+    - SERVICE_9200_PROXY=http
+  ports:
+    - 9200
+    - 9300
+</code></pre>
+
+<ul>
+<li>開起來看看</li>
+</ul>
+
+<pre><code>fig up -d estest
+</code></pre>
+
+<ul>
+<li>用瀏覽器連看看</li>
+</ul>
+
+<pre><code>curl http://estest.localnet.local/
+</code></pre>
+
+<ul>
+<li>多開幾台</li>
+</ul>
+
+<pre><code>fig scale estest=3
+</code></pre>
+
+<ul>
+<li>再用瀏覽器連看看, 多連幾次看看有什麼不一樣</li>
+</ul>
+
+<pre><code>curl http://estest.localnet.local/
+</code></pre>
+
+<ul>
+<li>如果是跑一般的網站 Container 的話, 在 Chrome 裡面是可以觀察到 HTTP Connection 是會分散到多台 <a href="http://nginx.com">Nginx</a>,
+像是 HTML 從 192.168.0.1 抓, JavaScript 從 192.168.0.2 抓之類的行為</li>
+</ul>
+
+<hr />
+
+<h3 id="版本參考:04c6e90faac2675aa89e2176d2eec7d8">版本參考</h3>
+
+<ul>
+<li><a href="http://www.ubuntu.com/">Ubuntu</a> 14.04 amd64</li>
+<li><a href="https://www.docker.io/">Docker</a> 1.4.1</li>
+</ul>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>,
+	                
+	                <a class="post-tag post-tag-etcd" href="http://tsaikd.org/blog/tags/etcd">Etcd</a>,
+	                
+	                <a class="post-tag post-tag-skydns" href="http://tsaikd.org/blog/tags/skydns">SkyDNS</a>,
+	                
+	                <a class="post-tag post-tag-registrator" href="http://tsaikd.org/blog/tags/registrator">Registrator</a>,
+	                
+	                <a class="post-tag post-tag-nginx" href="http://tsaikd.org/blog/tags/nginx">Nginx</a>,
+	                
+	                <a class="post-tag post-tag-confd" href="http://tsaikd.org/blog/tags/confd">Confd</a>,
+	                
+	                <a class="post-tag post-tag-fig" href="http://tsaikd.org/blog/tags/fig">Fig</a>,
+	                
+	                <a class="post-tag post-tag-docker-builder" href="http://tsaikd.org/blog/tags/docker-builder">Docker-Builder</a>,
+	                
+	                <a class="post-tag post-tag-kdocker-web" href="http://tsaikd.org/blog/tags/kdocker-web">KDocker-Web</a>,
+	                
+	                <a class="post-tag post-tag-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/">中等規模環境下的集中式 Log 管理及分析</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2014/09-14-Consul-trap/">Consul 採到雷</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

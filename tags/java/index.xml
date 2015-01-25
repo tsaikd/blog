@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/java/</link>
+    <description>Recent content in Java on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Mon, 04 Aug 2014 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker eclipse on Ubuntu Desktop</title>
+      <link>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
+      <pubDate>Mon, 04 Aug 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
+      <description>&lt;p&gt;看到越來越多人在往雲端開發的方向在玩，
+比較終極的做法當然就是把 Browser 變成 IDE ，
+不過就目前看來，
+技術上還沒有一個比較領先的做法，
+只好先找比較無痛的方向來玩玩&amp;hellip;hehehe&lt;/p&gt;
+
+&lt;p&gt;今天嘗試了一個新的做法，
+在 Ubuntu Desktop 上面裝 docker ，
+在 docker 裡面跑 eclipse 來開發，
+這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西，
+先看一下成功的畫面吧！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen01.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen02.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;基本上就是先建一個 eclipse 的 container ，
+跑起來之後再用 ssh 連進去執行 eclipse ，
+需要 ssh 的原因是為了要把本機的 X11 forwarding 過去，
+本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ，
+不過試了一陣子都搞不定，
+只好先暫時放棄了。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maven settings notes</title>
+      <link>http://tsaikd.org/blog/2014/01-23-maven-settings/</link>
+      <pubDate>Thu, 23 Jan 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/01-23-maven-settings/</guid>
+      <description>
+
+&lt;h3 id=&#34;設定-local-nexus-來快取-central-的套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 Local Nexus 來快取 central 的套件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;~/.settings.xml&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;settings&amp;gt;
+    &amp;lt;mirrors&amp;gt;
+        &amp;lt;mirror&amp;gt;
+            &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
+            &amp;lt;name&amp;gt;Local Nexus&amp;lt;/name&amp;gt;
+            &amp;lt;url&amp;gt;http://localhost:8080/nexus-2.7.1-01/content/groups/public/&amp;lt;/url&amp;gt;
+            &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
+        &amp;lt;/mirror&amp;gt;
+    &amp;lt;/mirrors&amp;gt;
+&amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Gradle Plugin</title>
+      <link>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
+      <pubDate>Sun, 05 Jan 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
+      <description>&lt;p&gt;每次要裝都要 google 老半天
+直接記下來好了&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dist.springsource.com/release/TOOLS/gradle&#34;&gt;http://dist.springsource.com/release/TOOLS/gradle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GateIn Skin Trick</title>
+      <link>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
+      <pubDate>Mon, 23 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
+      <description>
+
+&lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;直接 copy gatein-sample-skin&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 web.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字一定要跟放到 tomcat 上的 project name 一樣，我花了好幾個小時 trace code 才知道有這個限制&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;display-name&amp;gt;My-skin&amp;lt;/display-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 gatein-resources.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字是顯示在 GateIn 管理介面上的名字&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;	&amp;lt;skin-name&amp;gt;MySkin&amp;lt;/skin-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客製化 /skin/Stylesheet.css&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenSSL Notes</title>
+      <link>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
+openssl req -new -x509 -days 3650 -key server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;建立-ca:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立 CA&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改 /etc/ssl/openssl.cnf&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;建立目錄結構&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;md demoCA demoCA/newcerts demoCA/private
+touch demoCA/index.txt
+echo 01 &amp;gt; demoCA/serial
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 CA 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out demoCA/private/cakey.pem 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自行簽發 CA 證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -x509 -days 3650 -key demoCA/private/cakey.pem -out demoCA/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;用-ca-簽發-server-證書:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;用 CA 簽發 Server 證書&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 Server 上&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;產生 Server 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out serverkey.pem 1024
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 Server 證書請求&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -key serverkey.pem -out serverreq.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 CA 上簽發證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl ca -days 365 -in serverreq.pem -out servercert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;轉換證書格式:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;轉換證書格式&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl pkcs12 -export -in servercert.pem -inkey serverkey.pem -out servercert.p12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;導入-java-keystore:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;導入 java keystore&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -importkeystore -srckeystore servercert.p12 -srcstoretype PKCS12 -destkeystore .keystore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rhythm-zju.blog.163.com/blog/static/310042008015115718637/&#34;&gt;基于 OpenSSL 的 CA 建立及证书签发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/906402/importing-an-existing-x509-certificate-and-private-key-in-java-keystore-to-use-i&#34;&gt;importing an existing x509 certificate and private key in Java keystore to use in ActiveMQ ssl context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cooking-java.blogspot.tw/2010/01/java-keytool.html&#34;&gt;Java keytool 基本指令介紹&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NetBeans Config Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
+      <pubDate>Sun, 24 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
+      <description>
+
+&lt;h1 id=&#34;utf-8:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;UTF-8&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;netbeans/etc/netbeans.conf
+
+&lt;ul&gt;
+&lt;li&gt;netbeans_default_options&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;-J-Dfile.encoding=UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;慣用參數設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;慣用參數設定&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start Page
+
+&lt;ul&gt;
+&lt;li&gt;Show On Startup = false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Options
+
+&lt;ul&gt;
+&lt;li&gt;Editor
+
+&lt;ul&gt;
+&lt;li&gt;Formatting
+
+&lt;ul&gt;
+&lt;li&gt;Expand Tabs to Spaces = false&lt;/li&gt;
+&lt;li&gt;Tab Size = 4&lt;/li&gt;
+&lt;li&gt;Right Margin = 128&lt;/li&gt;
+&lt;li&gt;Continuation Indentation Size = 4&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;On Save
+
+&lt;ul&gt;
+&lt;li&gt;Language = All Languages
+
+&lt;ul&gt;
+&lt;li&gt;Reformat = All Lines&lt;/li&gt;
+&lt;li&gt;Remove Trailing Whitespace From = All Lines&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Language = Java
+
+&lt;ul&gt;
+&lt;li&gt;Remove Unused Imports = true&lt;/li&gt;
+&lt;li&gt;Organize Imports = true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Keymap
+
+&lt;ul&gt;
+&lt;li&gt;Show Code Completion Popup = Alt+SLASH&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.tenyi.com/2012/04/netbeans-utf-8.html&#34;&gt;http://blog.tenyi.com/2012/04/netbeans-utf-8.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java LDAP Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
+      <pubDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+	/**
+	 * AD LDAP 登入認證
+	 *
+	 * @param ldap_url like ldap://x.x.x.x:389/DC=mydomain,DC=com
+	 * @param account like mydomain\\username
+	 * @param password
+	 * @return String[] array 0 :0 success,1 fail,2 LDAP connect fail,3 unknow
+	 */
+	public String[] LDAP_AUTH_AD(String ldap_url, String account, String password) {
+		String[] returnStr = new String[2];
+		Hashtable&amp;lt;String, String&amp;gt; env = new Hashtable&amp;lt;String, String&amp;gt;();
+		env.put(Context.INITIAL_CONTEXT_FACTORY, &amp;quot;com.sun.jndi.ldap.LdapCtxFactory&amp;quot;);
+		env.put(Context.PROVIDER_URL, ldap_url);
+		env.put(Context.SECURITY_PRINCIPAL, account);
+		env.put(Context.SECURITY_CREDENTIALS, password);
+
+		LdapContext ctx = null;
+		try {
+			ctx = new InitialLdapContext(env, null);
+			/* // search
+			 * String searchUser = &amp;quot;USERNAME&amp;quot;;
+			 * SearchControls constraints = new SearchControls();
+			 * constraints.setSearchScope(SearchControls.SUBTREE_SCOPE);
+			 * String[] attrIDs = {&amp;quot;distinguishedName&amp;quot;, &amp;quot;sn&amp;quot;, &amp;quot;givenname&amp;quot;, &amp;quot;mail&amp;quot;, &amp;quot;telephonenumber&amp;quot;};
+			 * constraints.setReturningAttributes(attrIDs);
+			 * String searchFilter = String.format(&amp;quot;(&amp;amp;(objectClass=user)(sAMAccountName=%1$s))&amp;quot;, searchUser);
+			 * NamingEnumeration answer = ctx.search(&amp;quot;&amp;quot;, searchFilter, constraints);
+			 * if (answer.hasMore()) {
+			 *		Attributes attrs = ((SearchResult) answer.next()).getAttributes();
+			 *		System.out.println(attrs);
+			 * }
+			 */
+			returnStr[0] = &amp;quot;0&amp;quot;;
+			returnStr[1] = &amp;quot;&amp;quot;;
+		} catch (javax.naming.AuthenticationException e) {
+			// invalid user account
+			returnStr[0] = &amp;quot;1&amp;quot;;
+			returnStr[1] = e.toString(true);
+		} catch (javax.naming.CommunicationException e) {
+			// Can&#39;t connect to ldap server!
+			returnStr[0] = &amp;quot;2&amp;quot;;
+			returnStr[1] = e.toString(true);
+		} catch (Exception e) {
+			// unexcepted error
+			e.printStackTrace();
+			returnStr[0] = &amp;quot;3&amp;quot;;
+			returnStr[1] = e.toString();
+		}
+		if (ctx != null) {
+			try {
+				ctx.close();
+			} catch (NamingException e) {
+				e.printStackTrace();
+			}
+		}
+		return returnStr;
+	}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://polinwei.blogspot.tw/2009/03/java-ldap-ad.html&#34;&gt;http://polinwei.blogspot.tw/2009/03/java-ldap-ad.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/sand_ant/article/details/11739791&#34;&gt;http://blog.csdn.net/sand_ant/article/details/11739791&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

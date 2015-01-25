@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Ubuntu // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Ubuntu" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/tags/ubuntu/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/tags/ubuntu/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <a name="top"></a>
+      
+
+      <div class="posts">
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/12-25-Docker-infra/">Docker Infra 架構簡介與實例</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>25</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-etcd" href="http://tsaikd.org/blog/categories/etcd">Etcd</a>
+      					
+					        <a class="post-category post-category-skydns" href="http://tsaikd.org/blog/categories/skydns">SkyDNS</a>
+      					
+					        <a class="post-category post-category-registrator" href="http://tsaikd.org/blog/categories/registrator">Registrator</a>
+      					
+					        <a class="post-category post-category-nginx" href="http://tsaikd.org/blog/categories/nginx">Nginx</a>
+      					
+					        <a class="post-category post-category-confd" href="http://tsaikd.org/blog/categories/confd">Confd</a>
+      					
+					        <a class="post-category post-category-fig" href="http://tsaikd.org/blog/categories/fig">Fig</a>
+      					
+					        <a class="post-category post-category-docker-builder" href="http://tsaikd.org/blog/categories/docker-builder">Docker-Builder</a>
+      					
+					        <a class="post-category post-category-kdocker-web" href="http://tsaikd.org/blog/categories/kdocker-web">KDocker-Web</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	這邊介紹的架構可以做到什麼效果? 開新的 Web App 就可以立刻透過新的 domain name 去連線 開一大堆同名的 Web App 就可以立刻分流 系統基本架構圖 Etcd 存放設定的 Cluster DB SkyDNS 從 Etcd 讀取設定, 讓使用者查詢的 DNS Server Confd 從 Etcd 讀取設定, Reload Nginx Registrator 監聽 Docker Events, 將 Container 資訊寫入 Etcd Nginx 網頁 r-Proxy 實作部份 準備 VM/Host 如果只是要先測試的話, 可以只用一台 VM/Host, 不過考慮到系統容錯的話, 建議準備至少三台不同的機器來建構底層架構 設定 Docker 這邊在 Ubuntu 上安裝 Docker 做為範例, 其他平台請參考官網說明文件 利用 apt 安裝 lxc-docker echo &quot;deb http://get.docker.io/ubuntu docker main&quot; &gt; /etc/apt/sources.list.d/docker.list apt-get update
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/12-25-Docker-infra/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/09-14-Consul-trap/">Consul 採到雷</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>14</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-consul" href="http://tsaikd.org/blog/categories/consul">Consul</a>
+      					
+					        <a class="post-category post-category-lmdb" href="http://tsaikd.org/blog/categories/lmdb">LMDB</a>
+      					
+					        <a class="post-category post-category-zfs" href="http://tsaikd.org/blog/categories/zfs">ZFS</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	今天試用 consul ， 看網路上的文件好像還蠻好裝的， 沒想到還是遇到神奇的雷， 目前懷疑是跟 ZFS 有關。 環境 $ uname -rsvmo Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux $ docker -v Docker version 1.2.0, build fa7b24f consul 版本是 v0.4.0 現象 $ docker run progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary ==&gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1 ==&gt; Starting Consul agent... ==&gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented 啟動 consul 就爆炸了&hellip;.&gt;_&lt; google 不到什麼有用的資料， 只好自己 trace code 了&hellip;Orz 追了大半天， 發現問題出在 consul call LMDB (Lightning Memory-Mapped Database) 的時候會死掉。 目前懷疑跟 ZFS 不支援 AIO 有關， 因為 MySQL 跑在 ZFS 上也有災情。 解法 $ docker run -v /tmp progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled!
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/09-14-Consul-trap/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+					        <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/categories/eclipse">Eclipse</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	看到越來越多人在往雲端開發的方向在玩， 比較終極的做法當然就是把 Browser 變成 IDE ， 不過就目前看來， 技術上還沒有一個比較領先的做法， 只好先找比較無痛的方向來玩玩&hellip;hehehe 今天嘗試了一個新的做法， 在 Ubuntu Desktop 上面裝 docker ， 在 docker 裡面跑 eclipse 來開發， 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西， 先看一下成功的畫面吧！ 基本上就是先建一個 eclipse 的 container ， 跑起來之後再用 ssh 連進去執行 eclipse ， 需要 ssh 的原因是為了要把本機的 X11 forwarding 過去， 本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ， 不過試了一陣子都搞不定， 只好先暫時放棄了。
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/02-08-phpvirtualbox/">phpVirtualbox</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>8</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-virtualbox" href="http://tsaikd.org/blog/categories/virtualbox">Virtualbox</a>
+      					
+					        <a class="post-category post-category-php" href="http://tsaikd.org/blog/categories/php">PHP</a>
+      					
+					        <a class="post-category post-category-apache2" href="http://tsaikd.org/blog/categories/apache2">Apache2</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+					        <a class="post-category post-category-zfs" href="http://tsaikd.org/blog/categories/zfs">ZFS</a>
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體) 最近終於決定 OS 的架構了 Ubuntu 12.04 x64 ZFS Virtualbox Docker 32G RAM 的 PC &hellip;.hehehe Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題 ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&hellip;&gt;_&lt; Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&hellip; Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/02-08-phpvirtualbox/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/02-08-phpvirtualbox-config/">phpVirtualbox config notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>8</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-virtualbox" href="http://tsaikd.org/blog/categories/virtualbox">Virtualbox</a>
+      					
+					        <a class="post-category post-category-php" href="http://tsaikd.org/blog/categories/php">PHP</a>
+      					
+					        <a class="post-category post-category-apache2" href="http://tsaikd.org/blog/categories/apache2">Apache2</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下 ubuntu virtualbox 安裝過程 vi /etc/apt/sources.list.d/virtualbox.list ``` deb http://download.virtualbox.org/virtualbox/debian precise contrib * apt-get update &amp;&amp; apt-get install virtualbox-4.3 * 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console * https://www.virtualbox.org/wiki/Downloads * vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack * vi /etc/default/virtualbox * 這是為了要開啟 vboxweb-service * vbox 改成要使用哪個系統 user 來開啟 virtualbox ``` VBOXWEB_USER=vbox VBOXWEB_HOST=0.0.0.0 update-rc.d vboxweb-service defaults 開機自動啟動 phpvirtualbox 安裝過程 先裝好 apache2 + php5 的環境 下載跟 virtualbox 相容的版本 http://sourceforge.net/projects/phpvirtualbox/files/ 解壓縮之後丟進 /var/www 設定 config.conf
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/02-08-phpvirtualbox-config/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2013/11-06-PPTP-Ubuntu-Note/">PPTP Ubuntu Note</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>6</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2013</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+					        <a class="post-category post-category-pptp" href="http://tsaikd.org/blog/categories/pptp">pptp</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	總結 apt-get install pptpd -y echo &quot;localip 192.168.99.1&quot; &gt;&gt; /etc/pptpd.conf echo &quot;remoteip 192.168.99.100-150&quot; &gt;&gt; /etc/pptpd.conf echo &quot;ms-dns 8.8.8.8&quot; &gt;&gt; /etc/ppp/pptpd-options echo &quot;ms-dns 8.8.4.4&quot; &gt;&gt; /etc/ppp/pptpd-options echo &quot;USERNAME * PASSWORD *&quot; &gt;&gt; /etc/ppp/chap-secrets service pptpd restart echo &quot;net.ipv4.ip_forward=1&quot; &gt;&gt; /etc/sysctl.conf sysctl -p iptables -t nat -I POSTROUTING -o eth0 -s 192.168.99.0/24 -j MASQUERADE iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1316 安裝套件 apt-get
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2013/11-06-PPTP-Ubuntu-Note/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+      </div>
+
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>

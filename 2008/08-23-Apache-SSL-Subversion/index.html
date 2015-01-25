@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Apache SSL Subversion // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="Apache SSL Subversion" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2008/08-23-Apache-SSL-Subversion/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2008/08-23-Apache-SSL-Subversion/">Apache SSL Subversion</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>23</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2008</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            <p>剛剛把 KD server 上的 apache 弄出 ssl 了</p>
+
+<p>之前其實也有試著弄出 ssl</p>
+
+<p>只不過之前在網路上找到的文章都只是針對非 vhost 的 apache</p>
+
+<p>想說應該是一步一步慢慢解決</p>
+
+<p>結果總是弄不好</p>
+
+<hr />
+
+<p>今天想到說應該要找看看能不能一次解決的</p>
+
+<p>結果在 Gentoo Wiki Apache_Modules_mod_ssl</p>
+
+<p>這篇找到了基本的設定</p>
+
+<p>另外有一個 HOWTO SSL Enabled, Name Based Virtual Hosts with Apache</p>
+
+<p>這篇就是在解決我的問題</p>
+
+<hr />
+
+<p>不過我照他的方式弄了之後</p>
+
+<p>感覺 SSL 有起來</p>
+
+<p>不過就是連不上</p>
+
+<p>Apache Log 上有這樣的訊息</p>
+
+<p><code>&quot;\x80O\x01\x03&quot; 200 1953</code></p>
+
+<hr />
+
+<p>又搞了半天才發現是之前設定的東西忘了清掉</p>
+
+<p>Apache 又呆呆的不告訴我一下&hellip;T_T</p>
+
+<p>上面那個東西的原因就是 Apache 在 443 這個 ssl 的 protocol 輸出一般純文字</p>
+
+<p>所有就連不起來了</p>
+
+<hr />
+
+<p>之後又遇到</p>
+
+<p><code>... public_html/.htaccess: Options not allowed here</code></p>
+
+<p>又 Google 半天孤不出東西</p>
+
+<p>最後才發現是 Gentoo 的 SSL_DEFAULT_VHOST 設定在搞鬼</p>
+
+<p>把他弄掉之後就 OK 啦!!</p>
+
+<hr />
+
+<p>總結一下 Apache SSL Subversion VirtualHost 的設定備忘</p>
+
+<hr />
+
+<ul>
+<li>/etc/make.conf</li>
+</ul>
+
+<pre><code>USE=&quot;sni&quot; # 這是要啟用 SSL with vhost 的 flag
+</code></pre>
+
+<hr />
+
+<ul>
+<li>/etc/conf.d/apache</li>
+</ul>
+
+<p>把該死的 DEFAULT_VHOST 跟 SSL_DEFAULT_VHOST 刪掉</p>
+
+<pre><code>APACHE2_OPTS=&quot;-D SSL -D DAV&quot;
+</code></pre>
+
+<hr />
+
+<p>建立 SSL 的驗證檔</p>
+
+<ul>
+<li>變成 root 好做事</li>
+</ul>
+
+<pre><code>$ sudo su
+</code></pre>
+
+<ul>
+<li>到 apache 的目錄去</li>
+</ul>
+
+<pre><code>$ cd /etc/apache2/ssl/
+</code></pre>
+
+<ul>
+<li>產生 rsa key: 想更安全一點就把 1024 調大吧</li>
+</ul>
+
+<pre><code>$ openssl genrsa -out server.key 1024
+$ openssl rsa -in server.key -out server.pem
+</code></pre>
+
+<ul>
+<li>這裡下一步要填一些資料</li>
+</ul>
+
+<pre><code>$ openssl req -new -key server.pem -out server.csr
+</code></pre>
+
+<ul>
+<li>產生驗證檔, 要是不加有效日期參數(-days 3650)的話, 預設是 30 天</li>
+</ul>
+
+<pre><code>$ openssl x509 -req -days 3650 -in server.csr -signkey server.pem -out server.crt
+</code></pre>
+
+<hr />
+
+<p>Apache 的 vhost 設定檔檔名自己取吧</p>
+
+<p>編號越小越早被 Apache 讀進去</p>
+
+<ul>
+<li>/etc/apache/vhost.d/10_tsaikd.conf</li>
+</ul>
+
+<pre><code>Listen 80
+Listen 443
+NameVirtualHost *:80
+NameVirtualHost *:443
+ServerName 127.0.0.1 # 這個是讓 Apache 啟動變快的東西...
+
+---
+
+&lt;VirtualHost *:80&gt;
+	ServerAdmin &quot;tsaikd@gmail.com&quot;
+	ServerName &quot;www.tsaikd.org&quot;
+	DocumentRoot &quot;/var/www/www.tsaikd.org/htdocs&quot;
+	&lt;Directory &quot;/var/www/www.tsaikd.org/htdocs&quot;&gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&lt;/Directory&gt;
+&lt;/VirtualHost *:80&gt;
+
+---
+
+&lt;VirtualHost *:443&gt;
+	SSLEngine on
+	SSLCertificateFile /etc/apache2/ssl/server.crt
+	SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+---
+
+	ServerAdmin &quot;tsaikd@gmail.com&quot;
+	ServerName &quot;www.tsaikd.org&quot;
+	DocumentRoot &quot;/var/www/www.tsaikd.org/htdocs&quot;
+	&lt;Directory &quot;/var/www/www.tsaikd.org/htdocs&quot;&gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&lt;/Directory&gt;
+&lt;/VirtualHost *:80&gt;
+</code></pre>
+
+<hr />
+
+<ul>
+<li>/etc/apache/vhost.d/20_svn.conf</li>
+</ul>
+
+<pre><code>LoadModule authz_svn_module modules/mod_authz_svn.so
+&lt;VirtualHost *:80&gt;
+	ServerAdmin &quot;tsaikd@gmail.com&quot;
+	ServerName &quot;svn.tsaikd.org&quot;
+	DocumentRoot &quot;/var/www/svn.tsaikd.org/htdocs&quot;
+	&lt;Directory &quot;/var/www/svn.tsaikd.org/htdocs&quot;&gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&lt;/Directory&gt;
+
+	# 我的 svn 是放在 &quot;/home/svn&quot;
+	&lt;Directory &quot;/home/svn&quot;&gt;
+		Options Indexes FollowSymLinks MultiViews
+	&lt;/Directory&gt;
+
+	&lt;Location /gentoo&gt;
+		DAV svn
+		Options Indexes FollowSymLinks MultiViews
+		SVNParentPath /home/svn/gentoo
+		SVNListParentPath on
+		SetOutputFilter DEFLATE # 這個是設定用 gzip 方式輸出
+		AuthType Basic
+		AuthName &quot;Subversion repository&quot;
+		AuthUserFile /etc/apache2/htpasswd
+		&lt;LimitExcept GET PROPFIND OPTIONS REPORT&gt; # 要有帳密才能改 svn 的資料
+			Require user tsaikd
+		&lt;/LimitExcept&gt;
+	&lt;/Location&gt;
+&lt;/VirtualHost *:80&gt;
+
+&lt;VirtualHost *:443&gt;
+	SSLEngine on
+	# 如果要用不同的驗證檔也可以
+	SSLCertificateFile /etc/apache2/ssl/server.crt
+	SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+---
+
+	ServerAdmin &quot;tsaikd@gmail.com&quot;
+	ServerName &quot;svn.tsaikd.org&quot;
+	DocumentRoot &quot;/var/www/svn.tsaikd.org/htdocs&quot;
+	&lt;Directory &quot;/var/www/svn.tsaikd.org/htdocs&quot;&gt;
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	&lt;/Directory&gt;
+
+	# 我的 svn 是放在 &quot;/home/svn&quot;
+	&lt;Directory &quot;/home/svn&quot;&gt;
+		Options Indexes FollowSymLinks MultiViews
+	&lt;/Directory&gt;
+
+	&lt;Location /gentoo&gt;
+		DAV svn
+		Options Indexes FollowSymLinks MultiViews
+		SVNParentPath /home/svn/gentoo
+		SVNListParentPath on
+		SetOutputFilter DEFLATE # 這個是設定用 gzip 方式輸出
+		AuthType Basic
+		AuthName &quot;Subversion repository&quot;
+		AuthUserFile /etc/apache2/htpasswd
+		&lt;LimitExcept GET PROPFIND OPTIONS REPORT&gt; # 要有帳密才能改 svn 的資料
+			Require user tsaikd
+		&lt;/LimitExcept&gt;
+	&lt;/Location&gt;
+&lt;/VirtualHost *:443&gt;
+</code></pre>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-kdblog" href="http://tsaikd.org/blog/tags/kdblog">KDBlog</a>,
+	                
+	                <a class="post-tag post-tag-linux" href="http://tsaikd.org/blog/tags/linux">Linux</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2008/08-25-Re-%E6%AD%A3%E5%BF%83%E5%AE%BF%E8%88%8D%E8%BB%8D%E9%9A%8A%E5%8C%96%E7%A8%8B%E5%BA%A6%E8%A9%95%E6%AF%94/">Re 正心宿舍軍隊化程度評比</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2008/08-10-%E9%B4%BB%E6%B5%B7%E7%9A%84%E5%AE%BF%E8%88%8D/">鴻海的宿舍</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+	"input": [
+		{
+			"type": "file",
+			"path": "/var/log/mongodb/mongod.log",
+			"sincedb_path": "/root/gogstash/.sincedb.mongodb.json"
+		}
+	],
+	"output": [
+		{
+			"type": "report"
+		},
+		{
+			"type": "redis",
+			"key": "log-mongodb",
+			"host": ["redis-1.localnet.local:6379", "redis-2.localnet.local:6379", "redis-3.localnet.local:6379"]
+		}
+	]
+}

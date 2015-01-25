@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    兩個新玩具 - cwRsync and Certificate // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="兩個新玩具 - cwRsync and Certificate" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li><a href="#cd-etc-ssl:04c6e90faac2675aa89e2176d2eec7d8">cd /etc/ssl/</a></li>
+<li><a href="#openssl-genrsa-out-ca-key-2048:04c6e90faac2675aa89e2176d2eec7d8">openssl genrsa -out ca.key 2048</a></li>
+<li><a href="#chmod-400-ca-key:04c6e90faac2675aa89e2176d2eec7d8">chmod 400 ca.key</a></li>
+<li><a href="#vi-openssl-cnf:04c6e90faac2675aa89e2176d2eec7d8">vi openssl.cnf</a></li>
+<li><a href="#misc-ca-sh-newca:04c6e90faac2675aa89e2176d2eec7d8">./misc/CA.sh -newca</a></li>
+<li><a href="#openssl-req-new-x509-nodes-key-ca-key-out-ca-crt:04c6e90faac2675aa89e2176d2eec7d8">openssl req -new -x509 -nodes -key ca.key -out ca.crt</a></li>
+<li><a href="#cd-democa:04c6e90faac2675aa89e2176d2eec7d8">cd demoCA/</a></li>
+<li><a href="#ln-sf-ca-crt-cacert-pem:04c6e90faac2675aa89e2176d2eec7d8">ln -sf ../ca.crt cacert.pem</a></li>
+<li><a href="#cd-private:04c6e90faac2675aa89e2176d2eec7d8">cd private/</a></li>
+<li><a href="#ln-sf-ca-key-cakey-pem:04c6e90faac2675aa89e2176d2eec7d8">ln -sf ../../ca.key cakey.pem</a></li>
+<li><a href="#cd:04c6e90faac2675aa89e2176d2eec7d8">cd ../..</a></li>
+<li><a href="#echo-00-democa-crlnumber:04c6e90faac2675aa89e2176d2eec7d8">echo &ldquo;00&rdquo; &gt; demoCA/crlnumber</a></li>
+<li><a href="#openssl-ca-gencrl-out-capem-crl-crldays-7-crlexts-crl-ext:04c6e90faac2675aa89e2176d2eec7d8">openssl ca -gencrl -out capem.crl -crldays 7 -crlexts crl_ext</a></li>
+<li><a href="#openssl-crl-in-capem-crl-outform-der-out-cader-crl:04c6e90faac2675aa89e2176d2eec7d8">openssl crl -in capem.crl -outform DER -out cader.crl</a></li>
+<li><a href="#export-name-kdnbxp:04c6e90faac2675aa89e2176d2eec7d8">export NAME=kdnbxp</a></li>
+<li><a href="#openssl-genrsa-out-name-key-1024:04c6e90faac2675aa89e2176d2eec7d8">openssl genrsa -out $NAME.key 1024</a></li>
+<li><a href="#chmod-400-name-key:04c6e90faac2675aa89e2176d2eec7d8">chmod 400 $NAME.key</a></li>
+<li><a href="#openssl-req-new-nodes-key-name-key-out-name-csr:04c6e90faac2675aa89e2176d2eec7d8">openssl req -new -nodes -key $NAME.key -out $NAME.csr</a></li>
+<li><a href="#openssl-ca-in-name-csr-out-name-crt:04c6e90faac2675aa89e2176d2eec7d8">openssl ca -in $NAME.csr -out $NAME.crt</a></li>
+<li><a href="#openssl-pkcs12-export-in-name-crt-inkey-name-key-out-name-p12:04c6e90faac2675aa89e2176d2eec7d8">openssl pkcs12 -export -in $NAME.crt -inkey $NAME.key -out $NAME.p12</a></li>
+<li><a href="#chmod-400-name-p12:04c6e90faac2675aa89e2176d2eec7d8">chmod 400 $NAME.p12</a></li>
+<li><a href="#上面那行是設定只有-tsaikd-nb-xp-這個人才能通行:04c6e90faac2675aa89e2176d2eec7d8">上面那行是設定只有 tsaikd-nb-xp 這個人才能通行</a></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/">兩個新玩具 - cwRsync and Certificate</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>28</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2008</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            
+
+<p>這兩天搞了兩個新玩具&hellip;.</p>
+
+<p>第一個是 windows 上的 rsync &ndash; cwRsync</p>
+
+<p>第二個是 Certification (數位憑證)</p>
+
+<hr />
+
+<p>cwRsync 很像是用 cygwin 去弄出來的</p>
+
+<p>會弄到這個東西是因為我在審美女圖的時候</p>
+
+<p>都要先從我的 server 上把圖抓到本機</p>
+
+<p>挑好之後再傳回到 server</p>
+
+<p>本來我在家裡的時候</p>
+
+<p>server 就用 100M ethernet 連到電腦</p>
+
+<p>所以就直接用網芳(samba)的方式去抓圖</p>
+
+<p>不過現在到外面工作了</p>
+
+<p>網路真的是&hellip;.(好你個 hinet 3.5G)</p>
+
+<p>之前的做法是用 filezilla sftp 連回主機抓檔案</p>
+
+<p>不過 filezilla 不能把抓到的檔案從遠端自動砍掉</p>
+
+<p>(像是移動檔案的方式)</p>
+
+<p>後來突然想到好像可以用 rsync 這個東西很像可以支援</p>
+
+<p>就去找到了 cwRsync</p>
+
+<p>花了一個多小時左右把環境弄好了</p>
+
+<p>包括設定讓 ssh 不用密碼之類的</p>
+
+<hr />
+
+<p>不過在測試的時候發現了一個奇怪的現象</p>
+
+<p>就是在上傳的時候(下面的數字只是代表傳送檔案的先後次序)</p>
+
+<p>client 那邊已經顯示到 sending 010.jpg</p>
+
+<p>server 那邊用 ls 去看卻只有傳了 002.jpg</p>
+
+<p>也就是說上傳時檔案顯示不同步??</p>
+
+<p>按 Ctrl+C 取消之後</p>
+
+<p>server 那邊還是沒動靜</p>
+
+<p>再重傳一次 client 還是說要從 003.jpg 開始傳</p>
+
+<p>不過還好在全部傳完之後</p>
+
+<p>檔案沒有被吃掉</p>
+
+<p>不過這個現象令我不解</p>
+
+<p>又花了幾個小時去找資料卻沒什麼發現</p>
+
+<p>試了一堆 option 也沒用</p>
+
+<p>最後只好不理他了</p>
+
+<hr />
+
+<p>再來是數位憑證的部份</p>
+
+<p>最近老闆要我去 study 一下相關的東西</p>
+
+<p>準備有個小專案要做</p>
+
+<p>因為之前在弄 apache + SSL 的時候都沒有仔細去了解</p>
+
+<p>所以就趁這個機會好好的研究一下</p>
+
+<p>之前大學時修密碼學就大概知道對稱加密跟不對稱加密的一些東西</p>
+
+<p>數位憑證就是用不對稱加密去搞一堆有的沒的</p>
+
+<p>我在想應該可以把個人憑證當然進去網站的鑰匙</p>
+
+<p>這樣就可以省下打密碼的動作了(我是個懶人&hellip;haha)</p>
+
+<p>在看了一堆文章之後</p>
+
+<p>慢慢理出一點頭緒</p>
+
+<p>要達成我的目標(不是老闆要我弄的方向&hellip;XD)</p>
+
+<p>要弄出一個 CA 來幫自己做 Certification</p>
+
+<p>Server 上也要用那個 CA 來幫 Server 做 Certification</p>
+
+<p>(之前的 gentoo apache server 應該是自己 sign 自己產生 Certification)</p>
+
+<hr />
+
+<p>建立一個新的 CA</p>
+
+<h1 id="cd-etc-ssl:04c6e90faac2675aa89e2176d2eec7d8">cd /etc/ssl/</h1>
+
+<h1 id="openssl-genrsa-out-ca-key-2048:04c6e90faac2675aa89e2176d2eec7d8">openssl genrsa -out ca.key 2048</h1>
+
+<h1 id="chmod-400-ca-key:04c6e90faac2675aa89e2176d2eec7d8">chmod 400 ca.key</h1>
+
+<h1 id="vi-openssl-cnf:04c6e90faac2675aa89e2176d2eec7d8">vi openssl.cnf</h1>
+
+<pre><code>[ usr_cert ]
+
+    nsCaRevocationUrl = http://www.tsaikd.org/ca.crl
+</code></pre>
+
+<h1 id="misc-ca-sh-newca:04c6e90faac2675aa89e2176d2eec7d8">./misc/CA.sh -newca</h1>
+
+<pre><code>Enter: ca.key
+</code></pre>
+
+<h1 id="openssl-req-new-x509-nodes-key-ca-key-out-ca-crt:04c6e90faac2675aa89e2176d2eec7d8">openssl req -new -x509 -nodes -key ca.key -out ca.crt</h1>
+
+<h1 id="cd-democa:04c6e90faac2675aa89e2176d2eec7d8">cd demoCA/</h1>
+
+<h1 id="ln-sf-ca-crt-cacert-pem:04c6e90faac2675aa89e2176d2eec7d8">ln -sf ../ca.crt cacert.pem</h1>
+
+<h1 id="cd-private:04c6e90faac2675aa89e2176d2eec7d8">cd private/</h1>
+
+<h1 id="ln-sf-ca-key-cakey-pem:04c6e90faac2675aa89e2176d2eec7d8">ln -sf ../../ca.key cakey.pem</h1>
+
+<h1 id="cd:04c6e90faac2675aa89e2176d2eec7d8">cd ../..</h1>
+
+<h1 id="echo-00-democa-crlnumber:04c6e90faac2675aa89e2176d2eec7d8">echo &ldquo;00&rdquo; &gt; demoCA/crlnumber</h1>
+
+<h1 id="openssl-ca-gencrl-out-capem-crl-crldays-7-crlexts-crl-ext:04c6e90faac2675aa89e2176d2eec7d8">openssl ca -gencrl -out capem.crl -crldays 7 -crlexts crl_ext</h1>
+
+<h1 id="openssl-crl-in-capem-crl-outform-der-out-cader-crl:04c6e90faac2675aa89e2176d2eec7d8">openssl crl -in capem.crl -outform DER -out cader.crl</h1>
+
+<hr />
+
+<p>最後兩行是產生一個 CRL(Certificate Revocation List)</p>
+
+<hr />
+
+<p>再來就是幫自己跟 server 建立 Certification 了</p>
+
+<hr />
+
+<p>設一下變數方便下面使用</p>
+
+<h1 id="export-name-kdnbxp:04c6e90faac2675aa89e2176d2eec7d8">export NAME=kdnbxp</h1>
+
+<hr />
+
+<p>產生 RSA key</p>
+
+<h1 id="openssl-genrsa-out-name-key-1024:04c6e90faac2675aa89e2176d2eec7d8">openssl genrsa -out $NAME.key 1024</h1>
+
+<h1 id="chmod-400-name-key:04c6e90faac2675aa89e2176d2eec7d8">chmod 400 $NAME.key</h1>
+
+<hr />
+
+<p>產生 CSR (Certificate Signing Request)</p>
+
+<h1 id="openssl-req-new-nodes-key-name-key-out-name-csr:04c6e90faac2675aa89e2176d2eec7d8">openssl req -new -nodes -key $NAME.key -out $NAME.csr</h1>
+
+<p>-nodes 就是不用密碼保護</p>
+
+<p>要是設密碼的話</p>
+
+<p>每次加解密都要輸入一次</p>
+
+<p>超麻煩</p>
+
+<hr />
+
+<p>輸入的資訊有兩個要注意的</p>
+
+<p>*Organization Name: 要跟 CA 的相同才能通過認證</p>
+
+<p>*Common Name: 如果是幫 apache 認證的話, 這個要設成 domain, 不能亂設</p>
+
+<hr />
+
+<p>用 CA 進行認證</p>
+
+<h1 id="openssl-ca-in-name-csr-out-name-crt:04c6e90faac2675aa89e2176d2eec7d8">openssl ca -in $NAME.csr -out $NAME.crt</h1>
+
+<hr />
+
+<p>如果是幫 apache 認證的話</p>
+
+<p>做到這邊就完成了 openssl 的部份</p>
+
+<p>之後就是到 apache 設定檔做事了</p>
+
+<hr />
+
+<p>把認證結果跟 key 轉成 pkcs12 的格式方便攜帶</p>
+
+<h1 id="openssl-pkcs12-export-in-name-crt-inkey-name-key-out-name-p12:04c6e90faac2675aa89e2176d2eec7d8">openssl pkcs12 -export -in $NAME.crt -inkey $NAME.key -out $NAME.p12</h1>
+
+<h1 id="chmod-400-name-p12:04c6e90faac2675aa89e2176d2eec7d8">chmod 400 $NAME.p12</h1>
+
+<hr />
+
+<p>要註銷某個 Certificate 的話</p>
+
+<p>openssl ca -revoke $NAME.crt</p>
+
+<p>openssl ca -gencrl -out capem.crl -crldays 7 -crlexts crl_ext</p>
+
+<p>openssl crl -in capem.crl -outform DER -out cader.crl</p>
+
+<hr />
+
+<p>其實我上面那些東西網路上一狗票的文章</p>
+
+<p>真正讓我花大量的時間的是在弄瀏覽器的部份</p>
+
+<p>回到我的目標: 就是用數位憑證來取代輸入密碼</p>
+
+<p>在看了一堆文章之後</p>
+
+<p>找到了幾個關鍵點</p>
+
+<p>在 apache 的設定部份</p>
+
+<p>VirtualHost</p>
+
+<pre><code>SSLEngine on
+
+SSLCertificateFile /etc/apache2/ssl/server.crt
+
+SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+SSLCACertificateFile /etc/ssl/ca.crt
+
+SSLCARevocationFile /etc/ssl/capem.crl
+
+SSLVerifyClient none
+</code></pre>
+
+<hr />
+
+<p>.htaccess 的設定</p>
+
+<p>SSLVerifyClient require</p>
+
+<p>SSLOptions +FakeBasicAuth +StrictRequire</p>
+
+<p>SSLRequireSSL</p>
+
+<p>SSLRequire %{SSL_CLIENT_S_DN_CN} eq &ldquo;tsaikd-nb-xp&rdquo;</p>
+
+<h1 id="上面那行是設定只有-tsaikd-nb-xp-這個人才能通行:04c6e90faac2675aa89e2176d2eec7d8">上面那行是設定只有 tsaikd-nb-xp 這個人才能通行</h1>
+
+<hr />
+
+<p>這樣似乎就能達到我的要求</p>
+
+<p>不過理想的狀況應該是如果沒有憑證的話可以用輸入密碼的方式瀏覽網頁</p>
+
+<p>有憑證的話就不用輸入密碼</p>
+
+<p>這樣才方便啊</p>
+
+<p>不過搞了好幾個小時都沒有進展</p>
+
+<p>最後只好放棄了</p>
+
+<hr />
+
+<p>另外還有一個地方讓我花了很多時間</p>
+
+<p>最後也是沒有結果的</p>
+
+<p>就是 CRL 的部份</p>
+
+<p>一開始是輸出成 PEM 格式的 CRL</p>
+
+<p>但是 Firefox 不吃</p>
+
+<p>只好換成 DER 格式的給它吃</p>
+
+<p>但是匯入了 CRL 之後</p>
+
+<p>Firefox 就不能用那個數位憑證了</p>
+
+<p>(不管有沒有被註銷)</p>
+
+<hr />
+
+<p>IE 的情況是不管有沒有 CRL</p>
+
+<p>數位憑證都可以用</p>
+
+<p>就是說 CRL 是個廢柴&hellip;=.=</p>
+
+<p>兩大瀏覽器都搞不定</p>
+
+<p>不知道是支援度不夠還是我的 CRL 產生的方式有問題</p>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-kdblog" href="http://tsaikd.org/blog/tags/kdblog">KDBlog</a>,
+	                
+	                <a class="post-tag post-tag-%E8%B3%87%E5%AE%89" href="http://tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89">資安</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2008/09-29-%E9%A2%B1%E9%A2%A8%E5%81%87/">颱風假</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2008/08-25-Re-%E6%AD%A3%E5%BF%83%E5%AE%BF%E8%88%8D%E8%BB%8D%E9%9A%8A%E5%8C%96%E7%A8%8B%E5%BA%A6%E8%A9%95%E6%AF%94/">Re 正心宿舍軍隊化程度評比</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

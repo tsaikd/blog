@@ -1,0 +1,1648 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/</link>
+    <description>Recent content on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>中等規模環境下的集中式 Log 管理及分析</title>
+      <link>http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</guid>
+      <description>
+
+&lt;p&gt;Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤
+，也可以看出某些趨勢，提早做出一些可能有影響的決策。目前其實有不少的工具都可以用
+在處理 Log 集中管理的問題，我這邊也提供一個中等規模的解決方案。&lt;/p&gt;
+
+&lt;p&gt;在小型的環境(單機，少量程式) Log 其實隨便亂放都沒差，通常都只有在出問題的時候才
+會去撈 Log 協助排除問題。在大型的環境(數以百計的主機跟 App 以上)，ㄜ~~~~我沒經驗
+不敢隨意猜測。所以這邊是用一個數十台 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 的環境來討論 Log 集中管理的處理
+方式。&lt;/p&gt;
+
+&lt;p&gt;在 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 的使用情境下，有幾種典型角色：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
+
+&amp;gt; &lt;a href=&#34;http://logstash.net/docs/1.1.1/tutorials/getting-started-centralized&#34;&gt;這邊偷用了 Logstash Document 的圖&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Shipper
+
+&lt;ul&gt;
+&lt;li&gt;蒐集&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Broker
+
+&lt;ul&gt;
+&lt;li&gt;暫存&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Indexer
+
+&lt;ul&gt;
+&lt;li&gt;解析&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Storage &amp;amp; Search
+
+&lt;ul&gt;
+&lt;li&gt;永久儲存&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Web Interface
+
+&lt;ul&gt;
+&lt;li&gt;分析界面&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Shipper + Broker + Indexer 在小型的環境其實可以整合在同一個 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 裡面一次
+處理，不過一開始也有提到，在小型的環境，哪有人在搞複雜的 Log 分析&amp;hellip;XD，既然要做
+就一次做到位吧。&lt;/p&gt;
+
+&lt;p&gt;不過這邊還有另一個問題，就是 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 是用 &lt;a href=&#34;https://www.ruby-lang.org/zh_tw/&#34;&gt;Ruby&lt;/a&gt; 寫的，然
+後透過 &lt;a href=&#34;https://java.com/zh_TW/&#34;&gt;Java&lt;/a&gt; 來執行，所以需要安裝 &lt;a href=&#34;https://java.com/zh_TW/&#34;&gt;Java&lt;/a&gt;，但是像在 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 的環境，我不
+想在機器上安裝太多額外的東西，而且 &lt;a href=&#34;https://java.com/zh_TW/&#34;&gt;Java&lt;/a&gt; 其實還蠻肥的，如果只是單純的 Shipper
+角色，沒有必要搞那麼多有的沒的套件把系統弄髒，所以我另外開發了一個小工具 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt;
+來做 Shipper 的工作。&lt;/p&gt;
+
+&lt;p&gt;Broker 選用 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt;，聽說效能不錯？&lt;/p&gt;
+
+&lt;p&gt;Indexer 仍然使用 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; ，因為 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 已經有蠻多方便的設定可以快速的
+解析各式各樣的 Log 。&lt;/p&gt;
+
+&lt;p&gt;Storage &amp;amp; Search 選擇 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; ，它使用了 &lt;a href=&#34;http://lucene.apache.org/&#34;&gt;Lucene&lt;/a&gt; 當基底，可以有效率
+的分析及處理各種自然語言，不過其實對一般的 Log 來說，大部分的情況不會用到太深入的
+功能，有點用牛刀殺雞的感覺，反正 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 也還蠻好用的，就這樣吧&amp;hellip;&lt;code&gt;^_^&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Web Interface 選擇 3.x 版的 &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; ，它可以在網頁上展示還不錯看的報表。&lt;/p&gt;
+
+&lt;h2 id=&#34;shipper-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Shipper 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 的部份這邊先不討論，只是拿來當個案例而已。 Shipper 的重點就是要把所有
+機器上的 Log 都送到 Broker ，我這邊想要蒐集的資料包括了 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 本身的 Log ，
+還有機器的狀態也想要一併分析，所以有幾個 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt; 的設定。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;broker-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Broker 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 要做一個稱職的 Broker 其實有點麻煩，因為它可能是因為效率的問題，在
+High availability 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞&amp;hellip;Orz
+，我目前使用 &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 來建構 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 環境，裡面有用&lt;a href=&#34;https://github.com/tsaikd/fig&#34;&gt;我 Patch 過的 Fig&lt;/a&gt;
+，另外 Docker Image 是用 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 建出來的， &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 的 sentinel 情況
+比較麻煩，可能還是要參考一下&lt;a href=&#34;http://redis.io/topics/sentinel&#34;&gt;Redis Sentinel 官方文件&lt;/a&gt;
+才比較容易理解。底下列出一些相關的設定方式給大家參考。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/redis.conf&#34;&gt;redis/redis.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 基本設定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/sentinel.conf&#34;&gt;redis/sentinel.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; Sentinel 設定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/start.sh&#34;&gt;redis/start.sh&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;indexer-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Indexer 設定&lt;/h2&gt;
+
+&lt;p&gt;Indexer 其實是 Log 分析的一大重點，因為 Log 可能會有各式各樣的描述，再加上每個人
+想分析的東西不盡相同，所以很難用一個標準化的設定就能通吃所有情況，這邊我是用 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt;
+系統管理者的角度來處理 Log。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb.conf&#34;&gt;logstash/index-mongodb.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; Log&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-status.conf&#34;&gt;logstash/index-mongodb-status.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 服務狀態&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析硬碟空間使用狀況&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析系統負載資訊&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;storage-search-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Storage &amp;amp; Search 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 最常見的問題其實是它預設在建索引的時候會自動分詞之後才儲存，這
+樣會在做分組統計的時候出現狀況，像是 &amp;ldquo;connection accepted&amp;rdquo; 這個詞會被拆成 &amp;ldquo;connection&amp;rdquo;
+&amp;ldquo;accepted&amp;rdquo; 這兩個詞來做統計，但是其實我想要的是 &amp;ldquo;connection accepted&amp;rdquo; 整個詞來進
+行統計，所以某些欄位需要額外設定讓它不要分詞，詳細的設定還是要參考 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt;
+相關文件，底下設定給大家參考。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/elasticsearch.yml&#34;&gt;eslogstash/elasticsearch.yml&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ElasticSearch 基本設定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/logging.yml&#34;&gt;eslogstash/logging.yml&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;這個檔案基本上沒有修改，只是方便 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 直接把整個目錄掛進去&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/stopword.txt&#34;&gt;eslogstash/analysis/stopword.txt&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用來排除某些特定(不感興趣)的詞&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/synonym.txt&#34;&gt;eslogstash/analysis/synonym.txt&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;設定同義詞&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/templates/kdtmpl.json&#34;&gt;eslogstash/templates/kdtmpl.json&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;動態模板，把 &lt;code&gt;*_facet&lt;/code&gt; 欄位預設成不分詞&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;web-interface-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Web Interface 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; 的設定就相對簡單很多，主要是因為我用 &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 把 &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; 跟 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt;
+的環境分開，不然可以免設定就直接用了。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;qa:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;QA&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上面的 fig.yml 有些奇怪的環境變數像是 &lt;code&gt;SERVICE_9200_DNS=eslogstash&lt;/code&gt; 是在幹嘛的？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這些是我在 &lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/../../2014/12-25-Docker-infra&#34;&gt;Docker Infra 架構簡介與實例&lt;/a&gt; 這邊提到
+的架構，其中的某些設定，因為有點複雜，有興趣的就自行閱讀吧，反正把那些服務串起來
+就對了。&lt;/p&gt;
+
+&lt;p&gt;另外 &lt;code&gt;DOCKER_WAITEXIT=1&lt;/code&gt; 這個是 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 提供的一個設定&lt;/p&gt;
+
+&lt;h2 id=&#34;demo-截圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Demo 截圖&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana-demo.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker Infra 架構簡介與實例</title>
+      <link>http://tsaikd.org/blog/2014/12-25-Docker-infra/</link>
+      <pubDate>Thu, 25 Dec 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/12-25-Docker-infra/</guid>
+      <description>
+
+&lt;h2 id=&#34;這邊介紹的架構可以做到什麼效果:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;這邊介紹的架構可以做到什麼效果?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;開新的 Web App 就可以立刻透過新的 domain name 去連線&lt;/li&gt;
+&lt;li&gt;開一大堆同名的 Web App 就可以立刻分流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;系統基本架構圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;系統基本架構圖&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/overview.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;存放設定的 Cluster DB
+&lt;br/&gt;
+&lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/skynetservices/skydns&#34;&gt;SkyDNS&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;從 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt; 讀取設定, 讓使用者查詢的 DNS Server&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/skydns.png&#34; alt=&#34;&#34; /&gt;
+
+&lt;br/&gt;
+&lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kelseyhightower/confd&#34;&gt;Confd&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;從 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt; 讀取設定, Reload &lt;a href=&#34;http://nginx.com&#34;&gt;Nginx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/confd.png&#34; alt=&#34;&#34; /&gt;
+
+&lt;br/&gt;
+&lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/progrium/registrator&#34;&gt;Registrator&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;監聽 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; Events, 將 Container 資訊寫入 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/registrator.png&#34; alt=&#34;&#34; /&gt;
+
+&lt;br/&gt;
+&lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://nginx.com&#34;&gt;Nginx&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;網頁 r-Proxy&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/queryflow.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;實作部份:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;實作部份&lt;/h2&gt;
+
+&lt;h3 id=&#34;準備-vm-host:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;準備 VM/Host&lt;/h3&gt;
+
+&lt;p&gt;如果只是要先測試的話, 可以只用一台 VM/Host,
+不過考慮到系統容錯的話, 建議準備至少三台不同的機器來建構底層架構&lt;/p&gt;
+
+&lt;h3 id=&#34;設定-docker:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;這邊在 &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 上安裝 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; 做為範例, 其他平台請參考&lt;a href=&#34;https://docs.docker.com/&#34;&gt;官網說明文件&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;利用 apt 安裝 lxc-docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;deb http://get.docker.io/ubuntu docker main&amp;quot; &amp;gt; /etc/apt/sources.list.d/docker.list
+apt-get update
+apt-get install lxc-docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;開放 tcp 2375 port 方便透過 &lt;a href=&#34;http://tsaikd.org/kdocker-web/&#34;&gt;KDocker-Web&lt;/a&gt; 進行 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; 觀察, 不過正式環境最好不要隨意開放 docker socket port&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/default/docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;DOCKER_OPTS=&amp;quot;$DOCKER_OPTS --api-enable-cors=true -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;連線到 &lt;a href=&#34;http://tsaikd.org/kdocker-web/&#34;&gt;KDocker-Web&lt;/a&gt; 進行設定, 這是一個純網頁的 Web App , 在上面進行設定並不會造成資料外洩, 請安心服用&amp;hellip;XD&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/kdocker-web-config.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;用-docker-builder-建立私有的-image:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;用 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker-Builder&lt;/a&gt; 建立私有的 image&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;把專案 clone 下來&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/tsaikd/docker-builder
+cd docker-builder
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在設定檔填上自己喜歡的名字, 如果你不想在 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; Image 列表看到一堆 tsaikd 的話&amp;hellip;XD&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &#39;export DOCKER_BASE=&amp;quot;tsaikd&amp;quot;&#39; &amp;gt;&amp;gt; config.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;時區調整一下&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &#39;export TIMEZONE=&amp;quot;Asia/Taipei&amp;quot;&#39; &amp;gt;&amp;gt; config.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;我通常會用 apt proxy 來加快 build 的速度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &#39;export APT_PROXY=&amp;quot;http://YOUR_APT_PROXY:PORT/&amp;quot;&#39; &amp;gt;&amp;gt; config.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;先從 &lt;a href=&#34;https://registry.hub.docker.com/&#34;&gt;Docker Hub&lt;/a&gt; 抓基本的 Image&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;docker pull ubuntu:14.04
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;把等一下會用到的 image 一次 build 完吧&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;./build.sh ubuntu/stable net-dns/skydns/2.0.1d www-servers/nginx/ppa www-servers/nginx/confd dev-db/etcd/2.0.0-rc.1 sys-docker/registrator/20141218
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;用-fig-來啟動-docker-container:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;用 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 來啟動 Docker Container&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安裝 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt;, 因為 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker-Builder&lt;/a&gt; 是利用 bash 當作 entrypoint, 所以需要在啟動 container 時加上 interactive 的參數,
+不過目前官方的 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 還不支援 interactive 參數, 所以要加上 &lt;a href=&#34;https://github.com/docker/fig/pull/566&#34;&gt;我的 patch&lt;/a&gt;,
+也可以從 &lt;a href=&#34;https://github.com/tsaikd/fig/releases/download/1.0.1-KD-2/fig-linux-x64&#34;&gt;這邊&lt;/a&gt; 直接下載執行檔&lt;/li&gt;
+&lt;li&gt;建立 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 專案目錄&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p /docker-run/Docker01/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;測試環境&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VM/Host 01
+
+&lt;ul&gt;
+&lt;li&gt;192.168.0.1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;VM/Host 02
+
+&lt;ul&gt;
+&lt;li&gt;192.168.0.2&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;VM/Host 03
+
+&lt;ul&gt;
+&lt;li&gt;192.168.0.3&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;網域
+
+&lt;ul&gt;
+&lt;li&gt;localnet.local&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;/docker-run/Docker01/fig.yml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;etcd:
+  image: tsaikd/dev-db.etcd:2.0.0-rc.1
+  interactive: true
+  environment:
+    - SERVICE_NAME=etcd
+    - ETCD_NAME=infra1
+    - ETCD_INITIAL_CLUSTER=infra1=http://192.168.0.1:2380,infra2=http://192.168.0.2:2380,infra3=http://192.168.0.3:2380
+    - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://192.168.0.1:2380
+    - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+    - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379,http://0.0.0.0:4001
+    - ETCD_ADVERTISE_CLIENT_URLS=http://192.168.0.1:2379,http://192.168.0.1:4001
+    - ETCD_DATA_DIR=/default.etcd
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 2379:2379
+    - 2380:2380
+    - 4001:4001
+  volumes:
+    - /docker-data/etcd:/default.etcd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;etcd 如果不想要跑 cluster 的架構也可以&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;registrator:
+  image: tsaikd/sys-docker.registrator:20141218
+  hostname: Docker01
+  interactive: true
+  environment:
+    - ETCD_TMPL_PROXY={{if .Attrs.proxy}}/reg/proxy/{{.Attrs.proxy}}/{{.Name}}/{{.ID}} {{.Published.HostIP}}:{{.Published.HostPort}}{{end}}
+    - ETCD_TMPL_SKYDNS={{if .Attrs.dns}}/skydns/local/localnet/{{.Attrs.dns}}/{{.ID}} {&amp;quot;host&amp;quot;:&amp;quot;{{.Published.HostIP}}&amp;quot;,&amp;quot;port&amp;quot;:{{.Published.HostPort}}}{{end}}
+    - ETCD_TMPL_PROXYDNS={{if .Attrs.proxydns}}/skydns/local/localnet/{{.Attrs.proxydns}}/{{.ID}} {&amp;quot;host&amp;quot;:&amp;quot;ngconfd.localnet.local&amp;quot;,&amp;quot;port&amp;quot;:{{.Published.HostPort}}}{{end}}
+    - ETCD_TMPL_ALL=/reg/all/{{.Name}}/{{.ID}} {{.Published.HostIP}}:{{.Published.HostPort}}
+    - REGISTRATOR_OPTS=-ip 192.168.0.1 etcd-tmpl://192.168.0.1:4001/
+    - DOCKER_WAITEXIT=1
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/progrium/registrator&#34;&gt;Registrator&lt;/a&gt; 目前原作者版本還沒支援 ETCD_TMPL 的用法, 要用 &lt;a href=&#34;https://github.com/bheatwole/registrator&#34;&gt;bheatwole&lt;/a&gt; 版本,
+相關的 patch 請參考&lt;a href=&#34;https://github.com/progrium/registrator/pull/76&#34;&gt;這裡&lt;/a&gt;,
+我也有在 GitHub 上放了&lt;a href=&#34;https://github.com/tsaikd/registrator/releases/download/20141218/registrator-linux-amd64&#34;&gt;執行檔&lt;/a&gt;,
+如果是用 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker-Builder&lt;/a&gt; 建立 Image 的話, 應該就沒啥問題&lt;/li&gt;
+&lt;li&gt;因為 &lt;a href=&#34;https://github.com/progrium/registrator&#34;&gt;Registrator&lt;/a&gt; 需要監聽 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; 的事件, 所以要把 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; socket file 掛進 &lt;a href=&#34;https://github.com/progrium/registrator&#34;&gt;Registrator&lt;/a&gt; 的 container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;skydns:
+  image: tsaikd/net-dns.skydns:2.0.1d
+  interactive: true
+  environment:
+    - SERVICE_NAME=skydns
+    - ETCD_MACHINES=http://192.168.0.1:4001
+    - SKYDNS_DOMAIN=localnet.local
+    - SKYDNS_NAMESERVERS=8.8.8.8:53
+    - SKYDNS_ADDR=0.0.0.0:1053
+    - SKYDNS_OPTS=-verbose
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 53:1053/udp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;ngconfd:
+  image: tsaikd/www-servers.nginx:confd
+  interactive: true
+  environment:
+    - SERVICE_NAME=ngconfd
+    - SERVICE_80_DNS=ngconfd
+    - CONFD_OPTS=-node 192.168.0.1:4001 -verbose -interval=5
+    - DOCKER_WAITEXIT=1
+  ports:
+    - 80:80
+    - 443:443
+  volumes:
+    - ngconfd/confd:/etc/confd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://nginx.com&#34;&gt;Nginx&lt;/a&gt; + &lt;a href=&#34;https://github.com/kelseyhightower/confd&#34;&gt;Confd&lt;/a&gt; 還需要額外的設定檔&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/docker-run/Docker01/ngconfd/confd/conf.d/nginx.toml&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;[template]
+src = &amp;quot;nginx.tmpl&amp;quot;
+dest = &amp;quot;/etc/nginx/sites-enabled/default&amp;quot;
+prefix = &amp;quot;/reg&amp;quot;
+keys = [
+    &amp;quot;/proxy&amp;quot;,
+]
+check_cmd = &amp;quot;/usr/sbin/nginx -t -c /etc/nginx/nginx.conf&amp;quot;
+reload_cmd = &amp;quot;/usr/sbin/service nginx reload&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/nginx.tmpl.txt&#34;&gt;/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;這個檔案格式比較特別, 所以另外放&amp;hellip;@_@&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;啟動 container&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;fig up -d etcd
+fig up -d registrator
+fig up -d skydns
+fig up -d ngconfd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;把 DNS 指向 &lt;a href=&#34;https://github.com/skynetservices/skydns&#34;&gt;SkyDNS&lt;/a&gt; 吧 (192.168.0.1:53)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/resolv.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;大功告成:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;大功告成&lt;/h3&gt;
+
+&lt;p&gt;開個 Web App 的 container 出來試看看效果吧, 這邊拿 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 來試,
+因為每個 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 的畫面都會顯示一個特別的名字&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fig.yml&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;estest:
+  image: tsaikd/app-misc.elasticsearch:1.4.1
+  interactive: true
+  environment:
+    - SERVICE_NAME=estest
+    - SERVICE_9200_PROXYDNS=estest
+    - SERVICE_9200_PROXY=http
+  ports:
+    - 9200
+    - 9300
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;開起來看看&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;fig up -d estest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用瀏覽器連看看&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;curl http://estest.localnet.local/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多開幾台&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;fig scale estest=3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;再用瀏覽器連看看, 多連幾次看看有什麼不一樣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;curl http://estest.localnet.local/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果是跑一般的網站 Container 的話, 在 Chrome 裡面是可以觀察到 HTTP Connection 是會分散到多台 &lt;a href=&#34;http://nginx.com&#34;&gt;Nginx&lt;/a&gt;,
+像是 HTML 從 192.168.0.1 抓, JavaScript 從 192.168.0.2 抓之類的行為&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;版本參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;版本參考&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 14.04 amd64&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; 1.4.1&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Consul 採到雷</title>
+      <link>http://tsaikd.org/blog/2014/09-14-Consul-trap/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
+      <description>
+
+&lt;p&gt;今天試用 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; ，
+看網路上的文件好像還蠻好裝的，
+沒想到還是遇到神奇的雷，
+目前懷疑是跟 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 有關。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;環境&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -rsvmo
+Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux
+$ docker -v
+Docker version 1.2.0, build fa7b24f
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 版本是 v0.4.0&lt;/p&gt;
+
+&lt;h2 id=&#34;現象:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;現象&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run progrium/consul -server -bootstrap
+==&amp;gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary
+==&amp;gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1
+==&amp;gt; Starting Consul agent...
+==&amp;gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;啟動 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 就爆炸了&amp;hellip;.&amp;gt;_&amp;lt;&lt;/p&gt;
+
+&lt;p&gt;google 不到什麼有用的資料，
+只好自己 trace code 了&amp;hellip;Orz&lt;/p&gt;
+
+&lt;p&gt;追了大半天，
+發現問題出在 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; call &lt;a href=&#34;http://symas.com/mdb/&#34;&gt;LMDB&lt;/a&gt; (Lightning Memory-Mapped Database) 的時候會死掉。
+目前懷疑跟 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 不支援 AIO 有關，
+因為 MySQL 跑在 &lt;a href=&#34;http://zfsonlinux.org/&#34;&gt;ZFS&lt;/a&gt; 上也有&lt;a href=&#34;https://answers.launchpad.net/ubuntu/+question/249586&#34;&gt;災情&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;解法:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;解法&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run -v /tmp progrium/consul -server -bootstrap
+==&amp;gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary
+==&amp;gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1
+==&amp;gt; Starting Consul agent...
+==&amp;gt; Starting Consul agent RPC...
+==&amp;gt; Consul agent running!
+         Node name: &#39;300bcce55b48&#39;
+        Datacenter: &#39;dc1&#39;
+            Server: true (bootstrap: true)
+       Client Addr: 0.0.0.0 (HTTP: 8500, DNS: 53, RPC: 8400)
+      Cluster Addr: 172.17.0.82 (LAN: 8301, WAN: 8302)
+    Gossip encrypt: false, RPC-TLS: false, TLS-Incoming: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;為什麼要掛 /tmp ？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這應該是 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; 的問題了，
+他在啟動的時候會跑去 /tmp 建 &lt;a href=&#34;http://symas.com/mdb/&#34;&gt;LMDB&lt;/a&gt; ，
+即使你有設定 -data-dir 也一樣。
+(雷~~~~)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker eclipse on Ubuntu Desktop</title>
+      <link>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
+      <pubDate>Mon, 04 Aug 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
+      <description>&lt;p&gt;看到越來越多人在往雲端開發的方向在玩，
+比較終極的做法當然就是把 Browser 變成 IDE ，
+不過就目前看來，
+技術上還沒有一個比較領先的做法，
+只好先找比較無痛的方向來玩玩&amp;hellip;hehehe&lt;/p&gt;
+
+&lt;p&gt;今天嘗試了一個新的做法，
+在 Ubuntu Desktop 上面裝 docker ，
+在 docker 裡面跑 eclipse 來開發，
+這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西，
+先看一下成功的畫面吧！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen01.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen02.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;基本上就是先建一個 eclipse 的 container ，
+跑起來之後再用 ssh 連進去執行 eclipse ，
+需要 ssh 的原因是為了要把本機的 X11 forwarding 過去，
+本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ，
+不過試了一陣子都搞不定，
+只好先暫時放棄了。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Try CoreOS</title>
+      <link>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</link>
+      <pubDate>Thu, 10 Jul 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</guid>
+      <description>
+
+&lt;p&gt;新玩具 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; ，設計理念跟 &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 差蠻多的，
+光是安裝就花了不少時間在試，記錄一下奇怪的雷。
+幾個重點先說一下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 最前面的 &lt;code&gt;#cloud-config&lt;/code&gt; 不能省&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 請按照官方文件上面的範例寫，不要畫蛇添足&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 會放在 /var/lib/coreos-install/user_data ，文件上說每次開機都會跑，但是 user 已經存在的話就不會再加一次&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下面是安裝過程，已經有簡化一些了還是落落長，最後設定請直接 END&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;先開個-vm-試試-一號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;先開個 VM 試試 (一號機)&lt;/h1&gt;
+
+&lt;p&gt;在 &lt;a href=&#34;https://coreos.com/docs/running-coreos/bare-metal/installing-to-disk/&#34;&gt;Installing CoreOS to Disk&lt;/a&gt;
+看到有趣的安裝 script ，
+用 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 開機之後，
+抓 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 下來，
+執行 &lt;code&gt;coreos-install -d /dev/sda&lt;/code&gt; ，
+然後他會下載一百多 MB 的檔案來裝到硬碟，
+一切順利，重開機，登入，預設帳密是啥？&lt;/p&gt;
+
+&lt;p&gt;嗯～～看來是要用 &lt;a href=&#34;https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/&#34;&gt;Cloud-Config&lt;/a&gt; 來初始化個人設定，該重裝了～～
+感覺好像會重裝很多次，每次都要下載一百多 MB 好像有點浪費頻寬，
+&lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 該你出場了！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-二號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (二號機)&lt;/h1&gt;
+
+&lt;p&gt;設定 http_proxy ，
+抓 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 下來，
+寫 cloud-config.yaml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;coreos-install -d /dev/sda -c cloud-config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重開之後，用 SSH 登不進去？ &amp;hellip; WTF &amp;hellip;
+是不是要直接加帳號才對？&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-三號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (三號機)&lt;/h1&gt;
+
+&lt;p&gt;設定 http_proxy ，
+抓 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 下來，
+寫 cloud-config.yaml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;coreos-install -d /dev/sda -c cloud-config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;怎麼又從 internet 下載一百多 MB 的檔案&amp;hellip;
+&lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 是壞掉了嗎？
+開始檢查 &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 設定，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;refresh_pattern -i \.(rpm|cab|deb|exe|msi|msu|zip|tar|xz|bz|bz2|lzma|gz|tgz|rar|bin|7z|doc?|xls?|ppt?|pdf|nth|psd|sis)$ 10080 90% 43200 override-expire override-lastmod reload-into-ims ignore-no-cache ignore-private
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;應該 OK 啊！
+試一下 &lt;code&gt;wget http://free.nchc.org.tw/ubuntu/ls-lR.gz&lt;/code&gt; ，
+沒問題啊，搗鼓半小時後放棄 &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid&lt;/a&gt; 方案，
+直接改 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; 比較快，
+把&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2&#34;&gt;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2.sig&#34;&gt;http://beta.release.core-os.net/amd64-usr/current/coreos_production_image.bin.bz2.sig&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;放到區網的 Web Site ，
+修改 &lt;a href=&#34;https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install&#34;&gt;coreos-install&lt;/a&gt; ，
+噢，剛剛好像有試裝一次 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; ，都還沒看成果就跑題了，該重開機了。&lt;/p&gt;
+
+&lt;p&gt;SSH 登不進去，密碼也登不進去，這 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; 也太渣了吧！
+那個設定檔怎麼好像不太整齊， user 下面的子項目怎麼只有 name 前面有 &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-四號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (四號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SSH 登不進去，密碼也登不進去，
+應該是哪裡出了問題，會不會是我的設定檔他根本不吃！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-五號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (五號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;hostname: coreos-test
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;果然連 hostname 都沒吃到，重新多看幾次文件，每個範例好像前面都有加 &lt;code&gt;#cloud-config&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-六號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (六號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;這次 hostname 有吃到了，
+不過還是登不進去啊！
+等等文件上有說&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The ssh_authorized_keys parameter adds public SSH keys which will be authorized for the core user.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-七號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (七號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+  - passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+  - groups:
+      - sudo
+      - docker
+  - ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SSH core 這個 user 終於進去了！
+不過新建的 user 還是不行。
+等等，我剛剛好像有把設定檔的格式加了幾個 &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-八號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (八號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;終於進去了！接下來就是要把 &lt;a href=&#34;https://github.com/tsaikd/kdocker-web&#34;&gt;kdocker-web&lt;/a&gt; 接上去了。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;重開-vm-進-systemrescuecd-環境-九號機:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 VM 進 &lt;a href=&#34;http://www.sysresccd.org/&#34;&gt;SystemRescueCD&lt;/a&gt; 環境 (九號機)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cloud-config
+
+hostname: coreos-test
+ssh-authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+users:
+  - name: elroy
+    passwd: $6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+coreos:
+  units:
+    - name: docker.service
+      command: restart
+      content: |
+        [Unit]
+        Description=Docker Application Container Engine
+        Documentation=http://docs.docker.io
+
+        [Service]
+        Environment=&amp;quot;TMPDIR=/var/tmp/&amp;quot;
+        ExecStartPre=/bin/mount --make-rprivate /
+        # Run docker but don&#39;t have docker automatically restart
+        # containers. This is a job for systemd and unit files.
+        ExecStart=/usr/bin/docker -d -s=btrfs -r=false -H fd:// --api-enable-cors=true
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-tcp.socket
+      command: start
+      content: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=4243
+        Service=docker.service
+        BindIPv6Only=both
+
+        [Install]
+        WantedBy=sockets.target
+    - name: enable-docker-tcp.service
+      command: start
+      content: |
+        [Unit]
+        Description=Enable the Docker Socket for the API
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/systemctl enable docker-tcp.socket
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;大功告成！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker container bridge host physical network</title>
+      <link>http://tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</link>
+      <pubDate>Sat, 24 May 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</guid>
+      <description>
+
+&lt;p&gt;想把 docker 拿來當 vm 用的話，有一個問題就是目前 docker 要做 port forwarding 還是有點麻煩，
+比較好的辦法應該是 container 有自己的獨立 IP ，這樣的話就可以不用管 port 的問題了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jpetazzo/pipework&#34;&gt;https://github.com/jpetazzo/pipework&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;把上面這個 project clone 到 docker host，這個 project 的主要功能是在幫助設定 container 的網路，
+詳細的內容請參考網頁。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://noyaudolive.net/2012/05/09/lxc-and-macvlan-host-to-guest-connection/&#34;&gt;http://noyaudolive.net/2012/05/09/lxc-and-macvlan-host-to-guest-connection/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;另外會遇到 host ping 不到 container 的情況，建議用上面這個辦法解決。&lt;/p&gt;
+
+&lt;h1 id=&#34;實驗環境:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;實驗環境&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gateway 192.168.1.1&lt;/li&gt;
+&lt;li&gt;Netmask 255.255.255.0&lt;/li&gt;
+&lt;li&gt;Docker host 192.168.1.10 eth0&lt;/li&gt;
+&lt;li&gt;Docker container 192.168.1.50&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;docker-host:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Docker host&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vmid=&amp;quot;$(docker run -i -t -d --net none ubuntu:14.04 /bin/bash)&amp;quot;
+pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;pipework 第一個 eth0 是指 host 的網卡代號&lt;/li&gt;
+&lt;li&gt;pipework 第二個 eth0 是指 container 的網卡代號，因為 &amp;ndash;net none 把網卡拿掉，
+所以 container 網卡代號從 eth0 開始&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>320反黑箱服貿協議</title>
+      <link>http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/</link>
+      <pubDate>Thu, 20 Mar 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/</guid>
+      <description>&lt;p&gt;2014-03-20 今天氣溫驟降，我天真的以為今天立法院那邊的人會比較少，
+可能需要有人頭去幫忙加油打氣，於是我就出發了。
+跟上篇一樣，先從描述事實開始。&lt;/p&gt;
+
+&lt;p&gt;一開始就看到一個計程車司機自備麥克風站在車頂上。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0847.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;人群前面有一攤烤香腸，我原本以為是善心民眾來提供熱食，後來在旁邊站了一下，一條40塊&amp;hellip;=.=&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0851.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;今天人潮比昨天多。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0853.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;民眾被採訪了，不知道是哪個媒體。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0855.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;事實描述完畢，接下來就是心得了。&lt;/p&gt;
+
+&lt;p&gt;趁這個反黑箱服貿協議風潮，果然一些有沒有的現象都會出現，
+這個集會的主要目標是定在反黑箱服貿上面，
+一堆不是直接相關的議題都被拉進來搭順風車。&lt;/p&gt;
+
+&lt;p&gt;看到那個烤香腸，我突然能理解之前凱道夜市是怎麼回事了&amp;hellip;
+果然個人利益才是王道！&lt;/p&gt;
+
+&lt;p&gt;在人群中看到有人舉牌希望大家關掉 3G ，讓場內的訊息能傳出來，
+我在想，新聞自由可以捨棄，但網路應該會是最後一道防線，
+如果連網路都像大陸那樣封鎖的話，那就真的 GG 了&amp;hellip;
+印象中有看到一些消息是 NCC 要立法管制網路，現在不知道怎麼樣了？&lt;/p&gt;
+
+&lt;p&gt;今天，人潮眾多，出乎意料，氣溫偏低，偶下小雨，
+明天上班，回家休息，大家加油，安全第一。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>319反黑箱服貿協議</title>
+      <link>http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/</link>
+      <pubDate>Wed, 19 Mar 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/</guid>
+      <description>&lt;p&gt;2014-03-19 晚上九點多抽空去現場走了一圈，正所謂讀萬卷書行萬里路，
+在真正的情況還是要親身經歷才比較有感覺。
+先讓大家從其他的角度來看看這次的活動，先從描述事實開始。&lt;/p&gt;
+
+&lt;p&gt;從善導寺出來，一路上都有一些人坐在旁邊聊天，因為我沒仔細偷聽內容，
+所以不能確定是不是來關心的群眾。&lt;/p&gt;
+
+&lt;p&gt;到了立法院外，首先看到的是一排流動廁所，燈火通明。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0809.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;接下來是在立法院外圍的群眾，滿滿的人。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0813.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;然後看到了形成封鎖線的警察們。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0815.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;後面好像還有不少在待命的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0817.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;接下來有突發事件，因為當時嚇傻了，忘了拍照，其實我站的位置大概也拍不到啥鬼，所以沒圖&amp;hellip;=.=&lt;/p&gt;
+
+&lt;p&gt;約略有 5 台左右的機車想要穿越滿滿的人群，經過一陣混亂，主持人請大家讓開一條路讓機車通過。&lt;/p&gt;
+
+&lt;p&gt;穿過了重重的人群，我爬進立法院的圍牆，一樣是滿滿的人，不過燈光似乎比較集中在立法院門口。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0820.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;旁邊是另一群形成封鎖線的警察們。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0823.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;燈光集中在主持人身上。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0828.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;立法院門口，不知道為啥 iPhone 沒對到焦，整個糊掉了&amp;hellip;=.=&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0830.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;專業的攝影機，角度、位置、設備都是一流。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0832.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;再往側邊走到底，又遇到形成封鎖線的警察們。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0834.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;準備回到馬路上之前，看到了有人要從屋頂上爬下來。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0836.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;馬路上有人群在幫忙運送東西進去。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0837.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;似乎是一整車的礦泉水。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0838.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;中間這個拿小型攝影機的似乎是外國記者？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0840.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;物質擺放定位。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0843.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;這 7-11 位置真好。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0845.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;事實描述完畢，接下來就是心得了。&lt;/p&gt;
+
+&lt;p&gt;一、現場的 3G 快要癱瘓了，連傳個文字訊息到 FB or Line 都可能有問題，
+難怪很少看到有人在現場發表最新的狀況，媒體們有 SNG 車可以傳資料，
+所以能直播很好理解，立法院內的那個直播就有點威猛了&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;二、現場的氣氛大部份是很合平理性的，除了那個機車族的事件除外。
+我猜那群機車族的心態有幾個：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;首先是有路為什麼不能過，
+這個集會遊行本身就不是很正當，還佔用了馬路，所以他們不爽，硬是要過。&lt;/p&gt;
+
+&lt;p&gt;再來就是為了要耍帥吧，我看有些有載妹的&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;還有可能就是他們純粹是白目&amp;hellip;Orz&lt;/p&gt;
+
+&lt;p&gt;要用陰謀論來講，他們是某些勢力派出來想搞破壞的人。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我有看到有幾個扛攝影機的有跟拍，我猜其實應該有些記者有拍到車牌之類的，
+如果能拿到資料就可以找出來戰了&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;三、立法院外的民生物資充足，先不講有人捐物資讓人免費領取的部份，
+光是門口的那個 7-11 應該就可以養不少的民眾了吧。&lt;/p&gt;
+
+&lt;p&gt;四、有點熱，不知道是人太多還是我都站著的關係，一直流汗&amp;hellip;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;接著，我想用 Blog 紀錄一下我的觀念，日後再來回味應該會很有趣&amp;hellip;^ _ ^&lt;/p&gt;
+
+&lt;p&gt;其實服貿有一堆懶人包可以看，但大多數都是在反對的立場，
+也有看到很少數幾篇在贊成服貿的，也都有一些我不能判斷真假的說法，
+所以以我有限的能力，似乎不能亂批服貿，也不能無腦支持。&lt;/p&gt;
+
+&lt;p&gt;先從黑箱開始，
+反對的說法就是政府不能黑箱亂簽；
+贊成的說法就是簽這種東西公開的話就會居談判劣勢，只能讓少數人知道，而且是國際慣例。
+兩邊似乎都有一些道理，我比較傾向公開，因為這是民主國家，
+如果硬是要遵循國際慣例，請公開那些知情者的名單，
+並請他們出來背書，
+看是不是有機會藏著錯綜複雜的利益關係。&lt;/p&gt;
+
+&lt;p&gt;再來是程序的問題，
+朝野協商的結果是要逐條審查，
+國民黨直接把捨棄協商結果，
+表示協商只是扮家家酒，
+給你爽一爽而已，
+也就是說，
+其實國民黨根本不在乎朝野協商，
+反正他們有席次優勢，
+就想直接操弄立法院，
+要幹麻就幹麻，
+這似乎是目前台灣民主制度的一個缺陷，
+沒有一個比較有效的辦法來防止多數暴力的問題。
+想一個嚴重一點的問題，
+雖然我不知道這種東西合不合法律程序，
+要是他們直接簽署投共協議，
+是不是就直接完事了&amp;hellip;Orz&lt;/p&gt;
+
+&lt;p&gt;接著是說服貿可以討論，但是不能修改，所以要打包通過。
+不能修改那是要討論什麼？
+只能討論整包要不要過，跟啥時要過？
+國民黨對朝野協商的結果都可以無視了，
+對共產黨的協商就一定要照單全收？
+總統還說這個會期要過，
+是不是可以視為獨裁了啊？&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>phpVirtualbox config notes</title>
+      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
+      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
+      <description>
+
+&lt;p&gt;phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下&lt;/p&gt;
+
+&lt;h2 id=&#34;ubuntu-virtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ubuntu virtualbox 安裝過程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;vi /etc/apt/sources.list.d/virtualbox.list&lt;/p&gt;
+
+&lt;p&gt;```
+deb &lt;a href=&#34;http://download.virtualbox.org/virtualbox/debian&#34;&gt;http://download.virtualbox.org/virtualbox/debian&lt;/a&gt; precise contrib&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;
+* apt-get update &amp;amp;&amp;amp; apt-get install virtualbox-4.3
+
+* 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console
+	* https://www.virtualbox.org/wiki/Downloads
+
+* vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
+
+* vi /etc/default/virtualbox
+	* 這是為了要開啟 vboxweb-service
+	* vbox 改成要使用哪個系統 user 來開啟 virtualbox
+
+	```
+VBOXWEB_USER=vbox
+VBOXWEB_HOST=0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;update-rc.d vboxweb-service defaults
+
+&lt;ul&gt;
+&lt;li&gt;開機自動啟動&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;phpvirtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox 安裝過程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;先裝好 apache2 + php5 的環境&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下載跟 virtualbox 相容的版本&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/projects/phpvirtualbox/files/&#34;&gt;http://sourceforge.net/projects/phpvirtualbox/files/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;解壓縮之後丟進 /var/www&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定 config.conf&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;username 要設定成啟動 virtualbox 的那個系統 user&lt;/li&gt;
+&lt;li&gt;password 要設定成上面那個 user 的登入密碼, 目前還不知道為啥要設定這個密碼, 所以為了保險起見, 不要用原本常用的帳號或是 root, 開一個新帳號叫 vbox 吧&lt;/li&gt;
+&lt;li&gt;location 要設定成 &lt;a href=&#34;http://VIRTUALBOXIP:18083/&#34;&gt;http://VIRTUALBOXIP:18083/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;那個 VIRTUALBOXIP 就是裝 virtualbox 的 host 的 IP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;service apache2 restart&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;phpvirtualbox-docker-包:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox docker 包&lt;/h2&gt;
+
+&lt;p&gt;我直接做了一個 docker 的 image , 懶得慢慢裝的直接弄這套 docker script 來跑吧&amp;hellip;^_^&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tsaikd/docker&#34;&gt;https://github.com/tsaikd/docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;記得還是要設定 config.sh 裡的參數&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>phpVirtualbox</title>
+      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
+      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</guid>
+      <description>&lt;p&gt;過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體)&lt;/p&gt;
+
+&lt;p&gt;最近終於決定 OS 的架構了&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 12.04 x64&lt;/li&gt;
+&lt;li&gt;ZFS&lt;/li&gt;
+&lt;li&gt;Virtualbox&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/01.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;32G RAM 的 PC &amp;hellip;.hehehe&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/02.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/03.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/04.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&amp;hellip;&amp;gt;_&amp;lt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/05.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/06.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&amp;hellip;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/07.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/08.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/09.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/10.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/11.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/12.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/13.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/14.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/15.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/16.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/17.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maven settings notes</title>
+      <link>http://tsaikd.org/blog/2014/01-23-maven-settings/</link>
+      <pubDate>Thu, 23 Jan 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/01-23-maven-settings/</guid>
+      <description>
+
+&lt;h3 id=&#34;設定-local-nexus-來快取-central-的套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 Local Nexus 來快取 central 的套件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;~/.settings.xml&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;settings&amp;gt;
+    &amp;lt;mirrors&amp;gt;
+        &amp;lt;mirror&amp;gt;
+            &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
+            &amp;lt;name&amp;gt;Local Nexus&amp;lt;/name&amp;gt;
+            &amp;lt;url&amp;gt;http://localhost:8080/nexus-2.7.1-01/content/groups/public/&amp;lt;/url&amp;gt;
+            &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
+        &amp;lt;/mirror&amp;gt;
+    &amp;lt;/mirrors&amp;gt;
+&amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Gradle Plugin</title>
+      <link>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
+      <pubDate>Sun, 05 Jan 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
+      <description>&lt;p&gt;每次要裝都要 google 老半天
+直接記下來好了&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dist.springsource.com/release/TOOLS/gradle&#34;&gt;http://dist.springsource.com/release/TOOLS/gradle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GateIn Skin Trick</title>
+      <link>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
+      <pubDate>Mon, 23 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
+      <description>
+
+&lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;直接 copy gatein-sample-skin&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 web.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字一定要跟放到 tomcat 上的 project name 一樣，我花了好幾個小時 trace code 才知道有這個限制&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;display-name&amp;gt;My-skin&amp;lt;/display-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 gatein-resources.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字是顯示在 GateIn 管理介面上的名字&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;	&amp;lt;skin-name&amp;gt;MySkin&amp;lt;/skin-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客製化 /skin/Stylesheet.css&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenSSL Notes</title>
+      <link>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
+openssl req -new -x509 -days 3650 -key server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;建立-ca:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立 CA&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改 /etc/ssl/openssl.cnf&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;建立目錄結構&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;md demoCA demoCA/newcerts demoCA/private
+touch demoCA/index.txt
+echo 01 &amp;gt; demoCA/serial
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 CA 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out demoCA/private/cakey.pem 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自行簽發 CA 證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -x509 -days 3650 -key demoCA/private/cakey.pem -out demoCA/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;用-ca-簽發-server-證書:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;用 CA 簽發 Server 證書&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 Server 上&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;產生 Server 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out serverkey.pem 1024
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 Server 證書請求&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -key serverkey.pem -out serverreq.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 CA 上簽發證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl ca -days 365 -in serverreq.pem -out servercert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;轉換證書格式:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;轉換證書格式&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl pkcs12 -export -in servercert.pem -inkey serverkey.pem -out servercert.p12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;導入-java-keystore:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;導入 java keystore&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -importkeystore -srckeystore servercert.p12 -srcstoretype PKCS12 -destkeystore .keystore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rhythm-zju.blog.163.com/blog/static/310042008015115718637/&#34;&gt;基于 OpenSSL 的 CA 建立及证书签发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/906402/importing-an-existing-x509-certificate-and-private-key-in-java-keystore-to-use-i&#34;&gt;importing an existing x509 certificate and private key in Java keystore to use in ActiveMQ ssl context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cooking-java.blogspot.tw/2010/01/java-keytool.html&#34;&gt;Java keytool 基本指令介紹&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Nginx Config Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
+      <pubDate>Wed, 27 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 SSL 憑證&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;ssl-spdy:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;SSL + Spdy&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+	listen 443 ssl spdy;
+	ssl_certificate server.crt;
+	ssl_certificate_key server.key;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;reverse-proxy:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Reverse proxy&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+	location /WebApp- {
+		rewrite ^/WebApp-[^/]*/(.*)$ /WebApp/$1 redirect;
+	}
+
+	location = /WebApp {
+		rewrite ^ /WebApp/ redirect;
+	}
+
+	location /WebApp/ {
+		set $ver 1.0-SNAPSHOT-20131127-1412;
+		rewrite ^/WebApp/(.*)$ /WebApp-$ver/$1 break;
+		proxy_cookie_path      /WebApp-$ver /WebApp;
+		proxy_pass http://tomcat:8080/WebApp-$ver/$1$is_args$args;
+		include proxy_params;
+		add_header WebApp-Version $ver;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_http_version 1.1;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

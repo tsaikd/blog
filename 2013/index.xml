@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2013s on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/2013/</link>
+    <description>Recent content in 2013s on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Mon, 23 Dec 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/2013/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GateIn Skin Trick</title>
+      <link>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
+      <pubDate>Mon, 23 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
+      <description>
+
+&lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;直接 copy gatein-sample-skin&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 web.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字一定要跟放到 tomcat 上的 project name 一樣，我花了好幾個小時 trace code 才知道有這個限制&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;display-name&amp;gt;My-skin&amp;lt;/display-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 gatein-resources.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字是顯示在 GateIn 管理介面上的名字&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;	&amp;lt;skin-name&amp;gt;MySkin&amp;lt;/skin-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客製化 /skin/Stylesheet.css&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenSSL Notes</title>
+      <link>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
+openssl req -new -x509 -days 3650 -key server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;建立-ca:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立 CA&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改 /etc/ssl/openssl.cnf&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;建立目錄結構&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;md demoCA demoCA/newcerts demoCA/private
+touch demoCA/index.txt
+echo 01 &amp;gt; demoCA/serial
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 CA 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out demoCA/private/cakey.pem 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自行簽發 CA 證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -x509 -days 3650 -key demoCA/private/cakey.pem -out demoCA/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;用-ca-簽發-server-證書:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;用 CA 簽發 Server 證書&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 Server 上&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;產生 Server 私鑰&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out serverkey.pem 1024
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;產生 Server 證書請求&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -key serverkey.pem -out serverreq.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在 CA 上簽發證書&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl ca -days 365 -in serverreq.pem -out servercert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;轉換證書格式:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;轉換證書格式&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl pkcs12 -export -in servercert.pem -inkey serverkey.pem -out servercert.p12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;導入-java-keystore:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;導入 java keystore&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -importkeystore -srckeystore servercert.p12 -srcstoretype PKCS12 -destkeystore .keystore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rhythm-zju.blog.163.com/blog/static/310042008015115718637/&#34;&gt;基于 OpenSSL 的 CA 建立及证书签发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/906402/importing-an-existing-x509-certificate-and-private-key-in-java-keystore-to-use-i&#34;&gt;importing an existing x509 certificate and private key in Java keystore to use in ActiveMQ ssl context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cooking-java.blogspot.tw/2010/01/java-keytool.html&#34;&gt;Java keytool 基本指令介紹&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Nginx Config Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
+      <pubDate>Wed, 27 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 SSL 憑證&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;ssl-spdy:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;SSL + Spdy&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+	listen 443 ssl spdy;
+	ssl_certificate server.crt;
+	ssl_certificate_key server.key;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;reverse-proxy:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Reverse proxy&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+	location /WebApp- {
+		rewrite ^/WebApp-[^/]*/(.*)$ /WebApp/$1 redirect;
+	}
+
+	location = /WebApp {
+		rewrite ^ /WebApp/ redirect;
+	}
+
+	location /WebApp/ {
+		set $ver 1.0-SNAPSHOT-20131127-1412;
+		rewrite ^/WebApp/(.*)$ /WebApp-$ver/$1 break;
+		proxy_cookie_path      /WebApp-$ver /WebApp;
+		proxy_pass http://tomcat:8080/WebApp-$ver/$1$is_args$args;
+		include proxy_params;
+		add_header WebApp-Version $ver;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_http_version 1.1;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NetBeans Config Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
+      <pubDate>Sun, 24 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
+      <description>
+
+&lt;h1 id=&#34;utf-8:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;UTF-8&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;netbeans/etc/netbeans.conf
+
+&lt;ul&gt;
+&lt;li&gt;netbeans_default_options&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;-J-Dfile.encoding=UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;慣用參數設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;慣用參數設定&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start Page
+
+&lt;ul&gt;
+&lt;li&gt;Show On Startup = false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Options
+
+&lt;ul&gt;
+&lt;li&gt;Editor
+
+&lt;ul&gt;
+&lt;li&gt;Formatting
+
+&lt;ul&gt;
+&lt;li&gt;Expand Tabs to Spaces = false&lt;/li&gt;
+&lt;li&gt;Tab Size = 4&lt;/li&gt;
+&lt;li&gt;Right Margin = 128&lt;/li&gt;
+&lt;li&gt;Continuation Indentation Size = 4&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;On Save
+
+&lt;ul&gt;
+&lt;li&gt;Language = All Languages
+
+&lt;ul&gt;
+&lt;li&gt;Reformat = All Lines&lt;/li&gt;
+&lt;li&gt;Remove Trailing Whitespace From = All Lines&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Language = Java
+
+&lt;ul&gt;
+&lt;li&gt;Remove Unused Imports = true&lt;/li&gt;
+&lt;li&gt;Organize Imports = true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Keymap
+
+&lt;ul&gt;
+&lt;li&gt;Show Code Completion Popup = Alt+SLASH&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.tenyi.com/2012/04/netbeans-utf-8.html&#34;&gt;http://blog.tenyi.com/2012/04/netbeans-utf-8.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java LDAP Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
+      <pubDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+	/**
+	 * AD LDAP 登入認證
+	 *
+	 * @param ldap_url like ldap://x.x.x.x:389/DC=mydomain,DC=com
+	 * @param account like mydomain\\username
+	 * @param password
+	 * @return String[] array 0 :0 success,1 fail,2 LDAP connect fail,3 unknow
+	 */
+	public String[] LDAP_AUTH_AD(String ldap_url, String account, String password) {
+		String[] returnStr = new String[2];
+		Hashtable&amp;lt;String, String&amp;gt; env = new Hashtable&amp;lt;String, String&amp;gt;();
+		env.put(Context.INITIAL_CONTEXT_FACTORY, &amp;quot;com.sun.jndi.ldap.LdapCtxFactory&amp;quot;);
+		env.put(Context.PROVIDER_URL, ldap_url);
+		env.put(Context.SECURITY_PRINCIPAL, account);
+		env.put(Context.SECURITY_CREDENTIALS, password);
+
+		LdapContext ctx = null;
+		try {
+			ctx = new InitialLdapContext(env, null);
+			/* // search
+			 * String searchUser = &amp;quot;USERNAME&amp;quot;;
+			 * SearchControls constraints = new SearchControls();
+			 * constraints.setSearchScope(SearchControls.SUBTREE_SCOPE);
+			 * String[] attrIDs = {&amp;quot;distinguishedName&amp;quot;, &amp;quot;sn&amp;quot;, &amp;quot;givenname&amp;quot;, &amp;quot;mail&amp;quot;, &amp;quot;telephonenumber&amp;quot;};
+			 * constraints.setReturningAttributes(attrIDs);
+			 * String searchFilter = String.format(&amp;quot;(&amp;amp;(objectClass=user)(sAMAccountName=%1$s))&amp;quot;, searchUser);
+			 * NamingEnumeration answer = ctx.search(&amp;quot;&amp;quot;, searchFilter, constraints);
+			 * if (answer.hasMore()) {
+			 *		Attributes attrs = ((SearchResult) answer.next()).getAttributes();
+			 *		System.out.println(attrs);
+			 * }
+			 */
+			returnStr[0] = &amp;quot;0&amp;quot;;
+			returnStr[1] = &amp;quot;&amp;quot;;
+		} catch (javax.naming.AuthenticationException e) {
+			// invalid user account
+			returnStr[0] = &amp;quot;1&amp;quot;;
+			returnStr[1] = e.toString(true);
+		} catch (javax.naming.CommunicationException e) {
+			// Can&#39;t connect to ldap server!
+			returnStr[0] = &amp;quot;2&amp;quot;;
+			returnStr[1] = e.toString(true);
+		} catch (Exception e) {
+			// unexcepted error
+			e.printStackTrace();
+			returnStr[0] = &amp;quot;3&amp;quot;;
+			returnStr[1] = e.toString();
+		}
+		if (ctx != null) {
+			try {
+				ctx.close();
+			} catch (NamingException e) {
+				e.printStackTrace();
+			}
+		}
+		return returnStr;
+	}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://polinwei.blogspot.tw/2009/03/java-ldap-ad.html&#34;&gt;http://polinwei.blogspot.tw/2009/03/java-ldap-ad.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/sand_ant/article/details/11739791&#34;&gt;http://blog.csdn.net/sand_ant/article/details/11739791&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pure-FTPd Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-18-Pure-FTPd/</link>
+      <pubDate>Mon, 18 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-18-Pure-FTPd/</guid>
+      <description>
+
+&lt;h1 id=&#34;安裝:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;安裝&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install pure-ftpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;開帳號:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;開帳號&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;pure-pw useradd FTP_USER -u UBUNTU_USER -d /home/UBUNTU_USER -m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;設定-etc-pure-ftpd-conf:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 /etc/pure-ftpd/conf&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/pure-ftpd/conf
+echo yes &amp;gt; ChrootEveryone
+echo yes &amp;gt; DontResolve
+echo 1 &amp;gt; TLS
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;產生-tls-key:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 TLS key&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -x509 -nodes -newkey rsa:1024 -days 3650 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem
+chmod 600 /etc/ssl/private/pure-ftpd.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;重開-service:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重開 service&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;service pure-ftpd restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://vistb.net/2012/05/build-ftp-server-using-pureftp-in-ubuntu/&#34;&gt;https://vistb.net/2012/05/build-ftp-server-using-pureftp-in-ubuntu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=54&amp;amp;t=387751&#34;&gt;http://forum.ubuntu.org.cn/viewtopic.php?f=54&amp;amp;t=387751&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Highcharts Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</link>
+      <pubDate>Wed, 13 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;隱藏 Highcharts Trade Mark&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+	credits: {
+		enabled: false
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用 Javascript 觸發 point click 事件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;chart.series[0].data[0].firePointEvent(&amp;quot;click&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Solr Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</link>
+      <pubDate>Wed, 13 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;jsonp with jquery&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;jQuery.ajax({
+  url: mySolrUrl,
+  data: myQueryParameters,
+  success: mySuccessCallback,
+  dataType: &amp;quot;jsonp&amp;quot;,
+  jsonp: &amp;quot;json.wrf&amp;quot;&amp;quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;custom field name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;fl=price:price_pl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://solr.pl/en/2011/11/22/solr-4-0-new-fl-parameter-functionalities-first-look/&#34;&gt;http://solr.pl/en/2011/11/22/solr-4-0-new-fl-parameter-functionalities-first-look/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xplus3.net/2010/09/21/solr-and-jsonp/&#34;&gt;http://xplus3.net/2010/09/21/solr-and-jsonp/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PPTP Ubuntu Note</title>
+      <link>http://tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/</link>
+      <pubDate>Wed, 06 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/</guid>
+      <description>
+
+&lt;h2 id=&#34;總結:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;總結&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;apt-get install pptpd -y
+echo &amp;quot;localip 192.168.99.1&amp;quot; &amp;gt;&amp;gt; /etc/pptpd.conf
+echo &amp;quot;remoteip 192.168.99.100-150&amp;quot; &amp;gt;&amp;gt; /etc/pptpd.conf
+echo &amp;quot;ms-dns 8.8.8.8&amp;quot; &amp;gt;&amp;gt; /etc/ppp/pptpd-options
+echo &amp;quot;ms-dns 8.8.4.4&amp;quot; &amp;gt;&amp;gt; /etc/ppp/pptpd-options
+echo &amp;quot;USERNAME * PASSWORD *&amp;quot; &amp;gt;&amp;gt; /etc/ppp/chap-secrets
+service pptpd restart
+echo &amp;quot;net.ipv4.ip_forward=1&amp;quot; &amp;gt;&amp;gt; /etc/sysctl.conf
+sysctl -p
+iptables -t nat -I POSTROUTING -o eth0 -s 192.168.99.0/24 -j MASQUERADE
+iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1316
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;安裝套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;安裝套件&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;apt-get install pptpd -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;設定-ip-區段:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 IP 區段&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/pptpd.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;localip 192.168.99.1
+remoteip 192.168.99.100-150
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;設定-dns:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 DNS&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/ppp/pptpd-options&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;設定帳號:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定帳號&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/ppp/chap-secrets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;USERNAME * PASSWORD *
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;重跑-service:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;重跑 Service&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;service pptpd restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;設定-ip-forwarding:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 IP forwarding&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/sysctl.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;net.ipv4.ip_forward=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bash&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sysctl -p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;設定防火牆:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定防火牆&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MTU 設成 1316 如果還不通, 繼續往下調吧, 一開始連線有問題可以先把 MTU 設成 1200&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;iptables -t nat -I POSTROUTING -o eth0 -s 192.168.99.0/24 -j MASQUERADE
+iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1316
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jesin.tk/setup-pptp-vpn-server-debian-ubuntu/&#34;&gt;http://jesin.tk/setup-pptp-vpn-server-debian-ubuntu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://disp.cc/b/11-GJv&#34;&gt;http://disp.cc/b/11-GJv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GoLang Startup</title>
+      <link>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
+      <pubDate>Sat, 05 Oct 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
+      <description>
+
+&lt;p&gt;最近看上了 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 的速度跟整合 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的模式&lt;/p&gt;
+
+&lt;p&gt;要來學一下 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 了&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Compiler and Runtime
+&lt;a href=&#34;https://code.google.com/p/go/downloads/list&#34;&gt;https://code.google.com/p/go/downloads/list&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Debugger
+參考 &lt;a href=&#34;http://rongmayisheng.com/post/windows%E4%B8%8B%E7%94%A8eclipsegoclipse%E6%8F%92%E4%BB%B6gdb%E6%90%AD%E5%BB%BAgo%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83&#34;&gt;windows下用eclipse+goclipse插件+gdb搭建go語言開發調試環境&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;直接抓 &lt;a href=&#34;http://code.google.com/p/golangide/downloads/list&#34;&gt;liteide Download&lt;/a&gt; 來用裡面內建的 gdb&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IDE (Eclipse) (其實LiteIDE比較好用)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;下載 &lt;a href=&#34;http://www.eclipse.org/downloads/&#34;&gt;http://www.eclipse.org/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;裝 plugin &lt;a href=&#34;https://code.google.com/p/goclipse/&#34;&gt;goclipse&lt;/a&gt;
+&lt;a href=&#34;http://goclipse.googlecode.com/svn/trunk/goclipse-update-site/&#34;&gt;Update Site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;設定 Preferences&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;另一個 IDE (LiteIDE)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;下載 &lt;a href=&#34;https://code.google.com/p/golangide/&#34;&gt;https://code.google.com/p/golangide/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;設定環境變數, 不然自動補全的功能會失效
+
+&lt;ol&gt;
+&lt;li&gt;GOARCH=amd64&lt;/li&gt;
+&lt;li&gt;GOOS=windows&lt;/li&gt;
+&lt;li&gt;GOROOT=C:\Go\&lt;/li&gt;
+&lt;li&gt;GOPATH=C:\GoPath\&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;開個 test go project&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+
+import (
+    &amp;quot;fmt&amp;quot;
+)
+
+
+func main() {
+    fmt.Println(&amp;quot;golang&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;大功告成!!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;不過用 gdb 來 debug 頗難用&lt;/p&gt;
+
+&lt;p&gt;還是只好盡量寫小 function + unit test 吧&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;剛剛突然發現 &lt;a href=&#34;https://code.google.com/p/golangide/&#34;&gt;liteide&lt;/a&gt; 還可以拿來寫 &lt;a href=&#34;http://markdown.tw/&#34;&gt;markdown&lt;/a&gt; 耶!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;參考資料:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md&#34;&gt;https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/why404/gobook&#34;&gt;https://github.com/why404/gobook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/p/go-wiki/wiki/Projects&#34;&gt;https://code.google.com/p/go-wiki/wiki/Projects&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://golang.cat-v.org/pure-go-libs&#34;&gt;http://golang.cat-v.org/pure-go-libs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/shaoshing/train&#34;&gt;https://github.com/shaoshing/train&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;memory-buffer:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Memory Buffer&lt;/h1&gt;
+
+&lt;p&gt;支援 io.Reader, io.Writer&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;b := new(bytes.Buffer)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;byte-array-to-string:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Byte array to string&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// var b []byte
+string(b[0:])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;time-to-solr-date-format:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Time to solr date format&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;time.Now().In(time.UTC).Format(&amp;quot;2006-01-02T15:04:05.000Z&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;goroutine-example:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Goroutine Example&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;runtime&amp;quot;
+	&amp;quot;time&amp;quot;
+)
+
+func Test_Goroutine() {
+	// 假設有這些資料需要處理
+	list := []int{5, 4, 3, 2, 1}
+
+	// worker 的數量設成 CPU 的數量好像比較有效率?
+	workernum := runtime.NumCPU()
+
+	// in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
+	in, out := make(chan string, workernum), make(chan string, workernum)
+	for i := 0; i &amp;lt; workernum; i++ {
+		// 這個匿名函數就是真正要做事的地方
+		go func() {
+			// 一直從 in channel 抓資料來處理
+			for data := range in {
+				// 睡個一秒鐘來模擬做事 XD
+				time.Sleep(1000 * time.Millisecond)
+				// 資料處理完了送出去
+				out &amp;lt;- data
+			}
+		}()
+	}
+
+	// 開一個 goroutine 來把要處理的資料放進 in channel
+	go func() {
+		for _, data := range list {
+			in &amp;lt;- fmt.Sprint(data)
+		}
+		// 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
+		close(in)
+	}()
+
+	// 等所有的資料處理完再結束
+	for _ = range list {
+		&amp;lt;-out
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>把一堆 project 轉到 github</title>
+      <link>http://tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</guid>
+      <description>&lt;p&gt;不知不覺就寫了一大堆 project&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;轉到 &lt;a href=&#34;https://github.com/tsaikd&#34;&gt;github&lt;/a&gt; 頗花時間&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
+
+&lt;p&gt;希望 &lt;a href=&#34;https://github.com/tsaikd&#34;&gt;github&lt;/a&gt; 能撐個幾十年啊&amp;hellip;.XD&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>寫 markdown 的小技巧</title>
+      <link>http://tsaikd.org/blog/2013/09-28-makdown-small-tip/</link>
+      <pubDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/09-28-makdown-small-tip/</guid>
+      <description>&lt;p&gt;之前忘了在哪有看到說 &lt;code&gt;[ID]: http://example.com/&lt;/code&gt; 這種引用的東西最好放在文章的最上面&lt;/p&gt;
+
+&lt;p&gt;本來覺得放在最上面好像有點礙眼，就挪到最下面&lt;/p&gt;
+
+&lt;p&gt;結果就真的出事了&lt;/p&gt;
+
+&lt;p&gt;只好乖乖放在最上面&amp;hellip;@_@&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2013/09-28-makdown-small-tip/1.png&#34; alt=&#34;Image01&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>把舊文章轉成 markdown 格式</title>
+      <link>http://tsaikd.org/blog/2013/09-29-%E6%8A%8A%E8%88%8A%E6%96%87%E7%AB%A0%E8%BD%89%E6%88%90markdown%E6%A0%BC%E5%BC%8F/</link>
+      <pubDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/09-29-%E6%8A%8A%E8%88%8A%E6%96%87%E7%AB%A0%E8%BD%89%E6%88%90markdown%E6%A0%BC%E5%BC%8F/</guid>
+      <description>&lt;p&gt;花了一些時間把舊的 KDBlog 的 xml 格式的文章轉成 markdown 格式&lt;/p&gt;
+
+&lt;p&gt;大致上看起來還可以接受&lt;/p&gt;
+
+&lt;p&gt;不過之前搞了一些特殊的 macro 就麻煩了&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>練習用 markdown 的形式來寫 blog</title>
+      <link>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
+      <pubDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
+      <description>&lt;p&gt;還記得最早的時候是想用 BBS 來紀錄一些生活上的瑣事&lt;/p&gt;
+
+&lt;p&gt;接著是自己用 php 寫了一個 KDBlog 來放資料&lt;/p&gt;
+
+&lt;p&gt;現在似乎用 markdown 來寫文章比較輕鬆了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;目前找到比較好用的工具有&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://octopress.org/&#34;&gt;octopress&lt;/a&gt; by &lt;a href=&#34;https://www.ruby-lang.org/&#34;&gt;ruby&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; by &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; 用起來感覺比 &lt;a href=&#34;http://octopress.org/&#34;&gt;octopress&lt;/a&gt; 要快不少&lt;/p&gt;
+
+&lt;p&gt;而且在 ubuntu 上面裝 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 比裝 &lt;a href=&#34;https://www.ruby-lang.org/&#34;&gt;ruby&lt;/a&gt; 還快&lt;/p&gt;
+
+&lt;p&gt;所以就先選 &lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; 來試看看啦&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;本來應該還要順便搭配 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 來架 blog 會比較好&lt;/p&gt;
+
+&lt;p&gt;不過 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的 pages 功能感覺更新不夠即時&lt;/p&gt;
+
+&lt;p&gt;有點難用&lt;/p&gt;
+
+&lt;p&gt;只好還是 deploy 到自己的 &lt;a href=&#34;http://www.tsaikd.org/&#34;&gt;web server&lt;/a&gt; 上比較實際&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>薪資保密??</title>
+      <link>http://tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</link>
+      <pubDate>Wed, 25 Sep 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.managertoday.com.tw/?p=740&#34;&gt;http://www.managertoday.com.tw/?p=740&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;10薪資保密&lt;/p&gt;
+
+&lt;p&gt;不窺探，不比較，用工作表現贏得績效&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這點真的要好好的戰一下了&lt;/p&gt;
+
+&lt;p&gt;先說我個人觀點: 薪資應該公開透明(勞), 薪資應該保密(資)&lt;/p&gt;
+
+&lt;p&gt;以下所說的薪資(水)泛指底薪+年終+績效+阿薩不魯三小鬼東西的收入&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;先來戰一下 title: 不窺探，不比較，用工作表現贏得績效&lt;/p&gt;
+
+&lt;p&gt;不比較贏得的績效&amp;hellip;.有意義?&lt;/p&gt;
+
+&lt;p&gt;ex: 甲拿 1 個月績效, 乙拿 100 個月的績效&lt;/p&gt;
+
+&lt;p&gt;甲會因為拿到了績效就爽翻天了嗎??&lt;/p&gt;
+
+&lt;p&gt;乙會因為拿到了 100 個月績效就爽翻天了嗎??&lt;/p&gt;
+
+&lt;p&gt;搞不好丙拿的是 10000 個月的績效&amp;hellip;=.=&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這邊其實會扯到勞資對立的問題&lt;/p&gt;
+
+&lt;p&gt;勞工會希望錢多事少離家近&lt;/p&gt;
+
+&lt;p&gt;資方會希望馬兒好又不用吃草&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;ok&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;大家應該都能接受薪水是用來保障勞工的基本生活&lt;/p&gt;
+
+&lt;p&gt;所以台灣有所謂的基本薪資&lt;/p&gt;
+
+&lt;p&gt;那高出基本薪資的那個部份哩?&lt;/p&gt;
+
+&lt;p&gt;我認為是在獎勵員工對公司的貢獻&lt;/p&gt;
+
+&lt;p&gt;所以依照貢獻的程度來發薪水應該是比較合理的&lt;/p&gt;
+
+&lt;p&gt;那貢獻這種東西其實不容易量化&lt;/p&gt;
+
+&lt;p&gt;所以薪水有高有低就看老闆想怎麼給&lt;/p&gt;
+
+&lt;p&gt;也有可能老闆認知的貢獻跟員工想的不一樣&lt;/p&gt;
+
+&lt;p&gt;所以薪資不透明的話&lt;/p&gt;
+
+&lt;p&gt;就是只能看老闆的個人道德來領薪水了&lt;/p&gt;
+
+&lt;p&gt;目前的現況應該就是這樣&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;那如果薪水透明的話會有什麼樣的後果?&lt;/p&gt;
+
+&lt;p&gt;我認為大家會去了解老闆所發的薪水到底會被什麼因素影響&lt;/p&gt;
+
+&lt;p&gt;進而努力朝向那個目標前進&lt;/p&gt;
+
+&lt;p&gt;也會更容易達到老闆的期望&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;從資方的角度來看&lt;/p&gt;
+
+&lt;p&gt;如果能用最小的支出來獲得最大的收益&lt;/p&gt;
+
+&lt;p&gt;那剩下的就進老闆口袋啦!!&lt;/p&gt;
+
+&lt;p&gt;所以要讓大家都不知道自己的薪水是高是低&lt;/p&gt;
+
+&lt;p&gt;只要能吃飽穿暖就好&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這邊想像兩個極端的case&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;所有員工都不知道其他員工拿多少&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;也不知道同行的其他人拿多少&lt;/p&gt;
+
+&lt;p&gt;也不知道非同行的其他人拿多少&lt;/p&gt;
+
+&lt;p&gt;總之, 就是只知道自己拿多少&lt;/p&gt;
+
+&lt;p&gt;所以只能換算出&lt;/p&gt;
+
+&lt;p&gt;工作多久之後, 可以吃多少頓飯&lt;/p&gt;
+
+&lt;p&gt;老闆在這種情況下&lt;/p&gt;
+
+&lt;p&gt;為了要維持公司運作&lt;/p&gt;
+
+&lt;p&gt;一定會盡可能的壓低薪水&lt;/p&gt;
+
+&lt;p&gt;讓勞工沒做事就沒飯吃&lt;/p&gt;
+
+&lt;p&gt;讓勞工剛剛好領的就夠吃飯&lt;/p&gt;
+
+&lt;p&gt;頂多再多一些些讓勞工可以有些娛樂&lt;/p&gt;
+
+&lt;p&gt;結果就是貧富差距兩極化&lt;/p&gt;
+
+&lt;p&gt;只有兩種收入, 勞工-&amp;gt;0, 老闆-&amp;gt;無限大&lt;/p&gt;
+
+&lt;p&gt;似乎回到封建社會了&amp;hellip;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;所有員工都知道其他員工拿多少&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;想要讓生活過的更好的人&lt;/p&gt;
+
+&lt;p&gt;就會去研究怎麼樣才能提高薪資&lt;/p&gt;
+
+&lt;p&gt;怎麼做才能穫得老闆的賞識&lt;/p&gt;
+
+&lt;p&gt;工作效率會增加&lt;/p&gt;
+
+&lt;p&gt;只想維持基本生活的人&lt;/p&gt;
+
+&lt;p&gt;就只會完成老闆交辦的事項&lt;/p&gt;
+
+&lt;p&gt;不會有什麼額外的生產力&lt;/p&gt;
+
+&lt;p&gt;這兩種態度應該會很明顯就能分辨&lt;/p&gt;
+
+&lt;p&gt;老闆也能輕易的決定哪些人該分配做哪些事&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;當然上面的論述都是比較極端的&lt;/p&gt;
+
+&lt;p&gt;現實生活中, 應該都是部份透明部份保密&lt;/p&gt;
+
+&lt;p&gt;就看比例要如何拿捏&lt;/p&gt;
+
+&lt;p&gt;就我的看法, 應該是要趨向盡量透明才是王道&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ide on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/ide/</link>
+    <description>Recent content in Ide on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sun, 24 Nov 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/ide/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>NetBeans Config Notes</title>
+      <link>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
+      <pubDate>Sun, 24 Nov 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
+      <description>
+
+&lt;h1 id=&#34;utf-8:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;UTF-8&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;netbeans/etc/netbeans.conf
+
+&lt;ul&gt;
+&lt;li&gt;netbeans_default_options&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;-J-Dfile.encoding=UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;慣用參數設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;慣用參數設定&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start Page
+
+&lt;ul&gt;
+&lt;li&gt;Show On Startup = false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Options
+
+&lt;ul&gt;
+&lt;li&gt;Editor
+
+&lt;ul&gt;
+&lt;li&gt;Formatting
+
+&lt;ul&gt;
+&lt;li&gt;Expand Tabs to Spaces = false&lt;/li&gt;
+&lt;li&gt;Tab Size = 4&lt;/li&gt;
+&lt;li&gt;Right Margin = 128&lt;/li&gt;
+&lt;li&gt;Continuation Indentation Size = 4&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;On Save
+
+&lt;ul&gt;
+&lt;li&gt;Language = All Languages
+
+&lt;ul&gt;
+&lt;li&gt;Reformat = All Lines&lt;/li&gt;
+&lt;li&gt;Remove Trailing Whitespace From = All Lines&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Language = Java
+
+&lt;ul&gt;
+&lt;li&gt;Remove Unused Imports = true&lt;/li&gt;
+&lt;li&gt;Organize Imports = true&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Keymap
+
+&lt;ul&gt;
+&lt;li&gt;Show Code Completion Popup = Alt+SLASH&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;參考:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.tenyi.com/2012/04/netbeans-utf-8.html&#34;&gt;http://blog.tenyi.com/2012/04/netbeans-utf-8.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

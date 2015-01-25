@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    主機 // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="主機" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/tags/e4b8bbe6a99f/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <a name="top"></a>
+      
+
+      <div class="posts">
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/">Bash 不能輸入中文</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>26</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	不知道從什麼時候開始 我用 pietty 連回主機的時候就不能在 shell 那邊輸入中文了 連複製貼上都不行 狀況總結: 使用 pietty 連到 Ubuntu 8.04 server LANG=zh_TW.utf8 ls 可以看到中文檔名 沒辦法在 shell 輸入中文 可以在 vi 裡面輸入中文 bash &ndash;norc 之後可以輸入中文 bash &ndash;norc ; source /etc/profile ; source ~/.bashrc 可以輸入中文 把 .bashrc 中的 LANG=C 移掉 可以輸入中文 把 .bashrc 中的 LANG=C 放到最後面 可以輸入中文 10.把 .bashrc 中的 LANG=C 放到 bind 指令前面 不能輸入中文 抓到兇手了!! 在 bind 指令前不能用 LANG=C 在 google 上找的大部份都是在說要設定 putty 的 encoding 或字型之類的 跟我的狀況不一樣&hellip;Orz
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/09-13-autofs/">autofs</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>13</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	用到的時候才會自動掛載磁碟 這個其實還真的很方便 不會拖到開機的速度 用起來也很無痛(不過設定的時候就很痛了&hellip;=.=) 趕快做筆記 PS: 其實之前在公司就研究了很久了 所以現在在家裡搞就快多了&hellip;XD 安裝套件 apt-get install autofs 要掛載 samba 的話就要裝 smbfs apt-get install smbfs 設定 /etc/auto.master /autofs /etc/auto.mnt --timeout=60 /etc/auto.mnt 掛載 samba /root/pw/smb 是掛載時要用到的 username &amp; password my_smb_share -fstype=cifs,credentials=/root/pw/smb,uid=tsaikd,gid=tsaikd,file_mode=0600,dir_mode=0700 ://192.168.1.1/my_smb_share 如果要掛的是隱藏的分享記得要加跳脫字元 &lsquo;\&rsquo; my_smb_hidden -fstype=cifs,credentials=/root/pw/smb,uid=tsaikd,gid=tsaikd,file_mode=0600,dir_mode=0700 ://192.168.1.1/my_smb_hidden\$ 掛載 LVM 因為我很懶&hellip;甘脆一次把 LVM 裡的目錄全部放進去&hellip;haha * -fstype=reiserfs,notail,noatime :/dev/vg/&amp; 之後要用的話就設一堆 symlink 吧 顯示目錄的內容 cd ~/ ln -s /autofs/my_smb_share ls -l my_smb_share
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/09-13-autofs/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/09-12-gitweb/">gitweb</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	之前參考 Ku 的做法 在 gitweb.conf 裡面重寫 git_get_project_url_list 去改變 gitweb 裡面 URL 的欄位 剛剛看到 Getting redirects to work in Apache for Gitweb 裡面是用 @git_base_url_list = ('git://my.domain.com'); 這個應該才是比較正統的做法 另外剛剛那個網頁提到把 git 的網址改成比較好看的樣式 我試了一下 感覺只有改到 project 那層的目錄 進去之後的網址還是一樣醜 所以就算了 所以就把之前那種 hack 的寫法改掉了 gitweb.cgi $projectroot = &quot;/var/www/www.tsaikd.org/htdocs/git&quot;; $git_temp = &quot;/tmp&quot;; $home_text = &quot;indextext.html&quot;; $projects_list = $projectroot; $stylesheet = $home_link.&quot;/gitweb.css&quot;; $logo = $home_link.&quot;/git-logo.png&quot;; $favicon = $home_link.&quot;/git-favicon.png&quot;; $feature{'snapshot'}{'default'} = [&quot;tbz2&quot;, &quot;zip&quot;]; #sub git_get_project_url_list { # my $project
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/09-12-gitweb/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/09-12-sudoers/">sudoers</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	很久沒重裝 Linux 了 有些東西要是不記下來總是會一忘再忘&hellip;=.= sudo 要弄成不需密碼的時候就是要 /etc/sudoers tsaikd ALL=NOPASSWD: ALL 這個看一下文件裡的範例照抄就可以 但是有個重點在 Ubuntu 預設的文件範例中好像沒提到 就是這種 NOPASSWD 的設定一定要放在&rdquo;最後面&rdquo;
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/09-12-sudoers/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/">主機復活</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>7</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Apr</span> <span class="post-date-year">2009</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	不知道從什麼時候開始 主機就偶爾會當掉 一開始以為是我的 Kernel 沒編好 (Gentoo 通常都自己手動編 Kernel) 到一兩個月前 當掉的頻率越來越高 然後家裡又時常會沒人在家 所以我就跑去買了一個 IP Power 遠端電源管理的東西 這樣比較好從網路重開我的 server 再來就發現電腦很難撐過一天不當了 只好仔細的找原因 重灌電腦把 Gentoo 換成 Ubuntu Server 還是會當 用光碟開機照當 網路卡不用也會當 記憶體掃了一個晚上沒 error 硬碟測試過了三顆都一樣的情形 應該不是硬碟壞 那就只剩下主機板或 CPU 了 偏偏我家沒有其他的主機板可以來測 只好忍痛買了一張來試看看了 賓果&hellip;. 主機板換了之後一切就順利了&hellip;.T_T 為了那個可惡的主機板 我連續三個星期 每個週末從高雄搭車回西螺搞&hellip;. 累死我了&hellip;@_@ 以後不買Gigabyte的了&hellip;. 要進軍 Terabyte &hellip;.XD
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/">換成光纖網路了</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>30</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	原來是用 ADSL 2M/256K 的方式上網 在上個月底打電話申請升級成光纖網路 等了一個月 終於來裝了!! 現在是 10M/2M 的速度了 用 P2P 測試一下上傳速度 最高大概有 24x KBytes/sec 左右 (256 KBytes/sec 是理想值) 下載的話是從 ftp.isu.edu.tw 上抓檔案來看流速 最高好像到 1.1x MBytes/sec 左右 (1.25 MBytes/sec 是理想值) 嗯&hellip; 這個速度還不錯!! 一個月好像要繳 NT$ 980 的樣子 (之前要繳 NT$ 8xx 的樣子) 才多了一百塊&hellip; (用 1&frasl;10 的價錢換了 9 倍的速度, 我是指上傳&hellip;XD) 還蠻划算的啊&hellip;^_^ 不過固定 IP 好像要再等一陣子才能申請 現在連上網頁就跟我說線路異動中&hellip;Orz
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/">主機復活了</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>25</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	主機的硬碟掛掉了 花了三天時間 終於把主機弄的差不多了 這次終於狠下心把所有的資料都放在安全的 RAID1 跟 RAID5 上面了 RAID1 上主要是放 /boot 的東西 在三顆硬碟上都放一份&hellip;(好像有點太安全了&hellip;XD) RAID5 上就是放其他的東西了 這次連 / 都掛在 LVM 上面了 還花了不少時間去找資料 根據 Gentoo Wiki 上的 HOWTO Install Gentoo on an LVM2 root partition 我是用 lvm2create_initrd 這隻 script 來完成的 不過原來的 script 在 AMD64 上有些問題 在那篇文章裡也有提到 所以我又做了一個 patch 去修正這個問題 還順便把啟動磁碟鎮列的部份改成自動偵測 過程中出了不少狀況&hellip;T_T 不過總算都解決了&hellip;^_^ 指令範例 # ./lvm2create_initrd.sh -M gentoo -c /etc/lvm/lvm.conf -R /etc/mdadm.conf MIRROR: lvm2create_initrd.sh (原始檔案) MIRROR: lvm2create_initrd_kd.sh (patch 過後的檔案) 經過好友 JackieKu 的說明 在
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/">主機的硬碟掛掉了</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>22</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	在晚上 11 點左右的時候 我正在把我的圖片建立索引 做到一半的時候 就卡住了 我覺得有點怪怪的 看 top 又沒有甚麼奇怪的 zombie process 只看到系統資源衝到 1x.x 可是沒有 process 佔了超過 10% 的 CPU 使用率 我就在想是不是硬碟出問題了?? 馬上把所有能關的 service 都關掉 不過連 su 這個指令都會 lag 好久 花了大概半小時在那邊 umount 最後還是受不了 直接切電源了 再開機的時候 檢查 udev 那邊就掛掉了 馬上把備用的主機端出來 硬碟接一接 然後還是沒辦法正常開機 再來把疑似壞掉的硬碟拆掉之後 在備用主機上就可以正常開機了 不過手邊也沒有太多的備用硬碟可以支援 所以只好等明天去買新硬碟了&hellip;@_@ 我的 server 就這樣停擺了&hellip; 不過那個壞掉的硬碟不知道過保了沒?? 印象中好像買不到一年 根據這篇文章1的說法 硬碟上的 Date Code: 06511 是 2006 年 51 周 星期六 出廠 應該是還沒過保&hellip;(不幸中的大幸嗎&hellip;Orz) 不過我在上面的資料只剩一半了&hellip;T_T 為什麼是剩一半而不是全毀哩?? 因為我有作部份的 RAID 0 跟部份的 RAID
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/05-12-PHP-ssmtp-gmail/">PHP ssmtp gmail</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	設定 ssmtp 可以使用 gmail /etc/ssmtp/ssmtp.conf root=帳號@gmail.com mailhub=smtp.gmail.com:587 rewriteDomain= hostname=帳號@gmail.com FromLineOverride=YES UseSTARTTLS=YES AuthUser=帳號 AuthPass=密碼 有設定 aliases 的話就可以用 console 下的 mail 指令來寄信了 /etc/ssmtp/revaliases (optional) root:帳號@gmail.com:smtp.gmail.com:587 主機帳號:帳號@gmail.com:smtp.gmail.com:587 /etc/php/apache2-php5/php.ini sendmail_path = /usr/sbin/ssmtp -t 重新啟動 apache 後就可以用 php 的 mail() 來寄信了
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/05-12-PHP-ssmtp-gmail/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2007/03-22-Apache2-mod_deflate/">Apache2 mod_deflate</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>22</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2007</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-kdblog" href="http://tsaikd.org/blog/categories/kdblog">KDBlog</a>
+      					
+					        <a class="post-category post-category-%E4%B8%BB%E6%A9%9F" href="http://tsaikd.org/blog/categories/%E4%B8%BB%E6%A9%9F">主機</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	最近在寫 KDBlog 時用了 Firefox 的一個 extension &ndash; Web Developer 裡面有個功能是 View Speed Report 我把我的 KDBlog 送過去檢查才知道我的 apache 其實沒有開啟壓縮的功能 一開始 google 的結果是要用 mod_gzip 這個 apache module 然後我用 emerge mod_gzip 的結果竟然要裝 apache-1.x 我覺得奇怪，再去問 google 原來 apache2 有另一個內建功能是 mod_deflate 功能也是即時壓縮 根據&rdquo;啟用 Apache2 的 mod_deflate 來壓縮網頁提高傳輸效能&rdquo;這篇文章 其實用內建的 mod_deflate 就好了 所以我也樂得不用多裝個 mod_gzip 馬上在 vhost 裡加上一些設定 &lt;ifmodule mod_deflate.c&gt; DeflateCompressionLevel 9 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/x-httpd-php AddOutputFilter DEFLATE js css &lt;/ifmodule&gt; 重開 apache 之後 馬上把 KDBlog 送去 View Speed Report 看看結果 從原來的 16K -&gt; 5K !!
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2007/03-22-Apache2-mod_deflate/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+      </div>
+
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>

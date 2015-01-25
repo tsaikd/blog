@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nexus on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/nexus/</link>
+    <description>Recent content in Nexus on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Thu, 23 Jan 2014 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/nexus/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Maven settings notes</title>
+      <link>http://tsaikd.org/blog/2014/01-23-maven-settings/</link>
+      <pubDate>Thu, 23 Jan 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/01-23-maven-settings/</guid>
+      <description>
+
+&lt;h3 id=&#34;設定-local-nexus-來快取-central-的套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 Local Nexus 來快取 central 的套件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;~/.settings.xml&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;settings&amp;gt;
+    &amp;lt;mirrors&amp;gt;
+        &amp;lt;mirror&amp;gt;
+            &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
+            &amp;lt;name&amp;gt;Local Nexus&amp;lt;/name&amp;gt;
+            &amp;lt;url&amp;gt;http://localhost:8080/nexus-2.7.1-01/content/groups/public/&amp;lt;/url&amp;gt;
+            &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
+        &amp;lt;/mirror&amp;gt;
+    &amp;lt;/mirrors&amp;gt;
+&amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

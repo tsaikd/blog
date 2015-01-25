@@ -1,0 +1,20 @@
+{
+	"input": [
+		{
+			"type": "exec",
+			"command": "bash",
+			"interval": 30,
+			"args": ["-c", "mongo admin --quiet <<<'JSON.stringify(db.serverStatus())'"]
+		}
+	],
+	"output": [
+		{
+			"type": "report"
+		},
+		{
+			"type": "redis",
+			"key": "log-mongodb-status",
+			"host": ["redis-1.localnet.local:6379", "redis-2.localnet.local:6379", "redis-3.localnet.local:6379"]
+		}
+	]
+}

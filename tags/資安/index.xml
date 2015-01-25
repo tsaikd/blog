@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>資安 on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/</link>
+    <description>Recent content in 資安 on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sun, 28 Sep 2008 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>兩個新玩具 - cwRsync and Certificate</title>
+      <link>http://tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/</link>
+      <pubDate>Sun, 28 Sep 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/</guid>
+      <description>
+
+&lt;p&gt;這兩天搞了兩個新玩具&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;第一個是 windows 上的 rsync &amp;ndash; cwRsync&lt;/p&gt;
+
+&lt;p&gt;第二個是 Certification (數位憑證)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;cwRsync 很像是用 cygwin 去弄出來的&lt;/p&gt;
+
+&lt;p&gt;會弄到這個東西是因為我在審美女圖的時候&lt;/p&gt;
+
+&lt;p&gt;都要先從我的 server 上把圖抓到本機&lt;/p&gt;
+
+&lt;p&gt;挑好之後再傳回到 server&lt;/p&gt;
+
+&lt;p&gt;本來我在家裡的時候&lt;/p&gt;
+
+&lt;p&gt;server 就用 100M ethernet 連到電腦&lt;/p&gt;
+
+&lt;p&gt;所以就直接用網芳(samba)的方式去抓圖&lt;/p&gt;
+
+&lt;p&gt;不過現在到外面工作了&lt;/p&gt;
+
+&lt;p&gt;網路真的是&amp;hellip;.(好你個 hinet 3.5G)&lt;/p&gt;
+
+&lt;p&gt;之前的做法是用 filezilla sftp 連回主機抓檔案&lt;/p&gt;
+
+&lt;p&gt;不過 filezilla 不能把抓到的檔案從遠端自動砍掉&lt;/p&gt;
+
+&lt;p&gt;(像是移動檔案的方式)&lt;/p&gt;
+
+&lt;p&gt;後來突然想到好像可以用 rsync 這個東西很像可以支援&lt;/p&gt;
+
+&lt;p&gt;就去找到了 cwRsync&lt;/p&gt;
+
+&lt;p&gt;花了一個多小時左右把環境弄好了&lt;/p&gt;
+
+&lt;p&gt;包括設定讓 ssh 不用密碼之類的&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;不過在測試的時候發現了一個奇怪的現象&lt;/p&gt;
+
+&lt;p&gt;就是在上傳的時候(下面的數字只是代表傳送檔案的先後次序)&lt;/p&gt;
+
+&lt;p&gt;client 那邊已經顯示到 sending 010.jpg&lt;/p&gt;
+
+&lt;p&gt;server 那邊用 ls 去看卻只有傳了 002.jpg&lt;/p&gt;
+
+&lt;p&gt;也就是說上傳時檔案顯示不同步??&lt;/p&gt;
+
+&lt;p&gt;按 Ctrl+C 取消之後&lt;/p&gt;
+
+&lt;p&gt;server 那邊還是沒動靜&lt;/p&gt;
+
+&lt;p&gt;再重傳一次 client 還是說要從 003.jpg 開始傳&lt;/p&gt;
+
+&lt;p&gt;不過還好在全部傳完之後&lt;/p&gt;
+
+&lt;p&gt;檔案沒有被吃掉&lt;/p&gt;
+
+&lt;p&gt;不過這個現象令我不解&lt;/p&gt;
+
+&lt;p&gt;又花了幾個小時去找資料卻沒什麼發現&lt;/p&gt;
+
+&lt;p&gt;試了一堆 option 也沒用&lt;/p&gt;
+
+&lt;p&gt;最後只好不理他了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;再來是數位憑證的部份&lt;/p&gt;
+
+&lt;p&gt;最近老闆要我去 study 一下相關的東西&lt;/p&gt;
+
+&lt;p&gt;準備有個小專案要做&lt;/p&gt;
+
+&lt;p&gt;因為之前在弄 apache + SSL 的時候都沒有仔細去了解&lt;/p&gt;
+
+&lt;p&gt;所以就趁這個機會好好的研究一下&lt;/p&gt;
+
+&lt;p&gt;之前大學時修密碼學就大概知道對稱加密跟不對稱加密的一些東西&lt;/p&gt;
+
+&lt;p&gt;數位憑證就是用不對稱加密去搞一堆有的沒的&lt;/p&gt;
+
+&lt;p&gt;我在想應該可以把個人憑證當然進去網站的鑰匙&lt;/p&gt;
+
+&lt;p&gt;這樣就可以省下打密碼的動作了(我是個懶人&amp;hellip;haha)&lt;/p&gt;
+
+&lt;p&gt;在看了一堆文章之後&lt;/p&gt;
+
+&lt;p&gt;慢慢理出一點頭緒&lt;/p&gt;
+
+&lt;p&gt;要達成我的目標(不是老闆要我弄的方向&amp;hellip;XD)&lt;/p&gt;
+
+&lt;p&gt;要弄出一個 CA 來幫自己做 Certification&lt;/p&gt;
+
+&lt;p&gt;Server 上也要用那個 CA 來幫 Server 做 Certification&lt;/p&gt;
+
+&lt;p&gt;(之前的 gentoo apache server 應該是自己 sign 自己產生 Certification)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;建立一個新的 CA&lt;/p&gt;
+
+&lt;h1 id=&#34;cd-etc-ssl:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;cd /etc/ssl/&lt;/h1&gt;
+
+&lt;h1 id=&#34;openssl-genrsa-out-ca-key-2048:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl genrsa -out ca.key 2048&lt;/h1&gt;
+
+&lt;h1 id=&#34;chmod-400-ca-key:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;chmod 400 ca.key&lt;/h1&gt;
+
+&lt;h1 id=&#34;vi-openssl-cnf:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;vi openssl.cnf&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;[ usr_cert ]
+
+    nsCaRevocationUrl = http://www.tsaikd.org/ca.crl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;misc-ca-sh-newca:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;./misc/CA.sh -newca&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;Enter: ca.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;openssl-req-new-x509-nodes-key-ca-key-out-ca-crt:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl req -new -x509 -nodes -key ca.key -out ca.crt&lt;/h1&gt;
+
+&lt;h1 id=&#34;cd-democa:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;cd demoCA/&lt;/h1&gt;
+
+&lt;h1 id=&#34;ln-sf-ca-crt-cacert-pem:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ln -sf ../ca.crt cacert.pem&lt;/h1&gt;
+
+&lt;h1 id=&#34;cd-private:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;cd private/&lt;/h1&gt;
+
+&lt;h1 id=&#34;ln-sf-ca-key-cakey-pem:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ln -sf ../../ca.key cakey.pem&lt;/h1&gt;
+
+&lt;h1 id=&#34;cd:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;cd ../..&lt;/h1&gt;
+
+&lt;h1 id=&#34;echo-00-democa-crlnumber:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;echo &amp;ldquo;00&amp;rdquo; &amp;gt; demoCA/crlnumber&lt;/h1&gt;
+
+&lt;h1 id=&#34;openssl-ca-gencrl-out-capem-crl-crldays-7-crlexts-crl-ext:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl ca -gencrl -out capem.crl -crldays 7 -crlexts crl_ext&lt;/h1&gt;
+
+&lt;h1 id=&#34;openssl-crl-in-capem-crl-outform-der-out-cader-crl:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl crl -in capem.crl -outform DER -out cader.crl&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;最後兩行是產生一個 CRL(Certificate Revocation List)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;再來就是幫自己跟 server 建立 Certification 了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;設一下變數方便下面使用&lt;/p&gt;
+
+&lt;h1 id=&#34;export-name-kdnbxp:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;export NAME=kdnbxp&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;產生 RSA key&lt;/p&gt;
+
+&lt;h1 id=&#34;openssl-genrsa-out-name-key-1024:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl genrsa -out $NAME.key 1024&lt;/h1&gt;
+
+&lt;h1 id=&#34;chmod-400-name-key:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;chmod 400 $NAME.key&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;產生 CSR (Certificate Signing Request)&lt;/p&gt;
+
+&lt;h1 id=&#34;openssl-req-new-nodes-key-name-key-out-name-csr:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl req -new -nodes -key $NAME.key -out $NAME.csr&lt;/h1&gt;
+
+&lt;p&gt;-nodes 就是不用密碼保護&lt;/p&gt;
+
+&lt;p&gt;要是設密碼的話&lt;/p&gt;
+
+&lt;p&gt;每次加解密都要輸入一次&lt;/p&gt;
+
+&lt;p&gt;超麻煩&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;輸入的資訊有兩個要注意的&lt;/p&gt;
+
+&lt;p&gt;*Organization Name: 要跟 CA 的相同才能通過認證&lt;/p&gt;
+
+&lt;p&gt;*Common Name: 如果是幫 apache 認證的話, 這個要設成 domain, 不能亂設&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;用 CA 進行認證&lt;/p&gt;
+
+&lt;h1 id=&#34;openssl-ca-in-name-csr-out-name-crt:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl ca -in $NAME.csr -out $NAME.crt&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;如果是幫 apache 認證的話&lt;/p&gt;
+
+&lt;p&gt;做到這邊就完成了 openssl 的部份&lt;/p&gt;
+
+&lt;p&gt;之後就是到 apache 設定檔做事了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;把認證結果跟 key 轉成 pkcs12 的格式方便攜帶&lt;/p&gt;
+
+&lt;h1 id=&#34;openssl-pkcs12-export-in-name-crt-inkey-name-key-out-name-p12:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;openssl pkcs12 -export -in $NAME.crt -inkey $NAME.key -out $NAME.p12&lt;/h1&gt;
+
+&lt;h1 id=&#34;chmod-400-name-p12:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;chmod 400 $NAME.p12&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;要註銷某個 Certificate 的話&lt;/p&gt;
+
+&lt;p&gt;openssl ca -revoke $NAME.crt&lt;/p&gt;
+
+&lt;p&gt;openssl ca -gencrl -out capem.crl -crldays 7 -crlexts crl_ext&lt;/p&gt;
+
+&lt;p&gt;openssl crl -in capem.crl -outform DER -out cader.crl&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;其實我上面那些東西網路上一狗票的文章&lt;/p&gt;
+
+&lt;p&gt;真正讓我花大量的時間的是在弄瀏覽器的部份&lt;/p&gt;
+
+&lt;p&gt;回到我的目標: 就是用數位憑證來取代輸入密碼&lt;/p&gt;
+
+&lt;p&gt;在看了一堆文章之後&lt;/p&gt;
+
+&lt;p&gt;找到了幾個關鍵點&lt;/p&gt;
+
+&lt;p&gt;在 apache 的設定部份&lt;/p&gt;
+
+&lt;p&gt;VirtualHost&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SSLEngine on
+
+SSLCertificateFile /etc/apache2/ssl/server.crt
+
+SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+SSLCACertificateFile /etc/ssl/ca.crt
+
+SSLCARevocationFile /etc/ssl/capem.crl
+
+SSLVerifyClient none
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;.htaccess 的設定&lt;/p&gt;
+
+&lt;p&gt;SSLVerifyClient require&lt;/p&gt;
+
+&lt;p&gt;SSLOptions +FakeBasicAuth +StrictRequire&lt;/p&gt;
+
+&lt;p&gt;SSLRequireSSL&lt;/p&gt;
+
+&lt;p&gt;SSLRequire %{SSL_CLIENT_S_DN_CN} eq &amp;ldquo;tsaikd-nb-xp&amp;rdquo;&lt;/p&gt;
+
+&lt;h1 id=&#34;上面那行是設定只有-tsaikd-nb-xp-這個人才能通行:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;上面那行是設定只有 tsaikd-nb-xp 這個人才能通行&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這樣似乎就能達到我的要求&lt;/p&gt;
+
+&lt;p&gt;不過理想的狀況應該是如果沒有憑證的話可以用輸入密碼的方式瀏覽網頁&lt;/p&gt;
+
+&lt;p&gt;有憑證的話就不用輸入密碼&lt;/p&gt;
+
+&lt;p&gt;這樣才方便啊&lt;/p&gt;
+
+&lt;p&gt;不過搞了好幾個小時都沒有進展&lt;/p&gt;
+
+&lt;p&gt;最後只好放棄了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;另外還有一個地方讓我花了很多時間&lt;/p&gt;
+
+&lt;p&gt;最後也是沒有結果的&lt;/p&gt;
+
+&lt;p&gt;就是 CRL 的部份&lt;/p&gt;
+
+&lt;p&gt;一開始是輸出成 PEM 格式的 CRL&lt;/p&gt;
+
+&lt;p&gt;但是 Firefox 不吃&lt;/p&gt;
+
+&lt;p&gt;只好換成 DER 格式的給它吃&lt;/p&gt;
+
+&lt;p&gt;但是匯入了 CRL 之後&lt;/p&gt;
+
+&lt;p&gt;Firefox 就不能用那個數位憑證了&lt;/p&gt;
+
+&lt;p&gt;(不管有沒有被註銷)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;IE 的情況是不管有沒有 CRL&lt;/p&gt;
+
+&lt;p&gt;數位憑證都可以用&lt;/p&gt;
+
+&lt;p&gt;就是說 CRL 是個廢柴&amp;hellip;=.=&lt;/p&gt;
+
+&lt;p&gt;兩大瀏覽器都搞不定&lt;/p&gt;
+
+&lt;p&gt;不知道是支援度不夠還是我的 CRL 產生的方式有問題&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>以超連結樣式的新型態詐欺手法</title>
+      <link>http://tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</link>
+      <pubDate>Wed, 21 Nov 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</guid>
+      <description>&lt;p&gt;以超連結樣式的新型態詐欺手法&lt;/p&gt;
+
+&lt;p&gt;剛剛看到這篇 blog&lt;/p&gt;
+
+&lt;p&gt;我想說我的 KDBlog 不知道會不會有這個問題&lt;/p&gt;
+
+&lt;p&gt;跑去檢查一下我的 code&lt;/p&gt;
+
+&lt;p&gt;哈哈&amp;hellip;.我真是太天才了&lt;/p&gt;
+
+&lt;p&gt;我的 KDBlog 沒這個問題&lt;/p&gt;
+
+&lt;p&gt;當初我的限制太嚴格了&lt;/p&gt;
+
+&lt;p&gt;所以這時候就看出好處了&amp;hellip;XD&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSH Tunnel</title>
+      <link>http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/</link>
+      <pubDate>Tue, 03 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/</guid>
+      <description>&lt;p&gt;資訊安全 - SSH Tunnel 帶你遨遊&lt;/p&gt;
+
+&lt;p&gt;用 putty 來穿透防火牆&lt;/p&gt;
+
+&lt;p&gt;紀錄一下&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;putty&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;把 &amp;ldquo;Local ports accept connections from other hosts&amp;rdquo; 勾起來&lt;/p&gt;
+
+&lt;p&gt;就可以從其他電腦用這個 tunnel 了&lt;/p&gt;
+
+&lt;p&gt;好像還蠻危險的&lt;/p&gt;
+
+&lt;p&gt;不過有時還不錯用&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/514499842_d298194d18_o.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FireFox&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/514527643_12d1728f95_o.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MSN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/514527705_c437d16bc8_o.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>破解 WinXP 密碼</title>
+      <link>http://tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</link>
+      <pubDate>Sun, 03 Jun 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</guid>
+      <description>&lt;p&gt;資訊安全 - administrator密碼現身吧!!&lt;/p&gt;
+
+&lt;p&gt;這是一篇破解的教學&lt;/p&gt;
+
+&lt;p&gt;好 high 喔&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;雖然最重要的 crack 部份(計算密碼)沒有公開&lt;/p&gt;
+
+&lt;p&gt;不過會用的話已經很不錯了&lt;/p&gt;
+
+&lt;p&gt;學起來&amp;hellip;^_^&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

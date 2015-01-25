@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>主機 on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/</link>
+    <description>Recent content in 主機 on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sat, 26 Sep 2009 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bash 不能輸入中文</title>
+      <link>http://tsaikd.org/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/</link>
+      <pubDate>Sat, 26 Sep 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/</guid>
+      <description>&lt;p&gt;不知道從什麼時候開始&lt;/p&gt;
+
+&lt;p&gt;我用 pietty 連回主機的時候就不能在 shell 那邊輸入中文了&lt;/p&gt;
+
+&lt;p&gt;連複製貼上都不行&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;狀況總結:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;使用 pietty 連到 Ubuntu 8.04 server&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LANG=zh_TW.utf8&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ls 可以看到中文檔名&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;沒辦法在 shell 輸入中文&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以在 vi 裡面輸入中文&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;bash &amp;ndash;norc 之後可以輸入中文&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;bash &amp;ndash;norc ; source /etc/profile ; source ~/.bashrc 可以輸入中文&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;把 .bashrc 中的 LANG=C 移掉 可以輸入中文&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;把 .bashrc 中的 LANG=C 放到最後面 可以輸入中文&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;10.把 .bashrc 中的 LANG=C 放到 bind 指令前面 不能輸入中文&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;抓到兇手了!!&lt;/p&gt;
+
+&lt;p&gt;在 bind 指令前不能用 LANG=C&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;在 google 上找的大部份都是在說要設定 putty 的 encoding 或字型之類的&lt;/p&gt;
+
+&lt;p&gt;跟我的狀況不一樣&amp;hellip;Orz&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>autofs</title>
+      <link>http://tsaikd.org/blog/2009/09-13-autofs/</link>
+      <pubDate>Sun, 13 Sep 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/09-13-autofs/</guid>
+      <description>
+
+&lt;p&gt;用到的時候才會自動掛載磁碟&lt;/p&gt;
+
+&lt;p&gt;這個其實還真的很方便&lt;/p&gt;
+
+&lt;p&gt;不會拖到開機的速度&lt;/p&gt;
+
+&lt;p&gt;用起來也很無痛(不過設定的時候就很痛了&amp;hellip;=.=)&lt;/p&gt;
+
+&lt;p&gt;趕快做筆記&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;PS: 其實之前在公司就研究了很久了&lt;/p&gt;
+
+&lt;p&gt;所以現在在家裡搞就快多了&amp;hellip;XD&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;安裝套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;安裝套件&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install autofs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;要掛載-samba-的話就要裝-smbfs:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;要掛載 samba 的話就要裝 smbfs&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install smbfs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/auto.master&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;/autofs /etc/auto.mnt --timeout=60
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/auto.mnt
+
+&lt;ul&gt;
+&lt;li&gt;掛載 samba&lt;/li&gt;
+&lt;li&gt;/root/pw/smb 是掛載時要用到的 username &amp;amp; password&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;my_smb_share	-fstype=cifs,credentials=/root/pw/smb,uid=tsaikd,gid=tsaikd,file_mode=0600,dir_mode=0700	://192.168.1.1/my_smb_share
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;如果要掛的是隱藏的分享記得要加跳脫字元 &amp;lsquo;\&amp;rsquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;my_smb_hidden	-fstype=cifs,credentials=/root/pw/smb,uid=tsaikd,gid=tsaikd,file_mode=0600,dir_mode=0700	://192.168.1.1/my_smb_hidden\$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;掛載-lvm:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;掛載 LVM&lt;/h2&gt;
+
+&lt;p&gt;因為我很懶&amp;hellip;甘脆一次把 LVM 裡的目錄全部放進去&amp;hellip;haha&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* -fstype=reiserfs,notail,noatime :/dev/vg/&amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之後要用的話就設一堆 symlink 吧&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;顯示目錄的內容&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/
+ln -s /autofs/my_smb_share
+ls -l my_smb_share
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>gitweb</title>
+      <link>http://tsaikd.org/blog/2009/09-12-gitweb/</link>
+      <pubDate>Sat, 12 Sep 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/09-12-gitweb/</guid>
+      <description>&lt;p&gt;之前參考 Ku 的做法&lt;/p&gt;
+
+&lt;p&gt;在 gitweb.conf 裡面重寫 git_get_project_url_list 去改變 gitweb 裡面 URL 的欄位&lt;/p&gt;
+
+&lt;p&gt;剛剛看到 &lt;a href=&#34;http://ask.metafilter.com/120273/Getting-redirects-to-work-in-Apache-for-Gitweb&#34;&gt;Getting redirects to work in Apache for Gitweb&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;裡面是用 &lt;code&gt;@git_base_url_list = (&#39;git://my.domain.com&#39;);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;這個應該才是比較正統的做法&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;另外剛剛那個網頁提到把 git 的網址改成比較好看的樣式&lt;/p&gt;
+
+&lt;p&gt;我試了一下&lt;/p&gt;
+
+&lt;p&gt;感覺只有改到 project 那層的目錄&lt;/p&gt;
+
+&lt;p&gt;進去之後的網址還是一樣醜&lt;/p&gt;
+
+&lt;p&gt;所以就算了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;所以就把之前那種 hack 的寫法改掉了&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gitweb.cgi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$projectroot = &amp;quot;/var/www/www.tsaikd.org/htdocs/git&amp;quot;;
+$git_temp = &amp;quot;/tmp&amp;quot;;
+$home_text = &amp;quot;indextext.html&amp;quot;;
+$projects_list = $projectroot;
+$stylesheet = $home_link.&amp;quot;/gitweb.css&amp;quot;;
+$logo = $home_link.&amp;quot;/git-logo.png&amp;quot;;
+$favicon = $home_link.&amp;quot;/git-favicon.png&amp;quot;;
+$feature{&#39;snapshot&#39;}{&#39;default&#39;} = [&amp;quot;tbz2&amp;quot;, &amp;quot;zip&amp;quot;];
+#sub git_get_project_url_list {
+#	my $project = shift;
+##	$project =~ s:/::g;
+#	return (&amp;quot;http://www.tsaikd.org/git/$project/&amp;quot;);
+#}
+@git_base_url_list = (&amp;quot;http://www.tsaikd.org/git&amp;quot;, &amp;quot;tsaikd:&amp;quot;);
+#$feature{&#39;pathinfo&#39;}{&#39;default&#39;} = [1];
+#$my_uri = $home_link.&amp;quot;/gitweb.cgi&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;.htaccess&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;DirectoryIndex gitweb.cgi
+AddHandler cgi-script .cgi
+&amp;lt;Files gitweb.cgi&amp;gt;
+    Options +ExecCGI
+&amp;lt;/Files&amp;gt;
+
+RewriteEngine On
+RewriteBase /git/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sudoers</title>
+      <link>http://tsaikd.org/blog/2009/09-12-sudoers/</link>
+      <pubDate>Sat, 12 Sep 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/09-12-sudoers/</guid>
+      <description>&lt;p&gt;很久沒重裝 Linux 了&lt;/p&gt;
+
+&lt;p&gt;有些東西要是不記下來總是會一忘再忘&amp;hellip;=.=&lt;/p&gt;
+
+&lt;p&gt;sudo 要弄成不需密碼的時候就是要&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/sudoers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;tsaikd  ALL=NOPASSWD: ALL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;這個看一下文件裡的範例照抄就可以&lt;/p&gt;
+
+&lt;p&gt;但是有個重點在 Ubuntu 預設的文件範例中好像沒提到&lt;/p&gt;
+
+&lt;p&gt;就是這種 NOPASSWD 的設定一定要放在&amp;rdquo;最後面&amp;rdquo;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>主機復活</title>
+      <link>http://tsaikd.org/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/</link>
+      <pubDate>Tue, 07 Apr 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/</guid>
+      <description>&lt;p&gt;不知道從什麼時候開始&lt;/p&gt;
+
+&lt;p&gt;主機就偶爾會當掉&lt;/p&gt;
+
+&lt;p&gt;一開始以為是我的 Kernel 沒編好&lt;/p&gt;
+
+&lt;p&gt;(Gentoo 通常都自己手動編 Kernel)&lt;/p&gt;
+
+&lt;p&gt;到一兩個月前&lt;/p&gt;
+
+&lt;p&gt;當掉的頻率越來越高&lt;/p&gt;
+
+&lt;p&gt;然後家裡又時常會沒人在家&lt;/p&gt;
+
+&lt;p&gt;所以我就跑去買了一個 IP Power&lt;/p&gt;
+
+&lt;p&gt;遠端電源管理的東西&lt;/p&gt;
+
+&lt;p&gt;這樣比較好從網路重開我的 server&lt;/p&gt;
+
+&lt;p&gt;再來就發現電腦很難撐過一天不當了&lt;/p&gt;
+
+&lt;p&gt;只好仔細的找原因&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;重灌電腦把 Gentoo 換成 Ubuntu Server 還是會當&lt;/p&gt;
+
+&lt;p&gt;用光碟開機照當&lt;/p&gt;
+
+&lt;p&gt;網路卡不用也會當&lt;/p&gt;
+
+&lt;p&gt;記憶體掃了一個晚上沒 error&lt;/p&gt;
+
+&lt;p&gt;硬碟測試過了三顆都一樣的情形&lt;/p&gt;
+
+&lt;p&gt;應該不是硬碟壞&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;那就只剩下主機板或 CPU 了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;偏偏我家沒有其他的主機板可以來測&lt;/p&gt;
+
+&lt;p&gt;只好忍痛買了一張來試看看了&lt;/p&gt;
+
+&lt;p&gt;賓果&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;主機板換了之後一切就順利了&amp;hellip;.T_T&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;為了那個可惡的主機板&lt;/p&gt;
+
+&lt;p&gt;我連續三個星期&lt;/p&gt;
+
+&lt;p&gt;每個週末從高雄搭車回西螺搞&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;累死我了&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以後不買Gigabyte的了&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;要進軍 Terabyte &amp;hellip;.XD&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>換成光纖網路了</title>
+      <link>http://tsaikd.org/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/</link>
+      <pubDate>Mon, 30 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/</guid>
+      <description>&lt;p&gt;原來是用 ADSL 2M/256K 的方式上網&lt;/p&gt;
+
+&lt;p&gt;在上個月底打電話申請升級成光纖網路&lt;/p&gt;
+
+&lt;p&gt;等了一個月&lt;/p&gt;
+
+&lt;p&gt;終於來裝了!!&lt;/p&gt;
+
+&lt;p&gt;現在是 10M/2M 的速度了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;用 P2P 測試一下上傳速度&lt;/p&gt;
+
+&lt;p&gt;最高大概有 24x KBytes/sec 左右 (256 KBytes/sec 是理想值)&lt;/p&gt;
+
+&lt;p&gt;下載的話是從 ftp.isu.edu.tw 上抓檔案來看流速&lt;/p&gt;
+
+&lt;p&gt;最高好像到 1.1x MBytes/sec 左右 (1.25 MBytes/sec 是理想值)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;嗯&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;這個速度還不錯!!&lt;/p&gt;
+
+&lt;p&gt;一個月好像要繳 NT$ 980 的樣子&lt;/p&gt;
+
+&lt;p&gt;(之前要繳 NT$ 8xx 的樣子)&lt;/p&gt;
+
+&lt;p&gt;才多了一百塊&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;(用 &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt; 的價錢換了 9 倍的速度, 我是指上傳&amp;hellip;XD)&lt;/p&gt;
+
+&lt;p&gt;還蠻划算的啊&amp;hellip;^_^&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;不過固定 IP 好像要再等一陣子才能申請&lt;/p&gt;
+
+&lt;p&gt;現在連上網頁就跟我說線路異動中&amp;hellip;Orz&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>主機復活了</title>
+      <link>http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</link>
+      <pubDate>Wed, 25 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/../07-22-主機的硬碟掛掉了&#34;&gt;主機的硬碟掛掉了&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;花了三天時間&lt;/p&gt;
+
+&lt;p&gt;終於把主機弄的差不多了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這次終於狠下心把所有的資料都放在安全的 RAID1 跟 RAID5 上面了&lt;/p&gt;
+
+&lt;p&gt;RAID1 上主要是放 /boot 的東西&lt;/p&gt;
+
+&lt;p&gt;在三顆硬碟上都放一份&amp;hellip;(好像有點太安全了&amp;hellip;XD)&lt;/p&gt;
+
+&lt;p&gt;RAID5 上就是放其他的東西了&lt;/p&gt;
+
+&lt;p&gt;這次連 / 都掛在 LVM 上面了&lt;/p&gt;
+
+&lt;p&gt;還花了不少時間去找資料&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;根據 Gentoo Wiki 上的 HOWTO Install Gentoo on an LVM2 root partition&lt;/p&gt;
+
+&lt;p&gt;我是用 lvm2create_initrd 這隻 script 來完成的&lt;/p&gt;
+
+&lt;p&gt;不過原來的 script 在 AMD64 上有些問題&lt;/p&gt;
+
+&lt;p&gt;在那篇文章裡也有提到&lt;/p&gt;
+
+&lt;p&gt;所以我又做了一個 patch 去修正這個問題&lt;/p&gt;
+
+&lt;p&gt;還順便把啟動磁碟鎮列的部份改成自動偵測&lt;/p&gt;
+
+&lt;p&gt;過程中出了不少狀況&amp;hellip;T_T&lt;/p&gt;
+
+&lt;p&gt;不過總算都解決了&amp;hellip;^_^&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;指令範例&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# ./lvm2create_initrd.sh -M gentoo -c /etc/lvm/lvm.conf -R /etc/mdadm.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;MIRROR: lvm2create_initrd.sh (原始檔案)&lt;/p&gt;
+
+&lt;p&gt;MIRROR: lvm2create_initrd_kd.sh (patch 過後的檔案)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;經過好友 JackieKu 的說明&lt;/p&gt;
+
+&lt;p&gt;在 patch 中又加上了 fsck 的部份&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>主機的硬碟掛掉了</title>
+      <link>http://tsaikd.org/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/</link>
+      <pubDate>Sun, 22 Jul 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/</guid>
+      <description>&lt;p&gt;在晚上 11 點左右的時候&lt;/p&gt;
+
+&lt;p&gt;我正在把我的圖片建立索引&lt;/p&gt;
+
+&lt;p&gt;做到一半的時候&lt;/p&gt;
+
+&lt;p&gt;就卡住了&lt;/p&gt;
+
+&lt;p&gt;我覺得有點怪怪的&lt;/p&gt;
+
+&lt;p&gt;看 top 又沒有甚麼奇怪的 zombie process&lt;/p&gt;
+
+&lt;p&gt;只看到系統資源衝到 1x.x&lt;/p&gt;
+
+&lt;p&gt;可是沒有 process 佔了超過 10% 的 CPU 使用率&lt;/p&gt;
+
+&lt;p&gt;我就在想是不是硬碟出問題了??&lt;/p&gt;
+
+&lt;p&gt;馬上把所有能關的 service 都關掉&lt;/p&gt;
+
+&lt;p&gt;不過連 su 這個指令都會 lag 好久&lt;/p&gt;
+
+&lt;p&gt;花了大概半小時在那邊 umount&lt;/p&gt;
+
+&lt;p&gt;最後還是受不了&lt;/p&gt;
+
+&lt;p&gt;直接切電源了&lt;/p&gt;
+
+&lt;p&gt;再開機的時候&lt;/p&gt;
+
+&lt;p&gt;檢查 udev 那邊就掛掉了&lt;/p&gt;
+
+&lt;p&gt;馬上把備用的主機端出來&lt;/p&gt;
+
+&lt;p&gt;硬碟接一接&lt;/p&gt;
+
+&lt;p&gt;然後還是沒辦法正常開機&lt;/p&gt;
+
+&lt;p&gt;再來把疑似壞掉的硬碟拆掉之後&lt;/p&gt;
+
+&lt;p&gt;在備用主機上就可以正常開機了&lt;/p&gt;
+
+&lt;p&gt;不過手邊也沒有太多的備用硬碟可以支援&lt;/p&gt;
+
+&lt;p&gt;所以只好等明天去買新硬碟了&amp;hellip;@_@&lt;/p&gt;
+
+&lt;p&gt;我的 server 就這樣停擺了&amp;hellip;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;不過那個壞掉的硬碟不知道過保了沒??&lt;/p&gt;
+
+&lt;p&gt;印象中好像買不到一年&lt;/p&gt;
+
+&lt;p&gt;根據這篇文章1的說法&lt;/p&gt;
+
+&lt;p&gt;硬碟上的 Date Code: 06511 是 2006 年 51 周 星期六 出廠&lt;/p&gt;
+
+&lt;p&gt;應該是還沒過保&amp;hellip;(不幸中的大幸嗎&amp;hellip;Orz)&lt;/p&gt;
+
+&lt;p&gt;不過我在上面的資料只剩一半了&amp;hellip;T_T&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;為什麼是剩一半而不是全毀哩??&lt;/p&gt;
+
+&lt;p&gt;因為我有作部份的 RAID 0 跟部份的 RAID 1&lt;/p&gt;
+
+&lt;p&gt;RAID 0 那邊大概是沒救了&lt;/p&gt;
+
+&lt;p&gt;RAID 1 的在另一顆好的硬碟上有備份&lt;/p&gt;
+
+&lt;p&gt;現在還沒有拿到新硬碟來替換之前&lt;/p&gt;
+
+&lt;p&gt;不敢隨便亂動了&lt;/p&gt;
+
+&lt;p&gt;要是連 RAID 1 的那邊也弄壞了我就要哭上好幾天了&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;這次要下定決心&lt;/p&gt;
+
+&lt;p&gt;全部都用 RAID 5 來照顧我的資料了&amp;hellip;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;另外上面有個保固貼紙寫了三個看不懂的數字&lt;/p&gt;
+
+&lt;p&gt;不知道是什麼意思&amp;hellip;@_@&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;6713
+7559
+6718
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PHP ssmtp gmail</title>
+      <link>http://tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</link>
+      <pubDate>Sat, 12 May 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</guid>
+      <description>&lt;p&gt;設定 ssmtp 可以使用 gmail&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/ssmtp/ssmtp.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;root=帳號@gmail.com
+mailhub=smtp.gmail.com:587
+rewriteDomain=
+hostname=帳號@gmail.com
+FromLineOverride=YES
+UseSTARTTLS=YES
+AuthUser=帳號
+AuthPass=密碼
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有設定 aliases 的話就可以用 console 下的 mail 指令來寄信了&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/ssmtp/revaliases (optional)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;root:帳號@gmail.com:smtp.gmail.com:587
+主機帳號:帳號@gmail.com:smtp.gmail.com:587
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/php/apache2-php5/php.ini&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sendmail_path = /usr/sbin/ssmtp -t
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重新啟動 apache 後就可以用 php 的 mail() 來寄信了&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apache2 mod_deflate</title>
+      <link>http://tsaikd.org/blog/2007/03-22-Apache2-mod_deflate/</link>
+      <pubDate>Thu, 22 Mar 2007 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2007/03-22-Apache2-mod_deflate/</guid>
+      <description>&lt;p&gt;最近在寫 KDBlog 時用了 Firefox 的一個 extension &amp;ndash; Web Developer&lt;/p&gt;
+
+&lt;p&gt;裡面有個功能是 View Speed Report&lt;/p&gt;
+
+&lt;p&gt;我把我的 KDBlog 送過去檢查才知道我的 apache 其實沒有開啟壓縮的功能&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一開始 google 的結果是要用 mod_gzip 這個 apache module&lt;/p&gt;
+
+&lt;p&gt;然後我用 emerge mod_gzip 的結果竟然要裝 apache-1.x&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我覺得奇怪，再去問 google&lt;/p&gt;
+
+&lt;p&gt;原來 apache2 有另一個內建功能是 mod_deflate&lt;/p&gt;
+
+&lt;p&gt;功能也是即時壓縮&lt;/p&gt;
+
+&lt;p&gt;根據&amp;rdquo;啟用 Apache2 的 mod_deflate 來壓縮網頁提高傳輸效能&amp;rdquo;這篇文章&lt;/p&gt;
+
+&lt;p&gt;其實用內建的 mod_deflate 就好了&lt;/p&gt;
+
+&lt;p&gt;所以我也樂得不用多裝個 mod_gzip&lt;/p&gt;
+
+&lt;p&gt;馬上在 vhost 裡加上一些設定&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ifmodule mod_deflate.c&amp;gt;
+
+DeflateCompressionLevel 9
+
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/x-httpd-php
+
+AddOutputFilter DEFLATE js css
+
+&amp;lt;/ifmodule&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;重開 apache 之後&lt;/p&gt;
+
+&lt;p&gt;馬上把 KDBlog 送去 View Speed Report 看看結果&lt;/p&gt;
+
+&lt;p&gt;從原來的 16K -&amp;gt; 5K !!&lt;/p&gt;
+
+&lt;p&gt;真棒&amp;hellip;^_^&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

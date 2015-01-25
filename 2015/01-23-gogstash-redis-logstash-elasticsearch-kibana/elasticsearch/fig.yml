@@ -1,0 +1,15 @@
+eslogstash:
+  image: tsaikd/app-misc.elasticsearch:1.4.1
+  interactive: true
+  environment:
+    - SERVICE_NAME=eslogstash
+    - SERVICE_9200_DNS=eslogstash
+    - SERVICE_9200_PROXY=http
+    - ES_MAX_MEM=4g
+  ports:
+    - 9200:9200
+    - 9300:9300
+  volumes:
+    - eslogstash:/usr/local/elasticsearch/config
+    - data/eslogstash:/usr/local/elasticsearch/data
+

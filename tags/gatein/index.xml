@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gatein on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/gatein/</link>
+    <description>Recent content in Gatein on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Mon, 23 Dec 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/gatein/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GateIn Skin Trick</title>
+      <link>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
+      <pubDate>Mon, 23 Dec 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
+      <description>
+
+&lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;直接 copy gatein-sample-skin&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 web.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字一定要跟放到 tomcat 上的 project name 一樣，我花了好幾個小時 trace code 才知道有這個限制&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;display-name&amp;gt;My-skin&amp;lt;/display-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;改 gatein-resources.xml&lt;/p&gt;
+
+&lt;p&gt;這邊的名字是顯示在 GateIn 管理介面上的名字&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;	&amp;lt;skin-name&amp;gt;MySkin&amp;lt;/skin-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客製化 /skin/Stylesheet.css&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

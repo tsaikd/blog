@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qt on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/qt/</link>
+    <description>Recent content in Qt on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sat, 05 Dec 2009 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gitweb for chromium user script</title>
+      <link>http://tsaikd.org/blog/2009/12-05-gitweb-for-chromium-user-script/</link>
+      <pubDate>Sat, 05 Dec 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/12-05-gitweb-for-chromium-user-script/</guid>
+      <description>&lt;p&gt;因為新版的 chromium 不能吃傳統的 greasemonkey 的 user script&lt;/p&gt;
+
+&lt;p&gt;它會把 user script 都轉成 extension 才能用&lt;/p&gt;
+
+&lt;p&gt;這點有機車到&lt;/p&gt;
+
+&lt;p&gt;而且我都把我的 user script 用 git 去管理&lt;/p&gt;
+
+&lt;p&gt;這樣一來我要更新就麻煩了&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;比較好的辦法是把所有的 user script 都轉成 chromium 的 extension&lt;/p&gt;
+
+&lt;p&gt;不過這樣子感覺好麻煩&lt;/p&gt;
+
+&lt;p&gt;只好退而求其次&lt;/p&gt;
+
+&lt;p&gt;讓 chromium 可以吃 gitweb 的網頁&lt;/p&gt;
+
+&lt;p&gt;patch gitweb.cgi 如下&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;diff gitweb.cgi.old gitweb.cgi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;--- gitweb.cgi.old  2009-12-05 22:39:01.000000000 +0800
++++ gitweb.cgi  2009-12-05 22:07:16.000000000 +0800
+@@ -1006,6 +1006,12 @@ sub href {
+            }
+        }
+    }
++   if (defined $params{&amp;quot;file_name&amp;quot;}
++       &amp;amp;amp;&amp;amp;amp; $params{&amp;quot;file_name&amp;quot;} =~ /\.user\.js$/
++       &amp;amp;amp;&amp;amp;amp; defined $params{&amp;quot;action&amp;quot;}
++       &amp;amp;amp;&amp;amp;amp; $params{&amp;quot;action&amp;quot;} eq &amp;quot;blob_plain&amp;quot;) {
++       $href .= $params{&amp;quot;file_name&amp;quot;};
++   }
+    $href .= &amp;quot;?&amp;quot; . join(&#39;;&#39;, @result) if scalar @result;
+    return $href;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;apache .htaccess 的設定也要先設好 rewrite rule 才能用&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/git/.htaccess&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;RewriteEngine On
+
+RewriteBase /git/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^.* gitweb.cgi/$0 [L,PT]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Qt Application Version</title>
+      <link>http://tsaikd.org/blog/2009/08-16-Qt-Application-Version/</link>
+      <pubDate>Sun, 16 Aug 2009 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2009/08-16-Qt-Application-Version/</guid>
+      <description>&lt;p&gt;要在 Qt on windows 的程式上加入版本訊息其實是可以的&lt;/p&gt;
+
+&lt;p&gt;我在 Google 上好像都找不到相關的文章&lt;/p&gt;
+
+&lt;p&gt;只好自己從 Qt 的原始碼去找答案了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Qt 小幫手裡面有說明如何把 ICON 加到 Application 上&lt;/p&gt;
+
+&lt;p&gt;不過就是沒有說到版本訊息的部份&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;最後在 QTDIR/src/gui/QtGuid_resource.rc 找到答案&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;QTDIR/src/gui/QtGuid_resource.rc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# if defined(UNDER_CE)
+#  include &amp;amp;lt;winbase.h&amp;amp;gt;
+# else
+#  include &amp;amp;lt;winver.h&amp;amp;gt;
+# endif
+
+VS_VERSION_INFO VERSIONINFO
+	FILEVERSION 4,5,2,0
+	PRODUCTVERSION 4,5,2,0
+	FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+	FILEFLAGS VS_FF_DEBUG
+#else
+	FILEFLAGS 0x0L
+#endif
+	FILEOS VOS__WINDOWS32
+	FILETYPE VFT_DLL
+	FILESUBTYPE 0x0L
+	BEGIN
+		BLOCK &amp;quot;StringFileInfo&amp;quot;
+		BEGIN
+			BLOCK &amp;quot;040904B0&amp;quot;
+			BEGIN
+				VALUE &amp;quot;CompanyName&amp;quot;, &amp;quot;Nokia Corporation and/or its subsidiary(-ies)\0&amp;quot;
+				VALUE &amp;quot;FileDescription&amp;quot;, &amp;quot;C++ application development framework.\0&amp;quot;
+				VALUE &amp;quot;FileVersion&amp;quot;, &amp;quot;4.5.2.0\0&amp;quot;
+				VALUE &amp;quot;LegalCopyright&amp;quot;, &amp;quot;Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies)\0&amp;quot;
+				VALUE &amp;quot;OriginalFilename&amp;quot;, &amp;quot;QtGuid4.dll\0&amp;quot;
+				VALUE &amp;quot;ProductName&amp;quot;, &amp;quot;Qt4\0&amp;quot;
+			END
+		END
+	END
+/* End of Version info */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;再把這個資源檔加進 pro 就好了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RC_FILE = MyApp.rc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;不過我比較喜歡把一些訊息統整起來&lt;/p&gt;
+
+&lt;p&gt;所以又另外寫一個 config.h 來放程式的名稱、版本、圖示&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;config.h&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;#ifndef _MYAPP_CONFIG_H
+#define _MYAPP_CONFIG_H
+
+#define PROJNAME	&amp;quot;MyApp&amp;quot;
+#define PROJVER		&amp;quot;1.0.0.0&amp;quot;
+#define PROJVERC	1,0,0,0
+
+#define ICONPATH	&amp;quot;../icon/MyApp.ico&amp;quot;
+
+#endif//_MYAPP_CONFIG_H
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;myapp.rc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# if defined(UNDER_CE)
+#  include &amp;amp;lt;winbase.h&amp;amp;gt;
+# else
+#  include &amp;amp;lt;winver.h&amp;amp;gt;
+# endif
+
+# include &amp;quot;config.h&amp;quot;
+
+IDI_ICON1		ICON	DISCARDABLE			ICONPATH
+VS_VERSION_INFO VERSIONINFO
+	FILEVERSION PROJVERC
+	PRODUCTVERSION PROJVERC
+	FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+	FILEFLAGS VS_FF_DEBUG
+#else
+	FILEFLAGS 0x0L
+#endif
+	FILEOS VOS__WINDOWS32
+	FILETYPE VFT_DLL
+	FILESUBTYPE 0x0L
+	BEGIN
+		BLOCK &amp;quot;StringFileInfo&amp;quot;
+		BEGIN
+			BLOCK &amp;quot;040904B0&amp;quot;
+			BEGIN
+				VALUE &amp;quot;CompanyName&amp;quot;, &amp;quot;KD\0&amp;quot;
+				VALUE &amp;quot;FileDescription&amp;quot;, &amp;quot;MyApp Qt Application\0&amp;quot;
+				VALUE &amp;quot;FileVersion&amp;quot;, PROJVER
+				VALUE &amp;quot;LegalCopyright&amp;quot;, &amp;quot;Copyright (C) 2009 by tsaikd\0&amp;quot;
+				VALUE &amp;quot;ProductVersion&amp;quot;, PROJVER
+				VALUE &amp;quot;ProductName&amp;quot;, PROJNAME
+			END
+		END
+	END
+/* End of Version info */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;然後在 main() 裡面加上這些 code&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;main.cpp&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;int main(int argc, char* argv[])
+
+{
+
+	...
+
+	app.setApplicationName(qAppName());
+
+	app.setApplicationVersion(PROJVER);
+
+	...
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;在主要的視窗 widget 加上這些 code&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	setWindowTitle(QString(&amp;quot;%1 %2&amp;quot;).arg(qAppName()).arg(qApp-&amp;gt;applicationVersion()));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;如果有 trayicon 的話, 可以加上這些 code&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	tray.setToolTip(windowTitle());
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Octopress on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/octopress/</link>
+    <description>Recent content in Octopress on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>練習用 markdown 的形式來寫 blog</title>
+      <link>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
+      <pubDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
+      <description>&lt;p&gt;還記得最早的時候是想用 BBS 來紀錄一些生活上的瑣事&lt;/p&gt;
+
+&lt;p&gt;接著是自己用 php 寫了一個 KDBlog 來放資料&lt;/p&gt;
+
+&lt;p&gt;現在似乎用 markdown 來寫文章比較輕鬆了&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;目前找到比較好用的工具有&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://octopress.org/&#34;&gt;octopress&lt;/a&gt; by &lt;a href=&#34;https://www.ruby-lang.org/&#34;&gt;ruby&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; by &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; 用起來感覺比 &lt;a href=&#34;http://octopress.org/&#34;&gt;octopress&lt;/a&gt; 要快不少&lt;/p&gt;
+
+&lt;p&gt;而且在 ubuntu 上面裝 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 比裝 &lt;a href=&#34;https://www.ruby-lang.org/&#34;&gt;ruby&lt;/a&gt; 還快&lt;/p&gt;
+
+&lt;p&gt;所以就先選 &lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; 來試看看啦&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;本來應該還要順便搭配 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 來架 blog 會比較好&lt;/p&gt;
+
+&lt;p&gt;不過 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的 pages 功能感覺更新不夠即時&lt;/p&gt;
+
+&lt;p&gt;有點難用&lt;/p&gt;
+
+&lt;p&gt;只好還是 deploy 到自己的 &lt;a href=&#34;http://www.tsaikd.org/&#34;&gt;web server&lt;/a&gt; 上比較實際&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kdgallery on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/kdgallery/</link>
+    <description>Recent content in Kdgallery on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Tue, 22 Apr 2008 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/kdgallery/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>KDGallery rev1</title>
+      <link>http://tsaikd.org/blog/2008/04-22-KDGallery-rev1/</link>
+      <pubDate>Tue, 22 Apr 2008 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2008/04-22-KDGallery-rev1/</guid>
+      <description>&lt;p&gt;其實 KDGallery 很早就做出一個雛型了&lt;/p&gt;
+
+&lt;p&gt;(這個比 KDBlog 要草率一點&amp;hellip;so&amp;hellip;@_@)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;現在也沒有多做什麼&lt;/p&gt;
+
+&lt;p&gt;只是想說應該要紀錄一下 Changelog&lt;/p&gt;
+
+&lt;p&gt;所以就從 rev1 開始吧&amp;hellip;haha&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

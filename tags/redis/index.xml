@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on TsaiKD Blog</title>
+    <link>http://tsaikd.org/blog/tags/redis/</link>
+    <description>Recent content in Redis on TsaiKD Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    
+    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 &#43;0000</lastBuildDate>
+    <atom:link href="http://tsaikd.org/blog/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>中等規模環境下的集中式 Log 管理及分析</title>
+      <link>http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</guid>
+      <description>
+
+&lt;p&gt;Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤
+，也可以看出某些趨勢，提早做出一些可能有影響的決策。目前其實有不少的工具都可以用
+在處理 Log 集中管理的問題，我這邊也提供一個中等規模的解決方案。&lt;/p&gt;
+
+&lt;p&gt;在小型的環境(單機，少量程式) Log 其實隨便亂放都沒差，通常都只有在出問題的時候才
+會去撈 Log 協助排除問題。在大型的環境(數以百計的主機跟 App 以上)，ㄜ~~~~我沒經驗
+不敢隨意猜測。所以這邊是用一個數十台 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 的環境來討論 Log 集中管理的處理
+方式。&lt;/p&gt;
+
+&lt;p&gt;在 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 的使用情境下，有幾種典型角色：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
+
+&amp;gt; &lt;a href=&#34;http://logstash.net/docs/1.1.1/tutorials/getting-started-centralized&#34;&gt;這邊偷用了 Logstash Document 的圖&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Shipper
+
+&lt;ul&gt;
+&lt;li&gt;蒐集&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Broker
+
+&lt;ul&gt;
+&lt;li&gt;暫存&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Indexer
+
+&lt;ul&gt;
+&lt;li&gt;解析&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Storage &amp;amp; Search
+
+&lt;ul&gt;
+&lt;li&gt;永久儲存&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Web Interface
+
+&lt;ul&gt;
+&lt;li&gt;分析界面&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Shipper + Broker + Indexer 在小型的環境其實可以整合在同一個 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 裡面一次
+處理，不過一開始也有提到，在小型的環境，哪有人在搞複雜的 Log 分析&amp;hellip;XD，既然要做
+就一次做到位吧。&lt;/p&gt;
+
+&lt;p&gt;不過這邊還有另一個問題，就是 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 是用 &lt;a href=&#34;https://www.ruby-lang.org/zh_tw/&#34;&gt;Ruby&lt;/a&gt; 寫的，然
+後透過 &lt;a href=&#34;https://java.com/zh_TW/&#34;&gt;Java&lt;/a&gt; 來執行，所以需要安裝 &lt;a href=&#34;https://java.com/zh_TW/&#34;&gt;Java&lt;/a&gt;，但是像在 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 的環境，我不
+想在機器上安裝太多額外的東西，而且 &lt;a href=&#34;https://java.com/zh_TW/&#34;&gt;Java&lt;/a&gt; 其實還蠻肥的，如果只是單純的 Shipper
+角色，沒有必要搞那麼多有的沒的套件把系統弄髒，所以我另外開發了一個小工具 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt;
+來做 Shipper 的工作。&lt;/p&gt;
+
+&lt;p&gt;Broker 選用 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt;，聽說效能不錯？&lt;/p&gt;
+
+&lt;p&gt;Indexer 仍然使用 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; ，因為 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 已經有蠻多方便的設定可以快速的
+解析各式各樣的 Log 。&lt;/p&gt;
+
+&lt;p&gt;Storage &amp;amp; Search 選擇 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; ，它使用了 &lt;a href=&#34;http://lucene.apache.org/&#34;&gt;Lucene&lt;/a&gt; 當基底，可以有效率
+的分析及處理各種自然語言，不過其實對一般的 Log 來說，大部分的情況不會用到太深入的
+功能，有點用牛刀殺雞的感覺，反正 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 也還蠻好用的，就這樣吧&amp;hellip;&lt;code&gt;^_^&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Web Interface 選擇 3.x 版的 &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; ，它可以在網頁上展示還不錯看的報表。&lt;/p&gt;
+
+&lt;h2 id=&#34;shipper-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Shipper 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 的部份這邊先不討論，只是拿來當個案例而已。 Shipper 的重點就是要把所有
+機器上的 Log 都送到 Broker ，我這邊想要蒐集的資料包括了 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 本身的 Log ，
+還有機器的狀態也想要一併分析，所以有幾個 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt; 的設定。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;broker-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Broker 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 要做一個稱職的 Broker 其實有點麻煩，因為它可能是因為效率的問題，在
+High availability 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞&amp;hellip;Orz
+，我目前使用 &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 來建構 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 環境，裡面有用&lt;a href=&#34;https://github.com/tsaikd/fig&#34;&gt;我 Patch 過的 Fig&lt;/a&gt;
+，另外 Docker Image 是用 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 建出來的， &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 的 sentinel 情況
+比較麻煩，可能還是要參考一下&lt;a href=&#34;http://redis.io/topics/sentinel&#34;&gt;Redis Sentinel 官方文件&lt;/a&gt;
+才比較容易理解。底下列出一些相關的設定方式給大家參考。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/redis.conf&#34;&gt;redis/redis.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 基本設定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/sentinel.conf&#34;&gt;redis/sentinel.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; Sentinel 設定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/start.sh&#34;&gt;redis/start.sh&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;indexer-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Indexer 設定&lt;/h2&gt;
+
+&lt;p&gt;Indexer 其實是 Log 分析的一大重點，因為 Log 可能會有各式各樣的描述，再加上每個人
+想分析的東西不盡相同，所以很難用一個標準化的設定就能通吃所有情況，這邊我是用 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt;
+系統管理者的角度來處理 Log。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb.conf&#34;&gt;logstash/index-mongodb.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; Log&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-status.conf&#34;&gt;logstash/index-mongodb-status.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 服務狀態&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析硬碟空間使用狀況&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分析系統負載資訊&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;storage-search-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Storage &amp;amp; Search 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 最常見的問題其實是它預設在建索引的時候會自動分詞之後才儲存，這
+樣會在做分組統計的時候出現狀況，像是 &amp;ldquo;connection accepted&amp;rdquo; 這個詞會被拆成 &amp;ldquo;connection&amp;rdquo;
+&amp;ldquo;accepted&amp;rdquo; 這兩個詞來做統計，但是其實我想要的是 &amp;ldquo;connection accepted&amp;rdquo; 整個詞來進
+行統計，所以某些欄位需要額外設定讓它不要分詞，詳細的設定還是要參考 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt;
+相關文件，底下設定給大家參考。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/elasticsearch.yml&#34;&gt;eslogstash/elasticsearch.yml&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ElasticSearch 基本設定&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/logging.yml&#34;&gt;eslogstash/logging.yml&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;這個檔案基本上沒有修改，只是方便 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 直接把整個目錄掛進去&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/stopword.txt&#34;&gt;eslogstash/analysis/stopword.txt&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用來排除某些特定(不感興趣)的詞&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/synonym.txt&#34;&gt;eslogstash/analysis/synonym.txt&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;設定同義詞&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/templates/kdtmpl.json&#34;&gt;eslogstash/templates/kdtmpl.json&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;動態模板，把 &lt;code&gt;*_facet&lt;/code&gt; 欄位預設成不分詞&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;web-interface-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Web Interface 設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; 的設定就相對簡單很多，主要是因為我用 &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 把 &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; 跟 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt;
+的環境分開，不然可以免設定就直接用了。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;qa:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;QA&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上面的 fig.yml 有些奇怪的環境變數像是 &lt;code&gt;SERVICE_9200_DNS=eslogstash&lt;/code&gt; 是在幹嘛的？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這些是我在 &lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/../../2014/12-25-Docker-infra&#34;&gt;Docker Infra 架構簡介與實例&lt;/a&gt; 這邊提到
+的架構，其中的某些設定，因為有點複雜，有興趣的就自行閱讀吧，反正把那些服務串起來
+就對了。&lt;/p&gt;
+
+&lt;p&gt;另外 &lt;code&gt;DOCKER_WAITEXIT=1&lt;/code&gt; 這個是 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 提供的一個設定&lt;/p&gt;
+
+&lt;h2 id=&#34;demo-截圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Demo 截圖&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana-demo.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

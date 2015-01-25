@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    2014s // TsaiKD Blog
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+  <meta property="og:title" content="2014s" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://tsaikd.org/blog/2014/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://tsaikd.org/blog/css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://tsaikd.org/blog/2014/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+    <h1 class="brand-title">TsaiKD Blog</h1>
+    
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://tsaikd.org/blog">Home</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <a name="top"></a>
+      
+
+      <div class="posts">
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/12-25-Docker-infra/">Docker Infra 架構簡介與實例</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>25</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-etcd" href="http://tsaikd.org/blog/categories/etcd">Etcd</a>
+      					
+					        <a class="post-category post-category-skydns" href="http://tsaikd.org/blog/categories/skydns">SkyDNS</a>
+      					
+					        <a class="post-category post-category-registrator" href="http://tsaikd.org/blog/categories/registrator">Registrator</a>
+      					
+					        <a class="post-category post-category-nginx" href="http://tsaikd.org/blog/categories/nginx">Nginx</a>
+      					
+					        <a class="post-category post-category-confd" href="http://tsaikd.org/blog/categories/confd">Confd</a>
+      					
+					        <a class="post-category post-category-fig" href="http://tsaikd.org/blog/categories/fig">Fig</a>
+      					
+					        <a class="post-category post-category-docker-builder" href="http://tsaikd.org/blog/categories/docker-builder">Docker-Builder</a>
+      					
+					        <a class="post-category post-category-kdocker-web" href="http://tsaikd.org/blog/categories/kdocker-web">KDocker-Web</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	這邊介紹的架構可以做到什麼效果? 開新的 Web App 就可以立刻透過新的 domain name 去連線 開一大堆同名的 Web App 就可以立刻分流 系統基本架構圖 Etcd 存放設定的 Cluster DB SkyDNS 從 Etcd 讀取設定, 讓使用者查詢的 DNS Server Confd 從 Etcd 讀取設定, Reload Nginx Registrator 監聽 Docker Events, 將 Container 資訊寫入 Etcd Nginx 網頁 r-Proxy 實作部份 準備 VM/Host 如果只是要先測試的話, 可以只用一台 VM/Host, 不過考慮到系統容錯的話, 建議準備至少三台不同的機器來建構底層架構 設定 Docker 這邊在 Ubuntu 上安裝 Docker 做為範例, 其他平台請參考官網說明文件 利用 apt 安裝 lxc-docker echo &quot;deb http://get.docker.io/ubuntu docker main&quot; &gt; /etc/apt/sources.list.d/docker.list apt-get update
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/12-25-Docker-infra/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/09-14-Consul-trap/">Consul 採到雷</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>14</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-consul" href="http://tsaikd.org/blog/categories/consul">Consul</a>
+      					
+					        <a class="post-category post-category-lmdb" href="http://tsaikd.org/blog/categories/lmdb">LMDB</a>
+      					
+					        <a class="post-category post-category-zfs" href="http://tsaikd.org/blog/categories/zfs">ZFS</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	今天試用 consul ， 看網路上的文件好像還蠻好裝的， 沒想到還是遇到神奇的雷， 目前懷疑是跟 ZFS 有關。 環境 $ uname -rsvmo Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux $ docker -v Docker version 1.2.0, build fa7b24f consul 版本是 v0.4.0 現象 $ docker run progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary ==&gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1 ==&gt; Starting Consul agent... ==&gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented 啟動 consul 就爆炸了&hellip;.&gt;_&lt; google 不到什麼有用的資料， 只好自己 trace code 了&hellip;Orz 追了大半天， 發現問題出在 consul call LMDB (Lightning Memory-Mapped Database) 的時候會死掉。 目前懷疑跟 ZFS 不支援 AIO 有關， 因為 MySQL 跑在 ZFS 上也有災情。 解法 $ docker run -v /tmp progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled!
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/09-14-Consul-trap/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+					        <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/categories/eclipse">Eclipse</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	看到越來越多人在往雲端開發的方向在玩， 比較終極的做法當然就是把 Browser 變成 IDE ， 不過就目前看來， 技術上還沒有一個比較領先的做法， 只好先找比較無痛的方向來玩玩&hellip;hehehe 今天嘗試了一個新的做法， 在 Ubuntu Desktop 上面裝 docker ， 在 docker 裡面跑 eclipse 來開發， 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西， 先看一下成功的畫面吧！ 基本上就是先建一個 eclipse 的 container ， 跑起來之後再用 ssh 連進去執行 eclipse ， 需要 ssh 的原因是為了要把本機的 X11 forwarding 過去， 本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ， 不過試了一陣子都搞不定， 只好先暫時放棄了。
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/07-10-Try-CoreOS/">Try CoreOS</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>10</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-coreos" href="http://tsaikd.org/blog/categories/coreos">CoreOS</a>
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	新玩具 CoreOS ，設計理念跟 Ubuntu 差蠻多的， 光是安裝就花了不少時間在試，記錄一下奇怪的雷。 幾個重點先說一下： Cloud-Config 最前面的 #cloud-config 不能省 Cloud-Config 請按照官方文件上面的範例寫，不要畫蛇添足 Cloud-Config 會放在 /var/lib/coreos-install/user_data ，文件上說每次開機都會跑，但是 user 已經存在的話就不會再加一次 下面是安裝過程，已經有簡化一些了還是落落長，最後設定請直接 END 先開個 VM 試試 (一號機) 在 Installing CoreOS to Disk 看到有趣的安裝 script ， 用 SystemRescueCD 開機之後， 抓 coreos-install 下來， 執行 coreos-install -d /dev/sda ， 然後他會下載一百多 MB 的檔案來裝到硬碟， 一切順利，重開機，登入，預設帳密是啥？ 嗯～～看來是要用 Cloud-Config 來初始化個人設定，該重裝了～～ 感覺好像會重裝很多次，每次都要下載一百多 MB 好像有點浪費頻寬， squid 該你出場了！ 重開 VM 進 SystemRescueCD 環境 (二號機) 設定 http_proxy ， 抓 coreos-install 下來， 寫 cloud-config.yaml ssh_authorized_keys: - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/07-10-Try-CoreOS/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/05-24-Docker-container-bridge-host-physical-network/">Docker container bridge host physical network</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>24</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+					        <a class="post-category post-category-network" href="http://tsaikd.org/blog/categories/network">Network</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	想把 docker 拿來當 vm 用的話，有一個問題就是目前 docker 要做 port forwarding 還是有點麻煩， 比較好的辦法應該是 container 有自己的獨立 IP ，這樣的話就可以不用管 port 的問題了。 https://github.com/jpetazzo/pipework 把上面這個 project clone 到 docker host，這個 project 的主要功能是在幫助設定 container 的網路， 詳細的內容請參考網頁。 http://noyaudolive.net/2012/05/09/lxc-and-macvlan-host-to-guest-connection/ 另外會遇到 host ping 不到 container 的情況，建議用上面這個辦法解決。 實驗環境 Gateway 192.168.1.1 Netmask 255.255.255.0 Docker host 192.168.1.10 eth0 Docker container 192.168.1.50 Docker host vmid=&quot;$(docker run -i -t -d --net none ubuntu:14.04 /bin/bash)&quot; pipework eth0 -i eth0 &quot;${vmid}&quot; 192.168.1.50/24@192.168.1.1 pipework 第一個 eth0 是指 host
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/05-24-Docker-container-bridge-host-physical-network/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/">320反黑箱服貿協議</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>20</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-%E6%94%BF%E6%B2%BB" href="http://tsaikd.org/blog/categories/%E6%94%BF%E6%B2%BB">政治</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	2014-03-20 今天氣溫驟降，我天真的以為今天立法院那邊的人會比較少， 可能需要有人頭去幫忙加油打氣，於是我就出發了。 跟上篇一樣，先從描述事實開始。 一開始就看到一個計程車司機自備麥克風站在車頂上。 人群前面有一攤烤香腸，我原本以為是善心民眾來提供熱食，後來在旁邊站了一下，一條40塊&hellip;=.= 今天人潮比昨天多。 民眾被採訪了，不知道是哪個媒體。 事實描述完畢，接下來就是心得了。 趁這個反黑箱服貿協議風潮，果然一些有沒有的現象都會出現， 這個集會的主要目標是定在反黑箱服貿上面， 一堆不是直接相關的議題都被拉進來搭順風車。 看到那個烤香腸，我突然能理解之前凱道夜市是怎麼回事了&hellip; 果然個人利益才是王道！ 在人群中看到有人舉牌希望大家關掉 3G ，讓場內的訊息能傳出來， 我在想，新聞自由可以捨棄，但網路應該會是最後一道防線， 如果連網路都像大陸那樣封鎖的話，那就真的 GG 了&hellip; 印象中有看到一些消息是 NCC 要立法管制網路，現在不知道怎麼樣了？ 今天，人潮眾多，出乎意料，氣溫偏低，偶下小雨， 明天上班，回家休息，大家加油，安全第一。
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/">319反黑箱服貿協議</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>19</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-%E6%94%BF%E6%B2%BB" href="http://tsaikd.org/blog/categories/%E6%94%BF%E6%B2%BB">政治</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	2014-03-19 晚上九點多抽空去現場走了一圈，正所謂讀萬卷書行萬里路， 在真正的情況還是要親身經歷才比較有感覺。 先讓大家從其他的角度來看看這次的活動，先從描述事實開始。 從善導寺出來，一路上都有一些人坐在旁邊聊天，因為我沒仔細偷聽內容， 所以不能確定是不是來關心的群眾。 到了立法院外，首先看到的是一排流動廁所，燈火通明。 接下來是在立法院外圍的群眾，滿滿的人。 然後看到了形成封鎖線的警察們。 後面好像還有不少在待命的。 接下來有突發事件，因為當時嚇傻了，忘了拍照，其實我站的位置大概也拍不到啥鬼，所以沒圖&hellip;=.= 約略有 5 台左右的機車想要穿越滿滿的人群，經過一陣混亂，主持人請大家讓開一條路讓機車通過。 穿過了重重的人群，我爬進立法院的圍牆，一樣是滿滿的人，不過燈光似乎比較集中在立法院門口。 旁邊是另一群形成封鎖線的警察們。 燈光集中在主持人身上。 立法院門口，不知道為啥 iPhone 沒對到焦，整個糊掉了&hellip;=.= 專業的攝影機，角度、位置、設備都是一流。 再往側邊走到底，又遇到形成封鎖線的警察們。 準備回到馬路上之前，看到了有人要從屋頂上爬下來。 馬路上有人群在幫忙運送東西進去。 似乎是一整車的礦泉水。 中間這個拿小型攝影機的似乎是外國記者？ 物質擺放定位。 這 7-11 位置真好。 事實描述完畢，接下來就是心得了。 一、現場的 3G 快要癱瘓了，連傳個文字訊息到 FB or Line 都可能有問題， 難怪很少看到有人在現場發表最新的狀況，媒體們有 SNG 車可以傳資料， 所以能直播很好理解，立法院內的那個直播就有點威猛了&hellip;XD 二、現場的氣氛大部份是很合平理性的，除了那個機車族的事件除外。 我猜那群機車族的心態有幾個： 首先是有路為什麼不能過， 這個集會遊行本身就不是很正當，還佔用了馬路，所以他們不爽，硬是要過。 再來就是為了要耍帥吧，我看有些有載妹的&hellip;. 還有可能就是他們純粹是白目&hellip;Orz 要用陰謀論來講，他們是某些勢力派出來想搞破壞的人。 我有看到有幾個扛攝影機的有跟拍，我猜其實應該有些記者有拍到車牌之類的， 如果能拿到資料就可以找出來戰了&hellip;XD 三、立法院外的民生物資充足，先不講有人捐物資讓人免費領取的部份， 光是門口的那個 7-11 應該就可以養不少的民眾了吧。 四、有點熱，不知道是人太多還是我都站著的關係，一直流汗&hellip;. 接著，我想用 Blog 紀錄一下我的觀念，日後再來回味應該會很有趣&hellip;^ _ ^ 其實服貿有一堆懶人包可以看，但大多數都是在反對的立場， 也有看到很少數幾篇在贊成服貿的，也都有一些我不能判斷真假的說法， 所以以我有限的能力，似乎不能亂批服貿，也不能無腦支持。 先從黑箱開始， 反對的說法就是政府不能黑箱亂簽； 贊成的說法就是簽這種東西公開的話就會居談判劣勢，只能讓少數人知道，而且是國際慣例。 兩邊似乎都有一些道理，我比較傾向公開，因為這是民主國家， 如果硬是要遵循國際慣例，請公開那些知情者的名單， 並請他們出來背書，
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/02-08-phpvirtualbox/">phpVirtualbox</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>8</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-virtualbox" href="http://tsaikd.org/blog/categories/virtualbox">Virtualbox</a>
+      					
+					        <a class="post-category post-category-php" href="http://tsaikd.org/blog/categories/php">PHP</a>
+      					
+					        <a class="post-category post-category-apache2" href="http://tsaikd.org/blog/categories/apache2">Apache2</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+					        <a class="post-category post-category-zfs" href="http://tsaikd.org/blog/categories/zfs">ZFS</a>
+      					
+					        <a class="post-category post-category-docker" href="http://tsaikd.org/blog/categories/docker">Docker</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體) 最近終於決定 OS 的架構了 Ubuntu 12.04 x64 ZFS Virtualbox Docker 32G RAM 的 PC &hellip;.hehehe Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題 ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&hellip;&gt;_&lt; Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&hellip; Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/02-08-phpvirtualbox/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/02-08-phpvirtualbox-config/">phpVirtualbox config notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>8</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-virtualbox" href="http://tsaikd.org/blog/categories/virtualbox">Virtualbox</a>
+      					
+					        <a class="post-category post-category-php" href="http://tsaikd.org/blog/categories/php">PHP</a>
+      					
+					        <a class="post-category post-category-apache2" href="http://tsaikd.org/blog/categories/apache2">Apache2</a>
+      					
+					        <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/categories/ubuntu">Ubuntu</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下 ubuntu virtualbox 安裝過程 vi /etc/apt/sources.list.d/virtualbox.list ``` deb http://download.virtualbox.org/virtualbox/debian precise contrib * apt-get update &amp;&amp; apt-get install virtualbox-4.3 * 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console * https://www.virtualbox.org/wiki/Downloads * vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack * vi /etc/default/virtualbox * 這是為了要開啟 vboxweb-service * vbox 改成要使用哪個系統 user 來開啟 virtualbox ``` VBOXWEB_USER=vbox VBOXWEB_HOST=0.0.0.0 update-rc.d vboxweb-service defaults 開機自動啟動 phpvirtualbox 安裝過程 先裝好 apache2 + php5 的環境 下載跟 virtualbox 相容的版本 http://sourceforge.net/projects/phpvirtualbox/files/ 解壓縮之後丟進 /var/www 設定 config.conf
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/02-08-phpvirtualbox-config/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/01-23-maven-settings/">Maven settings notes</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>23</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jan</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-maven" href="http://tsaikd.org/blog/categories/maven">Maven</a>
+      					
+					        <a class="post-category post-category-nexus" href="http://tsaikd.org/blog/categories/nexus">Nexus</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	設定 Local Nexus 來快取 central 的套件 ~/.settings.xml &lt;settings&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;Local Nexus&lt;/name&gt; &lt;url&gt;http://localhost:8080/nexus-2.7.1-01/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt;
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/01-23-maven-settings/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/blog/2014/01-05-eclipse-gradle/">Eclipse Gradle Plugin</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jan</span> <span class="post-date-year">2014</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+      					
+					        <a class="post-category post-category-gradle" href="http://tsaikd.org/blog/categories/gradle">Gradle</a>
+      					
+					        <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/categories/eclipse">Eclipse</a>
+      					
+					        <a class="post-category post-category-java" href="http://tsaikd.org/blog/categories/java">Java</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	每次要裝都要 google 老半天 直接記下來好了&hellip; http://dist.springsource.com/release/TOOLS/gradle
+            </article>
+			<div class="read-more-link">
+				<a href="/blog/2014/01-05-eclipse-gradle/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+      </div>
+
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2015. All rights reserved. </p>
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>
