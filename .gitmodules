@@ -1,8 +1,12 @@
 [submodule "content"]
 	path = content
-	url = https://github.com/tsaikd/blog
+	url = git@github.com:tsaikd/blog.git
 	branch = blog
 [submodule "themes/redlounge"]
 	path = themes/redlounge
-	url = https://github.com/tsaikd/hugo-redlounge
+	url = git@github.com:tsaikd/hugo-redlounge.git
 	branch = master
+[submodule "public"]
+	path = public
+	url = git@github.com:tsaikd/blog.git
+	branch = gh-pages
