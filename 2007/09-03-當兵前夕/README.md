@@ -1,9 +1,8 @@
 ---
 title: 當兵前夕
 date: 2007-09-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 明天就要開始軍隊的生活了

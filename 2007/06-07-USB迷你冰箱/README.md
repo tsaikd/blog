@@ -1,10 +1,8 @@
 ---
 title: USB迷你冰箱！
 date: 2007-06-07
-categories:
-- KDBlog
 tags:
-- 
+- KDBlog
 ---
 USB迷你冰箱！
 

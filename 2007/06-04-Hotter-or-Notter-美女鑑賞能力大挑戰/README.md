@@ -1,9 +1,8 @@
 ---
 title: Hotter or Notter - 美女鑑賞能力大挑戰
 date: 2007-06-04
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 美女鑑賞能力大挑戰

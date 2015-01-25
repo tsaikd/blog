@@ -1,9 +1,8 @@
 ---
 title: 晚餐的服務員
 date: 2008-10-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 有一段時間沒去中式快餐店了

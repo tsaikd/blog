@@ -1,9 +1,8 @@
 ---
 title: 新訓第二十八天
 date: 2007-10-04
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

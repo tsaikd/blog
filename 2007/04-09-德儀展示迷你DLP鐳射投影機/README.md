@@ -1,9 +1,8 @@
 ---
 title: 德儀展示迷你 DLP 鐳射投影機
 date: 2007-04-09
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 德儀展示迷你 DLP 鐳射投影機

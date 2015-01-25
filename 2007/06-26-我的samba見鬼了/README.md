@@ -1,9 +1,8 @@
 ---
 title: 我的 samba 見鬼了
 date: 2007-06-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 因為用 gentoo 的關係

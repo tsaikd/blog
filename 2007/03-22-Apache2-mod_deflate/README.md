@@ -1,9 +1,8 @@
 ---
 title: Apache2 mod_deflate
 date: 2007-03-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 最近在寫 KDBlog 時用了 Firefox 的一個 extension -- Web Developer

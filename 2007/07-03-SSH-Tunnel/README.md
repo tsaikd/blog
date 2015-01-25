@@ -1,9 +1,8 @@
 ---
 title: SSH Tunnel
 date: 2007-07-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資安
 ---
 資訊安全 - SSH Tunnel 帶你遨遊

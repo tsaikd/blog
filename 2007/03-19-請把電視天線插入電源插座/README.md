@@ -1,9 +1,8 @@
 ---
 title: 請把電視天線插入電源插座
 date: 2007-03-19
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 "請把電視天線插入電源插座"

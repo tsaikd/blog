@@ -1,8 +1,6 @@
 ---
 title: KDBlog alpha 1
 date: 2007-03-14
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

@@ -1,9 +1,8 @@
 ---
 title: 太陽能點火器來囉！
 date: 2007-05-17
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 流落荒島嘛免驚！太陽能點火器來囉！

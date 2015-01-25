@@ -1,9 +1,8 @@
 ---
 title: 軍中生活瑣事
 date: 2007-11-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

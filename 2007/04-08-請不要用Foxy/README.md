@@ -1,9 +1,8 @@
 ---
 title: 請不要用 Foxy !
 date: 2007-04-08
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 請不要用 FOXY !

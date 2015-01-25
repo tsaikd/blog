@@ -1,9 +1,8 @@
 ---
 title: 電動機車入手
 date: 2010-04-15
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 最近不知道為什麼想買台機車來代步

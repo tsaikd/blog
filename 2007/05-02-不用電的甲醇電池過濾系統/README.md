@@ -1,9 +1,8 @@
 ---
 title: 不用電的甲醇電池過濾系統
 date: 2007-05-02
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 不用電的甲醇電池過濾系統

@@ -1,9 +1,6 @@
 ---
 title: OpenSSL Notes
 date: 2013-12-05
-description:
-categories:
-- Blog
 tags:
 - openssl
 - CA

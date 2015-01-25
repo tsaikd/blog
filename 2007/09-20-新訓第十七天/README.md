@@ -1,9 +1,8 @@
 ---
 title: 新訓第十七天
 date: 2007-09-20
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

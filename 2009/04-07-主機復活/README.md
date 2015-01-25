@@ -1,9 +1,8 @@
 ---
 title: 主機復活
 date: 2009-04-07
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 不知道從什麼時候開始

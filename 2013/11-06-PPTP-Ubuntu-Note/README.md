@@ -1,9 +1,6 @@
 ---
 title: PPTP Ubuntu Note
 date: 2013-11-06
-description:
-categories:
-- Blog
 tags:
 - Ubuntu
 - pptp

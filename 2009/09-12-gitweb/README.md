@@ -1,9 +1,8 @@
 ---
 title: gitweb
 date: 2009-09-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 之前參考 Ku 的做法

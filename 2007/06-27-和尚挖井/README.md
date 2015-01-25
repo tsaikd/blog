@@ -1,9 +1,8 @@
 ---
 title: 和尚挖井
 date: 2007-06-27
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 思考
 ---
 和尚挖井

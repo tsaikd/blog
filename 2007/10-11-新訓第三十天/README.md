@@ -1,9 +1,8 @@
 ---
 title: 新訓第三十天
 date: 2007-10-11
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

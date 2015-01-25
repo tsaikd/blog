@@ -1,9 +1,8 @@
 ---
 title: 2009高雄資訊展
 date: 2009-12-28
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 星期日利用了一個下午去逛高雄的資訊展....

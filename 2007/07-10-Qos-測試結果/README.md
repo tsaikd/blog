@@ -1,9 +1,8 @@
 ---
 title: Qos 測試結果
 date: 2007-07-10
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 剛剛在機器上測試了一下 Qos 的效果

@@ -1,9 +1,6 @@
 ---
 title: GateIn Skin Trick
 date: 2013-12-23
-description:
-categories:
-- Blog
 tags:
 - GateIn
 - Java

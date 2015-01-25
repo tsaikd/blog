@@ -1,9 +1,8 @@
 ---
 title: On-screen Keyboard - 螢幕小鍵盤
 date: 2007-08-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Windows
 ---
 看到綠色工廠的 On-screen Keyboard - 螢幕小鍵盤

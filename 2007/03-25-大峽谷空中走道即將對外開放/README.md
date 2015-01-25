@@ -1,9 +1,8 @@
 ---
 title: 大峽谷空中走道即將對外開放
 date: 2007-03-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 "大峽谷空中走道即將對外開放"

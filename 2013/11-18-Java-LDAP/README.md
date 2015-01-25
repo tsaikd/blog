@@ -1,9 +1,6 @@
 ---
 title: Java LDAP Notes
 date: 2013-11-18
-description:
-categories:
-- Blog
 tags:
 - Java
 - LDAP

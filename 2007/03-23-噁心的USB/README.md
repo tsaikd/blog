@@ -1,9 +1,8 @@
 ---
 title: 噁心的 USB
 date: 2007-03-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 "SolidAlliance coughs up 1GB of USB Horse Mackerel"

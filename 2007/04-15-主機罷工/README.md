@@ -1,9 +1,8 @@
 ---
 title: 主機罷工
 date: 2007-04-15
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 剛剛主機又發生了奇怪的事情...

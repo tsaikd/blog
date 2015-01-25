@@ -1,9 +1,8 @@
 ---
 title: 台大放榜了
 date: 2007-03-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 台大96碩士榜單

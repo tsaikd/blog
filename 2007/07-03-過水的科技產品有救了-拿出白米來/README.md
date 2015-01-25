@@ -1,9 +1,8 @@
 ---
 title: 過水的科技產品有救了：拿出白米來
 date: 2007-07-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 過水的科技產品有救了：拿出白米來

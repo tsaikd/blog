@@ -1,9 +1,8 @@
 ---
 title: 又有新兵來了
 date: 2007-11-14
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

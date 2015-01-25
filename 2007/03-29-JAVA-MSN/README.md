@@ -1,9 +1,8 @@
 ---
 title: JAVA MSN
 date: 2007-03-29
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Course
 ---
 Related Work

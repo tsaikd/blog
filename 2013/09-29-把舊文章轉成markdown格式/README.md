@@ -1,12 +1,9 @@
 ---
 title: 把舊文章轉成 markdown 格式
 date: 2013-09-28
-description:
-categories:
-- Blog
-- KDBlog
 tags:
 - KDBlog
+- Markdown
 ---
 
 花了一些時間把舊的 KDBlog 的 xml 格式的文章轉成 markdown 格式

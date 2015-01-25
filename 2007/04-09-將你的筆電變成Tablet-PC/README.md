@@ -1,9 +1,8 @@
 ---
 title: 將你的筆電變成 Tablet PC
 date: 2007-04-09
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 將你的筆電變成 Tablet PC

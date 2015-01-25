@@ -1,9 +1,6 @@
 ---
 title: Docker eclipse on Ubuntu Desktop
 date: 2014-08-04
-description:
-categories:
-- Blog
 tags:
 - Docker
 - Java

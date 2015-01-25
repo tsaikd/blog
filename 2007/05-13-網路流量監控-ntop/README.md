@@ -1,9 +1,8 @@
 ---
 title: 網路流量監控 -- ntop
 date: 2007-05-13
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 在 Bandwidth Monitoring Tools For Linux 看到很多不同的監控軟體

@@ -1,9 +1,8 @@
 ---
 title: Java 上機考
 date: 2007-04-16
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Course
 ---
 剛剛上 Java 課時上機考

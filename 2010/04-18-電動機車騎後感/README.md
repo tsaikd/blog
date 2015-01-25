@@ -1,9 +1,8 @@
 ---
 title: 電動機車騎後感
 date: 2010-04-18
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 平路微風時速約 42km/h (儀表板)

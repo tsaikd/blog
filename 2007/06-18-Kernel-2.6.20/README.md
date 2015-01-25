@@ -1,9 +1,8 @@
 ---
 title: Kernel 2.6.20
 date: 2007-06-18
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 前幾天宿舍停電

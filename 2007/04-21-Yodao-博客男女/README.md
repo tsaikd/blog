@@ -1,9 +1,8 @@
 ---
 title: Yodao 博客男女
 date: 2007-04-21
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 嚴重的女性傾向......

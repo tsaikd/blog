@@ -1,9 +1,8 @@
 ---
 title: 新訓第十九天
 date: 2007-09-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

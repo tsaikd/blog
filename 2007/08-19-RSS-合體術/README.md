@@ -1,9 +1,8 @@
 ---
 title: RSS 合體術
 date: 2007-08-19
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 [網站推薦] 究極RSS合體術！不管你有多少個RSS，全部幫你合而為一 - RSSMixer

@@ -1,9 +1,8 @@
 ---
 title: 今天是什麼日子??
 date: 2007-11-02
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

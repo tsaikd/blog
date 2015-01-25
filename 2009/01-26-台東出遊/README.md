@@ -1,9 +1,8 @@
 ---
 title: 台東出遊
 date: 2009-01-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天下午跟著媽媽搭上小舅的車

@@ -1,9 +1,8 @@
 ---
 title: Qt Application Version
 date: 2009-08-16
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Qt
 - 程式
 ---

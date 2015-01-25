@@ -1,9 +1,8 @@
 ---
 title: 中午覓食記
 date: 2008-10-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 到了該吃午餐的時間了

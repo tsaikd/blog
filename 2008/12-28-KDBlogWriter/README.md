@@ -1,8 +1,6 @@
 ---
 title: KDBlogWriter
 date: 2008-12-28
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

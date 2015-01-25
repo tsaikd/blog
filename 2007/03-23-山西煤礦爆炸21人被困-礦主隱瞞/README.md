@@ -1,9 +1,8 @@
 ---
 title: 山西煤礦爆炸21人被困 礦主隱瞞
 date: 2007-03-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 "山西煤礦爆炸21人被困 礦主隱瞞"

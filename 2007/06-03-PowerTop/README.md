@@ -1,9 +1,8 @@
 ---
 title: PowerTop
 date: 2007-06-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 Intel 新玩具 - PowerTop!

@@ -1,8 +1,6 @@
 ---
 title: KDBlog svn r4
 date: 2007-03-18
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

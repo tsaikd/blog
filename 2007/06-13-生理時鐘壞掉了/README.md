@@ -1,9 +1,8 @@
 ---
 title: 生理時鐘壞掉了
 date: 2007-06-13
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 已經連續好幾天(大概一個星期)

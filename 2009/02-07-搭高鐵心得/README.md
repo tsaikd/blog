@@ -1,9 +1,8 @@
 ---
 title: 搭高鐵心得
 date: 2009-02-07
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天在土城公司上完課已經下午五點多了

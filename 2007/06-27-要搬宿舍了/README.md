@@ -1,9 +1,8 @@
 ---
 title: 要搬宿舍了
 date: 2007-06-27
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 大學終於要結束了

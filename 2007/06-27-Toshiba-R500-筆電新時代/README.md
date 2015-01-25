@@ -1,9 +1,8 @@
 ---
 title: Toshiba R500 - 筆電新時代
 date: 2007-06-27
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 Toshiba R500 有多好，Toshiba 專案經理告訴你

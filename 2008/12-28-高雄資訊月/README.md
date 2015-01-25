@@ -1,9 +1,8 @@
 ---
 title: 高雄資訊月
 date: 2008-12-28
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 高雄資訊月(其實就是資訊展)在高雄的 85 大樓展出，

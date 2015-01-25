@@ -1,9 +1,8 @@
 ---
 title: 2008高雄跨年
 date: 2008-12-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今年跨年跟同事跑去高雄的夢時代跨年

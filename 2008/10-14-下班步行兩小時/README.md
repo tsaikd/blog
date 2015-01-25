@@ -1,9 +1,8 @@
 ---
 title: 下班步行兩小時
 date: 2008-10-14
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 昨天下班後因為去上課的關係

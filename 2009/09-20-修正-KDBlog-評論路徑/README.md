@@ -1,8 +1,6 @@
 ---
 title: 修正 KDBlog 評論路徑
 date: 2009-09-20
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

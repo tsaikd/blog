@@ -1,9 +1,8 @@
 ---
 title: 換成光纖網路了
 date: 2007-07-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 原來是用 ADSL 2M/256K 的方式上網

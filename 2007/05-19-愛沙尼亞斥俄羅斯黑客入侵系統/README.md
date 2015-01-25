@@ -1,9 +1,8 @@
 ---
 title: 愛沙尼亞斥俄羅斯黑客入侵系統
 date: 2007-05-19
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 愛沙尼亞斥俄羅斯黑客入侵系統

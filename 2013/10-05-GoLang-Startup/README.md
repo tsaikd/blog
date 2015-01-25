@@ -1,14 +1,11 @@
 ---
 title: GoLang Startup
 date: 2013-10-05
-description:
-categories:
-- Blog
 tags:
 - golang
 - eclipse
 - liteide
-- markdown
+- Markdown
 ---
 
 [golang]: http://golang.org/

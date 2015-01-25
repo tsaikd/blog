@@ -1,9 +1,8 @@
 ---
 title: 生涯規劃 -- 李強談性
 date: 2007-03-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 思考
 ---
 這學期有修一堂課叫"資訊工程倫理與生涯規劃"

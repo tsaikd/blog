@@ -1,9 +1,8 @@
 ---
 title: 松島楓 櫻井莉亞
 date: 2008-12-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天晚上松島楓跟櫻井莉亞到高雄的 PUB ，剛好就在我們住的附近，

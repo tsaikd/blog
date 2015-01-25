@@ -1,9 +1,8 @@
 ---
 title: 新訓第十五天
 date: 2007-09-18
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

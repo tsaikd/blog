@@ -1,9 +1,8 @@
 ---
 title: 新訓結束了
 date: 2007-10-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

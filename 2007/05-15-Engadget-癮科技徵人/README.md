@@ -1,9 +1,8 @@
 ---
 title: Engadget 癮科技徵人
 date: 2007-05-15
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 徵人：有沒有人要跟下面這位正妹一起工作呢？

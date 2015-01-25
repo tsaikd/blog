@@ -1,9 +1,8 @@
 ---
 title: gitweb for chromium user script
 date: 2009-12-05
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Qt
 - 程式
 ---

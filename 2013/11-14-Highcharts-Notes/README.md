@@ -1,9 +1,6 @@
 ---
 title: Highcharts Notes
 date: 2013-11-13
-description:
-categories:
-- Blog
 tags:
 - Javascript
 - Highcharts

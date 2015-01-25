@@ -1,9 +1,8 @@
 ---
 title: 18X Google Map ??
 date: 2007-06-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 Google太厲害，還是太可怕？ Part II

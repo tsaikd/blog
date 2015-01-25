@@ -1,9 +1,8 @@
 ---
 title: 小班朋友的問卷
 date: 2007-05-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 ※ 引述《shone (你是好人<(￣﹌￣)@m)》之銘言：

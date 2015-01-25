@@ -1,9 +1,8 @@
 ---
 title: KDGallery rev1
 date: 2008-04-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - KDGallery
 - KDProject
 ---

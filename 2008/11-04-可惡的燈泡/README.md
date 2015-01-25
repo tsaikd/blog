@@ -1,9 +1,8 @@
 ---
 title: 可惡的燈泡
 date: 2008-11-04
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天晚餐室友帶我去吃麵

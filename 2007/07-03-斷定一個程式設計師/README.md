@@ -1,9 +1,8 @@
 ---
 title: 斷定一個程式設計師
 date: 2007-07-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 思考
 ---
 加入小公司，重新掌握人生方向盤

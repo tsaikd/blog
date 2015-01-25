@@ -1,9 +1,8 @@
 ---
 title: Pidgin (Gaim)
 date: 2007-05-15
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 Gaim 因為 AOL 商標問題而改名為 Pidgin

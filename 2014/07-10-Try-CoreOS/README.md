@@ -1,9 +1,6 @@
 ---
 title: Try CoreOS
 date: 2014-07-10
-description:
-categories:
-- Blog
 tags:
 - CoreOS
 - Docker

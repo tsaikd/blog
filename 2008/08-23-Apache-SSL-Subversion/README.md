@@ -1,9 +1,8 @@
 ---
 title: Apache SSL Subversion
 date: 2008-08-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 剛剛把 KD server 上的 apache 弄出 ssl 了

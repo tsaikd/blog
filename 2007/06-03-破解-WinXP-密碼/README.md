@@ -1,9 +1,8 @@
 ---
 title: 破解 WinXP 密碼
 date: 2007-06-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資安
 ---
 資訊安全 - administrator密碼現身吧!!

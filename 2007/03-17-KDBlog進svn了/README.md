@@ -1,8 +1,6 @@
 ---
 title: KDBlog 進 svn 了
 date: 2007-03-17
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

@@ -1,9 +1,8 @@
 ---
 title: 新訓第二十一天
 date: 2007-09-27
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

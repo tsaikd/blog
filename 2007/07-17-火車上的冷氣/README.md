@@ -1,9 +1,8 @@
 ---
 title: 火車上的冷氣
 date: 2007-07-17
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天回成大去辦畢業手續

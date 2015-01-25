@@ -1,9 +1,6 @@
 ---
 title: 320反黑箱服貿協議
 date: 2014-03-20
-description:
-categories:
-- Blog
 tags:
 - 政治
 ---

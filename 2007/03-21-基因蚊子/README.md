@@ -1,9 +1,8 @@
 ---
 title: 基因蚊子??
 date: 2007-03-21
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 美國推出抗瘧疾蚊子

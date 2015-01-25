@@ -1,9 +1,8 @@
 ---
 title: 衰小的早上
 date: 2007-10-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

@@ -1,10 +1,8 @@
 ---
 title: Google Analytics 程式碼變更
 date: 2008-01-07
-categories:
-- KDBlog
 tags:
-- 
+- KDBlog
 ---
 在 Gea-Suan Lin's Blog 上看到 Google Analytics 程式碼變更
 

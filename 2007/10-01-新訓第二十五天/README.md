@@ -1,9 +1,8 @@
 ---
 title: 新訓第二十五天
 date: 2007-10-01
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

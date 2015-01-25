@@ -1,9 +1,6 @@
 ---
 title: Pure-FTPd Notes
 date: 2013-11-18
-description:
-categories:
-- Blog
 tags:
 - Ubuntu 12.04
 - Pure-FTPd

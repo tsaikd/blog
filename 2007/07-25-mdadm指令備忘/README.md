@@ -1,9 +1,8 @@
 ---
 title: mdadm -- 指令備忘
 date: 2007-07-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 

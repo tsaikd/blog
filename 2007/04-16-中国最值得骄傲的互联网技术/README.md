@@ -1,9 +1,8 @@
 ---
 title: 中国最值得"骄傲"的互联网技术
 date: 2007-04-16
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 中国最值得"骄傲"的互联网技术

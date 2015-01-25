@@ -1,9 +1,8 @@
 ---
 title: 深圳半日遊
 date: 2008-10-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天早上6:30就自然醒了

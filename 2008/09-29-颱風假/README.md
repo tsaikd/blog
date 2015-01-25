@@ -1,9 +1,8 @@
 ---
 title: 颱風假
 date: 2008-09-29
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 上班到現在才一個多月

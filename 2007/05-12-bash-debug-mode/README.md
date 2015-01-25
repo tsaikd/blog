@@ -1,9 +1,8 @@
 ---
 title: bash debug mode
 date: 2007-05-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 在 Gentoo Weekly Newsletter: 7 May 2007 看到的小技巧

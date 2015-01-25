@@ -1,9 +1,8 @@
 ---
 title: 今天第三篇
 date: 2008-10-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 晚上本來要找同事一起吃飯的

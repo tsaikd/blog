@@ -1,9 +1,8 @@
 ---
 title: 主機復活了
 date: 2007-07-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 [主機的硬碟掛掉了](../07-22-主機的硬碟掛掉了)

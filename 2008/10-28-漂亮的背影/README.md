@@ -1,9 +1,8 @@
 ---
 title: 漂亮的背影
 date: 2008-10-28
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天晚餐又是我一個人解決

@@ -1,9 +1,8 @@
 ---
 title: 用 Office 2007 寫 Blog
 date: 2007-04-05
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 Office2007 的 Blog 发布功能

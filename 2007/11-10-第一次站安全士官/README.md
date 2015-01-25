@@ -1,9 +1,8 @@
 ---
 title: 第一次站安全士官
 date: 2007-11-10
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

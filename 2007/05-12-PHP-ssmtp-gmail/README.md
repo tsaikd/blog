@@ -1,9 +1,8 @@
 ---
 title: PHP ssmtp gmail
 date: 2007-05-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 設定 ssmtp 可以使用 gmail

@@ -1,9 +1,8 @@
 ---
 title: 宿網不穩
 date: 2007-06-11
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 最近幾天宿舍網路品質很糟糕

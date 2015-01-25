@@ -1,9 +1,8 @@
 ---
 title: Acer NB 電池回收
 date: 2007-04-27
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 宏碁 -- 又一名 Sony 電池的受害者

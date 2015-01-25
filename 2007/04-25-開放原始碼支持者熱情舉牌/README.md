@@ -1,9 +1,8 @@
 ---
 title: 開放原始碼支持者熱情舉牌
 date: 2007-04-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - KUSO
 ---
 開放原始碼支持者熱情舉牌：自由軟體，開放原始碼

@@ -1,9 +1,8 @@
 ---
 title: Google Reader 保留文章
 date: 2007-06-04
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 剛剛去看 Google Reader 的時候發現

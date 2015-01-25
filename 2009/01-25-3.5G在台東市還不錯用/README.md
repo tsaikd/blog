@@ -1,9 +1,8 @@
 ---
 title: 3.5G在台東市還不錯用
 date: 2009-01-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 之前在高雄85大樓附近用3.5G的訊號很差

@@ -1,9 +1,8 @@
 ---
 title: 奈米分子剪刀
 date: 2007-03-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 奈米分子剪刀

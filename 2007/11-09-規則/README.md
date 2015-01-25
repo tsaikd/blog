@@ -1,9 +1,8 @@
 ---
 title: 規則
 date: 2007-11-09
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 佳句
 ---
 

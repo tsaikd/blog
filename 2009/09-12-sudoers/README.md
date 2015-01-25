@@ -1,9 +1,8 @@
 ---
 title: sudoers
 date: 2009-09-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 很久沒重裝 Linux 了

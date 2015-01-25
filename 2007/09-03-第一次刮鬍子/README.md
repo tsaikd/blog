@@ -1,9 +1,8 @@
 ---
 title: 第一次刮鬍子
 date: 2007-09-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 為了要去當兵

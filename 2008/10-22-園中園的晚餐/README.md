@@ -1,9 +1,8 @@
 ---
 title: 園中園的晚餐
 date: 2008-10-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 以前到大陸來玩的時候都會想要寫個遊記來留念

@@ -1,9 +1,8 @@
 ---
 title: Ubuntu 10.04 x64 server 改網卡代號
 date: 2010-12-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 有換過網卡的話

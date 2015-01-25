@@ -1,9 +1,6 @@
 ---
 title: 寫 markdown 的小技巧
 date: 2013-09-28
-description:
-categories:
-- Blog
 tags:
 - gor
 ---

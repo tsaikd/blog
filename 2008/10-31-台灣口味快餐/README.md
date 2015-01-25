@@ -1,9 +1,8 @@
 ---
 title: 台灣口味快餐
 date: 2008-10-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 我是被這家店門上的菜名吸引進來的

@@ -1,9 +1,8 @@
 ---
 title: 兩個新玩具 - cwRsync and Certificate
 date: 2008-09-28
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資安
 ---
 這兩天搞了兩個新玩具....

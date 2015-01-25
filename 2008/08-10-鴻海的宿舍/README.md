@@ -1,9 +1,8 @@
 ---
 title: 鴻海的宿舍
 date: 2008-08-10
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 明天早上 0830 就要到鴻海報到了

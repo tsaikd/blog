@@ -1,9 +1,6 @@
 ---
 title: 把一堆 project 轉到 github
 date: 2013-10-01
-description:
-categories:
-- Blog
 tags:
 - github
 ---

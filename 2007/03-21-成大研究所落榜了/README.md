@@ -1,9 +1,8 @@
 ---
 title: 成大研究所落榜了
 date: 2007-03-21
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 成大96碩士榜單出來了...

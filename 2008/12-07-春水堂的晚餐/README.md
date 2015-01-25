@@ -1,9 +1,8 @@
 ---
 title: 春水堂的晚餐
 date: 2008-12-07
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天晚餐跟室友跑去附近的春水堂吃晚餐

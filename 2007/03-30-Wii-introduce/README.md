@@ -1,9 +1,8 @@
 ---
 title: Wii introduce
 date: 2007-03-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 All Wii Are Here! - Wii總集篇

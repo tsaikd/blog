@@ -1,9 +1,8 @@
 ---
 title: 台東的珍珠奶茶
 date: 2009-01-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 好便宜啊!!

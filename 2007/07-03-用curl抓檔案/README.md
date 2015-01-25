@@ -1,9 +1,8 @@
 ---
 title: 用 curl 抓檔案
 date: 2007-07-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 一般抓檔案是用 wget

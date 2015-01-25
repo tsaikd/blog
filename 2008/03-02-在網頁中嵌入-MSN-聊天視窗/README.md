@@ -1,9 +1,8 @@
 ---
 title: 在網頁中嵌入 MSN 聊天視窗
 date: 2008-03-02
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 如何在網頁、BLOG嵌入「MSN聊天視窗」？（新增：彩色面板）

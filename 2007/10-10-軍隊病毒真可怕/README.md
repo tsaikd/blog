@@ -1,9 +1,8 @@
 ---
 title: 軍隊病毒真可怕
 date: 2007-10-10
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

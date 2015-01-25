@@ -1,9 +1,8 @@
 ---
 title: 中國"最牛釘子戶"
 date: 2007-03-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 中國"最牛釘子戶"挺過最后時限

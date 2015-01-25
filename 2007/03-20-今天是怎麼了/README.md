@@ -1,9 +1,8 @@
 ---
 title: 今天是怎麼了??
 date: 2007-03-20
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 兩個室友才 11pm 就躺平了耶!!

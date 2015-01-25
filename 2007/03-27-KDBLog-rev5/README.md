@@ -1,8 +1,6 @@
 ---
 title: KDBLog rev5
 date: 2007-03-27
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

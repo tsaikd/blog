@@ -1,9 +1,8 @@
 ---
 title: 氣壓計的省思
 date: 2007-04-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 思考
 ---
 氣壓計的省思

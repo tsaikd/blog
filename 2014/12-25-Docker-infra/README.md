@@ -1,9 +1,6 @@
 ---
 title: Docker Infra 架構簡介與實例
 date: 2014-12-25
-description:
-categories:
-- Blog
 tags:
 - Docker
 - Etcd

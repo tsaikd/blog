@@ -1,9 +1,8 @@
 ---
 title: 中國探出大油田
 date: 2007-03-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 儲量超塔里木中國渤海灣探出大油田

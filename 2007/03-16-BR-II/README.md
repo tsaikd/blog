@@ -1,9 +1,8 @@
 ---
 title: BR II
 date: 2007-03-16
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 昨天把下載了 99.9% 的 BR II (大逃殺) 看完了

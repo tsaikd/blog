@@ -1,9 +1,8 @@
 ---
 title: 小说下载阅读器
 date: 2007-06-04
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Windows
 ---
 小说下载阅读器

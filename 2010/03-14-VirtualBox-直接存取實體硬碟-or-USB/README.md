@@ -1,9 +1,8 @@
 ---
 title: VirtualBox 直接存取實體硬碟 or USB
 date: 2010-03-14
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 

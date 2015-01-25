@@ -1,9 +1,8 @@
 ---
 title: 2009過年出遊
 date: 2009-01-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 2009-01-29

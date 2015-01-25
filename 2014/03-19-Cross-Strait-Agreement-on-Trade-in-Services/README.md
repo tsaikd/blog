@@ -1,9 +1,6 @@
 ---
 title: 319反黑箱服貿協議
 date: 2014-03-19
-description:
-categories:
-- Blog
 tags:
 - 政治
 ---

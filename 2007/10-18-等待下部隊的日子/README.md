@@ -1,9 +1,8 @@
 ---
 title: 等待下部隊的日子
 date: 2007-10-18
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

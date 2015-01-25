@@ -1,9 +1,8 @@
 ---
 title: 酒店??
 date: 2008-10-27
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 下班坐專車回宿舍的時候

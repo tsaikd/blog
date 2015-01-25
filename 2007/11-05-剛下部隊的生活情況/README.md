@@ -1,9 +1,8 @@
 ---
 title: 剛下部隊的生活情況
 date: 2007-11-05
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

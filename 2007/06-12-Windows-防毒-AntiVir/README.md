@@ -1,9 +1,8 @@
 ---
 title: Windows 防毒 -- AntiVir
 date: 2007-06-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Windows
 ---
 AntiVir PersonalEdition

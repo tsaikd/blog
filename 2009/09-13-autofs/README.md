@@ -1,9 +1,8 @@
 ---
 title: autofs
 date: 2009-09-13
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 用到的時候才會自動掛載磁碟

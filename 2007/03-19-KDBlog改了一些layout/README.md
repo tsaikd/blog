@@ -1,8 +1,6 @@
 ---
 title: KDBlog 改了一些 layout
 date: 2007-03-19
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

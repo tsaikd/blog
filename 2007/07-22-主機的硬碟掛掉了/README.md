@@ -1,9 +1,8 @@
 ---
 title: 主機的硬碟掛掉了
 date: 2007-07-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 在晚上 11 點左右的時候

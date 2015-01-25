@@ -1,9 +1,8 @@
 ---
 title: 超低胸爆乳
 date: 2007-06-19
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 佳句
 ---
 台語的髒話

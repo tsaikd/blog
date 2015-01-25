@@ -1,9 +1,8 @@
 ---
 title: 富通周圍隨便逛逛
 date: 2008-10-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 下班後天時間還不太晚

@@ -1,9 +1,6 @@
 ---
 title: Consul 採到雷
 date: 2014-09-14
-description:
-categories:
-- Blog
 tags:
 - Docker
 - Consul

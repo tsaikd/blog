@@ -1,9 +1,8 @@
 ---
 title: 互聯網服務:日本最快 土耳其最貴
 date: 2007-07-17
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 互聯網服務:日本最快 土耳其最貴

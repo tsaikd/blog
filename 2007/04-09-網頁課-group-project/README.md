@@ -1,9 +1,8 @@
 ---
 title: 網頁課 group project
 date: 2007-04-09
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Course
 ---
 今天在上網頁課的時候

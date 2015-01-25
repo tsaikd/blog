@@ -1,9 +1,8 @@
 ---
 title: 自傳寫太屌??
 date: 2007-10-30
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

@@ -1,9 +1,8 @@
 ---
 title: ZFS
 date: 2007-04-21
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 之前就在 Gea-Suan Lin's BLOG FreeBSD 上的 ZFS 看到這個新的檔案系統

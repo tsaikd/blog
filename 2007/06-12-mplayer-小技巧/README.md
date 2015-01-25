@@ -1,9 +1,8 @@
 ---
 title: mplayer 小技巧
 date: 2007-06-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 使用 MPlayer 小技巧

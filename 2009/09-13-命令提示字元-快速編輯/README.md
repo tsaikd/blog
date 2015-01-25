@@ -1,9 +1,8 @@
 ---
 title: 命令提示字元 - 快速編輯
 date: 2009-09-13
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Windows
 ---
 剛剛跟 Ku 聊天的時候才知道一個秘技

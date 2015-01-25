@@ -1,8 +1,6 @@
 ---
 title: KDBlog 重新發布
 date: 2007-03-25
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

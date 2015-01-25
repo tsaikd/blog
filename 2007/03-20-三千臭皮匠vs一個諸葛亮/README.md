@@ -1,9 +1,8 @@
 ---
 title: 三千臭皮匠 vs 一個諸葛亮
 date: 2007-03-20
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 思考
 ---
 "三千臭皮匠　一个诸葛亮：集体能否产生智慧？"

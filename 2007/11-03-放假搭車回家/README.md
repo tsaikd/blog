@@ -1,9 +1,8 @@
 ---
 title: 放假搭車回家
 date: 2007-11-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天早上站完 6-8  衛兵之後就放假了

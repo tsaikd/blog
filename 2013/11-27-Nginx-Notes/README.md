@@ -1,9 +1,6 @@
 ---
 title: Nginx Config Notes
 date: 2013-11-27
-description:
-categories:
-- Blog
 tags:
 - Nginx
 - SSL

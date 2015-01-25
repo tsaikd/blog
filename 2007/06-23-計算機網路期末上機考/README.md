@@ -1,9 +1,8 @@
 ---
 title: 計算機網路期末上機考
 date: 2007-06-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天早上九點半開始考

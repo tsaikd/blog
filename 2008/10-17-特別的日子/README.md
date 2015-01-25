@@ -1,9 +1,8 @@
 ---
 title: 特別的日子
 date: 2008-10-17
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天是個蠻特別的日子

@@ -1,9 +1,8 @@
 ---
 title: 電燈的效率
 date: 2007-07-07
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 Continuum 2.4，持續照亮你的明燈

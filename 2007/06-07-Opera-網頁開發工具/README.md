@@ -1,9 +1,8 @@
 ---
 title: Opera 網頁開發工具
 date: 2007-06-07
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 再見了，火狐

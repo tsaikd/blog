@@ -1,9 +1,8 @@
 ---
 title: Travian hkx 終於結束了
 date: 2008-03-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 遊戲
 ---
 Travian是一個免費、在瀏覽器內使用的大型網上戰略遊戲。

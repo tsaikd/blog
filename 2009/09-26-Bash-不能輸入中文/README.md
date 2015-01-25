@@ -1,9 +1,8 @@
 ---
 title: Bash 不能輸入中文
 date: 2009-09-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 主機
 ---
 不知道從什麼時候開始

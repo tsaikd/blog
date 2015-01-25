@@ -1,9 +1,8 @@
 ---
 title: 我被驚醒了
 date: 2007-04-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 今天凌晨四點十分左右

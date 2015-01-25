@@ -1,9 +1,6 @@
 ---
 title: phpVirtualbox
 date: 2014-02-08
-description:
-categories:
-- Blog
 tags:
 - Virtualbox
 - PHP

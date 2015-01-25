@@ -1,9 +1,6 @@
 ---
 title: 薪資保密??
 date: 2013-09-25
-description:
-categories:
-- Blog
 tags:
 - 思考
 ---

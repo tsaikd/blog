@@ -1,9 +1,8 @@
 ---
 title: git rebase 使用心得
 date: 2009-10-17
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 程式
 ---
 最近在公司裡遇到一個 case 剛好可以讓我練習進階的 git 用法

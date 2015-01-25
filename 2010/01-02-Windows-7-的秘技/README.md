@@ -1,9 +1,8 @@
 ---
 title: Windows 7 的秘技
 date: 2010-01-02
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 [30個Windows 7新特性揭秘](http://social.microsoft.com/Forums/zh-CN/window7betacn/thread/27fca500-53b5-4844-a8d5-1b868e1f935e)

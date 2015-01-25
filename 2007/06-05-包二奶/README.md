@@ -1,9 +1,8 @@
 ---
 title: 包二奶
 date: 2007-06-05
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 之前看過新聞報導大陸有人開飲料店在賣包二奶

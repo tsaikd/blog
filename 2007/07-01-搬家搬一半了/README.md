@@ -1,9 +1,8 @@
 ---
 title: 搬家搬一半了
 date: 2007-07-01
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 其實應該只要一天就可以完成的事

@@ -1,9 +1,8 @@
 ---
 title: 詐騙電話
 date: 2007-04-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 電話犯罪[1]

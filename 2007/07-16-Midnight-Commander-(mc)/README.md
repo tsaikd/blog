@@ -1,9 +1,8 @@
 ---
 title: Midnight Commander (mc)
 date: 2007-07-16
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 GNU Midnight Commander cli-based file manager

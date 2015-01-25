@@ -1,9 +1,8 @@
 ---
 title: 到龍華的第二個週末
 date: 2008-10-19
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 ![](IMAG0092.jpg)

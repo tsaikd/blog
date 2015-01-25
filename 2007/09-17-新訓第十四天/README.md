@@ -1,9 +1,8 @@
 ---
 title: 新訓第十四天
 date: 2007-09-17
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

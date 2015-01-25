@@ -1,9 +1,8 @@
 ---
 title: 鑰匙掉了??
 date: 2009-10-08
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 昨天晚上睡覺前才突然發現鑰匙不見了....

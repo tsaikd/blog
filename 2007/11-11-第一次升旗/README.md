@@ -1,9 +1,8 @@
 ---
 title: 第一次升旗
 date: 2007-11-11
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

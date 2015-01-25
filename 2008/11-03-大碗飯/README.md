@@ -1,9 +1,8 @@
 ---
 title: 大碗飯
 date: 2008-11-03
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 晚餐帶室友去吃很有台灣味的店 -- 府城

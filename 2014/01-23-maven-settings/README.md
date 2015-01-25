@@ -1,9 +1,6 @@
 ---
 title: Maven settings notes
 date: 2014-01-23
-description:
-categories:
-- Blog
 tags:
 - Maven
 - Nexus

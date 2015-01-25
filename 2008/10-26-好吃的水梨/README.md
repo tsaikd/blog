@@ -1,9 +1,8 @@
 ---
 title: 好吃的水梨
 date: 2008-10-26
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 昨天晚上回家前順手買了兩個水梨

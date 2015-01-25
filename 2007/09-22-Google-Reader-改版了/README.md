@@ -1,9 +1,8 @@
 ---
 title: Google Reader 改版了
 date: 2007-09-22
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 當兵的新訓剛放假回來

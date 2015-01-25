@@ -1,9 +1,8 @@
 ---
 title: 再訪華強北
 date: 2008-11-02
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 這次是跟著室友一起搭 3 塊錢的公車過來的

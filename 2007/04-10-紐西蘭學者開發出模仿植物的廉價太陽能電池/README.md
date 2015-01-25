@@ -1,9 +1,8 @@
 ---
 title: 紐西蘭學者開發出模仿植物的廉價太陽能電池
 date: 2007-04-10
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 科技
 ---
 紐西蘭學者開發出模仿植物的廉價太陽能電池

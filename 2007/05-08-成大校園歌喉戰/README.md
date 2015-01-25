@@ -1,9 +1,8 @@
 ---
 title: 成大校園歌喉戰
 date: 2007-05-08
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 根據我得到的消息, 歌喉戰今天下午三點開始

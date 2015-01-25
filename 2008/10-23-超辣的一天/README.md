@@ -1,9 +1,8 @@
 ---
 title: 超辣的一天
 date: 2008-10-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 中午跟著兩個同事一起去吃午餐

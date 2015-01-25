@@ -1,9 +1,8 @@
 ---
 title: 第一次評論
 date: 2007-05-31
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 我的 Blog 的第一次評論 ([小班朋友的問卷](../05-23-小班朋友的問卷))

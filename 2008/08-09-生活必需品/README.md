@@ -1,9 +1,8 @@
 ---
 title: 生活必需品
 date: 2008-08-09
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 後天早上就要到鴻海報到了

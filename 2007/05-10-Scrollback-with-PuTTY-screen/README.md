@@ -1,9 +1,8 @@
 ---
 title: Scrollback with PuTTY + screen
 date: 2007-05-10
-categories:
-- KDBlog
 tags:
+- KDBlog
 - Linux
 ---
 Enable scrollback with PuTTY+screen

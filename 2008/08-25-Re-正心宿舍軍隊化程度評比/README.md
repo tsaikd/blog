@@ -1,9 +1,8 @@
 ---
-title: Re: 正心宿舍軍隊化程度評比
+title: Re 正心宿舍軍隊化程度評比
 date: 2008-08-25
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 ---
 正心宿舍軍隊化程度評比

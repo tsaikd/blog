@@ -1,9 +1,8 @@
 ---
 title: 電子剪刀、石頭、布
 date: 2007-07-01
-categories:
-- KDBlog
 tags:
+- KDBlog
 - KUSO
 ---
 科技萬能系列：電子剪刀、石頭、布

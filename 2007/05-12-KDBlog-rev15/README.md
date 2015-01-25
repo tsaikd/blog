@@ -1,8 +1,6 @@
 ---
 title: KDBlog rev15
 date: 2007-05-12
-categories:
-- KDBlog
 tags:
 - KDBlog
 - KDProject

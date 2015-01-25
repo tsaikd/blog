@@ -1,9 +1,6 @@
 ---
 title: 練習用 markdown 的形式來寫 blog
 date: 2013-09-28
-description:
-categories:
-- Blog
 tags:
 - octopress
 - gor

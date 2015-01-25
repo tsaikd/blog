@@ -1,9 +1,8 @@
 ---
 title: 按一下，將任何網頁寄回自己的Email信箱！
 date: 2008-02-16
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資訊
 ---
 按一下，將任何網頁寄回自己的Email信箱！

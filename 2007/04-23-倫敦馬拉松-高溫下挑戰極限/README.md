@@ -1,9 +1,8 @@
 ---
 title: 倫敦馬拉松：高溫下挑戰極限
 date: 2007-04-23
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 新聞
 ---
 倫敦馬拉松：高溫下挑戰極限

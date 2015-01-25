@@ -1,9 +1,8 @@
 ---
 title: 新訓第二十二天
 date: 2007-09-28
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

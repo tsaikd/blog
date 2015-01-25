@@ -1,9 +1,6 @@
 ---
 title: Docker container bridge host physical network
 date: 2014-05-24
-description:
-categories:
-- Blog
 tags:
 - Docker
 - Network

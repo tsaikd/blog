@@ -1,9 +1,8 @@
 ---
 title: 第一次出去採買
 date: 2007-11-12
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 生活
 - 軍隊
 ---

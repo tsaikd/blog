@@ -1,9 +1,6 @@
 ---
 title: Eclipse Gradle Plugin
 date: 2014-01-05
-description:
-categories:
-- Blog
 tags:
 - Gradle
 - Eclipse

@@ -1,9 +1,8 @@
 ---
 title: 以超連結樣式的新型態詐欺手法
 date: 2007-11-21
-categories:
-- KDBlog
 tags:
+- KDBlog
 - 資安
 ---
 以超連結樣式的新型態詐欺手法
