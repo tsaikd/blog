@@ -48,12 +48,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</loc>
+    <loc>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</loc>
     <lastmod>2014-02-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</loc>
+    <loc>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</loc>
     <lastmod>2014-02-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -98,12 +98,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</loc>
+    <loc>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</loc>
     <lastmod>2013-11-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</loc>
+    <loc>http://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</loc>
     <lastmod>2013-11-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -123,12 +123,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</loc>
+    <loc>http://tsaikd.org/blog/2013/09-28-makdown-small-tip/</loc>
     <lastmod>2013-09-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2013/09-28-makdown-small-tip/</loc>
+    <loc>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</loc>
     <lastmod>2013-09-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -198,22 +198,22 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/</loc>
-    <lastmod>2009-09-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tsaikd.org/blog/2009/09-13-autofs/</loc>
     <lastmod>2009-09-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2009/09-12-gitweb/</loc>
-    <lastmod>2009-09-12T00:00:00+00:00</lastmod>
+    <loc>http://tsaikd.org/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/</loc>
+    <lastmod>2009-09-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://tsaikd.org/blog/2009/09-12-sudoers/</loc>
+    <lastmod>2009-09-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tsaikd.org/blog/2009/09-12-gitweb/</loc>
     <lastmod>2009-09-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -313,12 +313,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/</loc>
+    <loc>http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/</loc>
     <lastmod>2008-10-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2008/10-26-%E4%BB%8A%E5%A4%A9%E7%AC%AC%E4%B8%89%E7%AF%87/</loc>
+    <loc>http://tsaikd.org/blog/2008/10-26-%E4%B8%AD%E5%8D%88%E8%A6%93%E9%A3%9F%E8%A8%98/</loc>
     <lastmod>2008-10-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -448,12 +448,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</loc>
+    <loc>http://tsaikd.org/blog/2007/11-21-%E8%BB%8D%E4%B8%AD%E7%94%9F%E6%B4%BB%E7%91%A3%E4%BA%8B/</loc>
     <lastmod>2007-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/11-21-%E8%BB%8D%E4%B8%AD%E7%94%9F%E6%B4%BB%E7%91%A3%E4%BA%8B/</loc>
+    <loc>http://tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</loc>
     <lastmod>2007-11-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -713,12 +713,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</loc>
+    <loc>http://tsaikd.org/blog/2007/07-25-mdadm%E6%8C%87%E4%BB%A4%E5%82%99%E5%BF%98/</loc>
     <lastmod>2007-07-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/07-25-mdadm%E6%8C%87%E4%BB%A4%E5%82%99%E5%BF%98/</loc>
+    <loc>http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</loc>
     <lastmod>2007-07-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -728,12 +728,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/07-17-%E7%81%AB%E8%BB%8A%E4%B8%8A%E7%9A%84%E5%86%B7%E6%B0%A3/</loc>
+    <loc>http://tsaikd.org/blog/2007/07-17-%E4%BA%92%E8%81%AF%E7%B6%B2%E6%9C%8D%E5%8B%99-%E6%97%A5%E6%9C%AC%E6%9C%80%E5%BF%AB-%E5%9C%9F%E8%80%B3%E5%85%B6%E6%9C%80%E8%B2%B4/</loc>
     <lastmod>2007-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/07-17-%E4%BA%92%E8%81%AF%E7%B6%B2%E6%9C%8D%E5%8B%99-%E6%97%A5%E6%9C%AC%E6%9C%80%E5%BF%AB-%E5%9C%9F%E8%80%B3%E5%85%B6%E6%9C%80%E8%B2%B4/</loc>
+    <loc>http://tsaikd.org/blog/2007/07-17-%E7%81%AB%E8%BB%8A%E4%B8%8A%E7%9A%84%E5%86%B7%E6%B0%A3/</loc>
     <lastmod>2007-07-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -798,12 +798,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/06-27-%E5%92%8C%E5%B0%9A%E6%8C%96%E4%BA%95/</loc>
+    <loc>http://tsaikd.org/blog/2007/06-27-%E8%A6%81%E6%90%AC%E5%AE%BF%E8%88%8D%E4%BA%86/</loc>
     <lastmod>2007-06-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/06-27-%E8%A6%81%E6%90%AC%E5%AE%BF%E8%88%8D%E4%BA%86/</loc>
+    <loc>http://tsaikd.org/blog/2007/06-27-%E5%92%8C%E5%B0%9A%E6%8C%96%E4%BA%95/</loc>
     <lastmod>2007-06-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -868,6 +868,11 @@
   </url>
   
   <url>
+    <loc>http://tsaikd.org/blog/2007/06-04-Google-Reader-%E4%BF%9D%E7%95%99%E6%96%87%E7%AB%A0/</loc>
+    <lastmod>2007-06-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://tsaikd.org/blog/2007/06-04-Hotter-or-Notter-%E7%BE%8E%E5%A5%B3%E9%91%91%E8%B3%9E%E8%83%BD%E5%8A%9B%E5%A4%A7%E6%8C%91%E6%88%B0/</loc>
     <lastmod>2007-06-04T00:00:00+00:00</lastmod>
   </url>
@@ -883,8 +888,8 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/06-04-Google-Reader-%E4%BF%9D%E7%95%99%E6%96%87%E7%AB%A0/</loc>
-    <lastmod>2007-06-04T00:00:00+00:00</lastmod>
+    <loc>http://tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</loc>
+    <lastmod>2007-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -893,17 +898,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</loc>
-    <lastmod>2007-06-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tsaikd.org/blog/2007/05-31-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%A9%95%E8%AB%96/</loc>
+    <loc>http://tsaikd.org/blog/2007/05-31-KDBlog-rev16/</loc>
     <lastmod>2007-05-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/05-31-KDBlog-rev16/</loc>
+    <loc>http://tsaikd.org/blog/2007/05-31-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%A9%95%E8%AB%96/</loc>
     <lastmod>2007-05-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -938,17 +938,17 @@
   </url>
   
   <url>
+    <loc>http://tsaikd.org/blog/2007/05-12-bash-debug-mode/</loc>
+    <lastmod>2007-05-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://tsaikd.org/blog/2007/05-12-KDBlog-rev15/</loc>
     <lastmod>2007-05-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</loc>
-    <lastmod>2007-05-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tsaikd.org/blog/2007/05-12-bash-debug-mode/</loc>
     <lastmod>2007-05-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -978,12 +978,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/04-25-%E9%96%8B%E6%94%BE%E5%8E%9F%E5%A7%8B%E7%A2%BC%E6%94%AF%E6%8C%81%E8%80%85%E7%86%B1%E6%83%85%E8%88%89%E7%89%8C/</loc>
+    <loc>http://tsaikd.org/blog/2007/04-25-%E8%A9%90%E9%A8%99%E9%9B%BB%E8%A9%B1/</loc>
     <lastmod>2007-04-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/04-25-%E8%A9%90%E9%A8%99%E9%9B%BB%E8%A9%B1/</loc>
+    <loc>http://tsaikd.org/blog/2007/04-25-%E9%96%8B%E6%94%BE%E5%8E%9F%E5%A7%8B%E7%A2%BC%E6%94%AF%E6%8C%81%E8%80%85%E7%86%B1%E6%83%85%E8%88%89%E7%89%8C/</loc>
     <lastmod>2007-04-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -1013,12 +1013,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83-%E7%BA%8C/</loc>
+    <loc>http://tsaikd.org/blog/2007/04-16-%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%80%BC%E5%BE%97%E9%AA%84%E5%82%B2%E7%9A%84%E4%BA%92%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2007-04-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/04-16-%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%80%BC%E5%BE%97%E9%AA%84%E5%82%B2%E7%9A%84%E4%BA%92%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF/</loc>
+    <loc>http://tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83-%E7%BA%8C/</loc>
     <lastmod>2007-04-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -1053,17 +1053,17 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/04-09-%E5%BE%B7%E5%84%80%E5%B1%95%E7%A4%BA%E8%BF%B7%E4%BD%A0DLP%E9%90%B3%E5%B0%84%E6%8A%95%E5%BD%B1%E6%A9%9F/</loc>
-    <lastmod>2007-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tsaikd.org/blog/2007/04-09-%E7%B6%B2%E9%A0%81%E8%AA%B2-group-project/</loc>
     <lastmod>2007-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://tsaikd.org/blog/2007/04-09-%E5%B0%87%E4%BD%A0%E7%9A%84%E7%AD%86%E9%9B%BB%E8%AE%8A%E6%88%90Tablet-PC/</loc>
+    <lastmod>2007-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tsaikd.org/blog/2007/04-09-%E5%BE%B7%E5%84%80%E5%B1%95%E7%A4%BA%E8%BF%B7%E4%BD%A0DLP%E9%90%B3%E5%B0%84%E6%8A%95%E5%BD%B1%E6%A9%9F/</loc>
     <lastmod>2007-04-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -1108,22 +1108,22 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/03-30-KDBlog-rev7/</loc>
-    <lastmod>2007-03-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tsaikd.org/blog/2007/03-30-%E7%94%9F%E6%B6%AF%E8%A6%8F%E5%8A%83-%E6%9D%8E%E5%BC%B7%E8%AB%87%E6%80%A7/</loc>
-    <lastmod>2007-03-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tsaikd.org/blog/2007/03-30-Wii-introduce/</loc>
     <lastmod>2007-03-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>http://tsaikd.org/blog/2007/03-30-KDBlog-rev7/</loc>
+    <lastmod>2007-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://tsaikd.org/blog/2007/03-30-%E5%8F%B0%E5%A4%A7%E6%94%BE%E6%A6%9C%E4%BA%86/</loc>
+    <lastmod>2007-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tsaikd.org/blog/2007/03-30-%E7%94%9F%E6%B6%AF%E8%A6%8F%E5%8A%83-%E6%9D%8E%E5%BC%B7%E8%AB%87%E6%80%A7/</loc>
     <lastmod>2007-03-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -1153,22 +1153,22 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/03-25-%E4%B8%AD%E5%9C%8B%E6%9C%80%E7%89%9B%E9%87%98%E5%AD%90%E6%88%B6/</loc>
-    <lastmod>2007-03-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tsaikd.org/blog/2007/03-25-%E5%A4%A7%E5%B3%BD%E8%B0%B7%E7%A9%BA%E4%B8%AD%E8%B5%B0%E9%81%93%E5%8D%B3%E5%B0%87%E5%B0%8D%E5%A4%96%E9%96%8B%E6%94%BE/</loc>
     <lastmod>2007-03-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/03-23-%E5%99%81%E5%BF%83%E7%9A%84USB/</loc>
-    <lastmod>2007-03-23T00:00:00+00:00</lastmod>
+    <loc>http://tsaikd.org/blog/2007/03-25-%E4%B8%AD%E5%9C%8B%E6%9C%80%E7%89%9B%E9%87%98%E5%AD%90%E6%88%B6/</loc>
+    <lastmod>2007-03-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://tsaikd.org/blog/2007/03-23-%E5%B1%B1%E8%A5%BF%E7%85%A4%E7%A4%A6%E7%88%86%E7%82%B821%E4%BA%BA%E8%A2%AB%E5%9B%B0-%E7%A4%A6%E4%B8%BB%E9%9A%B1%E7%9E%9E/</loc>
+    <lastmod>2007-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tsaikd.org/blog/2007/03-23-%E5%99%81%E5%BF%83%E7%9A%84USB/</loc>
     <lastmod>2007-03-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -1213,12 +1213,12 @@
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/03-17-KDBlog-Tag/</loc>
+    <loc>http://tsaikd.org/blog/2007/03-17-KDBlog%E9%80%B2svn%E4%BA%86/</loc>
     <lastmod>2007-03-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tsaikd.org/blog/2007/03-17-KDBlog%E9%80%B2svn%E4%BA%86/</loc>
+    <loc>http://tsaikd.org/blog/2007/03-17-KDBlog-Tag/</loc>
     <lastmod>2007-03-17T00:00:00+00:00</lastmod>
   </url>
   
