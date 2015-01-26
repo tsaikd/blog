@@ -477,6 +477,10 @@ hr.thin {
 
 
 /* tsaikd fix section */
+.sidebar .header a {
+	text-decoration: none;
+}
+
 .post img {
 	max-width: 100%;
 }
