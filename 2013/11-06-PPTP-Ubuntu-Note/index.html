@@ -89,6 +89,15 @@
     </nav>
 
     
+    <div class="social-buttons">
+      
+        
+        <a href="https://www.facebook.com/tsaikd" target="_blank"><i class='fa fa-facebook'></i></a>
+        
+      
+      
+    </div>
+    
 
   </div>
 </div>
@@ -142,6 +151,13 @@
 			
 
 			
+		    	<div class="social-sharing">
+	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
+	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
+	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f&title=PPTP%20Ubuntu%20Note&summary=%e7%b8%bd%e7%b5%90%20apt-get%20install%20pptpd%20-y%20echo%20%26quot%3blocalip%20192.168.99.1%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fpptpd.conf%20echo%20%26quot%3bremoteip%20192.168.99.100-150%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fpptpd.conf%20echo%20%26quot%3bms-dns%208.8.8.8%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fppp%2fpptpd-options%20echo%20%26quot%3bms-dns%208.8.4.4%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fppp%2fpptpd-options%20echo%20%26quot%3bUSERNAME%20%2a%20PASSWORD%20%2a%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fppp%2fchap-secrets%20service%20pptpd%20restart%20echo%20%26quot%3bnet.ipv4.ip_forward%3d1%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fsysctl.conf%20sysctl%20-p%20iptables%20-t%20nat%20-I%20POSTROUTING%20-o%20eth0%20-s%20192.168.99.0%2f24%20-j%20MASQUERADE%20iptables%20-A%20FORWARD%20-s%20192.168.99.0%2f24%20-p%20tcp%20-m%20tcp%20--tcp-flags%20SYN%2cRST%20SYN%20-j%20TCPMSS%20--set-mss%201316%20%e5%ae%89%e8%a3%9d%e5%a5%97%e4%bb%b6%20apt-get}&source=TsaiKD%20Blog" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
+	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=PPTP%20Ubuntu%20Note&url=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
+</div>
+		    
 
 			
 
@@ -236,6 +252,13 @@ iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j 
 
 	
 			
+		    	<div class="social-sharing">
+	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
+	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
+	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f&title=PPTP%20Ubuntu%20Note&summary=%e7%b8%bd%e7%b5%90%20apt-get%20install%20pptpd%20-y%20echo%20%26quot%3blocalip%20192.168.99.1%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fpptpd.conf%20echo%20%26quot%3bremoteip%20192.168.99.100-150%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fpptpd.conf%20echo%20%26quot%3bms-dns%208.8.8.8%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fppp%2fpptpd-options%20echo%20%26quot%3bms-dns%208.8.4.4%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fppp%2fpptpd-options%20echo%20%26quot%3bUSERNAME%20%2a%20PASSWORD%20%2a%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fppp%2fchap-secrets%20service%20pptpd%20restart%20echo%20%26quot%3bnet.ipv4.ip_forward%3d1%26quot%3b%20%26gt%3b%26gt%3b%20%2fetc%2fsysctl.conf%20sysctl%20-p%20iptables%20-t%20nat%20-I%20POSTROUTING%20-o%20eth0%20-s%20192.168.99.0%2f24%20-j%20MASQUERADE%20iptables%20-A%20FORWARD%20-s%20192.168.99.0%2f24%20-p%20tcp%20-m%20tcp%20--tcp-flags%20SYN%2cRST%20SYN%20-j%20TCPMSS%20--set-mss%201316%20%e5%ae%89%e8%a3%9d%e5%a5%97%e4%bb%b6%20apt-get}&source=TsaiKD%20Blog" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
+	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=PPTP%20Ubuntu%20Note&url=http%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-06-PPTP-Ubuntu-Note%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
+</div>
+		    
 
 			
 				<div class="tags-list">
@@ -285,6 +308,13 @@ iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j 
   </div>
 	
 
+	
+		<script type="text/javascript">
+			function popupShare(url) {
+				window.open(url, '_blank', 'scrollbars,resizable,height=525,width=600');
+				return false;
+			}
+		</script>
 	
 
   
