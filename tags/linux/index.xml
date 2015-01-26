@@ -370,14 +370,14 @@ ServerName 127.0.0.1 # 這個是讓 Apache 啟動變快的東西...
 &lt;li&gt;&lt;code&gt;mc&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_01.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;mc_01.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;mc -a&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_01_fix.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;mc_01_fix.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;hr /&gt;
@@ -398,7 +398,7 @@ ServerName 127.0.0.1 # 這個是讓 Apache 啟動變快的東西...
 
 &lt;p&gt;只能去 &lt;code&gt;Options -&amp;gt; Layout... -&amp;gt; Panel split -&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_02.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;mc_02.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;把右邊盡量縮小&lt;/p&gt;
@@ -415,10 +415,10 @@ ServerName 127.0.0.1 # 這個是讓 Apache 啟動變快的東西...
 
 &lt;p&gt;把 half 改成 full 就好了&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_03.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;mc_03.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2007/07-16-Midnight-Commander-%28mc%29/mc_03_fix.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;mc_03_fix.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;hr /&gt;

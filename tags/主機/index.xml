@@ -382,7 +382,7 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
       <pubDate>Wed, 25 Jul 2007 00:00:00 &#43;0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/../07-22-主機的硬碟掛掉了&#34;&gt;主機的硬碟掛掉了&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;../07-22-主機的硬碟掛掉了&#34;&gt;主機的硬碟掛掉了&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;花了三天時間&lt;/p&gt;
 

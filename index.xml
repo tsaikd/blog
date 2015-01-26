@@ -31,7 +31,7 @@
 
 &lt;p&gt;在 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 的使用情境下，有幾種典型角色：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
 
 &amp;gt; &lt;a href=&#34;http://logstash.net/docs/1.1.1/tutorials/getting-started-centralized&#34;&gt;這邊偷用了 Logstash Document 的圖&lt;/a&gt;&lt;/p&gt;
 
@@ -91,10 +91,10 @@
 還有機器的狀態也想要一併分析，所以有幾個 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt; 的設定。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;broker-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Broker 設定&lt;/h2&gt;
@@ -107,18 +107,18 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 才比較容易理解。底下列出一些相關的設定方式給大家參考。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/redis.conf&#34;&gt;redis/redis.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;redis/redis/redis.conf&#34;&gt;redis/redis.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 基本設定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/sentinel.conf&#34;&gt;redis/sentinel.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;redis/redis/sentinel.conf&#34;&gt;redis/sentinel.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; Sentinel 設定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/start.sh&#34;&gt;redis/start.sh&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;redis/redis/start.sh&#34;&gt;redis/start.sh&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
@@ -132,28 +132,28 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 系統管理者的角度來處理 Log。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb.conf&#34;&gt;logstash/index-mongodb.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb.conf&#34;&gt;logstash/index-mongodb.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; Log&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-status.conf&#34;&gt;logstash/index-mongodb-status.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-status.conf&#34;&gt;logstash/index-mongodb-status.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 服務狀態&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析硬碟空間使用狀況&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析系統負載資訊&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
@@ -169,28 +169,28 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 相關文件，底下設定給大家參考。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/elasticsearch.yml&#34;&gt;eslogstash/elasticsearch.yml&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/elasticsearch.yml&#34;&gt;eslogstash/elasticsearch.yml&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ElasticSearch 基本設定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/logging.yml&#34;&gt;eslogstash/logging.yml&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/logging.yml&#34;&gt;eslogstash/logging.yml&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;這個檔案基本上沒有修改，只是方便 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 直接把整個目錄掛進去&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/stopword.txt&#34;&gt;eslogstash/analysis/stopword.txt&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/analysis/stopword.txt&#34;&gt;eslogstash/analysis/stopword.txt&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;用來排除某些特定(不感興趣)的詞&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/synonym.txt&#34;&gt;eslogstash/analysis/synonym.txt&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/analysis/synonym.txt&#34;&gt;eslogstash/analysis/synonym.txt&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;設定同義詞&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/templates/kdtmpl.json&#34;&gt;eslogstash/templates/kdtmpl.json&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/templates/kdtmpl.json&#34;&gt;eslogstash/templates/kdtmpl.json&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;動態模板，把 &lt;code&gt;*_facet&lt;/code&gt; 欄位預設成不分詞&lt;/li&gt;
@@ -203,8 +203,8 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 的環境分開，不然可以免設定就直接用了。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;qa:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;QA&lt;/h2&gt;
@@ -213,7 +213,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 &lt;li&gt;上面的 fig.yml 有些奇怪的環境變數像是 &lt;code&gt;SERVICE_9200_DNS=eslogstash&lt;/code&gt; 是在幹嘛的？&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;這些是我在 &lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/../../2014/12-25-Docker-infra&#34;&gt;Docker Infra 架構簡介與實例&lt;/a&gt; 這邊提到
+&lt;p&gt;這些是我在 &lt;a href=&#34;../../2014/12-25-Docker-infra&#34;&gt;Docker Infra 架構簡介與實例&lt;/a&gt; 這邊提到
 的架構，其中的某些設定，因為有點複雜，有興趣的就自行閱讀吧，反正把那些服務串起來
 就對了。&lt;/p&gt;
 
@@ -221,7 +221,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;h2 id=&#34;demo-截圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Demo 截圖&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana-demo.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;kibana-demo.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 </description>
     </item>
@@ -245,7 +245,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;h2 id=&#34;系統基本架構圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;系統基本架構圖&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/overview.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;overview.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;ul&gt;
@@ -261,7 +261,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;ul&gt;
 &lt;li&gt;從 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt; 讀取設定, 讓使用者查詢的 DNS Server&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/skydns.png&#34; alt=&#34;&#34; /&gt;
+&lt;li&gt;&lt;img src=&#34;skydns.png&#34; alt=&#34;&#34; /&gt;
 
 &lt;br/&gt;
 &lt;br/&gt;&lt;/li&gt;
@@ -271,7 +271,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;ul&gt;
 &lt;li&gt;從 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt; 讀取設定, Reload &lt;a href=&#34;http://nginx.com&#34;&gt;Nginx&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/confd.png&#34; alt=&#34;&#34; /&gt;
+&lt;li&gt;&lt;img src=&#34;confd.png&#34; alt=&#34;&#34; /&gt;
 
 &lt;br/&gt;
 &lt;br/&gt;&lt;/li&gt;
@@ -281,7 +281,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;ul&gt;
 &lt;li&gt;監聽 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; Events, 將 Container 資訊寫入 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/registrator.png&#34; alt=&#34;&#34; /&gt;
+&lt;li&gt;&lt;img src=&#34;registrator.png&#34; alt=&#34;&#34; /&gt;
 
 &lt;br/&gt;
 &lt;br/&gt;&lt;/li&gt;
@@ -291,7 +291,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;ul&gt;
 &lt;li&gt;網頁 r-Proxy&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/queryflow.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;queryflow.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -330,7 +330,7 @@ apt-get install lxc-docker
 &lt;li&gt;&lt;p&gt;連線到 &lt;a href=&#34;http://tsaikd.org/kdocker-web/&#34;&gt;KDocker-Web&lt;/a&gt; 進行設定, 這是一個純網頁的 Web App , 在上面進行設定並不會造成資料外洩, 請安心服用&amp;hellip;XD&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/kdocker-web-config.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;kdocker-web-config.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -532,7 +532,7 @@ reload_cmd = &amp;quot;/usr/sbin/service nginx reload&amp;quot;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/nginx.tmpl.txt&#34;&gt;/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;nginx.tmpl.txt&#34;&gt;/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
@@ -714,10 +714,10 @@ Docker version 1.2.0, build fa7b24f
 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西，
 先看一下成功的畫面吧！&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen01.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;screen01.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen02.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;screen02.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;基本上就是先建一個 eclipse 的 container ，
@@ -1050,22 +1050,22 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
 
 &lt;p&gt;一開始就看到一個計程車司機自備麥克風站在車頂上。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0847.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0847.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;人群前面有一攤烤香腸，我原本以為是善心民眾來提供熱食，後來在旁邊站了一下，一條40塊&amp;hellip;=.=&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0851.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0851.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;今天人潮比昨天多。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0853.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0853.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;民眾被採訪了，不知道是哪個媒體。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0855.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0855.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1104,22 +1104,22 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
 
 &lt;p&gt;到了立法院外，首先看到的是一排流動廁所，燈火通明。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0809.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0809.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;接下來是在立法院外圍的群眾，滿滿的人。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0813.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0813.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;然後看到了形成封鎖線的警察們。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0815.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0815.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;後面好像還有不少在待命的。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0817.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0817.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;接下來有突發事件，因為當時嚇傻了，忘了拍照，其實我站的位置大概也拍不到啥鬼，所以沒圖&amp;hellip;=.=&lt;/p&gt;
@@ -1128,62 +1128,62 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
 
 &lt;p&gt;穿過了重重的人群，我爬進立法院的圍牆，一樣是滿滿的人，不過燈光似乎比較集中在立法院門口。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0820.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0820.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;旁邊是另一群形成封鎖線的警察們。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0823.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0823.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;燈光集中在主持人身上。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0828.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0828.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;立法院門口，不知道為啥 iPhone 沒對到焦，整個糊掉了&amp;hellip;=.=&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0830.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0830.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;專業的攝影機，角度、位置、設備都是一流。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0832.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0832.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;再往側邊走到底，又遇到形成封鎖線的警察們。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0834.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0834.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;準備回到馬路上之前，看到了有人要從屋頂上爬下來。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0836.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0836.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;馬路上有人群在幫忙運送東西進去。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0837.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0837.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;似乎是一整車的礦泉水。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0838.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0838.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;中間這個拿小型攝影機的似乎是外國記者？&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0840.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0840.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;物質擺放定位。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0843.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0843.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;這 7-11 位置真好。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/IMG_0845.JPG&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;IMG_0845.JPG&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1256,6 +1256,96 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
 對共產黨的協商就一定要照單全收？
 總統還說這個會期要過，
 是不是可以視為獨裁了啊？&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>phpVirtualbox</title>
+      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
+      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</guid>
+      <description>&lt;p&gt;過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體)&lt;/p&gt;
+
+&lt;p&gt;最近終於決定 OS 的架構了&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 12.04 x64&lt;/li&gt;
+&lt;li&gt;ZFS&lt;/li&gt;
+&lt;li&gt;Virtualbox&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;01.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;32G RAM 的 PC &amp;hellip;.hehehe&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;02.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;03.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;04.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&amp;hellip;&amp;gt;_&amp;lt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;05.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;06.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&amp;hellip;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;07.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;08.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;09.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;10.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;11.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;12.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;13.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;14.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;15.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;16.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;17.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!&lt;/p&gt;
 </description>
     </item>
     
@@ -1338,96 +1428,6 @@ VBOXWEB_HOST=0.0.0.0
 &lt;p&gt;&lt;a href=&#34;https://github.com/tsaikd/docker&#34;&gt;https://github.com/tsaikd/docker&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;記得還是要設定 config.sh 裡的參數&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>phpVirtualbox</title>
-      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
-      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
-      
-      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</guid>
-      <description>&lt;p&gt;過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體)&lt;/p&gt;
-
-&lt;p&gt;最近終於決定 OS 的架構了&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ubuntu 12.04 x64&lt;/li&gt;
-&lt;li&gt;ZFS&lt;/li&gt;
-&lt;li&gt;Virtualbox&lt;/li&gt;
-&lt;li&gt;Docker&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/01.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;32G RAM 的 PC &amp;hellip;.hehehe&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/02.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Ubuntu 選 LTS 版, 必免頻繁 Upgrade 的問題&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/03.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/04.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ZFS, 實驗性質, 看看大量使用會不會有什麼鬼問題, 不過 ZFS 在 Ubuntu 感覺還是有點雷, 用預設的 properties 會狂吃記憶體, 傳檔案竟然會吃到 2x G, 目前把所有的硬碟 cache 選項關掉, 把壓縮關掉, 看起來還正常一點&amp;hellip;&amp;gt;_&amp;lt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/05.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/06.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Docker, 去年年底才知道的好東西, linux base 的 vm 之後都可以轉到 docker 跑了, 不過之前用的 shipyard 管理界面在改版之後變得有點討厭, 限定要用 shipyard agent 才能管理 docker, 目前只好回到 console 去管理了, 看看有沒有時間弄個簡易的 web 管理界面好了&amp;hellip;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/07.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/08.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/09.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/10.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/11.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/12.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/13.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/14.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/15.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/16.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/02-08-phpvirtualbox/17.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!&lt;/p&gt;
 </description>
     </item>
     

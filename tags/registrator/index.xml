@@ -31,7 +31,7 @@
 
 &lt;h2 id=&#34;系統基本架構圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;系統基本架構圖&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/overview.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;overview.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;ul&gt;
@@ -47,7 +47,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;從 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt; 讀取設定, 讓使用者查詢的 DNS Server&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/skydns.png&#34; alt=&#34;&#34; /&gt;
+&lt;li&gt;&lt;img src=&#34;skydns.png&#34; alt=&#34;&#34; /&gt;
 
 &lt;br/&gt;
 &lt;br/&gt;&lt;/li&gt;
@@ -57,7 +57,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;從 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt; 讀取設定, Reload &lt;a href=&#34;http://nginx.com&#34;&gt;Nginx&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/confd.png&#34; alt=&#34;&#34; /&gt;
+&lt;li&gt;&lt;img src=&#34;confd.png&#34; alt=&#34;&#34; /&gt;
 
 &lt;br/&gt;
 &lt;br/&gt;&lt;/li&gt;
@@ -67,7 +67,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;監聽 &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; Events, 將 Container 資訊寫入 &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;Etcd&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/registrator.png&#34; alt=&#34;&#34; /&gt;
+&lt;li&gt;&lt;img src=&#34;registrator.png&#34; alt=&#34;&#34; /&gt;
 
 &lt;br/&gt;
 &lt;br/&gt;&lt;/li&gt;
@@ -77,7 +77,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;網頁 r-Proxy&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/queryflow.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;queryflow.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -116,7 +116,7 @@ apt-get install lxc-docker
 &lt;li&gt;&lt;p&gt;連線到 &lt;a href=&#34;http://tsaikd.org/kdocker-web/&#34;&gt;KDocker-Web&lt;/a&gt; 進行設定, 這是一個純網頁的 Web App , 在上面進行設定並不會造成資料外洩, 請安心服用&amp;hellip;XD&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/kdocker-web-config.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;kdocker-web-config.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -318,7 +318,7 @@ reload_cmd = &amp;quot;/usr/sbin/service nginx reload&amp;quot;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2014/12-25-Docker-infra/nginx.tmpl.txt&#34;&gt;/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;nginx.tmpl.txt&#34;&gt;/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;

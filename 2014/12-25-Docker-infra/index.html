@@ -148,7 +148,7 @@
 
 <h2 id="系統基本架構圖:04c6e90faac2675aa89e2176d2eec7d8">系統基本架構圖</h2>
 
-<p><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/overview.png" alt="" />
+<p><img src="overview.png" alt="" />
 </p>
 
 <ul>
@@ -164,7 +164,7 @@
 
 <ul>
 <li>從 <a href="https://github.com/coreos/etcd">Etcd</a> 讀取設定, 讓使用者查詢的 DNS Server</li>
-<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/skydns.png" alt="" />
+<li><img src="skydns.png" alt="" />
 
 <br/>
 <br/></li>
@@ -174,7 +174,7 @@
 
 <ul>
 <li>從 <a href="https://github.com/coreos/etcd">Etcd</a> 讀取設定, Reload <a href="http://nginx.com">Nginx</a></li>
-<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/confd.png" alt="" />
+<li><img src="confd.png" alt="" />
 
 <br/>
 <br/></li>
@@ -184,7 +184,7 @@
 
 <ul>
 <li>監聽 <a href="https://www.docker.io/">Docker</a> Events, 將 Container 資訊寫入 <a href="https://github.com/coreos/etcd">Etcd</a></li>
-<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/registrator.png" alt="" />
+<li><img src="registrator.png" alt="" />
 
 <br/>
 <br/></li>
@@ -194,7 +194,7 @@
 
 <ul>
 <li>網頁 r-Proxy</li>
-<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/queryflow.png" alt="" /></li>
+<li><img src="queryflow.png" alt="" /></li>
 </ul></li>
 </ul>
 
@@ -233,7 +233,7 @@ apt-get install lxc-docker
 <li><p>連線到 <a href="http://tsaikd.org/kdocker-web/">KDocker-Web</a> 進行設定, 這是一個純網頁的 Web App , 在上面進行設定並不會造成資料外洩, 請安心服用&hellip;XD</p>
 
 <ul>
-<li><img src="http://tsaikd.org/blog/2014/12-25-Docker-infra/kdocker-web-config.png" alt="" /></li>
+<li><img src="kdocker-web-config.png" alt="" /></li>
 </ul></li>
 </ul>
 
@@ -435,7 +435,7 @@ reload_cmd = &quot;/usr/sbin/service nginx reload&quot;
 <blockquote>
 <blockquote>
 <ul>
-<li><a href="http://tsaikd.org/blog/2014/12-25-Docker-infra/nginx.tmpl.txt">/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl</a></li>
+<li><a href="nginx.tmpl.txt">/docker-run/Docker01/ngconfd/confd/templates/nginx.tmpl</a></li>
 </ul>
 
 <blockquote>

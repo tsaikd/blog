@@ -31,7 +31,7 @@
 
 &lt;p&gt;在 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 的使用情境下，有幾種典型角色：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
 
 &amp;gt; &lt;a href=&#34;http://logstash.net/docs/1.1.1/tutorials/getting-started-centralized&#34;&gt;這邊偷用了 Logstash Document 的圖&lt;/a&gt;&lt;/p&gt;
 
@@ -91,10 +91,10 @@
 還有機器的狀態也想要一併分析，所以有幾個 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt; 的設定。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;broker-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Broker 設定&lt;/h2&gt;
@@ -107,18 +107,18 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 才比較容易理解。底下列出一些相關的設定方式給大家參考。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/redis.conf&#34;&gt;redis/redis.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;redis/redis/redis.conf&#34;&gt;redis/redis.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 基本設定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/sentinel.conf&#34;&gt;redis/sentinel.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;redis/redis/sentinel.conf&#34;&gt;redis/sentinel.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; Sentinel 設定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/redis/redis/start.sh&#34;&gt;redis/start.sh&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;redis/redis/start.sh&#34;&gt;redis/start.sh&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
@@ -132,28 +132,28 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 系統管理者的角度來處理 Log。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb.conf&#34;&gt;logstash/index-mongodb.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb.conf&#34;&gt;logstash/index-mongodb.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; Log&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-status.conf&#34;&gt;logstash/index-mongodb-status.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-status.conf&#34;&gt;logstash/index-mongodb-status.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 服務狀態&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析硬碟空間使用狀況&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;分析系統負載資訊&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 啟動腳本&lt;/li&gt;
@@ -169,28 +169,28 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 相關文件，底下設定給大家參考。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/elasticsearch.yml&#34;&gt;eslogstash/elasticsearch.yml&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/elasticsearch.yml&#34;&gt;eslogstash/elasticsearch.yml&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ElasticSearch 基本設定&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/logging.yml&#34;&gt;eslogstash/logging.yml&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/logging.yml&#34;&gt;eslogstash/logging.yml&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;這個檔案基本上沒有修改，只是方便 &lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; 直接把整個目錄掛進去&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/stopword.txt&#34;&gt;eslogstash/analysis/stopword.txt&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/analysis/stopword.txt&#34;&gt;eslogstash/analysis/stopword.txt&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;用來排除某些特定(不感興趣)的詞&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/analysis/synonym.txt&#34;&gt;eslogstash/analysis/synonym.txt&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/analysis/synonym.txt&#34;&gt;eslogstash/analysis/synonym.txt&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;設定同義詞&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/elasticsearch/eslogstash/templates/kdtmpl.json&#34;&gt;eslogstash/templates/kdtmpl.json&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;elasticsearch/eslogstash/templates/kdtmpl.json&#34;&gt;eslogstash/templates/kdtmpl.json&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;動態模板，把 &lt;code&gt;*_facet&lt;/code&gt; 欄位預設成不分詞&lt;/li&gt;
@@ -203,8 +203,8 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 的環境分開，不然可以免設定就直接用了。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;qa:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;QA&lt;/h2&gt;
@@ -213,7 +213,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 &lt;li&gt;上面的 fig.yml 有些奇怪的環境變數像是 &lt;code&gt;SERVICE_9200_DNS=eslogstash&lt;/code&gt; 是在幹嘛的？&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;這些是我在 &lt;a href=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/../../2014/12-25-Docker-infra&#34;&gt;Docker Infra 架構簡介與實例&lt;/a&gt; 這邊提到
+&lt;p&gt;這些是我在 &lt;a href=&#34;../../2014/12-25-Docker-infra&#34;&gt;Docker Infra 架構簡介與實例&lt;/a&gt; 這邊提到
 的架構，其中的某些設定，因為有點複雜，有興趣的就自行閱讀吧，反正把那些服務串起來
 就對了。&lt;/p&gt;
 
@@ -221,7 +221,7 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 
 &lt;h2 id=&#34;demo-截圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Demo 截圖&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/kibana-demo.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;kibana-demo.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 </description>
     </item>

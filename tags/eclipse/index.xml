@@ -30,10 +30,10 @@
 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西，
 先看一下成功的畫面吧！&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen01.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;screen01.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/screen02.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;screen02.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;基本上就是先建一個 eclipse 的 container ，
