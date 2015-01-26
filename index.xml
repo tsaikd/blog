@@ -103,11 +103,11 @@
 &lt;h2 id=&#34;broker-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Broker 設定&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 要做一個稱職的 Broker 其實有點麻煩，因為它可能是因為效率的問題，在
-High availability 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞&amp;hellip;Orz
+&lt;a href=&#34;http://en.wikipedia.org/wiki/High_availability&#34;&gt;High availability&lt;/a&gt; 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞&amp;hellip;Orz
 ，我目前使用 &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 來建構 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 環境，裡面有用&lt;a href=&#34;https://github.com/tsaikd/fig&#34;&gt;我 Patch 過的 Fig&lt;/a&gt;
 ，另外 Docker Image 是用 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 建出來的， &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 的 sentinel 情況
-比較麻煩，可能還是要參考一下&lt;a href=&#34;http://redis.io/topics/sentinel&#34;&gt;Redis Sentinel 官方文件&lt;/a&gt;
-才比較容易理解。底下列出一些相關的設定方式給大家參考。&lt;/p&gt;
+比較麻煩，可能還是要參考一下&lt;a href=&#34;http://redis.io/topics/sentinel&#34;&gt;Redis Sentinel&lt;/a&gt; 官方文件才比較容易理解。底下列出一
+些相關的設定方式給大家參考。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;redis/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
@@ -221,6 +221,27 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 就對了。&lt;/p&gt;
 
 &lt;p&gt;另外 &lt;code&gt;DOCKER_WAITEXIT=1&lt;/code&gt; 這個是 &lt;a href=&#34;https://github.com/tsaikd/docker-builder&#34;&gt;Docker Builder&lt;/a&gt; 提供的一個設定&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;為什麼不用 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder&#34;&gt;logstash-forwarder&lt;/a&gt; 就好，還另外重刻一個 &lt;a href=&#34;https://github.com/tsaikd/gogstash&#34;&gt;gogstash&lt;/a&gt; ？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其實我之前也有試用過 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder&#34;&gt;logstash-forwarder&lt;/a&gt; ，但是後來還是放棄了，因為 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder&#34;&gt;logstash-forwarder&lt;/a&gt;
+目前只有支援 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder/blob/master/PROTOCOL.md&#34;&gt;lumberjack&lt;/a&gt; 這種輸出方式，而且我還沒找到可以方便弄成 &lt;a href=&#34;http://en.wikipedia.org/wiki/High_availability&#34;&gt;High availability&lt;/a&gt;
+的辦法，標題有提到這邊主要是要解決針對中等規模環境下的問題，所以我認為 &lt;a href=&#34;http://en.wikipedia.org/wiki/High_availability&#34;&gt;High availability&lt;/a&gt;
+還蠻重要的，用 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder&#34;&gt;logstash-forwarder&lt;/a&gt; 的話，只要 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder/blob/master/PROTOCOL.md&#34;&gt;lumberjack&lt;/a&gt; 那台機器出狀況，
+就會掉 Log 了，如果還是想用 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder&#34;&gt;logstash-forwarder&lt;/a&gt; 的話，要用 &lt;a href=&#34;http://zookeeper.apache.org/&#34;&gt;ZooKeeper&lt;/a&gt; 之類
+的輔助方式來達成 &lt;a href=&#34;http://en.wikipedia.org/wiki/High_availability&#34;&gt;High availability&lt;/a&gt; 的目的。&lt;/p&gt;
+
+&lt;p&gt;另外就是 &lt;a href=&#34;https://github.com/elasticsearch/logstash-forwarder&#34;&gt;logstash-forwarder&lt;/a&gt; 本身架構上沒有設計成方便擴充的形式，所以如果要幫
+它加上 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 輸出的話，我評估起來比我重寫一個還花時間，所以就乖乖硬幹啦&amp;hellip;XD&lt;/p&gt;
+
+&lt;p&gt;但是目前的解法也還是有一些問題，就是 &lt;a href=&#34;http://logstash.net/&#34;&gt;logstash&lt;/a&gt; 吃 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 資料的時候，沒有支
+援 &lt;a href=&#34;http://redis.io/topics/sentinel&#34;&gt;Redis Sentinel&lt;/a&gt; 的方式，所以要是主要的 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 掛掉的時候，目前架構下，
+Log 會一直 Queue 在 &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 上面，因為 &lt;a href=&#34;http://logstash.net/&#34;&gt;logstash&lt;/a&gt; 不知道要去哪裡要資料了，要
+解決這個問題的話，需要修改 &lt;a href=&#34;http://logstash.net/docs/1.4.2/inputs/redis&#34;&gt;Logstash Input Redis Plugin&lt;/a&gt;，不過即使這種情況發
+生了， &lt;a href=&#34;http://redis.io/&#34;&gt;Redis&lt;/a&gt; 上面也還是會有資料，所以不會掉 Log ，所以就先這樣弄，看看新版的
+&lt;a href=&#34;http://logstash.net/&#34;&gt;logstash&lt;/a&gt; 會不會解決這個問題吧。&lt;/p&gt;
 
 &lt;h2 id=&#34;demo-截圖:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Demo 截圖&lt;/h2&gt;
 
@@ -1263,88 +1284,6 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
     </item>
     
     <item>
-      <title>phpVirtualbox config notes</title>
-      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
-      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
-      
-      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
-      <description>
-
-&lt;p&gt;phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下&lt;/p&gt;
-
-&lt;h2 id=&#34;ubuntu-virtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ubuntu virtualbox 安裝過程&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;vi /etc/apt/sources.list.d/virtualbox.list&lt;/p&gt;
-
-&lt;p&gt;```
-deb &lt;a href=&#34;http://download.virtualbox.org/virtualbox/debian&#34;&gt;http://download.virtualbox.org/virtualbox/debian&lt;/a&gt; precise contrib&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;
-* apt-get update &amp;amp;&amp;amp; apt-get install virtualbox-4.3
-
-* 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console
-	* https://www.virtualbox.org/wiki/Downloads
-
-* vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
-
-* vi /etc/default/virtualbox
-	* 這是為了要開啟 vboxweb-service
-	* vbox 改成要使用哪個系統 user 來開啟 virtualbox
-
-	```
-VBOXWEB_USER=vbox
-VBOXWEB_HOST=0.0.0.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;update-rc.d vboxweb-service defaults
-
-&lt;ul&gt;
-&lt;li&gt;開機自動啟動&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;phpvirtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox 安裝過程&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;先裝好 apache2 + php5 的環境&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;下載跟 virtualbox 相容的版本&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/projects/phpvirtualbox/files/&#34;&gt;http://sourceforge.net/projects/phpvirtualbox/files/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;解壓縮之後丟進 /var/www&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;設定 config.conf&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;username 要設定成啟動 virtualbox 的那個系統 user&lt;/li&gt;
-&lt;li&gt;password 要設定成上面那個 user 的登入密碼, 目前還不知道為啥要設定這個密碼, 所以為了保險起見, 不要用原本常用的帳號或是 root, 開一個新帳號叫 vbox 吧&lt;/li&gt;
-&lt;li&gt;location 要設定成 &lt;a href=&#34;http://VIRTUALBOXIP:18083/&#34;&gt;http://VIRTUALBOXIP:18083/&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;那個 VIRTUALBOXIP 就是裝 virtualbox 的 host 的 IP&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;service apache2 restart&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;phpvirtualbox-docker-包:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox docker 包&lt;/h2&gt;
-
-&lt;p&gt;我直接做了一個 docker 的 image , 懶得慢慢裝的直接弄這套 docker script 來跑吧&amp;hellip;^_^&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/tsaikd/docker&#34;&gt;https://github.com/tsaikd/docker&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;記得還是要設定 config.sh 裡的參數&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>phpVirtualbox</title>
       <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
       <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
@@ -1431,6 +1370,88 @@ VBOXWEB_HOST=0.0.0.0
 &lt;/blockquote&gt;
 
 &lt;p&gt;Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>phpVirtualbox config notes</title>
+      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
+      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
+      <description>
+
+&lt;p&gt;phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下&lt;/p&gt;
+
+&lt;h2 id=&#34;ubuntu-virtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ubuntu virtualbox 安裝過程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;vi /etc/apt/sources.list.d/virtualbox.list&lt;/p&gt;
+
+&lt;p&gt;```
+deb &lt;a href=&#34;http://download.virtualbox.org/virtualbox/debian&#34;&gt;http://download.virtualbox.org/virtualbox/debian&lt;/a&gt; precise contrib&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;
+* apt-get update &amp;amp;&amp;amp; apt-get install virtualbox-4.3
+
+* 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console
+	* https://www.virtualbox.org/wiki/Downloads
+
+* vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
+
+* vi /etc/default/virtualbox
+	* 這是為了要開啟 vboxweb-service
+	* vbox 改成要使用哪個系統 user 來開啟 virtualbox
+
+	```
+VBOXWEB_USER=vbox
+VBOXWEB_HOST=0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;update-rc.d vboxweb-service defaults
+
+&lt;ul&gt;
+&lt;li&gt;開機自動啟動&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;phpvirtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox 安裝過程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;先裝好 apache2 + php5 的環境&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下載跟 virtualbox 相容的版本&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/projects/phpvirtualbox/files/&#34;&gt;http://sourceforge.net/projects/phpvirtualbox/files/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;解壓縮之後丟進 /var/www&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定 config.conf&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;username 要設定成啟動 virtualbox 的那個系統 user&lt;/li&gt;
+&lt;li&gt;password 要設定成上面那個 user 的登入密碼, 目前還不知道為啥要設定這個密碼, 所以為了保險起見, 不要用原本常用的帳號或是 root, 開一個新帳號叫 vbox 吧&lt;/li&gt;
+&lt;li&gt;location 要設定成 &lt;a href=&#34;http://VIRTUALBOXIP:18083/&#34;&gt;http://VIRTUALBOXIP:18083/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;那個 VIRTUALBOXIP 就是裝 virtualbox 的 host 的 IP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;service apache2 restart&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;phpvirtualbox-docker-包:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox docker 包&lt;/h2&gt;
+
+&lt;p&gt;我直接做了一個 docker 的 image , 懶得慢慢裝的直接弄這套 docker script 來跑吧&amp;hellip;^_^&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tsaikd/docker&#34;&gt;https://github.com/tsaikd/docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;記得還是要設定 config.sh 裡的參數&lt;/p&gt;
 </description>
     </item>
     

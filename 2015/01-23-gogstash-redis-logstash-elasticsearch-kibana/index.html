@@ -244,11 +244,11 @@
 <h2 id="broker-設定:04c6e90faac2675aa89e2176d2eec7d8">Broker 設定</h2>
 
 <p><a href="http://redis.io/">Redis</a> 要做一個稱職的 Broker 其實有點麻煩，因為它可能是因為效率的問題，在
-High availability 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞&hellip;Orz
+<a href="http://en.wikipedia.org/wiki/High_availability">High availability</a> 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞&hellip;Orz
 ，我目前使用 <a href="https://www.docker.com/">Docker</a> 來建構 <a href="http://redis.io/">Redis</a> 環境，裡面有用<a href="https://github.com/tsaikd/fig">我 Patch 過的 Fig</a>
 ，另外 Docker Image 是用 <a href="https://github.com/tsaikd/docker-builder">Docker Builder</a> 建出來的， <a href="http://redis.io/">Redis</a> 的 sentinel 情況
-比較麻煩，可能還是要參考一下<a href="http://redis.io/topics/sentinel">Redis Sentinel 官方文件</a>
-才比較容易理解。底下列出一些相關的設定方式給大家參考。</p>
+比較麻煩，可能還是要參考一下<a href="http://redis.io/topics/sentinel">Redis Sentinel</a> 官方文件才比較容易理解。底下列出一
+些相關的設定方式給大家參考。</p>
 
 <ul>
 <li><a href="redis/fig.yml">fig.yml</a></li>
@@ -362,6 +362,27 @@ High availability 方面的設計不是很理想，不過也還算堪用，只�
 就對了。</p>
 
 <p>另外 <code>DOCKER_WAITEXIT=1</code> 這個是 <a href="https://github.com/tsaikd/docker-builder">Docker Builder</a> 提供的一個設定</p>
+
+<ul>
+<li>為什麼不用 <a href="https://github.com/elasticsearch/logstash-forwarder">logstash-forwarder</a> 就好，還另外重刻一個 <a href="https://github.com/tsaikd/gogstash">gogstash</a> ？</li>
+</ul>
+
+<p>其實我之前也有試用過 <a href="https://github.com/elasticsearch/logstash-forwarder">logstash-forwarder</a> ，但是後來還是放棄了，因為 <a href="https://github.com/elasticsearch/logstash-forwarder">logstash-forwarder</a>
+目前只有支援 <a href="https://github.com/elasticsearch/logstash-forwarder/blob/master/PROTOCOL.md">lumberjack</a> 這種輸出方式，而且我還沒找到可以方便弄成 <a href="http://en.wikipedia.org/wiki/High_availability">High availability</a>
+的辦法，標題有提到這邊主要是要解決針對中等規模環境下的問題，所以我認為 <a href="http://en.wikipedia.org/wiki/High_availability">High availability</a>
+還蠻重要的，用 <a href="https://github.com/elasticsearch/logstash-forwarder">logstash-forwarder</a> 的話，只要 <a href="https://github.com/elasticsearch/logstash-forwarder/blob/master/PROTOCOL.md">lumberjack</a> 那台機器出狀況，
+就會掉 Log 了，如果還是想用 <a href="https://github.com/elasticsearch/logstash-forwarder">logstash-forwarder</a> 的話，要用 <a href="http://zookeeper.apache.org/">ZooKeeper</a> 之類
+的輔助方式來達成 <a href="http://en.wikipedia.org/wiki/High_availability">High availability</a> 的目的。</p>
+
+<p>另外就是 <a href="https://github.com/elasticsearch/logstash-forwarder">logstash-forwarder</a> 本身架構上沒有設計成方便擴充的形式，所以如果要幫
+它加上 <a href="http://redis.io/">Redis</a> 輸出的話，我評估起來比我重寫一個還花時間，所以就乖乖硬幹啦&hellip;XD</p>
+
+<p>但是目前的解法也還是有一些問題，就是 <a href="http://logstash.net/">logstash</a> 吃 <a href="http://redis.io/">Redis</a> 資料的時候，沒有支
+援 <a href="http://redis.io/topics/sentinel">Redis Sentinel</a> 的方式，所以要是主要的 <a href="http://redis.io/">Redis</a> 掛掉的時候，目前架構下，
+Log 會一直 Queue 在 <a href="http://redis.io/">Redis</a> 上面，因為 <a href="http://logstash.net/">logstash</a> 不知道要去哪裡要資料了，要
+解決這個問題的話，需要修改 <a href="http://logstash.net/docs/1.4.2/inputs/redis">Logstash Input Redis Plugin</a>，不過即使這種情況發
+生了， <a href="http://redis.io/">Redis</a> 上面也還是會有資料，所以不會掉 Log ，所以就先這樣弄，看看新版的
+<a href="http://logstash.net/">logstash</a> 會不會解決這個問題吧。</p>
 
 <h2 id="demo-截圖:04c6e90faac2675aa89e2176d2eec7d8">Demo 截圖</h2>
 
