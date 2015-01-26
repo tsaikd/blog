@@ -143,7 +143,7 @@
                 
             </p>
             <article class="post-summary">
-                  Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤 ，也可以看出某些趨勢，提早做出一些可能有影響的決策。目前其實有不少的工具都可以用 在處理 Log 集中管理的問題，我這邊也提供一個中等規模的解決方案。 在小型的環境(單機，少量程式) Log 其實隨便亂放都沒差，通常都只有在出問題的時候才 會去撈 Log 協助排除問題。在大型的環境(數以百計的主機跟 App 以上)，ㄜ~~~~我沒經驗 不敢隨意猜測。所以這邊是用一個數十台 MongoDB 的環境來討論 Log 集中管理的處理 方式。 在 Logstash 的使用情境下，有幾種典型角色： &gt; 這邊偷用了 Logstash Document 的圖 Shipper 蒐集 Broker 暫存 Indexer 解析 Storage &amp; Search 永久儲存 Web Interface 分析界面 Shipper + Broker + Indexer 在小型的環境其實可以整合在同一個 Logstash 裡面一次 處理，不過一開始也有提到，在小型的環境，哪有人在搞複雜的 Log 分析&hellip;XD，既然要做 就一次做到位吧。 不過這邊還有另一個問題，就是 Logstash 是用 Ruby 寫的，然 後透過 Java 來執行，所以需要安裝 Java，但是像在 MongoDB 的環境，我不 想在機器上安裝太多額外的東西，而且 Java 其實還蠻肥的，如果只是單純的 Shipper 角色，沒有必要搞那麼多有的沒的套件把系統弄髒，所以我另外開發了一個小工具 gogstash
+                  Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤 ，也可以看出某些趨勢，提早做出一些可能有影響的決策。目前其實有不少的工具都可以用 在處理 Log 集中管理的問題，我這邊也提供一個中等規模的解決方案。 在小型的環境(單機，少量程式) Log 其實隨便亂放都沒差，通常都只有在出問題的時候才 會去撈 Log 協助排除問題。在大型的環境(數以百計的主機跟 App 以上)，ㄜ~~~~我沒經驗 不敢隨意猜測。所以這邊是用一個數十台 MongoDB 的環境來討論 Log 集中管理的處理 方式。 在 Logstash 的使用情境下，有幾種典型角色： 這邊偷用了 Logstash Document 的圖 Shipper 蒐集 Broker 暫存 Indexer 解析 Storage &amp; Search 永久儲存 Web Interface 分析界面 Shipper + Broker + Indexer 在小型的環境其實可以整合在同一個 Logstash 裡面一次 處理，不過一開始也有提到，在小型的環境，哪有人在搞複雜的 Log 分析&hellip;XD，既然要做 就一次做到位吧。 不過這邊還有另一個問題，就是 Logstash 是用 Ruby 寫的，然 後透過 Java 來執行，所以需要安裝 Java，但是像在 MongoDB 的環境，我不 想在機器上安裝太多額外的東西，而且 Java 其實還蠻肥的，如果只是單純的 Shipper 角色，沒有必要搞那麼多有的沒的套件把系統弄髒，所以我另外開發了一個小工具 gogstash 來做
               </article>
               <div class="read-more-link">
                   <a href="/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/"><span class="read-more-slashes">//</span>Read More...</a>

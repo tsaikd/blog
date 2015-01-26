@@ -32,8 +32,11 @@
 &lt;p&gt;在 &lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; 的使用情境下，有幾種典型角色：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;getting-started-centralized-overview-diagram.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
 
-&amp;gt; &lt;a href=&#34;http://logstash.net/docs/1.1.1/tutorials/getting-started-centralized&#34;&gt;這邊偷用了 Logstash Document 的圖&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://logstash.net/docs/1.1.1/tutorials/getting-started-centralized&#34;&gt;這邊偷用了 Logstash Document 的圖&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Shipper
