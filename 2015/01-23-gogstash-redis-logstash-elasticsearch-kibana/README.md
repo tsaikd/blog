@@ -21,6 +21,12 @@ tags:
 [Docker]: https://www.docker.com/
 [Docker Builder]: https://github.com/tsaikd/docker-builder
 [Fig]: http://www.fig.sh/
+[lumberjack]: https://github.com/elasticsearch/logstash-forwarder/blob/master/PROTOCOL.md
+[logstash-forwarder]: https://github.com/elasticsearch/logstash-forwarder
+[ZooKeeper]: http://zookeeper.apache.org/
+[Logstash Input Redis Plugin]: http://logstash.net/docs/1.4.2/inputs/redis
+[Redis Sentinel]: http://redis.io/topics/sentinel
+[High availability]: http://en.wikipedia.org/wiki/High_availability
 
 Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤
 ，也可以看出某些趨勢，提早做出一些可能有影響的決策。目前其實有不少的工具都可以用
@@ -83,11 +89,11 @@ Web Interface 選擇 3.x 版的 [Kibana][] ，它可以在網頁上展示還不�
 ## Broker 設定
 
 [Redis][] 要做一個稱職的 Broker 其實有點麻煩，因為它可能是因為效率的問題，在
-High availability 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞...Orz
+[High availability][] 方面的設計不是很理想，不過也還算堪用，只是設定上有點難搞...Orz
 ，我目前使用 [Docker][] 來建構 [Redis][] 環境，裡面有用[我 Patch 過的 Fig](https://github.com/tsaikd/fig)
 ，另外 Docker Image 是用 [Docker Builder][] 建出來的， [Redis][] 的 sentinel 情況
-比較麻煩，可能還是要參考一下[Redis Sentinel 官方文件](http://redis.io/topics/sentinel)
-才比較容易理解。底下列出一些相關的設定方式給大家參考。
+比較麻煩，可能還是要參考一下[Redis Sentinel][] 官方文件才比較容易理解。底下列出一
+些相關的設定方式給大家參考。
 
 * [fig.yml](redis/fig.yml)
 * [redis/redis.conf](redis/redis/redis.conf)
@@ -152,6 +158,25 @@ Indexer 其實是 Log 分析的一大重點，因為 Log 可能會有各式各�
 就對了。
 
 另外 `DOCKER_WAITEXIT=1` 這個是 [Docker Builder][] 提供的一個設定
+
+* 為什麼不用 [logstash-forwarder][] 就好，還另外重刻一個 [gogstash][] ？
+
+其實我之前也有試用過 [logstash-forwarder][] ，但是後來還是放棄了，因為 [logstash-forwarder][]
+目前只有支援 [lumberjack][] 這種輸出方式，而且我還沒找到可以方便弄成 [High availability][]
+的辦法，標題有提到這邊主要是要解決針對中等規模環境下的問題，所以我認為 [High availability][]
+還蠻重要的，用 [logstash-forwarder][] 的話，只要 [lumberjack][] 那台機器出狀況，
+就會掉 Log 了，如果還是想用 [logstash-forwarder][] 的話，要用 [ZooKeeper][] 之類
+的輔助方式來達成 [High availability][] 的目的。
+
+另外就是 [logstash-forwarder][] 本身架構上沒有設計成方便擴充的形式，所以如果要幫
+它加上 [Redis][] 輸出的話，我評估起來比我重寫一個還花時間，所以就乖乖硬幹啦...XD
+
+但是目前的解法也還是有一些問題，就是 [logstash][] 吃 [Redis][] 資料的時候，沒有支
+援 [Redis Sentinel][] 的方式，所以要是主要的 [Redis][] 掛掉的時候，目前架構下，
+Log 會一直 Queue 在 [Redis][] 上面，因為 [logstash][] 不知道要去哪裡要資料了，要
+解決這個問題的話，需要修改 [Logstash Input Redis Plugin][]，不過即使這種情況發
+生了， [Redis][] 上面也還是會有資料，所以不會掉 Log ，所以就先這樣弄，看看新版的
+[logstash][] 會不會解決這個問題吧。
 
 ## Demo 截圖
 
