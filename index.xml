@@ -1284,6 +1284,88 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
     </item>
     
     <item>
+      <title>phpVirtualbox config notes</title>
+      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
+      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
+      <description>
+
+&lt;p&gt;phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下&lt;/p&gt;
+
+&lt;h2 id=&#34;ubuntu-virtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ubuntu virtualbox 安裝過程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;vi /etc/apt/sources.list.d/virtualbox.list&lt;/p&gt;
+
+&lt;p&gt;```
+deb &lt;a href=&#34;http://download.virtualbox.org/virtualbox/debian&#34;&gt;http://download.virtualbox.org/virtualbox/debian&lt;/a&gt; precise contrib&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;
+* apt-get update &amp;amp;&amp;amp; apt-get install virtualbox-4.3
+
+* 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console
+	* https://www.virtualbox.org/wiki/Downloads
+
+* vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
+
+* vi /etc/default/virtualbox
+	* 這是為了要開啟 vboxweb-service
+	* vbox 改成要使用哪個系統 user 來開啟 virtualbox
+
+	```
+VBOXWEB_USER=vbox
+VBOXWEB_HOST=0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;update-rc.d vboxweb-service defaults
+
+&lt;ul&gt;
+&lt;li&gt;開機自動啟動&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;phpvirtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox 安裝過程&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;先裝好 apache2 + php5 的環境&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下載跟 virtualbox 相容的版本&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/projects/phpvirtualbox/files/&#34;&gt;http://sourceforge.net/projects/phpvirtualbox/files/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;解壓縮之後丟進 /var/www&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定 config.conf&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;username 要設定成啟動 virtualbox 的那個系統 user&lt;/li&gt;
+&lt;li&gt;password 要設定成上面那個 user 的登入密碼, 目前還不知道為啥要設定這個密碼, 所以為了保險起見, 不要用原本常用的帳號或是 root, 開一個新帳號叫 vbox 吧&lt;/li&gt;
+&lt;li&gt;location 要設定成 &lt;a href=&#34;http://VIRTUALBOXIP:18083/&#34;&gt;http://VIRTUALBOXIP:18083/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;那個 VIRTUALBOXIP 就是裝 virtualbox 的 host 的 IP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;service apache2 restart&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;phpvirtualbox-docker-包:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox docker 包&lt;/h2&gt;
+
+&lt;p&gt;我直接做了一個 docker 的 image , 懶得慢慢裝的直接弄這套 docker script 來跑吧&amp;hellip;^_^&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/tsaikd/docker&#34;&gt;https://github.com/tsaikd/docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;記得還是要設定 config.sh 裡的參數&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>phpVirtualbox</title>
       <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
       <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
@@ -1370,88 +1452,6 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
 &lt;/blockquote&gt;
 
 &lt;p&gt;Virtualbox, 本來想試用 KVM + openstack 的, 但是搞了半天還是搞不定, 只好回到 virtualbox 了, 重點是, 發現了一個叫 phpvirtualbox 的 project, 可以不用裝 GUI 來看 virtualbox 的設定界面了, 大推!!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>phpVirtualbox config notes</title>
-      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
-      <pubDate>Sat, 08 Feb 2014 00:00:00 &#43;0000</pubDate>
-      
-      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
-      <description>
-
-&lt;p&gt;phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下&lt;/p&gt;
-
-&lt;h2 id=&#34;ubuntu-virtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;ubuntu virtualbox 安裝過程&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;vi /etc/apt/sources.list.d/virtualbox.list&lt;/p&gt;
-
-&lt;p&gt;```
-deb &lt;a href=&#34;http://download.virtualbox.org/virtualbox/debian&#34;&gt;http://download.virtualbox.org/virtualbox/debian&lt;/a&gt; precise contrib&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;
-* apt-get update &amp;amp;&amp;amp; apt-get install virtualbox-4.3
-
-* 下載 virtualbox extension pack, 這樣才能透過網頁來看 VM 的 console
-	* https://www.virtualbox.org/wiki/Downloads
-
-* vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
-
-* vi /etc/default/virtualbox
-	* 這是為了要開啟 vboxweb-service
-	* vbox 改成要使用哪個系統 user 來開啟 virtualbox
-
-	```
-VBOXWEB_USER=vbox
-VBOXWEB_HOST=0.0.0.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;update-rc.d vboxweb-service defaults
-
-&lt;ul&gt;
-&lt;li&gt;開機自動啟動&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;phpvirtualbox-安裝過程:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox 安裝過程&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;先裝好 apache2 + php5 的環境&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;下載跟 virtualbox 相容的版本&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/projects/phpvirtualbox/files/&#34;&gt;http://sourceforge.net/projects/phpvirtualbox/files/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;解壓縮之後丟進 /var/www&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;設定 config.conf&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;username 要設定成啟動 virtualbox 的那個系統 user&lt;/li&gt;
-&lt;li&gt;password 要設定成上面那個 user 的登入密碼, 目前還不知道為啥要設定這個密碼, 所以為了保險起見, 不要用原本常用的帳號或是 root, 開一個新帳號叫 vbox 吧&lt;/li&gt;
-&lt;li&gt;location 要設定成 &lt;a href=&#34;http://VIRTUALBOXIP:18083/&#34;&gt;http://VIRTUALBOXIP:18083/&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;那個 VIRTUALBOXIP 就是裝 virtualbox 的 host 的 IP&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;service apache2 restart&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;phpvirtualbox-docker-包:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;phpvirtualbox docker 包&lt;/h2&gt;
-
-&lt;p&gt;我直接做了一個 docker 的 image , 懶得慢慢裝的直接弄這套 docker script 來跑吧&amp;hellip;^_^&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/tsaikd/docker&#34;&gt;https://github.com/tsaikd/docker&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;記得還是要設定 config.sh 裡的參數&lt;/p&gt;
 </description>
     </item>
     
