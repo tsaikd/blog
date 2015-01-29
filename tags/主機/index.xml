@@ -364,7 +364,7 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
 
 &lt;p&gt;才多了一百塊&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;(用 &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt; 的價錢換了 9 倍的速度, 我是指上傳&amp;hellip;XD)&lt;/p&gt;
+&lt;p&gt;(用 1/10 的價錢換了 9 倍的速度, 我是指上傳&amp;hellip;XD)&lt;/p&gt;
 
 &lt;p&gt;還蠻划算的啊&amp;hellip;^_^&lt;/p&gt;
 

@@ -143,7 +143,7 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;sup&gt;2007&lt;/sup&gt;&amp;frasl;&lt;sub&gt;08&lt;/sub&gt;/10 update: 修正 toggleObj 的問題&lt;/p&gt;
+&lt;p&gt;2007/08/10 update: 修正 toggleObj 的問題&lt;/p&gt;
 </description>
     </item>
     
@@ -191,7 +191,7 @@
 
 &lt;p&gt;&amp;ndash;&lt;/p&gt;
 
-&lt;p&gt;update &lt;sup&gt;2007&lt;/sup&gt;&amp;frasl;&lt;sub&gt;06&lt;/sub&gt;/20:&lt;/p&gt;
+&lt;p&gt;update 2007/06/20:&lt;/p&gt;
 
 &lt;p&gt;修復一些 bug (getRecentArticlePath, cache)&lt;/p&gt;
 
@@ -199,7 +199,7 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;update &lt;sup&gt;2007&lt;/sup&gt;&amp;frasl;&lt;sub&gt;06&lt;/sub&gt;/27:&lt;/p&gt;
+&lt;p&gt;update 2007/06/27:&lt;/p&gt;
 
 &lt;p&gt;新增 macro block&lt;/p&gt;
 </description>
