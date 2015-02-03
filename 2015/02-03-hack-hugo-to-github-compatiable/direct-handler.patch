@@ -1,0 +1,28 @@
+diff --git a/hugolib/handler_file.go b/hugolib/handler_file.go
+index 4e692ed..85ad556 100644
+--- a/hugolib/handler_file.go
++++ b/hugolib/handler_file.go
+@@ -22,6 +22,7 @@ import (
+ 
+ func init() {
+ 	RegisterHandler(new(cssHandler))
++	RegisterHandler(new(directHandler))
+ }
+ 
+ type basicFileHandler Handle
+@@ -44,3 +45,15 @@ func (h cssHandler) FileConvert(f *source.File, s *Site) HandledResult {
+ 	s.WriteDestFile(f.Path(), helpers.BytesToReader(x))
+ 	return HandledResult{file: f}
+ }
++
++type directHandler struct {
++	basicFileHandler
++}
++
++func (h directHandler) Extensions() []string {
++	return []string{"png", "jpg", "gif", "txt", "yml", "conf", "json", "sh", "js", "patch"}
++}
++func (h directHandler) FileConvert(f *source.File, s *Site) HandledResult {
++	s.WriteDestFile(f.Path(), helpers.BytesToReader(f.Bytes()))
++	return HandledResult{file: f}
++}

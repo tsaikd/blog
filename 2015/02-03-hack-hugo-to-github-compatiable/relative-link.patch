@@ -1,0 +1,78 @@
+diff --git a/helpers/content.go b/helpers/content.go
+index 491e61c..55c399a 100644
+--- a/helpers/content.go
++++ b/helpers/content.go
+@@ -112,10 +112,21 @@ func BytesToHTML(b []byte) template.HTML {
+ 	return template.HTML(string(b))
+ }
+ 
++func dirToAbsPrefix(baseurl template.URL, dir string) (prefix string) {
++	prefix = strings.Replace(dir, `\`, "/", -1)
++	if len(prefix) > 0 && prefix[0:1] != "/" {
++		prefix = "/" + prefix
++	}
++	prefix = strings.TrimRight(prefix, "/")
++	prefix = MakePermalink(string(baseurl), prefix).String()
++	return
++}
++
+ func GetHtmlRenderer(defaultFlags int, ctx RenderingContext) blackfriday.Renderer {
+ 	renderParameters := blackfriday.HtmlRendererParameters{
+ 		FootnoteAnchorPrefix:       viper.GetString("FootnoteAnchorPrefix"),
+ 		FootnoteReturnLinkContents: viper.GetString("FootnoteReturnLinkContents"),
++		AbsolutePrefix:             dirToAbsPrefix(ctx.BaseUrl, ctx.PageDir),
+ 	}
+ 
+ 	b := len(ctx.DocumentId) != 0
+@@ -206,9 +217,11 @@ func ExtractTOC(content []byte) (newcontent []byte, toc []byte) {
+ type RenderingContext struct {
+ 	Content    []byte
+ 	PageFmt    string
++	PageDir    string
+ 	DocumentId string
+ 	Config     *Blackfriday
+ 	configInit sync.Once
++	BaseUrl    template.URL
+ }
+ 
+ func (c *RenderingContext) getConfig() *Blackfriday {
+diff --git a/hugolib/page.go b/hugolib/page.go
+index 5c0da9e..c7839b6 100644
+--- a/hugolib/page.go
++++ b/hugolib/page.go
+@@ -189,8 +189,14 @@ func (p *Page) renderBytes(content []byte) []byte {
+ }
+ 
+ func (p *Page) renderContent(content []byte) []byte {
+-	return helpers.RenderBytesWithTOC(helpers.RenderingContext{Content: content, PageFmt: p.guessMarkupType(),
+-		DocumentId: p.UniqueId(), Config: p.getRenderingConfig()})
++	return helpers.RenderBytesWithTOC(helpers.RenderingContext{
++		Content:    content,
++		PageFmt:    p.guessMarkupType(),
++		PageDir:    p.Dir(),
++		DocumentId: p.UniqueId(),
++		Config:     p.getRenderingConfig(),
++		BaseUrl:    p.Site.BaseUrl,
++	})
+ }
+ 
+ func (p *Page) getRenderingConfig() *helpers.Blackfriday {
+@@ -347,6 +353,9 @@ func (p *Page) permalink() (*url.URL, error) {
+ 	} else {
+ 		if len(pSlug) > 0 {
+ 			permalink = helpers.UrlPrep(viper.GetBool("UglyUrls"), path.Join(dir, p.Slug+"."+p.Extension()))
++		} else if p.Source.LogicalName() == "README.md" {
++			t := filepath.ToSlash(strings.TrimRight(p.Source.Dir(), `\/`) + ".html")
++			permalink = helpers.UrlPrep(viper.GetBool("UglyUrls"), t)
+ 		} else {
+ 			_, t := filepath.Split(p.Source.LogicalName())
+ 			permalink = helpers.UrlPrep(viper.GetBool("UglyUrls"), path.Join(dir, helpers.ReplaceExtension(strings.TrimSpace(t), p.Extension())))
+@@ -800,6 +809,8 @@ func (p *Page) TargetPath() (outfile string) {
+ 
+ 	if len(strings.TrimSpace(p.Slug)) > 0 {
+ 		outfile = strings.TrimSpace(p.Slug) + "." + p.Extension()
++	} else if p.Source.LogicalName() == "README.md" {
++		return filepath.ToSlash(strings.TrimRight(p.Source.Dir(), `\/`) + ".html")
+ 	} else {
+ 		// Fall back to filename
+ 		outfile = helpers.ReplaceExtension(p.Source.LogicalName(), p.Extension())
