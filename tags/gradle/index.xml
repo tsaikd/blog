@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/gradle/</link>
     <description>Recent content in Gradle on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Sun, 05 Jan 2014 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Eclipse Gradle Plugin</title>
       <link>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
-      <pubDate>Sun, 05 Jan 2014 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
       <description>&lt;p&gt;每次要裝都要 google 老半天

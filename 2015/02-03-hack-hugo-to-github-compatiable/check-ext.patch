@@ -1,0 +1,21 @@
+diff --git a/hugolib/handler_meta.go b/hugolib/handler_meta.go
+index bdab3a0..4dfb8b1 100644
+--- a/hugolib/handler_meta.go
++++ b/hugolib/handler_meta.go
+@@ -15,6 +15,7 @@ package hugolib
+ 
+ import (
+ 	"errors"
++	"strings"
+ 
+ 	"fmt"
+ 	"github.com/spf13/hugo/source"
+@@ -97,7 +98,7 @@ func FindHandler(ext string) Handler {
+ 
+ func HandlerMatch(h Handler, ext string) bool {
+ 	for _, x := range h.Extensions() {
+-		if ext == x {
++		if strings.ToLower(ext) == x {
+ 			return true
+ 		}
+ 	}

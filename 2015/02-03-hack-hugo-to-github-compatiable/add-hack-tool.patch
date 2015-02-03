@@ -1,0 +1,18 @@
+diff --git a/hack-dep-path.sh b/hack-dep-path.sh
+new file mode 100755
+index 0000000..0ea112a
+--- /dev/null
++++ b/hack-dep-path.sh
+@@ -0,0 +1,12 @@
++#!/bin/bash
++
++PN="${BASH_SOURCE[0]##*/}"
++PD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
++
++pushd "${PD}" >/dev/null
++
++find -iname \*.go -exec sed -i 's/"github.com\/spf13\/hugo/"github.com\/tsaikd\/hugo/g' "{}" \; && \
++	git commit -asm "hack dependency path"
++
++popd >/dev/null
++

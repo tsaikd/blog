@@ -112,6 +112,44 @@
                 <header class="post-header">
                     
                     <h1 class="post-title">
+                      <a href="/blog/2015/02-03-hack-hugo-to-github-compatiable/">Hack Hugo to GitHub compatiable</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>3</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2015</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-golang" href="http://tsaikd.org/blog/tags/golang">golang</a>
+                    
+                    <a class="post-category post-category-hugo" href="http://tsaikd.org/blog/tags/hugo">hugo</a>
+                    
+                    <a class="post-category post-category-github" href="http://tsaikd.org/blog/tags/github">github</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  在很久之前的文章(練習用 markdown 的形式來寫 blog) 裡面有提到用 gor 來產生靜態的 Blog 網站，不過最近有個叫 Hugo 的東西看起來好像比較 威猛一點，就花了一些時間試看看，雖然最後有達到基本的需求，不過中間花了不少時間在 Hack Hugo &gt;&quot;&lt; ，紀錄一下修改的過程跟一些我自己想要的額外效果給大家參考。 因為 Hugo 的改版還蠻快的，而且我不是很喜歡 git merge 的樹狀結構長的很醜，所以就附上 相關的 Patch 檔案，如果是直接看我的 GitHub Hugo 的話，那個 commit hash 是會一直變動的唷！ 檢查副檔名改成全用小寫檢查 因為有時後會遇到副檔名大小寫混用的情況，統一用小寫檢查比較方便。 直接複製檔案到發布目錄 Hugo 遇到不認識的副檔名會報錯，加個 handler 讓他把一些檔案直接丟到發布目錄裡面， 其實在 Hugo 的官方說明文件是要用一個 asset 的目錄去放奇奇怪怪的檔案的，但是我覺得 如果可以跟 Markdown 文件放在一起的話，還是比較方便，因為這樣就可以用相對路徑了。 新增 ModTime 資訊 Hugo 原本產生 Sitemap 的時間欄位是用文件內容提供的 date 欄位，但是我覺 得應該要用，檔案系統上面的 modtime 資訊會比較好。 處理 GitHub 的 README.md 把 README.md 變成 index.html 批量修改相依性程式碼 因為有 Hack 一些程式碼，所以相依性的設定要一併修改，檔案很多，跑
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2015/02-03-hack-hugo-to-github-compatiable/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
                       <a href="/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/">中等規模環境下的集中式 Log 管理及分析</a>
                   </h1>
               </header>
@@ -281,42 +319,6 @@
               </article>
               <div class="read-more-link">
                   <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/"><span class="read-more-slashes">//</span>Read More...</a>
-              </div>
-          </section>
-          
-            <section  class="post">
-                <header class="post-header">
-                    
-                    <h1 class="post-title">
-                      <a href="/blog/2014/07-10-Try-CoreOS/">Try CoreOS</a>
-                  </h1>
-              </header>
-              <p class="post-meta">
-                  
-                  <span class="post-date">
-                    <span class="post-date-day"><sup>10</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2014</span>
-                </span>
-                
-                
-                    
-                
-                
-                
-                <div class="post-categories">
-                    
-                    
-                    <a class="post-category post-category-coreos" href="http://tsaikd.org/blog/tags/coreos">CoreOS</a>
-                    
-                    <a class="post-category post-category-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>
-                    
-                </div>
-                
-            </p>
-            <article class="post-summary">
-                  新玩具 CoreOS ，設計理念跟 Ubuntu 差蠻多的， 光是安裝就花了不少時間在試，記錄一下奇怪的雷。 幾個重點先說一下： Cloud-Config 最前面的 #cloud-config 不能省 Cloud-Config 請按照官方文件上面的範例寫，不要畫蛇添足 Cloud-Config 會放在 /var/lib/coreos-install/user_data ，文件上說每次開機都會跑，但是 user 已經存在的話就不會再加一次 下面是安裝過程，已經有簡化一些了還是落落長，最後設定請直接 END 先開個 VM 試試 (一號機) 在 Installing CoreOS to Disk 看到有趣的安裝 script ， 用 SystemRescueCD 開機之後， 抓 coreos-install 下來， 執行 coreos-install -d /dev/sda ， 然後他會下載一百多 MB 的檔案來裝到硬碟， 一切順利，重開機，登入，預設帳密是啥？ 嗯～～看來是要用 Cloud-Config 來初始化個人設定，該重裝了～～ 感覺好像會重裝很多次，每次都要下載一百多 MB 好像有點浪費頻寬， squid 該你出場了！ 重開 VM 進 SystemRescueCD 環境 (二號機) 設定 http_proxy ， 抓 coreos-install 下來， 寫 cloud-config.yaml ssh_authorized_keys: - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
-              </article>
-              <div class="read-more-link">
-                  <a href="/blog/2014/07-10-Try-CoreOS/"><span class="read-more-slashes">//</span>Read More...</a>
               </div>
           </section>
           

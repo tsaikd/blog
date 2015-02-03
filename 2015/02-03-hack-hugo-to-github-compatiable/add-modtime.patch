@@ -1,0 +1,67 @@
+diff --git a/hugolib/page.go b/hugolib/page.go
+index d85ea92..5c0da9e 100644
+--- a/hugolib/page.go
++++ b/hugolib/page.go
+@@ -456,6 +456,9 @@ func (page *Page) update(f interface{}) error {
+ 			if err != nil {
+ 				jww.ERROR.Printf("Failed to parse date '%v' in page %s", v, page.File.Path())
+ 			}
++			if err == nil && page.ModTime.IsZero() {
++				page.ModTime = page.Date
++			}
+ 		case "publishdate", "pubdate":
+ 			page.PublishDate, err = cast.ToTimeE(v)
+ 			if err != nil {
+diff --git a/hugolib/site.go b/hugolib/site.go
+index 37deacb..ea4a495 100644
+--- a/hugolib/site.go
++++ b/hugolib/site.go
+@@ -1197,6 +1197,7 @@ func (s *Site) RenderSitemap() error {
+ 	page.Date = s.Info.LastChange
+ 	page.Site = &s.Info
+ 	page.Url = "/"
++	page.ModTime = time.Now()
+ 
+ 	pages = append(pages, page)
+ 	pages = append(pages, s.Pages...)
+diff --git a/source/file.go b/source/file.go
+index a4a5b27..def6da2 100644
+--- a/source/file.go
++++ b/source/file.go
+@@ -16,8 +16,11 @@ package source
+ import (
+ 	"github.com/spf13/hugo/helpers"
+ 	"io"
++	"os"
++	"path"
+ 	"path/filepath"
+ 	"strings"
++	"time"
+ )
+ 
+ type File struct {
+@@ -28,6 +31,7 @@ type File struct {
+ 	dir         string    // The full directory Path (minus file name)
+ 	ext         string    // Just the ext (eg txt)
+ 	uniqueId    string    // MD5 of the filename
++	ModTime     time.Time // Modify time of file
+ }
+ 
+ func (f *File) UniqueId() string {
+@@ -105,8 +109,16 @@ func NewFileWithContents(relpath string, content io.Reader) *File {
+ }
+ 
+ func NewFile(relpath string) *File {
++	var modTime time.Time
++
++	if fi, err := os.Stat(relpath); err == nil {
++		modTime = fi.ModTime()
++	} else if fi, err := os.Stat(path.Join("content", relpath)); err == nil {
++		modTime = fi.ModTime()
++	}
+ 	return &File{
+ 		relpath: relpath,
++		ModTime: modTime,
+ 	}
+ }
+ 

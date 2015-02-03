@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/eclipse/</link>
     <description>Recent content in Eclipse on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Mon, 04 Aug 2014 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Aug 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker eclipse on Ubuntu Desktop</title>
       <link>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
-      <pubDate>Mon, 04 Aug 2014 00:00:00 &#43;0000</pubDate>
+      <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
       <description>&lt;p&gt;看到越來越多人在往雲端開發的方向在玩，
@@ -48,7 +44,7 @@
     <item>
       <title>Eclipse Gradle Plugin</title>
       <link>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
-      <pubDate>Sun, 05 Jan 2014 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
       <description>&lt;p&gt;每次要裝都要 google 老半天
@@ -63,7 +59,7 @@
     <item>
       <title>GoLang Startup</title>
       <link>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
-      <pubDate>Sat, 05 Oct 2013 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Oct 2013 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
       <description>

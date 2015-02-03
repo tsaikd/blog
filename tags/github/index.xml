@@ -5,17 +5,90 @@
     <link>http://tsaikd.org/blog/tags/github/</link>
     <description>Recent content in Github on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Tue, 01 Oct 2013 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Feb 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hack Hugo to GitHub compatiable</title>
+      <link>http://tsaikd.org/blog/2015/02-03-hack-hugo-to-github-compatiable/</link>
+      <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://tsaikd.org/blog/2015/02-03-hack-hugo-to-github-compatiable/</guid>
+      <description>&lt;p&gt;在很久之前的文章(&lt;a href=&#34;../../2013/09-28-try-markdown-style-blog&#34;&gt;練習用 markdown 的形式來寫 blog&lt;/a&gt;)
+裡面有提到用 &lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; 來產生靜態的 Blog 網站，不過最近有個叫 &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 的東西看起來好像比較
+威猛一點，就花了一些時間試看看，雖然最後有達到基本的需求，不過中間花了不少時間在 Hack &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;
+&lt;code&gt;&amp;gt;&amp;quot;&amp;lt;&lt;/code&gt; ，紀錄一下修改的過程跟一些我自己想要的額外效果給大家參考。&lt;/p&gt;
+
+&lt;p&gt;因為 &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 的改版還蠻快的，而且我不是很喜歡 git merge 的樹狀結構長的很醜，所以就附上
+相關的 Patch 檔案，如果是直接看&lt;a href=&#34;https://github.com/tsaikd/hugo&#34;&gt;我的 GitHub Hugo&lt;/a&gt; 的話，那個 commit hash 是會一直變動的唷！&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;check-ext.patch&#34;&gt;檢查副檔名改成全用小寫檢查&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;因為有時後會遇到副檔名大小寫混用的情況，統一用小寫檢查比較方便。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;direct-handler.patch&#34;&gt;直接複製檔案到發布目錄&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 遇到不認識的副檔名會報錯，加個 handler 讓他把一些檔案直接丟到發布目錄裡面，
+其實在 &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 的官方說明文件是要用一個 asset 的目錄去放奇奇怪怪的檔案的，但是我覺得
+如果可以跟 &lt;a href=&#34;http://markdown.tw/&#34;&gt;Markdown&lt;/a&gt; 文件放在一起的話，還是比較方便，因為這樣就可以用相對路徑了。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;add-modtime.patch&#34;&gt;新增 ModTime 資訊&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 原本產生 &lt;a href=&#34;http://www.sitemaps.org/zh_TW/protocol.html&#34;&gt;Sitemap&lt;/a&gt; 的時間欄位是用文件內容提供的 &lt;code&gt;date&lt;/code&gt; 欄位，但是我覺
+得應該要用，檔案系統上面的 modtime 資訊會比較好。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;relative-link.patch&#34;&gt;處理 GitHub 的 README.md&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;把 README.md 變成 index.html&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;add-hack-tool.patch&#34;&gt;批量修改相依性程式碼&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;因為有 Hack 一些程式碼，所以相依性的設定要一併修改，檔案很多，跑 script 比較快。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;這樣改完之後有幾個特點：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;目錄結構可以跟 GitHub 上一樣，舉例來說，目錄名稱是 URL 的一部分， README.md 就是 index.html
+
+&lt;ul&gt;
+&lt;li&gt;content
+
+&lt;ul&gt;
+&lt;li&gt;2015&lt;/li&gt;
+&lt;li&gt;02-03-hack-hugo-to-github-compatiable
+
+&lt;ul&gt;
+&lt;li&gt;README.md&lt;/li&gt;
+&lt;li&gt;check-ext.patch&lt;/li&gt;
+&lt;li&gt;direct-handler.patch&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;從 GitHub 上面看也不會很奇怪
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tsaikd/blog/tree/blog/2015/02-03-hack-hugo-to-github-compatiable&#34;&gt;https://github.com/tsaikd/blog/tree/blog/2015/02-03-hack-hugo-to-github-compatiable&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Sitemap 更新時間依照檔案的修改時間&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>把一堆 project 轉到 github</title>
       <link>http://tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</link>
-      <pubDate>Tue, 01 Oct 2013 00:00:00 &#43;0000</pubDate>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</guid>
       <description>&lt;p&gt;不知不覺就寫了一大堆 project&amp;hellip;.&lt;/p&gt;

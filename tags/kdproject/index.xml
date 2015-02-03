@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/kdproject/</link>
     <description>Recent content in Kdproject on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Sun, 20 Sep 2009 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2009 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/kdproject/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>修正 KDBlog 評論路徑</title>
       <link>http://tsaikd.org/blog/2009/09-20-%E4%BF%AE%E6%AD%A3-KDBlog-%E8%A9%95%E8%AB%96%E8%B7%AF%E5%BE%91/</link>
-      <pubDate>Sun, 20 Sep 2009 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 20 Sep 2009 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2009/09-20-%E4%BF%AE%E6%AD%A3-KDBlog-%E8%A9%95%E8%AB%96%E8%B7%AF%E5%BE%91/</guid>
       <description>&lt;p&gt;其實這個問題已經出現了一段時間了&lt;/p&gt;
@@ -33,7 +29,7 @@
     <item>
       <title>KDBlogWriter</title>
       <link>http://tsaikd.org/blog/2008/12-28-KDBlogWriter/</link>
-      <pubDate>Sun, 28 Dec 2008 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 28 Dec 2008 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2008/12-28-KDBlogWriter/</guid>
       <description>&lt;p&gt;之前都是用 putty 連回主機，然後用 vi 直接寫 blog 的，&lt;/p&gt;
@@ -60,7 +56,7 @@
     <item>
       <title>KDBlog rev23</title>
       <link>http://tsaikd.org/blog/2008/04-22-KDBlog-rev23/</link>
-      <pubDate>Tue, 22 Apr 2008 00:00:00 &#43;0000</pubDate>
+      <pubDate>Tue, 22 Apr 2008 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2008/04-22-KDBlog-rev23/</guid>
       <description>&lt;p&gt;加入 keyword 功能&lt;/p&gt;
@@ -72,7 +68,7 @@
     <item>
       <title>KDGallery rev1</title>
       <link>http://tsaikd.org/blog/2008/04-22-KDGallery-rev1/</link>
-      <pubDate>Tue, 22 Apr 2008 00:00:00 &#43;0000</pubDate>
+      <pubDate>Tue, 22 Apr 2008 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2008/04-22-KDGallery-rev1/</guid>
       <description>&lt;p&gt;其實 KDGallery 很早就做出一個雛型了&lt;/p&gt;
@@ -92,7 +88,7 @@
     <item>
       <title>KDBlog rev22-r1</title>
       <link>http://tsaikd.org/blog/2008/01-07-KDBlog-rev22-r1/</link>
-      <pubDate>Mon, 07 Jan 2008 00:00:00 &#43;0000</pubDate>
+      <pubDate>Mon, 07 Jan 2008 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2008/01-07-KDBlog-rev22-r1/</guid>
       <description>&lt;p&gt;更新 Google Analytics 程式碼&lt;/p&gt;
@@ -102,7 +98,7 @@
     <item>
       <title>KDBlog rev22</title>
       <link>http://tsaikd.org/blog/2007/11-04-KDBlog-rev22/</link>
-      <pubDate>Sun, 04 Nov 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 04 Nov 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/11-04-KDBlog-rev22/</guid>
       <description>&lt;p&gt;支援 Google Custom Search Engine&lt;/p&gt;
@@ -120,7 +116,7 @@
     <item>
       <title>KDBlog rev21</title>
       <link>http://tsaikd.org/blog/2007/09-23-KDBlog-rev21/</link>
-      <pubDate>Sun, 23 Sep 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 23 Sep 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/09-23-KDBlog-rev21/</guid>
       <description>&lt;p&gt;使用 KDGallery 顯示圖片時會從 Server 讀入長寬資訊&lt;/p&gt;
@@ -132,7 +128,7 @@
     <item>
       <title>KDBlog rev20</title>
       <link>http://tsaikd.org/blog/2007/07-26-KDBlog-rev20/</link>
-      <pubDate>Thu, 26 Jul 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Thu, 26 Jul 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/07-26-KDBlog-rev20/</guid>
       <description>&lt;p&gt;檢查系統是否已經初始化&lt;/p&gt;
@@ -150,7 +146,7 @@
     <item>
       <title>KDBlog rev19</title>
       <link>http://tsaikd.org/blog/2007/07-16-KDBlog-rev19/</link>
-      <pubDate>Mon, 16 Jul 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Mon, 16 Jul 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/07-16-KDBlog-rev19/</guid>
       <description>&lt;p&gt;AJAX 支援 Google Analytics&lt;/p&gt;
@@ -160,7 +156,7 @@
     <item>
       <title>KDBlog rev18</title>
       <link>http://tsaikd.org/blog/2007/07-10-KDBlog-rev18/</link>
-      <pubDate>Tue, 10 Jul 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Tue, 10 Jul 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/07-10-KDBlog-rev18/</guid>
       <description>&lt;p&gt;最近的評論會顯示標題(原來是日期)&lt;/p&gt;
@@ -176,7 +172,7 @@
     <item>
       <title>KDBlog rev17</title>
       <link>http://tsaikd.org/blog/2007/06-04-KDBlog-rev17/</link>
-      <pubDate>Mon, 04 Jun 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Mon, 04 Jun 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/06-04-KDBlog-rev17/</guid>
       <description>&lt;p&gt;comment 可以使用 &lt;code&gt;&amp;lt;a href=&amp;quot;&amp;quot; title=&amp;quot;&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
@@ -208,7 +204,7 @@
     <item>
       <title>KDBlog rev16</title>
       <link>http://tsaikd.org/blog/2007/05-31-KDBlog-rev16/</link>
-      <pubDate>Thu, 31 May 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Thu, 31 May 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/05-31-KDBlog-rev16/</guid>
       <description>&lt;p&gt;writeComment 用 nl2br 取代原來的 pre&lt;/p&gt;
@@ -220,7 +216,7 @@
     <item>
       <title>KDBlog rev15</title>
       <link>http://tsaikd.org/blog/2007/05-12-KDBlog-rev15/</link>
-      <pubDate>Sat, 12 May 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sat, 12 May 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/05-12-KDBlog-rev15/</guid>
       <description>&lt;p&gt;更新標準文章格式介紹&lt;/p&gt;
@@ -252,7 +248,7 @@
     <item>
       <title>KDBlog rev14</title>
       <link>http://tsaikd.org/blog/2007/04-16-KDBlog-rev14/</link>
-      <pubDate>Mon, 16 Apr 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Mon, 16 Apr 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/04-16-KDBlog-rev14/</guid>
       <description>&lt;p&gt;在 menures 欄位可加入自定的 php 檔&lt;/p&gt;
@@ -268,7 +264,7 @@
     <item>
       <title>KDBlog rev13</title>
       <link>http://tsaikd.org/blog/2007/04-15-KDBlog-rev13/</link>
-      <pubDate>Sun, 15 Apr 2007 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sun, 15 Apr 2007 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2007/04-15-KDBlog-rev13/</guid>
       <description>&lt;p&gt;重寫 menutab 的部份&lt;/p&gt;

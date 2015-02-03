@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/gor/</link>
     <description>Recent content in Gor on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Sep 2013 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/gor/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>寫 markdown 的小技巧</title>
       <link>http://tsaikd.org/blog/2013/09-28-makdown-small-tip/</link>
-      <pubDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2013/09-28-makdown-small-tip/</guid>
       <description>&lt;p&gt;之前忘了在哪有看到說 &lt;code&gt;[ID]: http://example.com/&lt;/code&gt; 這種引用的東西最好放在文章的最上面&lt;/p&gt;
@@ -36,7 +32,7 @@
     <item>
       <title>練習用 markdown 的形式來寫 blog</title>
       <link>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
-      <pubDate>Sat, 28 Sep 2013 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
       <description>&lt;p&gt;還記得最早的時候是想用 BBS 來紀錄一些生活上的瑣事&lt;/p&gt;

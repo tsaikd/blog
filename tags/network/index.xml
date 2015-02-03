@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/network/</link>
     <description>Recent content in Network on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Sat, 24 May 2014 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 May 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/network/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker container bridge host physical network</title>
       <link>http://tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</link>
-      <pubDate>Sat, 24 May 2014 00:00:00 &#43;0000</pubDate>
+      <pubDate>Sat, 24 May 2014 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</guid>
       <description>

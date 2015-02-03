@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/docker-builder/</link>
     <description>Recent content in Docker Builder on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Thu, 25 Dec 2014 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Dec 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/docker-builder/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker Infra 架構簡介與實例</title>
       <link>http://tsaikd.org/blog/2014/12-25-Docker-infra/</link>
-      <pubDate>Thu, 25 Dec 2014 00:00:00 &#43;0000</pubDate>
+      <pubDate>Thu, 25 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2014/12-25-Docker-infra/</guid>
       <description>

@@ -5,17 +5,13 @@
     <link>http://tsaikd.org/blog/tags/kibana/</link>
     <description>Recent content in Kibana on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    
-    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tsaikd.org/blog/tags/kibana/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>中等規模環境下的集中式 Log 管理及分析</title>
       <link>http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</link>
-      <pubDate>Fri, 23 Jan 2015 00:00:00 &#43;0000</pubDate>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</guid>
       <description>
