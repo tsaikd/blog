@@ -112,6 +112,44 @@
                 <header class="post-header">
                     
                     <h1 class="post-title">
+                      <a href="/blog/2015/02-08-mac-ssh-agent-forward/">SSH Agent Forward in Mac OS X Yosemite</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>8</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2015</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-mac" href="http://tsaikd.org/blog/tags/mac">Mac</a>
+                    
+                    <a class="post-category post-category-yosemite" href="http://tsaikd.org/blog/tags/yosemite">Yosemite</a>
+                    
+                    <a class="post-category post-category-ssh" href="http://tsaikd.org/blog/tags/ssh">ssh</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  在原生的 Ubuntu ssh agent forward 只要多加一個參數就可以搞定了，沒想到在我的 MBA 上 面搞了好久才搞定。在 Google 上面找了一堆參考資料，但是大多都不完整，還有找到要用 brew 裝新 的 openssh 的解法，不過其實也沒那麼麻煩，就弄個指令，加上修改個檔案而已。 先把你的 private key 存到系統裡面 ssh-add -K ~/.ssh/id_rsa 修改 bashrc eval $(ssh-agent) function _cleanup_ssh_agent { echo &quot;Killing SSH-Agent&quot; kill -9 $SSH_AGENT_PID } trap _cleanup_ssh_agent EXIT 開新的 terminal 的時候就可以用 agent forward 啦
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2015/02-08-mac-ssh-agent-forward/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
                       <a href="/blog/2015/02-03-hack-hugo-to-github-compatiable/">Hack Hugo to GitHub compatiable</a>
                   </h1>
               </header>
@@ -279,46 +317,6 @@
               </article>
               <div class="read-more-link">
                   <a href="/blog/2014/09-14-Consul-trap/"><span class="read-more-slashes">//</span>Read More...</a>
-              </div>
-          </section>
-          
-            <section  class="post">
-                <header class="post-header">
-                    
-                    <h1 class="post-title">
-                      <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/">Docker eclipse on Ubuntu Desktop</a>
-                  </h1>
-              </header>
-              <p class="post-meta">
-                  
-                  <span class="post-date">
-                    <span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2014</span>
-                </span>
-                
-                
-                    
-                
-                
-                
-                <div class="post-categories">
-                    
-                    
-                    <a class="post-category post-category-docker" href="http://tsaikd.org/blog/tags/docker">Docker</a>
-                    
-                    <a class="post-category post-category-java" href="http://tsaikd.org/blog/tags/java">Java</a>
-                    
-                    <a class="post-category post-category-eclipse" href="http://tsaikd.org/blog/tags/eclipse">Eclipse</a>
-                    
-                    <a class="post-category post-category-ubuntu" href="http://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>
-                    
-                </div>
-                
-            </p>
-            <article class="post-summary">
-                  看到越來越多人在往雲端開發的方向在玩， 比較終極的做法當然就是把 Browser 變成 IDE ， 不過就目前看來， 技術上還沒有一個比較領先的做法， 只好先找比較無痛的方向來玩玩&hellip;hehehe 今天嘗試了一個新的做法， 在 Ubuntu Desktop 上面裝 docker ， 在 docker 裡面跑 eclipse 來開發， 這樣做的目的是要讓本機的開發環境不要裝太多雜七雜八的東西， 先看一下成功的畫面吧！ 基本上就是先建一個 eclipse 的 container ， 跑起來之後再用 ssh 連進去執行 eclipse ， 需要 ssh 的原因是為了要把本機的 X11 forwarding 過去， 本來還有 google 到用 mount 的的辦法去達成 X11 forwarding ， 不過試了一陣子都搞不定， 只好先暫時放棄了。
-              </article>
-              <div class="read-more-link">
-                  <a href="/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/"><span class="read-more-slashes">//</span>Read More...</a>
               </div>
           </section>
           
