@@ -13,6 +13,16 @@ type hugo >/dev/null
 
 HUGO_OPTS="${HUGO_OPTS} --theme=redlounge"
 
+if [ "$(uname -s)" == "Darwin" ] ; then
+	function datetime() {
+		date -u +"%Y-%m-%dT%H:%M:%SZ"
+	}
+else
+	function datetime() {
+		date -Iseconds
+	}
+fi
+
 pushd "${PD}" >/dev/null
 
 if [ "$#" -eq 0 ] ; then
@@ -31,11 +41,11 @@ hugo ${HUGO_OPTS} "$@"
 if [ "$#" -eq 0 ] ; then
 	pushd public >/dev/null
 	git add -A
-	git commit -m "$(date -Iseconds): Auto update" --author "tsaikd <tsaikd@gmail.com>"
+	git commit -m "$(datetime): Auto update" --author "tsaikd <tsaikd@gmail.com>"
 	git push origin gh-pages:gh-pages
 	popd >/dev/null
 
-	git commit -m "$(date -Iseconds): Auto update submodule" --author "tsaikd <tsaikd@gmail.com>" public
+	git commit -m "$(datetime): Auto update submodule" --author "tsaikd <tsaikd@gmail.com>" public
 fi
 
 popd >/dev/null
