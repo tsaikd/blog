@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/java/</link>
+    <link>//tsaikd.org/blog/tags/java/</link>
     <description>Recent content in Java on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 04 Aug 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker eclipse on Ubuntu Desktop</title>
-      <link>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
+      <link>//tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
       <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
+      <guid>//tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
       <description>&lt;p&gt;看到越來越多人在往雲端開發的方向在玩，
 比較終極的做法當然就是把 Browser 變成 IDE ，
 不過就目前看來，
@@ -43,10 +43,10 @@
     
     <item>
       <title>Maven settings notes</title>
-      <link>http://tsaikd.org/blog/2014/01-23-maven-settings/</link>
+      <link>//tsaikd.org/blog/2014/01-23-maven-settings/</link>
       <pubDate>Thu, 23 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/01-23-maven-settings/</guid>
+      <guid>//tsaikd.org/blog/2014/01-23-maven-settings/</guid>
       <description>
 
 &lt;h3 id=&#34;設定-local-nexus-來快取-central-的套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 Local Nexus 來快取 central 的套件&lt;/h3&gt;
@@ -73,10 +73,10 @@
     
     <item>
       <title>Eclipse Gradle Plugin</title>
-      <link>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
+      <link>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
       <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
+      <guid>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
       <description>&lt;p&gt;每次要裝都要 google 老半天
 直接記下來好了&amp;hellip;&lt;/p&gt;
 
@@ -88,10 +88,10 @@
     
     <item>
       <title>GateIn Skin Trick</title>
-      <link>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
+      <link>//tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
       <pubDate>Mon, 23 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
+      <guid>//tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
       <description>
 
 &lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
@@ -122,10 +122,10 @@
     
     <item>
       <title>OpenSSL Notes</title>
-      <link>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <link>//tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
       <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <guid>//tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
       <description>
 
 &lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;
@@ -202,10 +202,10 @@ echo 01 &amp;gt; demoCA/serial
     
     <item>
       <title>NetBeans Config Notes</title>
-      <link>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
+      <link>//tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
       <pubDate>Sun, 24 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
+      <guid>//tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
       <description>
 
 &lt;h1 id=&#34;utf-8:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;UTF-8&lt;/h1&gt;
@@ -278,10 +278,10 @@ echo 01 &amp;gt; demoCA/serial
     
     <item>
       <title>Java LDAP Notes</title>
-      <link>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
+      <link>//tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
       <pubDate>Mon, 18 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
+      <guid>//tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;

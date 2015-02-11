@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Liteide on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/liteide/</link>
+    <link>//tsaikd.org/blog/tags/liteide/</link>
     <description>Recent content in Liteide on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 05 Oct 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/liteide/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/liteide/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>GoLang Startup</title>
-      <link>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
+      <link>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
       <pubDate>Sat, 05 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
+      <guid>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
       <description>
 
 &lt;p&gt;最近看上了 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 的速度跟整合 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的模式&lt;/p&gt;

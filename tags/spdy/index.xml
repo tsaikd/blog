@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spdy on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/spdy/</link>
+    <link>//tsaikd.org/blog/tags/spdy/</link>
     <description>Recent content in Spdy on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 27 Nov 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/spdy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/spdy/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Nginx Config Notes</title>
-      <link>http://tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
+      <link>//tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
       <pubDate>Wed, 27 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
+      <guid>//tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
       <description>
 
 &lt;h1 id=&#34;產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 SSL 憑證&lt;/h1&gt;

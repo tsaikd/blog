@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Qt on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/qt/</link>
+    <link>//tsaikd.org/blog/tags/qt/</link>
     <description>Recent content in Qt on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 05 Dec 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/qt/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>gitweb for chromium user script</title>
-      <link>http://tsaikd.org/blog/2009/12-05-gitweb-for-chromium-user-script/</link>
+      <link>//tsaikd.org/blog/2009/12-05-gitweb-for-chromium-user-script/</link>
       <pubDate>Sat, 05 Dec 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2009/12-05-gitweb-for-chromium-user-script/</guid>
+      <guid>//tsaikd.org/blog/2009/12-05-gitweb-for-chromium-user-script/</guid>
       <description>&lt;p&gt;因為新版的 chromium 不能吃傳統的 greasemonkey 的 user script&lt;/p&gt;
 
 &lt;p&gt;它會把 user script 都轉成 extension 才能用&lt;/p&gt;
@@ -77,10 +77,10 @@ RewriteRule ^.* gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>Qt Application Version</title>
-      <link>http://tsaikd.org/blog/2009/08-16-Qt-Application-Version/</link>
+      <link>//tsaikd.org/blog/2009/08-16-Qt-Application-Version/</link>
       <pubDate>Sun, 16 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2009/08-16-Qt-Application-Version/</guid>
+      <guid>//tsaikd.org/blog/2009/08-16-Qt-Application-Version/</guid>
       <description>&lt;p&gt;要在 Qt on windows 的程式上加入版本訊息其實是可以的&lt;/p&gt;
 
 &lt;p&gt;我在 Google 上好像都找不到相關的文章&lt;/p&gt;

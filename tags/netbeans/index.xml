@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Netbeans on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/netbeans/</link>
+    <link>//tsaikd.org/blog/tags/netbeans/</link>
     <description>Recent content in Netbeans on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 24 Nov 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/netbeans/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/netbeans/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>NetBeans Config Notes</title>
-      <link>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
+      <link>//tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
       <pubDate>Sun, 24 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
+      <guid>//tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
       <description>
 
 &lt;h1 id=&#34;utf-8:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;UTF-8&lt;/h1&gt;

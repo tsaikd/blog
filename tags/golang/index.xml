@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/golang/</link>
+    <link>//tsaikd.org/blog/tags/golang/</link>
     <description>Recent content in Golang on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 03 Feb 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hack Hugo to GitHub compatiable</title>
-      <link>http://tsaikd.org/blog/2015/02-03-hack-hugo-to-github-compatiable/</link>
+      <link>//tsaikd.org/blog/2015/02-03-hack-hugo-to-github-compatiable/</link>
       <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2015/02-03-hack-hugo-to-github-compatiable/</guid>
+      <guid>//tsaikd.org/blog/2015/02-03-hack-hugo-to-github-compatiable/</guid>
       <description>&lt;p&gt;在很久之前的文章(&lt;a href=&#34;../../2013/09-28-try-markdown-style-blog&#34;&gt;練習用 markdown 的形式來寫 blog&lt;/a&gt;)
 裡面有提到用 &lt;a href=&#34;https://github.com/wendal/gor/&#34;&gt;gor&lt;/a&gt; 來產生靜態的 Blog 網站，不過最近有個叫 &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 的東西看起來好像比較
 威猛一點，就花了一些時間試看看，雖然最後有達到基本的需求，不過中間花了不少時間在 Hack &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;
@@ -87,10 +87,10 @@
     
     <item>
       <title>GoLang Startup</title>
-      <link>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
+      <link>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
       <pubDate>Sat, 05 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
+      <guid>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
       <description>
 
 &lt;p&gt;最近看上了 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 的速度跟整合 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的模式&lt;/p&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>資安 on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/</link>
+    <link>//tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/</link>
     <description>Recent content in 資安 on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 28 Sep 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/%E8%B3%87%E5%AE%89/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>兩個新玩具 - cwRsync and Certificate</title>
-      <link>http://tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/</link>
+      <link>//tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/</link>
       <pubDate>Sun, 28 Sep 2008 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/</guid>
+      <guid>//tsaikd.org/blog/2008/09-28-%E5%85%A9%E5%80%8B%E6%96%B0%E7%8E%A9%E5%85%B7-cwRsync-and-Certificate/</guid>
       <description>
 
 &lt;p&gt;這兩天搞了兩個新玩具&amp;hellip;.&lt;/p&gt;
@@ -327,10 +327,10 @@ SSLVerifyClient none
     
     <item>
       <title>以超連結樣式的新型態詐欺手法</title>
-      <link>http://tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</link>
+      <link>//tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</link>
       <pubDate>Wed, 21 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</guid>
+      <guid>//tsaikd.org/blog/2007/11-21-%E4%BB%A5%E8%B6%85%E9%80%A3%E7%B5%90%E6%A8%A3%E5%BC%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E6%85%8B%E8%A9%90%E6%AC%BA%E6%89%8B%E6%B3%95/</guid>
       <description>&lt;p&gt;以超連結樣式的新型態詐欺手法&lt;/p&gt;
 
 &lt;p&gt;剛剛看到這篇 blog&lt;/p&gt;
@@ -351,10 +351,10 @@ SSLVerifyClient none
     
     <item>
       <title>SSH Tunnel</title>
-      <link>http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/</link>
+      <link>//tsaikd.org/blog/2007/07-03-SSH-Tunnel/</link>
       <pubDate>Tue, 03 Jul 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/07-03-SSH-Tunnel/</guid>
+      <guid>//tsaikd.org/blog/2007/07-03-SSH-Tunnel/</guid>
       <description>&lt;p&gt;資訊安全 - SSH Tunnel 帶你遨遊&lt;/p&gt;
 
 &lt;p&gt;用 putty 來穿透防火牆&lt;/p&gt;
@@ -400,10 +400,10 @@ SSLVerifyClient none
     
     <item>
       <title>破解 WinXP 密碼</title>
-      <link>http://tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</link>
+      <link>//tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</link>
       <pubDate>Sun, 03 Jun 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</guid>
+      <guid>//tsaikd.org/blog/2007/06-03-%E7%A0%B4%E8%A7%A3-WinXP-%E5%AF%86%E7%A2%BC/</guid>
       <description>&lt;p&gt;資訊安全 - administrator密碼現身吧!!&lt;/p&gt;
 
 &lt;p&gt;這是一篇破解的教學&lt;/p&gt;

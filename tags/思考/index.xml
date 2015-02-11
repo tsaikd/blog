@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>思考 on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/%E6%80%9D%E8%80%83/</link>
+    <link>//tsaikd.org/blog/tags/%E6%80%9D%E8%80%83/</link>
     <description>Recent content in 思考 on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 25 Sep 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>薪資保密??</title>
-      <link>http://tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</link>
+      <link>//tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</link>
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</guid>
+      <guid>//tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.managertoday.com.tw/?p=740&#34;&gt;http://www.managertoday.com.tw/?p=740&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;10薪資保密&lt;/p&gt;
@@ -172,10 +172,10 @@
     
     <item>
       <title>斷定一個程式設計師</title>
-      <link>http://tsaikd.org/blog/2007/07-03-%E6%96%B7%E5%AE%9A%E4%B8%80%E5%80%8B%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB/</link>
+      <link>//tsaikd.org/blog/2007/07-03-%E6%96%B7%E5%AE%9A%E4%B8%80%E5%80%8B%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB/</link>
       <pubDate>Tue, 03 Jul 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/07-03-%E6%96%B7%E5%AE%9A%E4%B8%80%E5%80%8B%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB/</guid>
+      <guid>//tsaikd.org/blog/2007/07-03-%E6%96%B7%E5%AE%9A%E4%B8%80%E5%80%8B%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB/</guid>
       <description>&lt;p&gt;加入小公司，重新掌握人生方向盤&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;	對這幾十個人過來面試，無論是資深還資淺，無論名校或專科畢，無論有留學還是沒留學，我都只給一張潔白的紙，考他們同樣的題目：「把一個array的內容整條倒過來，原本在第一格的東西變到最後一格，原本最後一格的變成第一格」，再補充一句：「不必求運算效率，只要趕快寫出來。」
@@ -217,10 +217,10 @@
     
     <item>
       <title>和尚挖井</title>
-      <link>http://tsaikd.org/blog/2007/06-27-%E5%92%8C%E5%B0%9A%E6%8C%96%E4%BA%95/</link>
+      <link>//tsaikd.org/blog/2007/06-27-%E5%92%8C%E5%B0%9A%E6%8C%96%E4%BA%95/</link>
       <pubDate>Wed, 27 Jun 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/06-27-%E5%92%8C%E5%B0%9A%E6%8C%96%E4%BA%95/</guid>
+      <guid>//tsaikd.org/blog/2007/06-27-%E5%92%8C%E5%B0%9A%E6%8C%96%E4%BA%95/</guid>
       <description>&lt;p&gt;和尚挖井&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;	有二個和尚住在隔壁；所謂隔壁是：隔壁那座山。他們分別在相鄰的二座山上的廟裡，這二座山之間有一條溪，於是這二個和尚，每天都會在同一時間下山去溪邊挑水，久而久之，他們便成為好朋友了。
@@ -272,10 +272,10 @@
     
     <item>
       <title>氣壓計的省思</title>
-      <link>http://tsaikd.org/blog/2007/04-26-%E6%B0%A3%E5%A3%93%E8%A8%88%E7%9A%84%E7%9C%81%E6%80%9D/</link>
+      <link>//tsaikd.org/blog/2007/04-26-%E6%B0%A3%E5%A3%93%E8%A8%88%E7%9A%84%E7%9C%81%E6%80%9D/</link>
       <pubDate>Thu, 26 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/04-26-%E6%B0%A3%E5%A3%93%E8%A8%88%E7%9A%84%E7%9C%81%E6%80%9D/</guid>
+      <guid>//tsaikd.org/blog/2007/04-26-%E6%B0%A3%E5%A3%93%E8%A8%88%E7%9A%84%E7%9C%81%E6%80%9D/</guid>
       <description>&lt;p&gt;氣壓計的省思&lt;/p&gt;
 
 &lt;p&gt;我覺得那個學生還真的有很多另類的想法&lt;/p&gt;
@@ -330,10 +330,10 @@
     
     <item>
       <title>生涯規劃 -- 李強談性</title>
-      <link>http://tsaikd.org/blog/2007/03-30-%E7%94%9F%E6%B6%AF%E8%A6%8F%E5%8A%83-%E6%9D%8E%E5%BC%B7%E8%AB%87%E6%80%A7/</link>
+      <link>//tsaikd.org/blog/2007/03-30-%E7%94%9F%E6%B6%AF%E8%A6%8F%E5%8A%83-%E6%9D%8E%E5%BC%B7%E8%AB%87%E6%80%A7/</link>
       <pubDate>Fri, 30 Mar 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/03-30-%E7%94%9F%E6%B6%AF%E8%A6%8F%E5%8A%83-%E6%9D%8E%E5%BC%B7%E8%AB%87%E6%80%A7/</guid>
+      <guid>//tsaikd.org/blog/2007/03-30-%E7%94%9F%E6%B6%AF%E8%A6%8F%E5%8A%83-%E6%9D%8E%E5%BC%B7%E8%AB%87%E6%80%A7/</guid>
       <description>&lt;p&gt;這學期有修一堂課叫&amp;rdquo;資訊工程倫理與生涯規劃&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;到目前為止上了五堂課&lt;/p&gt;
@@ -492,10 +492,10 @@
     
     <item>
       <title>三千臭皮匠 vs 一個諸葛亮</title>
-      <link>http://tsaikd.org/blog/2007/03-20-%E4%B8%89%E5%8D%83%E8%87%AD%E7%9A%AE%E5%8C%A0vs%E4%B8%80%E5%80%8B%E8%AB%B8%E8%91%9B%E4%BA%AE/</link>
+      <link>//tsaikd.org/blog/2007/03-20-%E4%B8%89%E5%8D%83%E8%87%AD%E7%9A%AE%E5%8C%A0vs%E4%B8%80%E5%80%8B%E8%AB%B8%E8%91%9B%E4%BA%AE/</link>
       <pubDate>Tue, 20 Mar 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/03-20-%E4%B8%89%E5%8D%83%E8%87%AD%E7%9A%AE%E5%8C%A0vs%E4%B8%80%E5%80%8B%E8%AB%B8%E8%91%9B%E4%BA%AE/</guid>
+      <guid>//tsaikd.org/blog/2007/03-20-%E4%B8%89%E5%8D%83%E8%87%AD%E7%9A%AE%E5%8C%A0vs%E4%B8%80%E5%80%8B%E8%AB%B8%E8%91%9B%E4%BA%AE/</guid>
       <description>&lt;p&gt;&amp;ldquo;三千臭皮匠　一个诸葛亮：集体能否产生智慧？&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;這篇文章在&amp;rdquo;数字说了算&amp;rdquo;這部份&lt;/p&gt;

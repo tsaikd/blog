@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/windows/</link>
+    <link>//tsaikd.org/blog/tags/windows/</link>
     <description>Recent content in Windows on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 13 Sep 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>命令提示字元 - 快速編輯</title>
-      <link>http://tsaikd.org/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/</link>
+      <link>//tsaikd.org/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/</link>
       <pubDate>Sun, 13 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/</guid>
+      <guid>//tsaikd.org/blog/2009/09-13-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83-%E5%BF%AB%E9%80%9F%E7%B7%A8%E8%BC%AF/</guid>
       <description>&lt;p&gt;剛剛跟 Ku 聊天的時候才知道一個秘技&lt;/p&gt;
 
 &lt;p&gt;一般情況在用命令提示字元的時候要複製貼上內容要按出右鍵選單&lt;/p&gt;
@@ -36,10 +36,10 @@
     
     <item>
       <title>On-screen Keyboard - 螢幕小鍵盤</title>
-      <link>http://tsaikd.org/blog/2007/08-03-On-screen-Keyboard-%E8%9E%A2%E5%B9%95%E5%B0%8F%E9%8D%B5%E7%9B%A4/</link>
+      <link>//tsaikd.org/blog/2007/08-03-On-screen-Keyboard-%E8%9E%A2%E5%B9%95%E5%B0%8F%E9%8D%B5%E7%9B%A4/</link>
       <pubDate>Fri, 03 Aug 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/08-03-On-screen-Keyboard-%E8%9E%A2%E5%B9%95%E5%B0%8F%E9%8D%B5%E7%9B%A4/</guid>
+      <guid>//tsaikd.org/blog/2007/08-03-On-screen-Keyboard-%E8%9E%A2%E5%B9%95%E5%B0%8F%E9%8D%B5%E7%9B%A4/</guid>
       <description>&lt;p&gt;看到綠色工廠的 On-screen Keyboard - 螢幕小鍵盤&lt;/p&gt;
 
 &lt;p&gt;我才知道原來有 osk.exe 這支程式&amp;hellip;Orz&lt;/p&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>Windows 防毒 -- AntiVir</title>
-      <link>http://tsaikd.org/blog/2007/06-12-Windows-%E9%98%B2%E6%AF%92-AntiVir/</link>
+      <link>//tsaikd.org/blog/2007/06-12-Windows-%E9%98%B2%E6%AF%92-AntiVir/</link>
       <pubDate>Tue, 12 Jun 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/06-12-Windows-%E9%98%B2%E6%AF%92-AntiVir/</guid>
+      <guid>//tsaikd.org/blog/2007/06-12-Windows-%E9%98%B2%E6%AF%92-AntiVir/</guid>
       <description>&lt;p&gt;AntiVir PersonalEdition&lt;/p&gt;
 
 &lt;p&gt;記得數年前第一次接觸到的防毒軟體是 PC-Cillin&lt;/p&gt;
@@ -85,10 +85,10 @@
     
     <item>
       <title>小说下载阅读器</title>
-      <link>http://tsaikd.org/blog/2007/06-04-%E5%B0%8F%E8%AF%B4%E4%B8%8B%E8%BD%BD%E9%98%85%E8%AF%BB%E5%99%A8/</link>
+      <link>//tsaikd.org/blog/2007/06-04-%E5%B0%8F%E8%AF%B4%E4%B8%8B%E8%BD%BD%E9%98%85%E8%AF%BB%E5%99%A8/</link>
       <pubDate>Mon, 04 Jun 2007 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2007/06-04-%E5%B0%8F%E8%AF%B4%E4%B8%8B%E8%BD%BD%E9%98%85%E8%AF%BB%E5%99%A8/</guid>
+      <guid>//tsaikd.org/blog/2007/06-04-%E5%B0%8F%E8%AF%B4%E4%B8%8B%E8%BD%BD%E9%98%85%E8%AF%BB%E5%99%A8/</guid>
       <description>&lt;p&gt;小说下载阅读器&lt;/p&gt;
 
 &lt;p&gt;在 风言疯语之IT罗盘 這邊看到的&lt;/p&gt;

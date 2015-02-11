@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octopress on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/octopress/</link>
+    <link>//tsaikd.org/blog/tags/octopress/</link>
     <description>Recent content in Octopress on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 28 Sep 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>練習用 markdown 的形式來寫 blog</title>
-      <link>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
+      <link>//tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
       <pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
+      <guid>//tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
       <description>&lt;p&gt;還記得最早的時候是想用 BBS 來紀錄一些生活上的瑣事&lt;/p&gt;
 
 &lt;p&gt;接著是自己用 php 寫了一個 KDBlog 來放資料&lt;/p&gt;

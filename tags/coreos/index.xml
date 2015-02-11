@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coreos on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/coreos/</link>
+    <link>//tsaikd.org/blog/tags/coreos/</link>
     <description>Recent content in Coreos on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 10 Jul 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/coreos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/coreos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Try CoreOS</title>
-      <link>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</link>
+      <link>//tsaikd.org/blog/2014/07-10-Try-CoreOS/</link>
       <pubDate>Thu, 10 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</guid>
+      <guid>//tsaikd.org/blog/2014/07-10-Try-CoreOS/</guid>
       <description>
 
 &lt;p&gt;新玩具 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; ，設計理念跟 &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 差蠻多的，

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solr on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/tags/solr/</link>
+    <link>//tsaikd.org/blog/tags/solr/</link>
     <description>Recent content in Solr on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 13 Nov 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/tags/solr/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/tags/solr/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Solr Notes</title>
-      <link>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</link>
+      <link>//tsaikd.org/blog/2013/11-13-Solr-Notes/</link>
       <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2013/11-13-Solr-Notes/</guid>
+      <guid>//tsaikd.org/blog/2013/11-13-Solr-Notes/</guid>
       <description>
 
 &lt;ul&gt;

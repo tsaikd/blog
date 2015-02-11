@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2014s on TsaiKD Blog</title>
-    <link>http://tsaikd.org/blog/2014/</link>
+    <link>//tsaikd.org/blog/2014/</link>
     <description>Recent content in 2014s on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 25 Dec 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://tsaikd.org/blog/2014/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tsaikd.org/blog/2014/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker Infra 架構簡介與實例</title>
-      <link>http://tsaikd.org/blog/2014/12-25-Docker-infra/</link>
+      <link>//tsaikd.org/blog/2014/12-25-Docker-infra/</link>
       <pubDate>Thu, 25 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/12-25-Docker-infra/</guid>
+      <guid>//tsaikd.org/blog/2014/12-25-Docker-infra/</guid>
       <description>
 
 &lt;h2 id=&#34;這邊介紹的架構可以做到什麼效果:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;這邊介紹的架構可以做到什麼效果?&lt;/h2&gt;
@@ -411,10 +411,10 @@ fig up -d ngconfd
     
     <item>
       <title>Consul 採到雷</title>
-      <link>http://tsaikd.org/blog/2014/09-14-Consul-trap/</link>
+      <link>//tsaikd.org/blog/2014/09-14-Consul-trap/</link>
       <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
+      <guid>//tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
       <description>
 
 &lt;p&gt;今天試用 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; ，
@@ -480,10 +480,10 @@ Docker version 1.2.0, build fa7b24f
     
     <item>
       <title>Docker eclipse on Ubuntu Desktop</title>
-      <link>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
+      <link>//tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
       <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
+      <guid>//tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
       <description>&lt;p&gt;看到越來越多人在往雲端開發的方向在玩，
 比較終極的做法當然就是把 Browser 變成 IDE ，
 不過就目前看來，
@@ -513,10 +513,10 @@ Docker version 1.2.0, build fa7b24f
     
     <item>
       <title>Try CoreOS</title>
-      <link>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</link>
+      <link>//tsaikd.org/blog/2014/07-10-Try-CoreOS/</link>
       <pubDate>Thu, 10 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/07-10-Try-CoreOS/</guid>
+      <guid>//tsaikd.org/blog/2014/07-10-Try-CoreOS/</guid>
       <description>
 
 &lt;p&gt;新玩具 &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt; ，設計理念跟 &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 差蠻多的，
@@ -779,10 +779,10 @@ coreos:
     
     <item>
       <title>Docker container bridge host physical network</title>
-      <link>http://tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</link>
+      <link>//tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</link>
       <pubDate>Sat, 24 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</guid>
+      <guid>//tsaikd.org/blog/2014/05-24-Docker-container-bridge-host-physical-network/</guid>
       <description>
 
 &lt;p&gt;想把 docker 拿來當 vm 用的話，有一個問題就是目前 docker 要做 port forwarding 還是有點麻煩，
@@ -822,10 +822,10 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
     
     <item>
       <title>320反黑箱服貿協議</title>
-      <link>http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/</link>
+      <link>//tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/</guid>
+      <guid>//tsaikd.org/blog/2014/03-20-Cross-Strait-Agreement-on-Trade-in-Services/</guid>
       <description>&lt;p&gt;2014-03-20 今天氣溫驟降，我天真的以為今天立法院那邊的人會比較少，
 可能需要有人頭去幫忙加油打氣，於是我就出發了。
 跟上篇一樣，先從描述事實開始。&lt;/p&gt;
@@ -873,10 +873,10 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
     
     <item>
       <title>319反黑箱服貿協議</title>
-      <link>http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/</link>
+      <link>//tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/</link>
       <pubDate>Wed, 19 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/</guid>
+      <guid>//tsaikd.org/blog/2014/03-19-Cross-Strait-Agreement-on-Trade-in-Services/</guid>
       <description>&lt;p&gt;2014-03-19 晚上九點多抽空去現場走了一圈，正所謂讀萬卷書行萬里路，
 在真正的情況還是要親身經歷才比較有感覺。
 先讓大家從其他的角度來看看這次的活動，先從描述事實開始。&lt;/p&gt;
@@ -1043,10 +1043,10 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
     
     <item>
       <title>phpVirtualbox</title>
-      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
+      <link>//tsaikd.org/blog/2014/02-08-phpvirtualbox/</link>
       <pubDate>Sat, 08 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox/</guid>
+      <guid>//tsaikd.org/blog/2014/02-08-phpvirtualbox/</guid>
       <description>&lt;p&gt;過年期間買了新的 PC 內裝(CPU, 主機板, 記憶體)&lt;/p&gt;
 
 &lt;p&gt;最近終於決定 OS 的架構了&lt;/p&gt;
@@ -1133,10 +1133,10 @@ pipework eth0 -i eth0 &amp;quot;${vmid}&amp;quot; 192.168.1.50/24@192.168.1.1
     
     <item>
       <title>phpVirtualbox config notes</title>
-      <link>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
+      <link>//tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</link>
       <pubDate>Sat, 08 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
+      <guid>//tsaikd.org/blog/2014/02-08-phpvirtualbox-config/</guid>
       <description>
 
 &lt;p&gt;phpvirtualbox 要裝起來需要修改一些設定, 這邊稍微紀錄一下&lt;/p&gt;
@@ -1215,10 +1215,10 @@ VBOXWEB_HOST=0.0.0.0
     
     <item>
       <title>Maven settings notes</title>
-      <link>http://tsaikd.org/blog/2014/01-23-maven-settings/</link>
+      <link>//tsaikd.org/blog/2014/01-23-maven-settings/</link>
       <pubDate>Thu, 23 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/01-23-maven-settings/</guid>
+      <guid>//tsaikd.org/blog/2014/01-23-maven-settings/</guid>
       <description>
 
 &lt;h3 id=&#34;設定-local-nexus-來快取-central-的套件:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;設定 Local Nexus 來快取 central 的套件&lt;/h3&gt;
@@ -1245,10 +1245,10 @@ VBOXWEB_HOST=0.0.0.0
     
     <item>
       <title>Eclipse Gradle Plugin</title>
-      <link>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
+      <link>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
       <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
+      <guid>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
       <description>&lt;p&gt;每次要裝都要 google 老半天
 直接記下來好了&amp;hellip;&lt;/p&gt;
 
