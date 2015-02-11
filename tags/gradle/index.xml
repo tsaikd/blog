@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gradle on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/gradle/</link>
+    <link>https://tsaikd.org/blog/tags/gradle/</link>
     <description>Recent content in Gradle on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 05 Jan 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Eclipse Gradle Plugin</title>
-      <link>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
+      <link>https://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
       <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
+      <guid>https://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
       <description>&lt;p&gt;每次要裝都要 google 老半天
 直接記下來好了&amp;hellip;&lt;/p&gt;
 

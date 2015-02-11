@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2013s on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/2013/</link>
+    <link>https://tsaikd.org/blog/2013/</link>
     <description>Recent content in 2013s on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 23 Dec 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/2013/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/2013/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>GateIn Skin Trick</title>
-      <link>//tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
+      <link>https://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
       <pubDate>Mon, 23 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
+      <guid>https://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
       <description>
 
 &lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
@@ -44,10 +44,10 @@
     
     <item>
       <title>OpenSSL Notes</title>
-      <link>//tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <link>https://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
       <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <guid>https://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
       <description>
 
 &lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;
@@ -124,10 +124,10 @@ echo 01 &amp;gt; demoCA/serial
     
     <item>
       <title>Nginx Config Notes</title>
-      <link>//tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
+      <link>https://tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
       <pubDate>Wed, 27 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
       <description>
 
 &lt;h1 id=&#34;產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 SSL 憑證&lt;/h1&gt;
@@ -178,10 +178,10 @@ proxy_http_version 1.1;
     
     <item>
       <title>NetBeans Config Notes</title>
-      <link>//tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
+      <link>https://tsaikd.org/blog/2013/11-24-NetBeans-Config/</link>
       <pubDate>Sun, 24 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-24-NetBeans-Config/</guid>
       <description>
 
 &lt;h1 id=&#34;utf-8:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;UTF-8&lt;/h1&gt;
@@ -254,10 +254,10 @@ proxy_http_version 1.1;
     
     <item>
       <title>Java LDAP Notes</title>
-      <link>//tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
+      <link>https://tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
       <pubDate>Mon, 18 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
@@ -332,10 +332,10 @@ proxy_http_version 1.1;
     
     <item>
       <title>Pure-FTPd Notes</title>
-      <link>//tsaikd.org/blog/2013/11-18-Pure-FTPd/</link>
+      <link>https://tsaikd.org/blog/2013/11-18-Pure-FTPd/</link>
       <pubDate>Mon, 18 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-18-Pure-FTPd/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-18-Pure-FTPd/</guid>
       <description>
 
 &lt;h1 id=&#34;安裝:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;安裝&lt;/h1&gt;
@@ -378,10 +378,10 @@ chmod 600 /etc/ssl/private/pure-ftpd.pem
     
     <item>
       <title>Highcharts Notes</title>
-      <link>//tsaikd.org/blog/2013/11-14-Highcharts-Notes/</link>
+      <link>https://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</link>
       <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-14-Highcharts-Notes/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;隱藏 Highcharts Trade Mark&lt;/li&gt;
 &lt;/ul&gt;
@@ -404,10 +404,10 @@ chmod 600 /etc/ssl/private/pure-ftpd.pem
     
     <item>
       <title>Solr Notes</title>
-      <link>//tsaikd.org/blog/2013/11-13-Solr-Notes/</link>
+      <link>https://tsaikd.org/blog/2013/11-13-Solr-Notes/</link>
       <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-13-Solr-Notes/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-13-Solr-Notes/</guid>
       <description>
 
 &lt;ul&gt;
@@ -441,10 +441,10 @@ chmod 600 /etc/ssl/private/pure-ftpd.pem
     
     <item>
       <title>PPTP Ubuntu Note</title>
-      <link>//tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/</link>
+      <link>https://tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/</link>
       <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-06-PPTP-Ubuntu-Note/</guid>
       <description>
 
 &lt;h2 id=&#34;總結:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;總結&lt;/h2&gt;
@@ -538,10 +538,10 @@ iptables -A FORWARD -s 192.168.99.0/24 -p tcp -m tcp --tcp-flags SYN,RST SYN -j 
     
     <item>
       <title>GoLang Startup</title>
-      <link>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
+      <link>https://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
       <pubDate>Sat, 05 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
+      <guid>https://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
       <description>
 
 &lt;p&gt;最近看上了 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 的速度跟整合 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的模式&lt;/p&gt;
@@ -694,10 +694,10 @@ func Test_Goroutine() {
     
     <item>
       <title>把一堆 project 轉到 github</title>
-      <link>//tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</link>
+      <link>https://tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</link>
       <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</guid>
+      <guid>https://tsaikd.org/blog/2013/10-01-%E6%8A%8A%E4%B8%80%E5%A0%86project%E8%BD%89%E5%88%B0github/</guid>
       <description>&lt;p&gt;不知不覺就寫了一大堆 project&amp;hellip;.&lt;/p&gt;
 
 &lt;p&gt;轉到 &lt;a href=&#34;https://github.com/tsaikd&#34;&gt;github&lt;/a&gt; 頗花時間&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
@@ -708,10 +708,10 @@ func Test_Goroutine() {
     
     <item>
       <title>寫 markdown 的小技巧</title>
-      <link>//tsaikd.org/blog/2013/09-28-makdown-small-tip/</link>
+      <link>https://tsaikd.org/blog/2013/09-28-makdown-small-tip/</link>
       <pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/09-28-makdown-small-tip/</guid>
+      <guid>https://tsaikd.org/blog/2013/09-28-makdown-small-tip/</guid>
       <description>&lt;p&gt;之前忘了在哪有看到說 &lt;code&gt;[ID]: http://example.com/&lt;/code&gt; 這種引用的東西最好放在文章的最上面&lt;/p&gt;
 
 &lt;p&gt;本來覺得放在最上面好像有點礙眼，就挪到最下面&lt;/p&gt;
@@ -729,10 +729,10 @@ func Test_Goroutine() {
     
     <item>
       <title>把舊文章轉成 markdown 格式</title>
-      <link>//tsaikd.org/blog/2013/09-29-%E6%8A%8A%E8%88%8A%E6%96%87%E7%AB%A0%E8%BD%89%E6%88%90markdown%E6%A0%BC%E5%BC%8F/</link>
+      <link>https://tsaikd.org/blog/2013/09-29-%E6%8A%8A%E8%88%8A%E6%96%87%E7%AB%A0%E8%BD%89%E6%88%90markdown%E6%A0%BC%E5%BC%8F/</link>
       <pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/09-29-%E6%8A%8A%E8%88%8A%E6%96%87%E7%AB%A0%E8%BD%89%E6%88%90markdown%E6%A0%BC%E5%BC%8F/</guid>
+      <guid>https://tsaikd.org/blog/2013/09-29-%E6%8A%8A%E8%88%8A%E6%96%87%E7%AB%A0%E8%BD%89%E6%88%90markdown%E6%A0%BC%E5%BC%8F/</guid>
       <description>&lt;p&gt;花了一些時間把舊的 KDBlog 的 xml 格式的文章轉成 markdown 格式&lt;/p&gt;
 
 &lt;p&gt;大致上看起來還可以接受&lt;/p&gt;
@@ -743,10 +743,10 @@ func Test_Goroutine() {
     
     <item>
       <title>練習用 markdown 的形式來寫 blog</title>
-      <link>//tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
+      <link>https://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</link>
       <pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
+      <guid>https://tsaikd.org/blog/2013/09-28-try-markdown-style-blog/</guid>
       <description>&lt;p&gt;還記得最早的時候是想用 BBS 來紀錄一些生活上的瑣事&lt;/p&gt;
 
 &lt;p&gt;接著是自己用 php 寫了一個 KDBlog 來放資料&lt;/p&gt;
@@ -783,10 +783,10 @@ func Test_Goroutine() {
     
     <item>
       <title>薪資保密??</title>
-      <link>//tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</link>
+      <link>https://tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</link>
       <pubDate>Wed, 25 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</guid>
+      <guid>https://tsaikd.org/blog/2013/09-25-%E8%96%AA%E8%B3%87%E4%BF%9D%E5%AF%86/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.managertoday.com.tw/?p=740&#34;&gt;http://www.managertoday.com.tw/?p=740&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;10薪資保密&lt;/p&gt;

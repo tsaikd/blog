@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Consul on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/consul/</link>
+    <link>https://tsaikd.org/blog/tags/consul/</link>
     <description>Recent content in Consul on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 14 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/consul/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/consul/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Consul 採到雷</title>
-      <link>//tsaikd.org/blog/2014/09-14-Consul-trap/</link>
+      <link>https://tsaikd.org/blog/2014/09-14-Consul-trap/</link>
       <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
+      <guid>https://tsaikd.org/blog/2014/09-14-Consul-trap/</guid>
       <description>
 
 &lt;p&gt;今天試用 &lt;a href=&#34;http://www.consul.io/&#34;&gt;consul&lt;/a&gt; ，

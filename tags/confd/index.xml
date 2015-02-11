@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Confd on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/confd/</link>
+    <link>https://tsaikd.org/blog/tags/confd/</link>
     <description>Recent content in Confd on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 25 Dec 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/confd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/confd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker Infra 架構簡介與實例</title>
-      <link>//tsaikd.org/blog/2014/12-25-Docker-infra/</link>
+      <link>https://tsaikd.org/blog/2014/12-25-Docker-infra/</link>
       <pubDate>Thu, 25 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2014/12-25-Docker-infra/</guid>
+      <guid>https://tsaikd.org/blog/2014/12-25-Docker-infra/</guid>
       <description>
 
 &lt;h2 id=&#34;這邊介紹的架構可以做到什麼效果:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;這邊介紹的架構可以做到什麼效果?&lt;/h2&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ca on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/ca/</link>
+    <link>https://tsaikd.org/blog/tags/ca/</link>
     <description>Recent content in Ca on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 05 Dec 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/ca/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/ca/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>OpenSSL Notes</title>
-      <link>//tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
+      <link>https://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</link>
       <pubDate>Thu, 05 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
+      <guid>https://tsaikd.org/blog/2013/12-05-OpenSSL-Notes/</guid>
       <description>
 
 &lt;h1 id=&#34;無-ca-產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;無 CA 產生 SSL 憑證&lt;/h1&gt;

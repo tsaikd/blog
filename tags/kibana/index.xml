@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kibana on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/kibana/</link>
+    <link>https://tsaikd.org/blog/tags/kibana/</link>
     <description>Recent content in Kibana on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/kibana/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/kibana/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>中等規模環境下的集中式 Log 管理及分析</title>
-      <link>//tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</link>
+      <link>https://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</guid>
+      <guid>https://tsaikd.org/blog/2015/01-23-gogstash-redis-logstash-elasticsearch-kibana/</guid>
       <description>
 
 &lt;p&gt;Log 集中管理可以提供進一步的分析，讓系統管理者在發生問題的時候可以更快的排除錯誤

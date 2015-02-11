@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Course on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/course/</link>
+    <link>https://tsaikd.org/blog/tags/course/</link>
     <description>Recent content in Course on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 16 Apr 2007 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/course/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/course/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Java 上機考</title>
-      <link>//tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83/</link>
+      <link>https://tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83/</link>
       <pubDate>Mon, 16 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83/</guid>
+      <guid>https://tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83/</guid>
       <description>&lt;p&gt;剛剛上 Java 課時上機考&lt;/p&gt;
 
 &lt;p&gt;題目是什麼已經不重要了&lt;/p&gt;
@@ -56,10 +56,10 @@ Exception in thread &amp;quot;main&amp;quot; java.lang.NoSuchMethodError: main
     
     <item>
       <title>Java 上機考 - 續</title>
-      <link>//tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83-%E7%BA%8C/</link>
+      <link>https://tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83-%E7%BA%8C/</link>
       <pubDate>Mon, 16 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83-%E7%BA%8C/</guid>
+      <guid>https://tsaikd.org/blog/2007/04-16-Java-%E4%B8%8A%E6%A9%9F%E8%80%83-%E7%BA%8C/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;../04-16-Java-上機考&#34;&gt;上機考&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;感謝助教給我補交的機會&lt;/p&gt;
@@ -82,10 +82,10 @@ Exception in thread &amp;quot;main&amp;quot; java.lang.NoSuchMethodError: main
     
     <item>
       <title>網頁課 group project</title>
-      <link>//tsaikd.org/blog/2007/04-09-%E7%B6%B2%E9%A0%81%E8%AA%B2-group-project/</link>
+      <link>https://tsaikd.org/blog/2007/04-09-%E7%B6%B2%E9%A0%81%E8%AA%B2-group-project/</link>
       <pubDate>Mon, 09 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/04-09-%E7%B6%B2%E9%A0%81%E8%AA%B2-group-project/</guid>
+      <guid>https://tsaikd.org/blog/2007/04-09-%E7%B6%B2%E9%A0%81%E8%AA%B2-group-project/</guid>
       <description>&lt;p&gt;今天在上網頁課的時候&lt;/p&gt;
 
 &lt;p&gt;是各組報告 proposal&lt;/p&gt;
@@ -136,10 +136,10 @@ Exception in thread &amp;quot;main&amp;quot; java.lang.NoSuchMethodError: main
     
     <item>
       <title>JAVA MSN</title>
-      <link>//tsaikd.org/blog/2007/03-29-JAVA-MSN/</link>
+      <link>https://tsaikd.org/blog/2007/03-29-JAVA-MSN/</link>
       <pubDate>Thu, 29 Mar 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/03-29-JAVA-MSN/</guid>
+      <guid>https://tsaikd.org/blog/2007/03-29-JAVA-MSN/</guid>
       <description>&lt;p&gt;Related Work&lt;/p&gt;
 
 &lt;ol&gt;

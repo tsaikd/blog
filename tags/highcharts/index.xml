@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Highcharts on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/highcharts/</link>
+    <link>https://tsaikd.org/blog/tags/highcharts/</link>
     <description>Recent content in Highcharts on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 13 Nov 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/highcharts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/highcharts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Highcharts Notes</title>
-      <link>//tsaikd.org/blog/2013/11-14-Highcharts-Notes/</link>
+      <link>https://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</link>
       <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-14-Highcharts-Notes/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-14-Highcharts-Notes/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;隱藏 Highcharts Trade Mark&lt;/li&gt;
 &lt;/ul&gt;

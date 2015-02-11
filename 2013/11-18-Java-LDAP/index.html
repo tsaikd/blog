@@ -19,7 +19,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="//tsaikd.org/blog/2013/11-18-Java-LDAP/" />
+<meta property="og:url" content="https://tsaikd.org/blog/2013/11-18-Java-LDAP/" />
 
 
   
@@ -31,7 +31,7 @@
   
   
 
-  <link rel="stylesheet" href="//tsaikd.org/blog/css/redlounge.css">
+  <link rel="stylesheet" href="https://tsaikd.org/blog/css/redlounge.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -76,7 +76,7 @@
   <div class="header">
     
 
-    <a href="//tsaikd.org/blog"><h1 class="brand-title">TsaiKD Blog</h1></a>
+    <a href="https://tsaikd.org/blog"><h1 class="brand-title">TsaiKD Blog</h1></a>
     
 
     <nav class="nav">
@@ -141,10 +141,10 @@
 
 			
 		    	<div class="social-sharing">
-	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
-	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
-	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f&title=Java%20LDAP%20Notes&summary=%2f%2a%2a%20%2a%20AD%20LDAP%20%e7%99%bb%e5%85%a5%e8%aa%8d%e8%ad%89%20%2a%20%2a%20%40param%20ldap_url%20like%20ldap%3a%2f%2fx.x.x.x%3a389%2fDC%3dmydomain%2cDC%3dcom%20%2a%20%40param%20account%20like%20mydomain%5c%5cusername%20%2a%20%40param%20password%20%2a%20%40return%20String%5b%5d%20array%200%20%3a0%20success%2c1%20fail%2c2%20LDAP%20connect%20fail%2c3%20unknow%20%2a%2f%20public%20String%5b%5d%20LDAP_AUTH_AD%28String%20ldap_url%2c%20String%20account%2c%20String%20password%29%20%7b%20String%5b%5d%20returnStr%20%3d%20new%20String%5b2%5d%3b%20Hashtable%26lt%3bString%2c%20String%26gt%3b%20env%20%3d%20new%20Hashtable%26lt%3bString%2c%20String%26gt%3b%28%29%3b%20env.put%28Context.INITIAL_CONTEXT_FACTORY%2c%20%26quot%3bcom.sun.jndi.ldap.LdapCtxFactory%26quot%3b%29%3b%20env.put%28Context.PROVIDER_URL%2c%20ldap_url%29%3b%20env.put%28Context.SECURITY_PRINCIPAL%2c%20account%29%3b%20env.put%28Context.SECURITY_CREDENTIALS%2c%20password%29%3b%20LdapContext%20ctx%20%3d%20null%3b%20try%20%7b%20ctx%20%3d%20new%20InitialLdapContext%28env%2c%20null%29%3b%20%2f%2a%20%2f%2f%20search%20%2a%20String%20searchUser%20%3d%20%26quot%3bUSERNAME%26quot%3b%3b%20%2a%20SearchControls%20constraints%20%3d%20new%20SearchControls%28%29%3b%20%2a%20constraints.setSearchScope%28SearchControls.SUBTREE_SCOPE%29%3b%20%2a%20String%5b%5d%20attrIDs%20%3d%20%7b%26quot%3bdistinguishedName%26quot%3b%2c%20%26quot%3bsn%26quot%3b%2c%20%26quot%3bgivenname%26quot%3b%2c%20%26quot%3bmail%26quot%3b%2c%20%26quot%3btelephonenumber%26quot%3b%7d%3b%20%2a%20constraints.setReturningAttributes%28attrIDs%29%3b%20%2a%20String%20searchFilter%20%3d%20String.format%28%26quot%3b%28%26amp%3b%28objectClass%3duser%29%28sAMAccountName%3d%251%24s%29%29%26quot%3b%2c%20searchUser%29%3b%20%2a%20NamingEnumeration%20answer%20%3d%20ctx.search%28%26quot%3b%26quot%3b%2c%20searchFilter%2c%20constraints%29%3b%20%2a%20if%20%28answer.hasMore%28%29%29%20%7b%20%2a%20Attributes%20attrs%20%3d%20%28%28SearchResult%29%20answer.next%28%29%29.getAttributes%28%29%3b%20%2a%20System.out.println%28attrs%29%3b%20%2a%20%7d%20%2a%2f%20returnStr%5b0%5d%20%3d%20%26quot%3b0%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20%26quot%3b%26quot%3b%3b%20%7d%20catch%20%28javax.naming.AuthenticationException%20e%29%20%7b%20%2f%2f%20invalid%20user%20account%20returnStr%5b0%5d%20%3d%20%26quot%3b1%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20e.toString%28true%29%3b%20%7d%20catch%20%28javax.naming.CommunicationException%20e%29%20%7b%20%2f%2f%20Can%27t%20connect%20to%20ldap%20server%21}&source=TsaiKD%20Blog" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
-	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=Java%20LDAP%20Notes&url=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
+	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
+	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
+	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f&title=Java%20LDAP%20Notes&summary=%2f%2a%2a%20%2a%20AD%20LDAP%20%e7%99%bb%e5%85%a5%e8%aa%8d%e8%ad%89%20%2a%20%2a%20%40param%20ldap_url%20like%20ldap%3a%2f%2fx.x.x.x%3a389%2fDC%3dmydomain%2cDC%3dcom%20%2a%20%40param%20account%20like%20mydomain%5c%5cusername%20%2a%20%40param%20password%20%2a%20%40return%20String%5b%5d%20array%200%20%3a0%20success%2c1%20fail%2c2%20LDAP%20connect%20fail%2c3%20unknow%20%2a%2f%20public%20String%5b%5d%20LDAP_AUTH_AD%28String%20ldap_url%2c%20String%20account%2c%20String%20password%29%20%7b%20String%5b%5d%20returnStr%20%3d%20new%20String%5b2%5d%3b%20Hashtable%26lt%3bString%2c%20String%26gt%3b%20env%20%3d%20new%20Hashtable%26lt%3bString%2c%20String%26gt%3b%28%29%3b%20env.put%28Context.INITIAL_CONTEXT_FACTORY%2c%20%26quot%3bcom.sun.jndi.ldap.LdapCtxFactory%26quot%3b%29%3b%20env.put%28Context.PROVIDER_URL%2c%20ldap_url%29%3b%20env.put%28Context.SECURITY_PRINCIPAL%2c%20account%29%3b%20env.put%28Context.SECURITY_CREDENTIALS%2c%20password%29%3b%20LdapContext%20ctx%20%3d%20null%3b%20try%20%7b%20ctx%20%3d%20new%20InitialLdapContext%28env%2c%20null%29%3b%20%2f%2a%20%2f%2f%20search%20%2a%20String%20searchUser%20%3d%20%26quot%3bUSERNAME%26quot%3b%3b%20%2a%20SearchControls%20constraints%20%3d%20new%20SearchControls%28%29%3b%20%2a%20constraints.setSearchScope%28SearchControls.SUBTREE_SCOPE%29%3b%20%2a%20String%5b%5d%20attrIDs%20%3d%20%7b%26quot%3bdistinguishedName%26quot%3b%2c%20%26quot%3bsn%26quot%3b%2c%20%26quot%3bgivenname%26quot%3b%2c%20%26quot%3bmail%26quot%3b%2c%20%26quot%3btelephonenumber%26quot%3b%7d%3b%20%2a%20constraints.setReturningAttributes%28attrIDs%29%3b%20%2a%20String%20searchFilter%20%3d%20String.format%28%26quot%3b%28%26amp%3b%28objectClass%3duser%29%28sAMAccountName%3d%251%24s%29%29%26quot%3b%2c%20searchUser%29%3b%20%2a%20NamingEnumeration%20answer%20%3d%20ctx.search%28%26quot%3b%26quot%3b%2c%20searchFilter%2c%20constraints%29%3b%20%2a%20if%20%28answer.hasMore%28%29%29%20%7b%20%2a%20Attributes%20attrs%20%3d%20%28%28SearchResult%29%20answer.next%28%29%29.getAttributes%28%29%3b%20%2a%20System.out.println%28attrs%29%3b%20%2a%20%7d%20%2a%2f%20returnStr%5b0%5d%20%3d%20%26quot%3b0%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20%26quot%3b%26quot%3b%3b%20%7d%20catch%20%28javax.naming.AuthenticationException%20e%29%20%7b%20%2f%2f%20invalid%20user%20account%20returnStr%5b0%5d%20%3d%20%26quot%3b1%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20e.toString%28true%29%3b%20%7d%20catch%20%28javax.naming.CommunicationException%20e%29%20%7b%20%2f%2f%20Can%27t%20connect%20to%20ldap%20server%21}&source=TsaiKD%20Blog" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
+	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=Java%20LDAP%20Notes&url=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
 </div>
 		    
 
@@ -223,10 +223,10 @@
 	
 			
 		    	<div class="social-sharing">
-	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
-	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
-	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f&title=Java%20LDAP%20Notes&summary=%2f%2a%2a%20%2a%20AD%20LDAP%20%e7%99%bb%e5%85%a5%e8%aa%8d%e8%ad%89%20%2a%20%2a%20%40param%20ldap_url%20like%20ldap%3a%2f%2fx.x.x.x%3a389%2fDC%3dmydomain%2cDC%3dcom%20%2a%20%40param%20account%20like%20mydomain%5c%5cusername%20%2a%20%40param%20password%20%2a%20%40return%20String%5b%5d%20array%200%20%3a0%20success%2c1%20fail%2c2%20LDAP%20connect%20fail%2c3%20unknow%20%2a%2f%20public%20String%5b%5d%20LDAP_AUTH_AD%28String%20ldap_url%2c%20String%20account%2c%20String%20password%29%20%7b%20String%5b%5d%20returnStr%20%3d%20new%20String%5b2%5d%3b%20Hashtable%26lt%3bString%2c%20String%26gt%3b%20env%20%3d%20new%20Hashtable%26lt%3bString%2c%20String%26gt%3b%28%29%3b%20env.put%28Context.INITIAL_CONTEXT_FACTORY%2c%20%26quot%3bcom.sun.jndi.ldap.LdapCtxFactory%26quot%3b%29%3b%20env.put%28Context.PROVIDER_URL%2c%20ldap_url%29%3b%20env.put%28Context.SECURITY_PRINCIPAL%2c%20account%29%3b%20env.put%28Context.SECURITY_CREDENTIALS%2c%20password%29%3b%20LdapContext%20ctx%20%3d%20null%3b%20try%20%7b%20ctx%20%3d%20new%20InitialLdapContext%28env%2c%20null%29%3b%20%2f%2a%20%2f%2f%20search%20%2a%20String%20searchUser%20%3d%20%26quot%3bUSERNAME%26quot%3b%3b%20%2a%20SearchControls%20constraints%20%3d%20new%20SearchControls%28%29%3b%20%2a%20constraints.setSearchScope%28SearchControls.SUBTREE_SCOPE%29%3b%20%2a%20String%5b%5d%20attrIDs%20%3d%20%7b%26quot%3bdistinguishedName%26quot%3b%2c%20%26quot%3bsn%26quot%3b%2c%20%26quot%3bgivenname%26quot%3b%2c%20%26quot%3bmail%26quot%3b%2c%20%26quot%3btelephonenumber%26quot%3b%7d%3b%20%2a%20constraints.setReturningAttributes%28attrIDs%29%3b%20%2a%20String%20searchFilter%20%3d%20String.format%28%26quot%3b%28%26amp%3b%28objectClass%3duser%29%28sAMAccountName%3d%251%24s%29%29%26quot%3b%2c%20searchUser%29%3b%20%2a%20NamingEnumeration%20answer%20%3d%20ctx.search%28%26quot%3b%26quot%3b%2c%20searchFilter%2c%20constraints%29%3b%20%2a%20if%20%28answer.hasMore%28%29%29%20%7b%20%2a%20Attributes%20attrs%20%3d%20%28%28SearchResult%29%20answer.next%28%29%29.getAttributes%28%29%3b%20%2a%20System.out.println%28attrs%29%3b%20%2a%20%7d%20%2a%2f%20returnStr%5b0%5d%20%3d%20%26quot%3b0%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20%26quot%3b%26quot%3b%3b%20%7d%20catch%20%28javax.naming.AuthenticationException%20e%29%20%7b%20%2f%2f%20invalid%20user%20account%20returnStr%5b0%5d%20%3d%20%26quot%3b1%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20e.toString%28true%29%3b%20%7d%20catch%20%28javax.naming.CommunicationException%20e%29%20%7b%20%2f%2f%20Can%27t%20connect%20to%20ldap%20server%21}&source=TsaiKD%20Blog" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
-	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=Java%20LDAP%20Notes&url=%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
+	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
+	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
+	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f&title=Java%20LDAP%20Notes&summary=%2f%2a%2a%20%2a%20AD%20LDAP%20%e7%99%bb%e5%85%a5%e8%aa%8d%e8%ad%89%20%2a%20%2a%20%40param%20ldap_url%20like%20ldap%3a%2f%2fx.x.x.x%3a389%2fDC%3dmydomain%2cDC%3dcom%20%2a%20%40param%20account%20like%20mydomain%5c%5cusername%20%2a%20%40param%20password%20%2a%20%40return%20String%5b%5d%20array%200%20%3a0%20success%2c1%20fail%2c2%20LDAP%20connect%20fail%2c3%20unknow%20%2a%2f%20public%20String%5b%5d%20LDAP_AUTH_AD%28String%20ldap_url%2c%20String%20account%2c%20String%20password%29%20%7b%20String%5b%5d%20returnStr%20%3d%20new%20String%5b2%5d%3b%20Hashtable%26lt%3bString%2c%20String%26gt%3b%20env%20%3d%20new%20Hashtable%26lt%3bString%2c%20String%26gt%3b%28%29%3b%20env.put%28Context.INITIAL_CONTEXT_FACTORY%2c%20%26quot%3bcom.sun.jndi.ldap.LdapCtxFactory%26quot%3b%29%3b%20env.put%28Context.PROVIDER_URL%2c%20ldap_url%29%3b%20env.put%28Context.SECURITY_PRINCIPAL%2c%20account%29%3b%20env.put%28Context.SECURITY_CREDENTIALS%2c%20password%29%3b%20LdapContext%20ctx%20%3d%20null%3b%20try%20%7b%20ctx%20%3d%20new%20InitialLdapContext%28env%2c%20null%29%3b%20%2f%2a%20%2f%2f%20search%20%2a%20String%20searchUser%20%3d%20%26quot%3bUSERNAME%26quot%3b%3b%20%2a%20SearchControls%20constraints%20%3d%20new%20SearchControls%28%29%3b%20%2a%20constraints.setSearchScope%28SearchControls.SUBTREE_SCOPE%29%3b%20%2a%20String%5b%5d%20attrIDs%20%3d%20%7b%26quot%3bdistinguishedName%26quot%3b%2c%20%26quot%3bsn%26quot%3b%2c%20%26quot%3bgivenname%26quot%3b%2c%20%26quot%3bmail%26quot%3b%2c%20%26quot%3btelephonenumber%26quot%3b%7d%3b%20%2a%20constraints.setReturningAttributes%28attrIDs%29%3b%20%2a%20String%20searchFilter%20%3d%20String.format%28%26quot%3b%28%26amp%3b%28objectClass%3duser%29%28sAMAccountName%3d%251%24s%29%29%26quot%3b%2c%20searchUser%29%3b%20%2a%20NamingEnumeration%20answer%20%3d%20ctx.search%28%26quot%3b%26quot%3b%2c%20searchFilter%2c%20constraints%29%3b%20%2a%20if%20%28answer.hasMore%28%29%29%20%7b%20%2a%20Attributes%20attrs%20%3d%20%28%28SearchResult%29%20answer.next%28%29%29.getAttributes%28%29%3b%20%2a%20System.out.println%28attrs%29%3b%20%2a%20%7d%20%2a%2f%20returnStr%5b0%5d%20%3d%20%26quot%3b0%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20%26quot%3b%26quot%3b%3b%20%7d%20catch%20%28javax.naming.AuthenticationException%20e%29%20%7b%20%2f%2f%20invalid%20user%20account%20returnStr%5b0%5d%20%3d%20%26quot%3b1%26quot%3b%3b%20returnStr%5b1%5d%20%3d%20e.toString%28true%29%3b%20%7d%20catch%20%28javax.naming.CommunicationException%20e%29%20%7b%20%2f%2f%20Can%27t%20connect%20to%20ldap%20server%21}&source=TsaiKD%20Blog" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
+	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=Java%20LDAP%20Notes&url=https%3a%2f%2ftsaikd.org%2fblog%2f2013%2f11-18-Java-LDAP%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
 </div>
 		    
 
@@ -234,9 +234,9 @@
 				<div class="tags-list">
 					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
 					
-	                <a class="post-tag post-tag-java" href="//tsaikd.org/blog/tags/java">Java</a>,
+	                <a class="post-tag post-tag-java" href="https://tsaikd.org/blog/tags/java">Java</a>,
 	                
-	                <a class="post-tag post-tag-ldap" href="//tsaikd.org/blog/tags/ldap">LDAP</a>,
+	                <a class="post-tag post-tag-ldap" href="https://tsaikd.org/blog/tags/ldap">LDAP</a>,
 	                
 				</div>
 			
@@ -247,14 +247,14 @@
 					
 					<div class="paging-newer">
 						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/blog/2013/11-18-Pure-FTPd/">Pure-FTPd Notes</a>
+						<a class="paging-link" href="/blog/2013/11-24-NetBeans-Config/">NetBeans Config Notes</a>
 		            </div>
 		            
 
 					
 					<div class="paging-older">
 						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/blog/2013/11-13-Solr-Notes/">Solr Notes</a>
+			            <a class="paging-link" href="/blog/2013/11-18-Pure-FTPd/">Pure-FTPd Notes</a>
 		            </div>
 		            
 	            </div>

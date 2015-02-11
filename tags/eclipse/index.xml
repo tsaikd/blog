@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eclipse on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/eclipse/</link>
+    <link>https://tsaikd.org/blog/tags/eclipse/</link>
     <description>Recent content in Eclipse on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 04 Aug 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker eclipse on Ubuntu Desktop</title>
-      <link>//tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
+      <link>https://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</link>
       <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
+      <guid>https://tsaikd.org/blog/2014/08-04-Docker-eclipse-on-Ubuntu-Desktop/</guid>
       <description>&lt;p&gt;看到越來越多人在往雲端開發的方向在玩，
 比較終極的做法當然就是把 Browser 變成 IDE ，
 不過就目前看來，
@@ -43,10 +43,10 @@
     
     <item>
       <title>Eclipse Gradle Plugin</title>
-      <link>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
+      <link>https://tsaikd.org/blog/2014/01-05-eclipse-gradle/</link>
       <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
+      <guid>https://tsaikd.org/blog/2014/01-05-eclipse-gradle/</guid>
       <description>&lt;p&gt;每次要裝都要 google 老半天
 直接記下來好了&amp;hellip;&lt;/p&gt;
 
@@ -58,10 +58,10 @@
     
     <item>
       <title>GoLang Startup</title>
-      <link>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
+      <link>https://tsaikd.org/blog/2013/10-05-GoLang-Startup/</link>
       <pubDate>Sat, 05 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
+      <guid>https://tsaikd.org/blog/2013/10-05-GoLang-Startup/</guid>
       <description>
 
 &lt;p&gt;最近看上了 &lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; 的速度跟整合 &lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt; 的模式&lt;/p&gt;

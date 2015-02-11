@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>主機 on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/</link>
+    <link>https://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/</link>
     <description>Recent content in 主機 on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 26 Sep 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/%E4%B8%BB%E6%A9%9F/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Bash 不能輸入中文</title>
-      <link>//tsaikd.org/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/</link>
+      <link>https://tsaikd.org/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/</link>
       <pubDate>Sat, 26 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/</guid>
+      <guid>https://tsaikd.org/blog/2009/09-26-Bash-%E4%B8%8D%E8%83%BD%E8%BC%B8%E5%85%A5%E4%B8%AD%E6%96%87/</guid>
       <description>&lt;p&gt;不知道從什麼時候開始&lt;/p&gt;
 
 &lt;p&gt;我用 pietty 連回主機的時候就不能在 shell 那邊輸入中文了&lt;/p&gt;
@@ -62,10 +62,10 @@
     
     <item>
       <title>autofs</title>
-      <link>//tsaikd.org/blog/2009/09-13-autofs/</link>
+      <link>https://tsaikd.org/blog/2009/09-13-autofs/</link>
       <pubDate>Sun, 13 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2009/09-13-autofs/</guid>
+      <guid>https://tsaikd.org/blog/2009/09-13-autofs/</guid>
       <description>
 
 &lt;p&gt;用到的時候才會自動掛載磁碟&lt;/p&gt;
@@ -148,10 +148,10 @@ ls -l my_smb_share
     
     <item>
       <title>gitweb</title>
-      <link>//tsaikd.org/blog/2009/09-12-gitweb/</link>
+      <link>https://tsaikd.org/blog/2009/09-12-gitweb/</link>
       <pubDate>Sat, 12 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2009/09-12-gitweb/</guid>
+      <guid>https://tsaikd.org/blog/2009/09-12-gitweb/</guid>
       <description>&lt;p&gt;之前參考 Ku 的做法&lt;/p&gt;
 
 &lt;p&gt;在 gitweb.conf 裡面重寫 git_get_project_url_list 去改變 gitweb 裡面 URL 的欄位&lt;/p&gt;
@@ -221,10 +221,10 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>sudoers</title>
-      <link>//tsaikd.org/blog/2009/09-12-sudoers/</link>
+      <link>https://tsaikd.org/blog/2009/09-12-sudoers/</link>
       <pubDate>Sat, 12 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2009/09-12-sudoers/</guid>
+      <guid>https://tsaikd.org/blog/2009/09-12-sudoers/</guid>
       <description>&lt;p&gt;很久沒重裝 Linux 了&lt;/p&gt;
 
 &lt;p&gt;有些東西要是不記下來總是會一忘再忘&amp;hellip;=.=&lt;/p&gt;
@@ -248,10 +248,10 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>主機復活</title>
-      <link>//tsaikd.org/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/</link>
+      <link>https://tsaikd.org/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/</link>
       <pubDate>Tue, 07 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/</guid>
+      <guid>https://tsaikd.org/blog/2009/04-07-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB/</guid>
       <description>&lt;p&gt;不知道從什麼時候開始&lt;/p&gt;
 
 &lt;p&gt;主機就偶爾會當掉&lt;/p&gt;
@@ -324,10 +324,10 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>換成光纖網路了</title>
-      <link>//tsaikd.org/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/</link>
+      <link>https://tsaikd.org/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/</link>
       <pubDate>Mon, 30 Jul 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/</guid>
+      <guid>https://tsaikd.org/blog/2007/07-30-%E6%8F%9B%E6%88%90%E5%85%89%E7%BA%96%E7%B6%B2%E8%B7%AF%E4%BA%86/</guid>
       <description>&lt;p&gt;原來是用 ADSL 2M/256K 的方式上網&lt;/p&gt;
 
 &lt;p&gt;在上個月底打電話申請升級成光纖網路&lt;/p&gt;
@@ -374,10 +374,10 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>主機復活了</title>
-      <link>//tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</link>
+      <link>https://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</link>
       <pubDate>Wed, 25 Jul 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</guid>
+      <guid>https://tsaikd.org/blog/2007/07-25-%E4%B8%BB%E6%A9%9F%E5%BE%A9%E6%B4%BB%E4%BA%86/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;../07-22-主機的硬碟掛掉了&#34;&gt;主機的硬碟掛掉了&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;花了三天時間&lt;/p&gt;
@@ -441,10 +441,10 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>主機的硬碟掛掉了</title>
-      <link>//tsaikd.org/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/</link>
+      <link>https://tsaikd.org/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/</link>
       <pubDate>Sun, 22 Jul 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/</guid>
+      <guid>https://tsaikd.org/blog/2007/07-22-%E4%B8%BB%E6%A9%9F%E7%9A%84%E7%A1%AC%E7%A2%9F%E6%8E%9B%E6%8E%89%E4%BA%86/</guid>
       <description>&lt;p&gt;在晚上 11 點左右的時候&lt;/p&gt;
 
 &lt;p&gt;我正在把我的圖片建立索引&lt;/p&gt;
@@ -544,10 +544,10 @@ RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
     
     <item>
       <title>PHP ssmtp gmail</title>
-      <link>//tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</link>
+      <link>https://tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</link>
       <pubDate>Sat, 12 May 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</guid>
+      <guid>https://tsaikd.org/blog/2007/05-12-PHP-ssmtp-gmail/</guid>
       <description>&lt;p&gt;設定 ssmtp 可以使用 gmail&lt;/p&gt;
 
 &lt;ul&gt;
@@ -587,10 +587,10 @@ AuthPass=密碼
     
     <item>
       <title>Apache2 mod_deflate</title>
-      <link>//tsaikd.org/blog/2007/03-22-Apache2-mod_deflate/</link>
+      <link>https://tsaikd.org/blog/2007/03-22-Apache2-mod_deflate/</link>
       <pubDate>Thu, 22 Mar 2007 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2007/03-22-Apache2-mod_deflate/</guid>
+      <guid>https://tsaikd.org/blog/2007/03-22-Apache2-mod_deflate/</guid>
       <description>&lt;p&gt;最近在寫 KDBlog 時用了 Firefox 的一個 extension &amp;ndash; Web Developer&lt;/p&gt;
 
 &lt;p&gt;裡面有個功能是 View Speed Report&lt;/p&gt;

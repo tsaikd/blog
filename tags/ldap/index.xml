@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ldap on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/ldap/</link>
+    <link>https://tsaikd.org/blog/tags/ldap/</link>
     <description>Recent content in Ldap on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 18 Nov 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Java LDAP Notes</title>
-      <link>//tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
+      <link>https://tsaikd.org/blog/2013/11-18-Java-LDAP/</link>
       <pubDate>Mon, 18 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
+      <guid>https://tsaikd.org/blog/2013/11-18-Java-LDAP/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;

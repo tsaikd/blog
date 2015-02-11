@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kdgallery on TsaiKD Blog</title>
-    <link>//tsaikd.org/blog/tags/kdgallery/</link>
+    <link>https://tsaikd.org/blog/tags/kdgallery/</link>
     <description>Recent content in Kdgallery on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 22 Apr 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//tsaikd.org/blog/tags/kdgallery/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/kdgallery/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>KDGallery rev1</title>
-      <link>//tsaikd.org/blog/2008/04-22-KDGallery-rev1/</link>
+      <link>https://tsaikd.org/blog/2008/04-22-KDGallery-rev1/</link>
       <pubDate>Tue, 22 Apr 2008 00:00:00 +0000</pubDate>
       
-      <guid>//tsaikd.org/blog/2008/04-22-KDGallery-rev1/</guid>
+      <guid>https://tsaikd.org/blog/2008/04-22-KDGallery-rev1/</guid>
       <description>&lt;p&gt;其實 KDGallery 很早就做出一個雛型了&lt;/p&gt;
 
 &lt;p&gt;(這個比 KDBlog 要草率一點&amp;hellip;so&amp;hellip;@_@)&lt;/p&gt;
