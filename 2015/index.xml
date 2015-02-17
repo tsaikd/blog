@@ -204,8 +204,7 @@ trap _cleanup_ssh_agent EXIT
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;gogstash/mongodb.json&#34;&gt;蒐集 /var/log/mongodb/mongodb.log&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;gogstash/mongodb-status.json&#34;&gt;蒐集 MongoDB 服務狀態&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-df.json&#34;&gt;蒐集硬碟空間使用狀況&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;gogstash/mongodb-sys.json&#34;&gt;蒐集系統負載資訊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;gogstash/ubuntu-sys.json&#34;&gt;蒐集系統基本資訊&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;broker-設定:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Broker 設定&lt;/h2&gt;
@@ -254,15 +253,10 @@ trap _cleanup_ssh_agent EXIT
 &lt;ul&gt;
 &lt;li&gt;分析 &lt;a href=&#34;http://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; 服務狀態&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-df.conf&#34;&gt;logstash/index-mongodb-df.conf&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-ubuntu-sys.conf&#34;&gt;logstash/index-ubuntu-sys.conf&lt;/a&gt;
 
 &lt;ul&gt;
-&lt;li&gt;分析硬碟空間使用狀況&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;logstash/logstash/index-mongodb-sys.conf&#34;&gt;logstash/index-mongodb-sys.conf&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;分析系統負載資訊&lt;/li&gt;
+&lt;li&gt;分析系統基本資訊&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;logstash/logstash/start.sh&#34;&gt;logstash/start.sh&lt;/a&gt;
 
@@ -315,7 +309,35 @@ trap _cleanup_ssh_agent EXIT
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;kibana/fig.yml&#34;&gt;fig.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./kibana/kibana/config.js&#34;&gt;kibana/config.js&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;設定 &lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt; 位置&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./kibana/kibana/sys.js&#34;&gt;kibana/sys.js&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;建立系統基本資訊的樣板，可以用 URL 帶參數的方式將客製化的查詢條件傳進 &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; ， e.g.
+&lt;a href=&#34;http://kibana.localnet.local/#/dashboard/script/sys.js?query=host:gogstash01,host:gogstash02&amp;amp;index=ubuntu-sys&amp;amp;from=1d&#34;&gt;http://kibana.localnet.local/#/dashboard/script/sys.js?query=host:gogstash01,host:gogstash02&amp;amp;index=ubuntu-sys&amp;amp;from=1d&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;query
+
+&lt;ul&gt;
+&lt;li&gt;查詢條件可用 , 分開多項查詢&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;index
+
+&lt;ul&gt;
+&lt;li&gt;選擇要查詢哪個索引&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;from
+
+&lt;ul&gt;
+&lt;li&gt;選擇時間區間&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;qa:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;QA&lt;/h2&gt;

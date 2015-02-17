@@ -10,4 +10,5 @@ kibana:
     - 80
   volumes:
     - kibana/config.js:/usr/local/kibana/config.js
+    - kibana/sys.js:/usr/local/kibana/app/dashboards/sys.js
 
