@@ -83,8 +83,7 @@ Web Interface 選擇 3.x 版的 [Kibana][] ，它可以在網頁上展示還不�
 
 * [蒐集 /var/log/mongodb/mongodb.log](gogstash/mongodb.json)
 * [蒐集 MongoDB 服務狀態](gogstash/mongodb-status.json)
-* [蒐集硬碟空間使用狀況](gogstash/mongodb-df.json)
-* [蒐集系統負載資訊](gogstash/mongodb-sys.json)
+* [蒐集系統基本資訊](gogstash/ubuntu-sys.json)
 
 ## Broker 設定
 
@@ -114,10 +113,8 @@ Indexer 其實是 Log 分析的一大重點，因為 Log 可能會有各式各�
 	* 分析 [MongoDB][] Log
 * [logstash/index-mongodb-status.conf](logstash/logstash/index-mongodb-status.conf)
 	* 分析 [MongoDB][] 服務狀態
-* [logstash/index-mongodb-df.conf](logstash/logstash/index-mongodb-df.conf)
-	* 分析硬碟空間使用狀況
-* [logstash/index-mongodb-sys.conf](logstash/logstash/index-mongodb-sys.conf)
-	* 分析系統負載資訊
+* [logstash/index-ubuntu-sys.conf](logstash/logstash/index-ubuntu-sys.conf)
+	* 分析系統基本資訊
 * [logstash/start.sh](logstash/logstash/start.sh)
 	* [Docker Builder][] 啟動腳本
 
@@ -148,6 +145,16 @@ Indexer 其實是 Log 分析的一大重點，因為 Log 可能會有各式各�
 
 * [fig.yml](kibana/fig.yml)
 * [kibana/config.js](./kibana/kibana/config.js)
+	* 設定 [ElasticSearch][] 位置
+* [kibana/sys.js](./kibana/kibana/sys.js)
+	* 建立系統基本資訊的樣板，可以用 URL 帶參數的方式將客製化的查詢條件傳進 [Kibana][] ， e.g.
+		http://kibana.localnet.local/#/dashboard/script/sys.js?query=host:gogstash01,host:gogstash02&index=ubuntu-sys&from=1d
+		* query
+			* 查詢條件可用 , 分開多項查詢
+		* index
+			* 選擇要查詢哪個索引
+		* from
+			* 選擇時間區間
 
 ## QA
 
