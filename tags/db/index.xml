@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ssl on TsaiKD Blog</title>
-    <link>https://tsaikd.org/blog/tags/ssl/</link>
-    <description>Recent content in Ssl on TsaiKD Blog</description>
+    <title>Db on TsaiKD Blog</title>
+    <link>https://tsaikd.org/blog/tags/db/</link>
+    <description>Recent content in Db on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 21 Apr 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://tsaikd.org/blog/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsaikd.org/blog/tags/db/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>PostgreSQL Docker SSL Config</title>
@@ -65,60 +65,6 @@ openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
 
 &lt;li&gt;&lt;p&gt;可以用 &lt;a href=&#34;http://www.pgadmin.org/&#34;&gt;pgAdmin&lt;/a&gt; 測試連線，看看是不是有用 SSL 連線了&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Nginx Config Notes</title>
-      <link>https://tsaikd.org/blog/2013/11-27-Nginx-Notes/</link>
-      <pubDate>Wed, 27 Nov 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://tsaikd.org/blog/2013/11-27-Nginx-Notes/</guid>
-      <description>
-
-&lt;h1 id=&#34;產生-ssl-憑證:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;產生 SSL 憑證&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;openssl genrsa -out server.key 512
-openssl req -new -key server.key -out server.csr
-openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;ssl-spdy:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;SSL + Spdy&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;server {
-	listen 443 ssl spdy;
-	ssl_certificate server.crt;
-	ssl_certificate_key server.key;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;reverse-proxy:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Reverse proxy&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;server {
-	location /WebApp- {
-		rewrite ^/WebApp-[^/]*/(.*)$ /WebApp/$1 redirect;
-	}
-
-	location = /WebApp {
-		rewrite ^ /WebApp/ redirect;
-	}
-
-	location /WebApp/ {
-		set $ver 1.0-SNAPSHOT-20131127-1412;
-		rewrite ^/WebApp/(.*)$ /WebApp-$ver/$1 break;
-		proxy_cookie_path      /WebApp-$ver /WebApp;
-		proxy_pass http://tomcat:8080/WebApp-$ver/$1$is_args$args;
-		include proxy_params;
-		add_header WebApp-Version $ver;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_http_version 1.1;
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

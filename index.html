@@ -112,6 +112,44 @@
                 <header class="post-header">
                     
                     <h1 class="post-title">
+                      <a href="/blog/2015/04-21-postgresql-ssl/">PostgreSQL Docker SSL Config</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>21</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Apr</span> <span class="post-date-year">2015</span>
+                </span>
+                
+                
+                    
+                
+                
+                
+                <div class="post-categories">
+                    
+                    
+                    <a class="post-category post-category-postgresql" href="https://tsaikd.org/blog/tags/postgresql">PostgreSQL</a>
+                    
+                    <a class="post-category post-category-ssl" href="https://tsaikd.org/blog/tags/ssl">SSL</a>
+                    
+                    <a class="post-category post-category-db" href="https://tsaikd.org/blog/tags/db">DB</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  Docker 官方有提供 Postgres Docker ，還蠻方便的。 先用 Docker Compose 初始化 PostgreSQL ， 這樣會先產生一些預設的設定檔。 docker-compose.yml postgresql: image: postgres:9.4.1 environment: - POSTGRES_USER=alice - POSTGRES_PASSWORD=change.password ports: - 5432:5432 volumes: - postgresql/data:/var/lib/postgresql/data 接下來就用 openssl 產生 SSL 的相關檔案。 openssl genrsa -out server.key 4096 openssl req -new -key server.key -out server.csr openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt 這邊要注意一點， key size 不能設太小，我本來想說測試的時候先設定個 512 來試， 沒想到這邊雷了我好久&hellip;. 產生的 server.crt server.key 丟到 postgresql/data postgresql/data/postgresql.conf ssl =
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2015/04-21-postgresql-ssl/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
                       <a href="/blog/2015/02-08-mac-ssh-agent-forward/">SSH Agent Forward in Mac OS X Yosemite</a>
                   </h1>
               </header>
@@ -275,48 +313,6 @@
               </article>
               <div class="read-more-link">
                   <a href="/blog/2014/12-25-Docker-infra/"><span class="read-more-slashes">//</span>Read More...</a>
-              </div>
-          </section>
-          
-            <section  class="post">
-                <header class="post-header">
-                    
-                    <h1 class="post-title">
-                      <a href="/blog/2014/09-14-Consul-trap/">Consul 採到雷</a>
-                  </h1>
-              </header>
-              <p class="post-meta">
-                  
-                  <span class="post-date">
-                    <span class="post-date-day"><sup>14</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2014</span>
-                </span>
-                
-                
-                    
-                
-                
-                
-                <div class="post-categories">
-                    
-                    
-                    <a class="post-category post-category-docker" href="https://tsaikd.org/blog/tags/docker">Docker</a>
-                    
-                    <a class="post-category post-category-consul" href="https://tsaikd.org/blog/tags/consul">Consul</a>
-                    
-                    <a class="post-category post-category-lmdb" href="https://tsaikd.org/blog/tags/lmdb">LMDB</a>
-                    
-                    <a class="post-category post-category-zfs" href="https://tsaikd.org/blog/tags/zfs">ZFS</a>
-                    
-                    <a class="post-category post-category-ubuntu" href="https://tsaikd.org/blog/tags/ubuntu">Ubuntu</a>
-                    
-                </div>
-                
-            </p>
-            <article class="post-summary">
-                  今天試用 consul ， 看網路上的文件好像還蠻好裝的， 沒想到還是遇到神奇的雷， 目前懷疑是跟 ZFS 有關。 環境 $ uname -rsvmo Linux 3.13.0-35-generic #62-Ubuntu SMP Fri Aug 15 01:58:42 UTC 2014 x86_64 GNU/Linux $ docker -v Docker version 1.2.0, build fa7b24f consul 版本是 v0.4.0 現象 $ docker run progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled! Do not enable unless necessary ==&gt; WARNING: It is highly recommended to set GOMAXPROCS higher than 1 ==&gt; Starting Consul agent... ==&gt; Error starting agent: Failed to start Consul server: Failed to start Raft: index id error: Function not implemented 啟動 consul 就爆炸了&hellip;.&gt;_&lt; google 不到什麼有用的資料， 只好自己 trace code 了&hellip;Orz 追了大半天， 發現問題出在 consul call LMDB (Lightning Memory-Mapped Database) 的時候會死掉。 目前懷疑跟 ZFS 不支援 AIO 有關， 因為 MySQL 跑在 ZFS 上也有災情。 解法 $ docker run -v /tmp progrium/consul -server -bootstrap ==&gt; WARNING: Bootstrap mode enabled!
-              </article>
-              <div class="read-more-link">
-                  <a href="/blog/2014/09-14-Consul-trap/"><span class="read-more-slashes">//</span>Read More...</a>
               </div>
           </section>
           

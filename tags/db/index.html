@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <title>
-    Ssl // TsaiKD Blog
+    Db // TsaiKD Blog
   </title>
 
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -15,11 +15,11 @@
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-  <meta property="og:title" content="Ssl" />
+  <meta property="og:title" content="Db" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://tsaikd.org/blog/tags/ssl/" />
+<meta property="og:url" content="https://tsaikd.org/blog/tags/db/" />
 
 
   
@@ -41,7 +41,7 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://tsaikd.org/blog/tags/ssl/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
+  <link href="https://tsaikd.org/blog/tags/db/index.xml" rel="alternate" type="application/rss+xml" title="TsaiKD Blog" />
 
     
   
@@ -143,51 +143,6 @@
             </article>
 			<div class="read-more-link">
 				<a href="/blog/2015/04-21-postgresql-ssl/"><span class="read-more-slashes">//</span>Read More...</a>
-			</div>
-          </section>
-        
-          <section  class="post">
-            <header class="post-header">
-            
-            <h1 class="post-title">
-              <a href="/blog/2013/11-27-Nginx-Notes/">Nginx Config Notes</a>
-            </h1>
-            </header>
-            <p class="post-meta">
-            	
-		          <span class="post-date">
-		            <span class="post-date-day"><sup>27</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2013</span>
-		          </span>
-      				
-      				
-      					
-      				
-              
-      				
-      					<div class="post-categories">
-				        
-      					
-      					
-					        <a class="post-category post-category-nginx" href="https://tsaikd.org/blog/categories/nginx">Nginx</a>
-      					
-					        <a class="post-category post-category-ssl" href="https://tsaikd.org/blog/categories/ssl">SSL</a>
-      					
-					        <a class="post-category post-category-http" href="https://tsaikd.org/blog/categories/http">Http</a>
-      					
-					        <a class="post-category post-category-https" href="https://tsaikd.org/blog/categories/https">Https</a>
-      					
-					        <a class="post-category post-category-spdy" href="https://tsaikd.org/blog/categories/spdy">Spdy</a>
-      					
-					        <a class="post-category post-category-reverse-proxy" href="https://tsaikd.org/blog/categories/reverse-proxy">Reverse Proxy</a>
-      					
-      					</div>
-      				
-            </p>
-            <article class="post-summary">
-            	產生 SSL 憑證 openssl genrsa -out server.key 512 openssl req -new -key server.key -out server.csr openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt SSL + Spdy server { listen 443 ssl spdy; ssl_certificate server.crt; ssl_certificate_key server.key; } Reverse proxy server { location /WebApp- { rewrite ^/WebApp-[^/]*/(.*)$ /WebApp/$1 redirect; } location = /WebApp { rewrite ^ /WebApp/ redirect; } location /WebApp/ { set $ver 1.0-SNAPSHOT-20131127-1412; rewrite ^/WebApp/(.*)$ /WebApp-$ver/$1
-            </article>
-			<div class="read-more-link">
-				<a href="/blog/2013/11-27-Nginx-Notes/"><span class="read-more-slashes">//</span>Read More...</a>
 			</div>
           </section>
         

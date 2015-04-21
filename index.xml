@@ -5,8 +5,68 @@
     <link>https://tsaikd.org/blog/</link>
     <description>Recent content on TsaiKD Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 08 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tsaikd.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>PostgreSQL Docker SSL Config</title>
+      <link>https://tsaikd.org/blog/2015/04-21-postgresql-ssl/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://tsaikd.org/blog/2015/04-21-postgresql-ssl/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 官方有提供 &lt;a href=&#34;https://registry.hub.docker.com/_/postgres/&#34;&gt;Postgres Docker&lt;/a&gt; ，還蠻方便的。
+先用 &lt;a href=&#34;https://github.com/docker/compose&#34;&gt;Docker Compose&lt;/a&gt; 初始化 &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; ，
+這樣會先產生一些預設的設定檔。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;docker-compose.yml&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;postgresql:
+  image: postgres:9.4.1
+  environment:
+    - POSTGRES_USER=alice
+    - POSTGRES_PASSWORD=change.password
+  ports:
+    - 5432:5432
+  volumes:
+    - postgresql/data:/var/lib/postgresql/data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下來就用 openssl 產生 SSL 的相關檔案。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl genrsa -out server.key 4096
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;這邊要注意一點， key size 不能設太小，我本來想說測試的時候先設定個 512 來試，
+沒想到這邊雷了我好久&amp;hellip;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;產生的 server.crt server.key 丟到 postgresql/data&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;postgresql/data/postgresql.conf&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;ssl = on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;postgresql/data/pg_hba.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-patch&#34;&gt;-host all all 0.0.0.0/0 md5
++hostssl all all 0.0.0.0/0 md5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;重開 &lt;a href=&#34;https://registry.hub.docker.com/_/postgres/&#34;&gt;Postgres Docker&lt;/a&gt;，搞定收工&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可以用 &lt;a href=&#34;http://www.pgadmin.org/&#34;&gt;pgAdmin&lt;/a&gt; 測試連線，看看是不是有用 SSL 連線了&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>SSH Agent Forward in Mac OS X Yosemite</title>
@@ -1627,40 +1687,6 @@ VBOXWEB_HOST=0.0.0.0
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://dist.springsource.com/release/TOOLS/gradle&#34;&gt;http://dist.springsource.com/release/TOOLS/gradle&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>GateIn Skin Trick</title>
-      <link>https://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</link>
-      <pubDate>Mon, 23 Dec 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://tsaikd.org/blog/2013/12-23-GateIn-Skin-Trick/</guid>
-      <description>
-
-&lt;h1 id=&#34;建立新的-skin:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;建立新的 Skin&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;直接 copy gatein-sample-skin&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;改 web.xml&lt;/p&gt;
-
-&lt;p&gt;這邊的名字一定要跟放到 tomcat 上的 project name 一樣，我花了好幾個小時 trace code 才知道有這個限制&amp;hellip;&amp;gt;&amp;rdquo;&amp;lt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;display-name&amp;gt;My-skin&amp;lt;/display-name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;改 gatein-resources.xml&lt;/p&gt;
-
-&lt;p&gt;這邊的名字是顯示在 GateIn 管理介面上的名字&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;	&amp;lt;skin-name&amp;gt;MySkin&amp;lt;/skin-name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;客製化 /skin/Stylesheet.css&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     
