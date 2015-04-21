@@ -9,7 +9,10 @@ set -e
 PN="${BASH_SOURCE[0]##*/}"
 PD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-type hugo >/dev/null
+if ! type hugo &>/dev/null ; then
+	echo "install hugo: go get -v github.com/tsaikd/hugo"
+	type hugo >/dev/null
+fi
 
 HUGO_OPTS="${HUGO_OPTS} --theme=redlounge"
 
