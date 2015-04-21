@@ -196,46 +196,46 @@ string(b[0:])
 &lt;h1 id=&#34;goroutine-example:04c6e90faac2675aa89e2176d2eec7d8&#34;&gt;Goroutine Example&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;runtime&amp;quot;
-	&amp;quot;time&amp;quot;
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;runtime&amp;quot;
+    &amp;quot;time&amp;quot;
 )
 
 func Test_Goroutine() {
-	// 假設有這些資料需要處理
-	list := []int{5, 4, 3, 2, 1}
+    // 假設有這些資料需要處理
+    list := []int{5, 4, 3, 2, 1}
 
-	// worker 的數量設成 CPU 的數量好像比較有效率?
-	workernum := runtime.NumCPU()
+    // worker 的數量設成 CPU 的數量好像比較有效率?
+    workernum := runtime.NumCPU()
 
-	// in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
-	in, out := make(chan string, workernum), make(chan string, workernum)
-	for i := 0; i &amp;lt; workernum; i++ {
-		// 這個匿名函數就是真正要做事的地方
-		go func() {
-			// 一直從 in channel 抓資料來處理
-			for data := range in {
-				// 睡個一秒鐘來模擬做事 XD
-				time.Sleep(1000 * time.Millisecond)
-				// 資料處理完了送出去
-				out &amp;lt;- data
-			}
-		}()
-	}
+    // in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
+    in, out := make(chan string, workernum), make(chan string, workernum)
+    for i := 0; i &amp;lt; workernum; i++ {
+        // 這個匿名函數就是真正要做事的地方
+        go func() {
+            // 一直從 in channel 抓資料來處理
+            for data := range in {
+                // 睡個一秒鐘來模擬做事 XD
+                time.Sleep(1000 * time.Millisecond)
+                // 資料處理完了送出去
+                out &amp;lt;- data
+            }
+        }()
+    }
 
-	// 開一個 goroutine 來把要處理的資料放進 in channel
-	go func() {
-		for _, data := range list {
-			in &amp;lt;- fmt.Sprint(data)
-		}
-		// 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
-		close(in)
-	}()
+    // 開一個 goroutine 來把要處理的資料放進 in channel
+    go func() {
+        for _, data := range list {
+            in &amp;lt;- fmt.Sprint(data)
+        }
+        // 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
+        close(in)
+    }()
 
-	// 等所有的資料處理完再結束
-	for _ = range list {
-		&amp;lt;-out
-	}
+    // 等所有的資料處理完再結束
+    for _ = range list {
+        &amp;lt;-out
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>

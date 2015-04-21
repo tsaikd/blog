@@ -259,46 +259,46 @@ string(b[0:])
 <h1 id="goroutine-example:04c6e90faac2675aa89e2176d2eec7d8">Goroutine Example</h1>
 
 <pre><code class="language-go">import (
-	&quot;fmt&quot;
-	&quot;runtime&quot;
-	&quot;time&quot;
+    &quot;fmt&quot;
+    &quot;runtime&quot;
+    &quot;time&quot;
 )
 
 func Test_Goroutine() {
-	// 假設有這些資料需要處理
-	list := []int{5, 4, 3, 2, 1}
+    // 假設有這些資料需要處理
+    list := []int{5, 4, 3, 2, 1}
 
-	// worker 的數量設成 CPU 的數量好像比較有效率?
-	workernum := runtime.NumCPU()
+    // worker 的數量設成 CPU 的數量好像比較有效率?
+    workernum := runtime.NumCPU()
 
-	// in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
-	in, out := make(chan string, workernum), make(chan string, workernum)
-	for i := 0; i &lt; workernum; i++ {
-		// 這個匿名函數就是真正要做事的地方
-		go func() {
-			// 一直從 in channel 抓資料來處理
-			for data := range in {
-				// 睡個一秒鐘來模擬做事 XD
-				time.Sleep(1000 * time.Millisecond)
-				// 資料處理完了送出去
-				out &lt;- data
-			}
-		}()
-	}
+    // in, out 的 channel 可以換成要處理的 struct, 這邊用 string 來當示範
+    in, out := make(chan string, workernum), make(chan string, workernum)
+    for i := 0; i &lt; workernum; i++ {
+        // 這個匿名函數就是真正要做事的地方
+        go func() {
+            // 一直從 in channel 抓資料來處理
+            for data := range in {
+                // 睡個一秒鐘來模擬做事 XD
+                time.Sleep(1000 * time.Millisecond)
+                // 資料處理完了送出去
+                out &lt;- data
+            }
+        }()
+    }
 
-	// 開一個 goroutine 來把要處理的資料放進 in channel
-	go func() {
-		for _, data := range list {
-			in &lt;- fmt.Sprint(data)
-		}
-		// 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
-		close(in)
-	}()
+    // 開一個 goroutine 來把要處理的資料放進 in channel
+    go func() {
+        for _, data := range list {
+            in &lt;- fmt.Sprint(data)
+        }
+        // 資料都塞進 channel 了, 可以關掉了, 不關好像也沒關係?
+        close(in)
+    }()
 
-	// 等所有的資料處理完再結束
-	for _ = range list {
-		&lt;-out
-	}
+    // 等所有的資料處理完再結束
+    for _ = range list {
+        &lt;-out
+    }
 }
 </code></pre>
 
